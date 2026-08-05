@@ -53,7 +53,7 @@
             panel2.Controls.Add(label12);
             panel2.Location = new Point(1, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(197, 512);
+            panel2.Size = new Size(209, 512);
             panel2.TabIndex = 19;
             // 
             // SettingButton
@@ -62,7 +62,7 @@
             SettingButton.FlatStyle = FlatStyle.Flat;
             SettingButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SettingButton.ForeColor = Color.White;
-            SettingButton.Location = new Point(0, 310);
+            SettingButton.Location = new Point(5, 310);
             SettingButton.Name = "SettingButton";
             SettingButton.Size = new Size(197, 53);
             SettingButton.TabIndex = 21;
@@ -75,7 +75,7 @@
             ReportButton.FlatStyle = FlatStyle.Flat;
             ReportButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ReportButton.ForeColor = Color.White;
-            ReportButton.Location = new Point(0, 255);
+            ReportButton.Location = new Point(5, 255);
             ReportButton.Name = "ReportButton";
             ReportButton.Size = new Size(197, 53);
             ReportButton.TabIndex = 21;
@@ -89,7 +89,7 @@
             DocumentReqButton.FlatStyle = FlatStyle.Flat;
             DocumentReqButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DocumentReqButton.ForeColor = Color.White;
-            DocumentReqButton.Location = new Point(0, 200);
+            DocumentReqButton.Location = new Point(5, 200);
             DocumentReqButton.Name = "DocumentReqButton";
             DocumentReqButton.Size = new Size(197, 53);
             DocumentReqButton.TabIndex = 21;
@@ -103,12 +103,13 @@
             ResidentButton.FlatStyle = FlatStyle.Flat;
             ResidentButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ResidentButton.ForeColor = Color.White;
-            ResidentButton.Location = new Point(0, 144);
+            ResidentButton.Location = new Point(5, 144);
             ResidentButton.Name = "ResidentButton";
             ResidentButton.Size = new Size(197, 54);
             ResidentButton.TabIndex = 21;
             ResidentButton.Text = "👤 Residents";
             ResidentButton.UseVisualStyleBackColor = true;
+            ResidentButton.Click += ResidentButton_Click;
             // 
             // DashboardButton
             // 
@@ -117,7 +118,7 @@
             DashboardButton.FlatStyle = FlatStyle.Flat;
             DashboardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DashboardButton.ForeColor = Color.White;
-            DashboardButton.Location = new Point(0, 87);
+            DashboardButton.Location = new Point(5, 87);
             DashboardButton.Name = "DashboardButton";
             DashboardButton.Size = new Size(197, 53);
             DashboardButton.TabIndex = 21;

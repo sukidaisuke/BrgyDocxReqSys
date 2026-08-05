@@ -36,5 +36,16 @@ namespace BarangayDocumentRequestSysytem
             PanelContainer.Controls.Add(dashboardContent);
             PanelContainer.Visible = true;
         }
+
+        private void ResidentButton_Click(object sender, EventArgs e)
+        {
+            PanelContainer.Controls.Clear();
+
+            Resident residentContent = new Resident(); // your resident UserControl
+            residentContent.Dock = DockStyle.Fill;
+
+            PanelContainer.Controls.Add(residentContent);
+            PanelContainer.Visible = true;
+        }
     }
 }

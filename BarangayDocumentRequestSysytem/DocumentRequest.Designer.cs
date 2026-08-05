@@ -43,8 +43,10 @@
             DocumentReqTitleLabel = new Label();
             ReqInformationHeaderLabel = new Label();
             PanelContainer = new Panel();
+            NavPanel = new Panel();
             BodyGroupBox.SuspendLayout();
             PanelContainer.SuspendLayout();
+            NavPanel.SuspendLayout();
             SuspendLayout();
             // 
             // BodyGroupBox
@@ -57,7 +59,7 @@
             BodyGroupBox.Controls.Add(ResidentComboBox);
             BodyGroupBox.Controls.Add(DocumentTypeComboBox);
             BodyGroupBox.Controls.Add(PurposeTextBox);
-            BodyGroupBox.Location = new Point(84, 114);
+            BodyGroupBox.Location = new Point(84, 131);
             BodyGroupBox.Name = "BodyGroupBox";
             BodyGroupBox.Size = new Size(455, 294);
             BodyGroupBox.TabIndex = 21;
@@ -70,9 +72,9 @@
             DateReqLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             DateReqLabel.Location = new Point(17, 247);
             DateReqLabel.Name = "DateReqLabel";
-            DateReqLabel.Size = new Size(97, 15);
+            DateReqLabel.Size = new Size(103, 15);
             DateReqLabel.TabIndex = 12;
-            DateReqLabel.Text = "Date Requested";
+            DateReqLabel.Text = "Date Requested :";
             // 
             // DateReqDateTimePicker
             // 
@@ -89,9 +91,9 @@
             ResidentLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             ResidentLabel.Location = new Point(17, 33);
             ResidentLabel.Name = "ResidentLabel";
-            ResidentLabel.Size = new Size(56, 15);
+            ResidentLabel.Size = new Size(62, 15);
             ResidentLabel.TabIndex = 1;
-            ResidentLabel.Text = "Resident";
+            ResidentLabel.Text = "Resident :";
             // 
             // DocumentTypeLabel
             // 
@@ -100,9 +102,9 @@
             DocumentTypeLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             DocumentTypeLabel.Location = new Point(17, 77);
             DocumentTypeLabel.Name = "DocumentTypeLabel";
-            DocumentTypeLabel.Size = new Size(95, 15);
+            DocumentTypeLabel.Size = new Size(101, 15);
             DocumentTypeLabel.TabIndex = 2;
-            DocumentTypeLabel.Text = "Document Type";
+            DocumentTypeLabel.Text = "Document Type :";
             // 
             // PurposeLabel
             // 
@@ -111,9 +113,9 @@
             PurposeLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             PurposeLabel.Location = new Point(17, 137);
             PurposeLabel.Name = "PurposeLabel";
-            PurposeLabel.Size = new Size(52, 15);
+            PurposeLabel.Size = new Size(58, 15);
             PurposeLabel.TabIndex = 3;
-            PurposeLabel.Text = "Purpose";
+            PurposeLabel.Text = "Purpose :";
             // 
             // ResidentComboBox
             // 
@@ -147,21 +149,23 @@
             // 
             NewReqSubTitleLabel.Anchor = AnchorStyles.Top;
             NewReqSubTitleLabel.AutoSize = true;
-            NewReqSubTitleLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            NewReqSubTitleLabel.Location = new Point(238, 37);
+            NewReqSubTitleLabel.BackColor = Color.DarkSlateBlue;
+            NewReqSubTitleLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            NewReqSubTitleLabel.ForeColor = Color.White;
+            NewReqSubTitleLabel.Location = new Point(239, 35);
             NewReqSubTitleLabel.Name = "NewReqSubTitleLabel";
-            NewReqSubTitleLabel.Size = new Size(110, 21);
+            NewReqSubTitleLabel.Size = new Size(142, 30);
             NewReqSubTitleLabel.TabIndex = 26;
             NewReqSubTitleLabel.Text = "New Request";
             // 
             // CancelButton
             // 
             CancelButton.Anchor = AnchorStyles.Top;
-            CancelButton.BackColor = Color.DarkSlateBlue;
+            CancelButton.BackColor = Color.Red;
             CancelButton.FlatStyle = FlatStyle.Flat;
             CancelButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CancelButton.ForeColor = Color.White;
-            CancelButton.Location = new Point(335, 433);
+            CancelButton.Location = new Point(335, 450);
             CancelButton.Name = "CancelButton";
             CancelButton.Size = new Size(204, 39);
             CancelButton.TabIndex = 25;
@@ -175,7 +179,7 @@
             SubmitReqButton.FlatStyle = FlatStyle.Flat;
             SubmitReqButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SubmitReqButton.ForeColor = Color.White;
-            SubmitReqButton.Location = new Point(84, 433);
+            SubmitReqButton.Location = new Point(84, 450);
             SubmitReqButton.Name = "SubmitReqButton";
             SubmitReqButton.Size = new Size(204, 39);
             SubmitReqButton.TabIndex = 24;
@@ -186,11 +190,12 @@
             // 
             DocumentReqTitleLabel.Anchor = AnchorStyles.Top;
             DocumentReqTitleLabel.AutoSize = true;
-            DocumentReqTitleLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DocumentReqTitleLabel.ForeColor = Color.Gray;
-            DocumentReqTitleLabel.Location = new Point(62, 37);
+            DocumentReqTitleLabel.BackColor = Color.DarkSlateBlue;
+            DocumentReqTitleLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            DocumentReqTitleLabel.ForeColor = Color.White;
+            DocumentReqTitleLabel.Location = new Point(63, 35);
             DocumentReqTitleLabel.Name = "DocumentReqTitleLabel";
-            DocumentReqTitleLabel.Size = new Size(178, 21);
+            DocumentReqTitleLabel.Size = new Size(232, 30);
             DocumentReqTitleLabel.TabIndex = 23;
             DocumentReqTitleLabel.Text = "Document Request   >";
             // 
@@ -199,7 +204,7 @@
             ReqInformationHeaderLabel.Anchor = AnchorStyles.Top;
             ReqInformationHeaderLabel.AutoSize = true;
             ReqInformationHeaderLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ReqInformationHeaderLabel.Location = new Point(63, 82);
+            ReqInformationHeaderLabel.Location = new Point(63, 109);
             ReqInformationHeaderLabel.Name = "ReqInformationHeaderLabel";
             ReqInformationHeaderLabel.Size = new Size(135, 17);
             ReqInformationHeaderLabel.TabIndex = 22;
@@ -208,16 +213,26 @@
             // PanelContainer
             // 
             PanelContainer.Controls.Add(BodyGroupBox);
-            PanelContainer.Controls.Add(NewReqSubTitleLabel);
             PanelContainer.Controls.Add(ReqInformationHeaderLabel);
             PanelContainer.Controls.Add(CancelButton);
-            PanelContainer.Controls.Add(DocumentReqTitleLabel);
             PanelContainer.Controls.Add(SubmitReqButton);
+            PanelContainer.Controls.Add(NavPanel);
             PanelContainer.Dock = DockStyle.Fill;
             PanelContainer.Location = new Point(0, 0);
             PanelContainer.Name = "PanelContainer";
             PanelContainer.Size = new Size(635, 512);
             PanelContainer.TabIndex = 27;
+            // 
+            // NavPanel
+            // 
+            NavPanel.BackColor = Color.DarkSlateBlue;
+            NavPanel.Controls.Add(DocumentReqTitleLabel);
+            NavPanel.Controls.Add(NewReqSubTitleLabel);
+            NavPanel.Dock = DockStyle.Top;
+            NavPanel.Location = new Point(0, 0);
+            NavPanel.Name = "NavPanel";
+            NavPanel.Size = new Size(635, 100);
+            NavPanel.TabIndex = 27;
             // 
             // DocumentRequest
             // 
@@ -230,6 +245,8 @@
             BodyGroupBox.PerformLayout();
             PanelContainer.ResumeLayout(false);
             PanelContainer.PerformLayout();
+            NavPanel.ResumeLayout(false);
+            NavPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -250,5 +267,6 @@
         private Label DocumentReqTitleLabel;
         private Label ReqInformationHeaderLabel;
         private Panel PanelContainer;
+        private Panel NavPanel;
     }
 }
