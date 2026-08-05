@@ -34,5 +34,23 @@ namespace BarangayDocumentRequestSysytem
         {
             bdayDTP_ValueChanged(sender, e); // just reuse the same logic
         }
+
+        private void cpComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allow digits, and allow Backspace (so users can still delete)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // this blocks the keystroke
+            }
+        }
+
+        private void hnComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allow digits, and allow Backspace (so users can still delete)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // this blocks the keystroke
+            }
+        }
     }
 }

@@ -171,8 +171,10 @@
             cpComboBox.Location = new Point(147, 252);
             cpComboBox.Multiline = true;
             cpComboBox.Name = "cpComboBox";
+            cpComboBox.PlaceholderText = "09 XXXXXXXXX";
             cpComboBox.Size = new Size(306, 23);
             cpComboBox.TabIndex = 39;
+            cpComboBox.KeyPress += cpComboBox_KeyPress;
             // 
             // hnComboBox
             // 
@@ -183,6 +185,7 @@
             hnComboBox.Name = "hnComboBox";
             hnComboBox.Size = new Size(306, 23);
             hnComboBox.TabIndex = 38;
+            hnComboBox.KeyPress += hnComboBox_KeyPress;
             // 
             // lnTextBox
             // 
@@ -191,6 +194,7 @@
             lnTextBox.Location = new Point(147, 94);
             lnTextBox.Multiline = true;
             lnTextBox.Name = "lnTextBox";
+            lnTextBox.PlaceholderText = "Dela Cruz";
             lnTextBox.Size = new Size(306, 23);
             lnTextBox.TabIndex = 34;
             // 
@@ -201,9 +205,9 @@
             fnTextBox.Location = new Point(147, 28);
             fnTextBox.Multiline = true;
             fnTextBox.Name = "fnTextBox";
+            fnTextBox.PlaceholderText = "Juan";
             fnTextBox.Size = new Size(306, 23);
             fnTextBox.TabIndex = 32;
-            fnTextBox.Text = "Juan";
             // 
             // cpLabel
             // 
