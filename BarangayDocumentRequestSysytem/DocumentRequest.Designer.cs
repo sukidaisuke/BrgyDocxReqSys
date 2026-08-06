@@ -29,125 +29,165 @@
         private void InitializeComponent()
         {
             BodyGroupBox = new GroupBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            ResidentLabel = new Label();
             DateReqLabel = new Label();
             DateReqDateTimePicker = new DateTimePicker();
-            ResidentLabel = new Label();
             DocumentTypeLabel = new Label();
-            PurposeLabel = new Label();
-            ResidentComboBox = new ComboBox();
-            DocumentTypeComboBox = new ComboBox();
             PurposeTextBox = new TextBox();
+            DocumentTypeComboBox = new ComboBox();
+            ResidentComboBox = new ComboBox();
+            PurposeLabel = new Label();
+            ReqInformationHeaderLabel = new Label();
             NewReqSubTitleLabel = new Label();
             CancelButton = new Button();
             SubmitReqButton = new Button();
             DocumentReqTitleLabel = new Label();
-            ReqInformationHeaderLabel = new Label();
             PanelContainer = new Panel();
             NavPanel = new Panel();
+            nameLabel = new Label();
             BodyGroupBox.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             PanelContainer.SuspendLayout();
             NavPanel.SuspendLayout();
             SuspendLayout();
             // 
             // BodyGroupBox
             // 
-            BodyGroupBox.Controls.Add(DateReqLabel);
-            BodyGroupBox.Controls.Add(DateReqDateTimePicker);
-            BodyGroupBox.Controls.Add(ResidentLabel);
-            BodyGroupBox.Controls.Add(DocumentTypeLabel);
-            BodyGroupBox.Controls.Add(PurposeLabel);
-            BodyGroupBox.Controls.Add(ResidentComboBox);
-            BodyGroupBox.Controls.Add(DocumentTypeComboBox);
-            BodyGroupBox.Controls.Add(PurposeTextBox);
-            BodyGroupBox.Location = new Point(84, 131);
+            BodyGroupBox.Anchor = AnchorStyles.None;
+            BodyGroupBox.Controls.Add(tableLayoutPanel1);
+            BodyGroupBox.Controls.Add(ReqInformationHeaderLabel);
+            BodyGroupBox.Location = new Point(77, 109);
             BodyGroupBox.Name = "BodyGroupBox";
-            BodyGroupBox.Size = new Size(455, 294);
+            BodyGroupBox.Padding = new Padding(7);
+            BodyGroupBox.Size = new Size(481, 326);
             BodyGroupBox.TabIndex = 21;
             BodyGroupBox.TabStop = false;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(ResidentLabel, 0, 0);
+            tableLayoutPanel1.Controls.Add(DateReqLabel, 0, 3);
+            tableLayoutPanel1.Controls.Add(DateReqDateTimePicker, 1, 3);
+            tableLayoutPanel1.Controls.Add(DocumentTypeLabel, 0, 1);
+            tableLayoutPanel1.Controls.Add(PurposeTextBox, 1, 2);
+            tableLayoutPanel1.Controls.Add(DocumentTypeComboBox, 1, 1);
+            tableLayoutPanel1.Controls.Add(ResidentComboBox, 1, 0);
+            tableLayoutPanel1.Controls.Add(PurposeLabel, 0, 2);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(7, 23);
+            tableLayoutPanel1.Margin = new Padding(0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(10);
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 34.7973F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25.3378372F));
+            tableLayoutPanel1.Size = new Size(467, 296);
+            tableLayoutPanel1.TabIndex = 23;
+            // 
+            // ResidentLabel
+            // 
+            ResidentLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            ResidentLabel.AutoSize = true;
+            ResidentLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            ResidentLabel.Location = new Point(13, 30);
+            ResidentLabel.Name = "ResidentLabel";
+            ResidentLabel.Size = new Size(217, 15);
+            ResidentLabel.TabIndex = 1;
+            ResidentLabel.Text = "Resident :";
+            ResidentLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // DateReqLabel
             // 
-            DateReqLabel.Anchor = AnchorStyles.Top;
+            DateReqLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             DateReqLabel.AutoSize = true;
             DateReqLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            DateReqLabel.Location = new Point(17, 247);
+            DateReqLabel.Location = new Point(13, 243);
             DateReqLabel.Name = "DateReqLabel";
-            DateReqLabel.Size = new Size(103, 15);
+            DateReqLabel.Size = new Size(217, 15);
             DateReqLabel.TabIndex = 12;
             DateReqLabel.Text = "Date Requested :";
+            DateReqLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // DateReqDateTimePicker
             // 
             DateReqDateTimePicker.Anchor = AnchorStyles.Top;
-            DateReqDateTimePicker.Location = new Point(130, 247);
+            DateReqDateTimePicker.Enabled = false;
+            DateReqDateTimePicker.Location = new Point(236, 218);
             DateReqDateTimePicker.Name = "DateReqDateTimePicker";
-            DateReqDateTimePicker.Size = new Size(307, 23);
+            DateReqDateTimePicker.Size = new Size(218, 23);
             DateReqDateTimePicker.TabIndex = 13;
-            // 
-            // ResidentLabel
-            // 
-            ResidentLabel.Anchor = AnchorStyles.Top;
-            ResidentLabel.AutoSize = true;
-            ResidentLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            ResidentLabel.Location = new Point(17, 33);
-            ResidentLabel.Name = "ResidentLabel";
-            ResidentLabel.Size = new Size(62, 15);
-            ResidentLabel.TabIndex = 1;
-            ResidentLabel.Text = "Resident :";
             // 
             // DocumentTypeLabel
             // 
-            DocumentTypeLabel.Anchor = AnchorStyles.Top;
+            DocumentTypeLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             DocumentTypeLabel.AutoSize = true;
             DocumentTypeLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            DocumentTypeLabel.Location = new Point(17, 77);
+            DocumentTypeLabel.Location = new Point(13, 85);
             DocumentTypeLabel.Name = "DocumentTypeLabel";
-            DocumentTypeLabel.Size = new Size(101, 15);
+            DocumentTypeLabel.Size = new Size(217, 15);
             DocumentTypeLabel.TabIndex = 2;
             DocumentTypeLabel.Text = "Document Type :";
-            // 
-            // PurposeLabel
-            // 
-            PurposeLabel.Anchor = AnchorStyles.Top;
-            PurposeLabel.AutoSize = true;
-            PurposeLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            PurposeLabel.Location = new Point(17, 137);
-            PurposeLabel.Name = "PurposeLabel";
-            PurposeLabel.Size = new Size(58, 15);
-            PurposeLabel.TabIndex = 3;
-            PurposeLabel.Text = "Purpose :";
-            // 
-            // ResidentComboBox
-            // 
-            ResidentComboBox.Anchor = AnchorStyles.Top;
-            ResidentComboBox.FormattingEnabled = true;
-            ResidentComboBox.Location = new Point(130, 33);
-            ResidentComboBox.Name = "ResidentComboBox";
-            ResidentComboBox.Size = new Size(306, 23);
-            ResidentComboBox.TabIndex = 8;
-            // 
-            // DocumentTypeComboBox
-            // 
-            DocumentTypeComboBox.Anchor = AnchorStyles.Top;
-            DocumentTypeComboBox.FormattingEnabled = true;
-            DocumentTypeComboBox.Location = new Point(131, 77);
-            DocumentTypeComboBox.Name = "DocumentTypeComboBox";
-            DocumentTypeComboBox.Size = new Size(306, 23);
-            DocumentTypeComboBox.TabIndex = 9;
+            DocumentTypeLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // PurposeTextBox
             // 
             PurposeTextBox.Anchor = AnchorStyles.Top;
             PurposeTextBox.BorderStyle = BorderStyle.FixedSingle;
-            PurposeTextBox.Location = new Point(130, 135);
+            PurposeTextBox.Location = new Point(236, 123);
             PurposeTextBox.Multiline = true;
             PurposeTextBox.Name = "PurposeTextBox";
-            PurposeTextBox.Size = new Size(306, 92);
+            PurposeTextBox.Size = new Size(218, 89);
             PurposeTextBox.TabIndex = 10;
+            // 
+            // DocumentTypeComboBox
+            // 
+            DocumentTypeComboBox.Anchor = AnchorStyles.Top;
+            DocumentTypeComboBox.FormattingEnabled = true;
+            DocumentTypeComboBox.Location = new Point(236, 68);
+            DocumentTypeComboBox.Name = "DocumentTypeComboBox";
+            DocumentTypeComboBox.Size = new Size(218, 23);
+            DocumentTypeComboBox.TabIndex = 9;
+            // 
+            // ResidentComboBox
+            // 
+            ResidentComboBox.Anchor = AnchorStyles.Top;
+            ResidentComboBox.FormattingEnabled = true;
+            ResidentComboBox.Location = new Point(236, 13);
+            ResidentComboBox.Name = "ResidentComboBox";
+            ResidentComboBox.Size = new Size(218, 23);
+            ResidentComboBox.TabIndex = 8;
+            // 
+            // PurposeLabel
+            // 
+            PurposeLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            PurposeLabel.AutoSize = true;
+            PurposeLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            PurposeLabel.Location = new Point(13, 160);
+            PurposeLabel.Name = "PurposeLabel";
+            PurposeLabel.Size = new Size(217, 15);
+            PurposeLabel.TabIndex = 3;
+            PurposeLabel.Text = "Purpose :";
+            PurposeLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // ReqInformationHeaderLabel
+            // 
+            ReqInformationHeaderLabel.AutoSize = true;
+            ReqInformationHeaderLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ReqInformationHeaderLabel.Location = new Point(17, 4);
+            ReqInformationHeaderLabel.Name = "ReqInformationHeaderLabel";
+            ReqInformationHeaderLabel.Size = new Size(135, 17);
+            ReqInformationHeaderLabel.TabIndex = 22;
+            ReqInformationHeaderLabel.Text = "Request Information";
             // 
             // NewReqSubTitleLabel
             // 
-            NewReqSubTitleLabel.Anchor = AnchorStyles.Top;
+            NewReqSubTitleLabel.Anchor = AnchorStyles.Left;
             NewReqSubTitleLabel.AutoSize = true;
             NewReqSubTitleLabel.BackColor = Color.DarkSlateBlue;
             NewReqSubTitleLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
@@ -188,7 +228,7 @@
             // 
             // DocumentReqTitleLabel
             // 
-            DocumentReqTitleLabel.Anchor = AnchorStyles.Top;
+            DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
             DocumentReqTitleLabel.AutoSize = true;
             DocumentReqTitleLabel.BackColor = Color.DarkSlateBlue;
             DocumentReqTitleLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
@@ -199,21 +239,9 @@
             DocumentReqTitleLabel.TabIndex = 23;
             DocumentReqTitleLabel.Text = "Document Request   >";
             // 
-            // ReqInformationHeaderLabel
-            // 
-            ReqInformationHeaderLabel.Anchor = AnchorStyles.Top;
-            ReqInformationHeaderLabel.AutoSize = true;
-            ReqInformationHeaderLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ReqInformationHeaderLabel.Location = new Point(63, 109);
-            ReqInformationHeaderLabel.Name = "ReqInformationHeaderLabel";
-            ReqInformationHeaderLabel.Size = new Size(135, 17);
-            ReqInformationHeaderLabel.TabIndex = 22;
-            ReqInformationHeaderLabel.Text = "Request Information";
-            // 
             // PanelContainer
             // 
             PanelContainer.Controls.Add(BodyGroupBox);
-            PanelContainer.Controls.Add(ReqInformationHeaderLabel);
             PanelContainer.Controls.Add(CancelButton);
             PanelContainer.Controls.Add(SubmitReqButton);
             PanelContainer.Controls.Add(NavPanel);
@@ -225,14 +253,28 @@
             // 
             // NavPanel
             // 
+            NavPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NavPanel.BackColor = Color.DarkSlateBlue;
+            NavPanel.Controls.Add(nameLabel);
             NavPanel.Controls.Add(DocumentReqTitleLabel);
             NavPanel.Controls.Add(NewReqSubTitleLabel);
-            NavPanel.Dock = DockStyle.Top;
             NavPanel.Location = new Point(0, 0);
             NavPanel.Name = "NavPanel";
             NavPanel.Size = new Size(635, 100);
             NavPanel.TabIndex = 27;
+            // 
+            // nameLabel
+            // 
+            nameLabel.Anchor = AnchorStyles.Right;
+            nameLabel.AutoSize = true;
+            nameLabel.BackColor = Color.DarkSlateBlue;
+            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            nameLabel.ForeColor = Color.DarkGray;
+            nameLabel.Location = new Point(408, 10);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(213, 15);
+            nameLabel.TabIndex = 27;
+            nameLabel.Text = "Barangay Document Request System";
             // 
             // DocumentRequest
             // 
@@ -243,8 +285,9 @@
             Size = new Size(635, 512);
             BodyGroupBox.ResumeLayout(false);
             BodyGroupBox.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             PanelContainer.ResumeLayout(false);
-            PanelContainer.PerformLayout();
             NavPanel.ResumeLayout(false);
             NavPanel.PerformLayout();
             ResumeLayout(false);
@@ -268,5 +311,7 @@
         private Label ReqInformationHeaderLabel;
         private Panel PanelContainer;
         private Panel NavPanel;
+        private Label nameLabel;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

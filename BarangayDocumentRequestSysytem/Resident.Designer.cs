@@ -30,8 +30,9 @@
         {
             PanelContainer = new Panel();
             NavPanel = new Panel();
-            DocumentReqTitleLabel = new Label();
+            nameLabel = new Label();
             AddResidentButton = new Button();
+            DocumentReqTitleLabel = new Label();
             PanelContainer.SuspendLayout();
             NavPanel.SuspendLayout();
             SuspendLayout();
@@ -48,18 +49,46 @@
             // 
             // NavPanel
             // 
+            NavPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NavPanel.BackColor = Color.DarkSlateBlue;
+            NavPanel.Controls.Add(nameLabel);
             NavPanel.Controls.Add(AddResidentButton);
             NavPanel.Controls.Add(DocumentReqTitleLabel);
-            NavPanel.Dock = DockStyle.Top;
             NavPanel.Location = new Point(0, 0);
             NavPanel.Name = "NavPanel";
             NavPanel.Size = new Size(635, 100);
             NavPanel.TabIndex = 28;
+            NavPanel.Paint += NavPanel_Paint;
+            // 
+            // nameLabel
+            // 
+            nameLabel.Anchor = AnchorStyles.Right;
+            nameLabel.AutoSize = true;
+            nameLabel.BackColor = Color.DarkSlateBlue;
+            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            nameLabel.ForeColor = Color.DarkGray;
+            nameLabel.Location = new Point(408, 11);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(213, 15);
+            nameLabel.TabIndex = 28;
+            nameLabel.Text = "Barangay Document Request System";
+            nameLabel.Click += nameLabel_Click;
+            // 
+            // AddResidentButton
+            // 
+            AddResidentButton.Anchor = AnchorStyles.Right;
+            AddResidentButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddResidentButton.Location = new Point(473, 38);
+            AddResidentButton.Name = "AddResidentButton";
+            AddResidentButton.Size = new Size(119, 33);
+            AddResidentButton.TabIndex = 28;
+            AddResidentButton.Text = "➕ Add Resident";
+            AddResidentButton.UseVisualStyleBackColor = true;
+            AddResidentButton.Click += AddResidentButton_Click;
             // 
             // DocumentReqTitleLabel
             // 
-            DocumentReqTitleLabel.Anchor = AnchorStyles.Top;
+            DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
             DocumentReqTitleLabel.AutoSize = true;
             DocumentReqTitleLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             DocumentReqTitleLabel.ForeColor = Color.White;
@@ -68,17 +97,6 @@
             DocumentReqTitleLabel.Size = new Size(106, 30);
             DocumentReqTitleLabel.TabIndex = 27;
             DocumentReqTitleLabel.Text = "Residents";
-            // 
-            // AddResidentButton
-            // 
-            AddResidentButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            AddResidentButton.Location = new Point(468, 32);
-            AddResidentButton.Name = "AddResidentButton";
-            AddResidentButton.Size = new Size(119, 33);
-            AddResidentButton.TabIndex = 28;
-            AddResidentButton.Text = "➕ Add Resident";
-            AddResidentButton.UseVisualStyleBackColor = true;
-            AddResidentButton.Click += AddResidentButton_Click;
             // 
             // Resident
             // 
@@ -99,5 +117,6 @@
         private Label DocumentReqTitleLabel;
         private Panel NavPanel;
         private Button AddResidentButton;
+        private Label nameLabel;
     }
 }

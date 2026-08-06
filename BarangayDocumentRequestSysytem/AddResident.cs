@@ -15,42 +15,14 @@ namespace BarangayDocumentRequestSysytem
             InitializeComponent();
         }
 
-        private void bdayDTP_ValueChanged(object sender, EventArgs e)
+        private void PanelContainer_Paint(object sender, PaintEventArgs e)
         {
-            DateTime birthdate = bdayDTP.Value;
-            DateTime today = DateTime.Today;
 
-            int age = today.Year - birthdate.Year;
-
-            // adjust if their birthday hasn't happened yet this year
-            if (birthdate.Date > today.AddYears(-age))
-            {
-                age--;
-            }
-
-            ageComboBox.Text = age.ToString(); // swap "ageComboBox" for your Age control's actual name
-        }
-        private void AddResident_Load(object sender, EventArgs e)
-        {
-            bdayDTP_ValueChanged(sender, e); // just reuse the same logic
         }
 
-        private void cpComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void ReqInformationHeaderLabel_Click(object sender, EventArgs e)
         {
-            // allow digits, and allow Backspace (so users can still delete)
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                e.Handled = true; // this blocks the keystroke
-            }
-        }
 
-        private void hnComboBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // allow digits, and allow Backspace (so users can still delete)
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                e.Handled = true; // this blocks the keystroke
-            }
         }
     }
 }

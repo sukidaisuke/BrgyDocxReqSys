@@ -25,5 +25,15 @@ namespace BarangayDocumentRequestSysytem
             PanelContainer.Controls.Add(addresidentContent);
             PanelContainer.Visible = true;
         }
+
+        private void nameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NavPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel2 = new Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardTest));
+            NavPanel = new Panel();
+            logoPicBox = new PictureBox();
             SettingButton = new Button();
             ReportButton = new Button();
             DocumentReqButton = new Button();
@@ -37,24 +39,38 @@
             label12 = new Label();
             PanelContainer = new Panel();
             LabelDashboard = new Label();
-            panel2.SuspendLayout();
+            NavPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)logoPicBox).BeginInit();
             PanelContainer.SuspendLayout();
             SuspendLayout();
             // 
-            // panel2
+            // NavPanel
             // 
-            panel2.Anchor = AnchorStyles.Top;
-            panel2.BackColor = Color.FromArgb(0, 0, 64);
-            panel2.Controls.Add(SettingButton);
-            panel2.Controls.Add(ReportButton);
-            panel2.Controls.Add(DocumentReqButton);
-            panel2.Controls.Add(ResidentButton);
-            panel2.Controls.Add(DashboardButton);
-            panel2.Controls.Add(label12);
-            panel2.Location = new Point(1, 2);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(209, 512);
-            panel2.TabIndex = 19;
+            NavPanel.BackColor = Color.FromArgb(12, 45, 93);
+            NavPanel.Controls.Add(logoPicBox);
+            NavPanel.Controls.Add(SettingButton);
+            NavPanel.Controls.Add(ReportButton);
+            NavPanel.Controls.Add(DocumentReqButton);
+            NavPanel.Controls.Add(ResidentButton);
+            NavPanel.Controls.Add(DashboardButton);
+            NavPanel.Controls.Add(label12);
+            NavPanel.Dock = DockStyle.Left;
+            NavPanel.Location = new Point(0, 0);
+            NavPanel.Name = "NavPanel";
+            NavPanel.Size = new Size(209, 511);
+            NavPanel.TabIndex = 19;
+            // 
+            // logoPicBox
+            // 
+            logoPicBox.BackColor = Color.FromArgb(12, 45, 93);
+            logoPicBox.Image = (Image)resources.GetObject("logoPicBox.Image");
+            logoPicBox.InitialImage = (Image)resources.GetObject("logoPicBox.InitialImage");
+            logoPicBox.Location = new Point(0, -2);
+            logoPicBox.Name = "logoPicBox";
+            logoPicBox.Size = new Size(209, 72);
+            logoPicBox.SizeMode = PictureBoxSizeMode.Zoom;
+            logoPicBox.TabIndex = 22;
+            logoPicBox.TabStop = false;
             // 
             // SettingButton
             // 
@@ -84,7 +100,7 @@
             // 
             // DocumentReqButton
             // 
-            DocumentReqButton.BackColor = Color.FromArgb(0, 0, 68);
+            DocumentReqButton.BackColor = Color.FromArgb(12, 45, 93);
             DocumentReqButton.FlatAppearance.BorderSize = 0;
             DocumentReqButton.FlatStyle = FlatStyle.Flat;
             DocumentReqButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -113,7 +129,7 @@
             // 
             // DashboardButton
             // 
-            DashboardButton.BackColor = Color.FromArgb(0, 0, 64);
+            DashboardButton.BackColor = Color.FromArgb(12, 45, 93);
             DashboardButton.FlatAppearance.BorderSize = 0;
             DashboardButton.FlatStyle = FlatStyle.Flat;
             DashboardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -138,17 +154,19 @@
             // 
             // PanelContainer
             // 
+            PanelContainer.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             PanelContainer.Controls.Add(LabelDashboard);
-            PanelContainer.Location = new Point(200, 2);
+            PanelContainer.Location = new Point(208, 0);
             PanelContainer.Name = "PanelContainer";
-            PanelContainer.Size = new Size(635, 512);
+            PanelContainer.Size = new Size(626, 511);
             PanelContainer.TabIndex = 20;
             // 
             // LabelDashboard
             // 
+            LabelDashboard.Anchor = AnchorStyles.None;
             LabelDashboard.AutoSize = true;
             LabelDashboard.Font = new Font("Segoe UI", 48F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            LabelDashboard.Location = new Point(98, 180);
+            LabelDashboard.Location = new Point(126, 180);
             LabelDashboard.Name = "LabelDashboard";
             LabelDashboard.Size = new Size(443, 86);
             LabelDashboard.TabIndex = 0;
@@ -159,19 +177,20 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(834, 511);
-            Controls.Add(panel2);
+            Controls.Add(NavPanel);
             Controls.Add(PanelContainer);
             Name = "DashboardTest";
             Text = "DashboardTest";
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            NavPanel.ResumeLayout(false);
+            NavPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)logoPicBox).EndInit();
             PanelContainer.ResumeLayout(false);
             PanelContainer.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-        private Panel panel2;
+        private Panel NavPanel;
         private Button SettingButton;
         private Button ReportButton;
         private Button DocumentReqButton;
@@ -179,6 +198,7 @@
         private Button DashboardButton;
         private Label label12;
         private Panel PanelContainer;
+        private PictureBox logoPicBox;
         private Label LabelDashboard;
     }
 }
