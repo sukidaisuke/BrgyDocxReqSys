@@ -24,5 +24,23 @@ namespace BarangayDocumentRequestSysytem
         {
 
         }
+
+        private void hnTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only numbers and Backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void cpTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only numbers and Backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

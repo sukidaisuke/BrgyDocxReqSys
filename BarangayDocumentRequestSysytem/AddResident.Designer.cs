@@ -32,40 +32,38 @@
             NavPanel = new Panel();
             nameLabel = new Label();
             DocumentReqTitleLabel = new Label();
-            buttonsTBP = new TableLayoutPanel();
+            buttonsTLP = new TableLayoutPanel();
             clearButton = new Button();
             cancelButton = new Button();
             addResidentButton = new Button();
             BodyGroupBox = new GroupBox();
-            ReqInformationHeaderLabel = new Label();
-            bodyTB = new TableLayoutPanel();
+            addResidentLabel = new Label();
+            bodyTLP = new TableLayoutPanel();
             fnLabel = new Label();
             mnLabel = new Label();
             lnTable = new Label();
             bdayLabel = new Label();
-            ageLabel = new Label();
             zoneLabel = new Label();
             hnLabel = new Label();
             cpLabel = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            mnCB = new ComboBox();
+            zoneCB = new ComboBox();
+            bdayDTP = new DateTimePicker();
+            fnTB = new TextBox();
+            lnTB = new TextBox();
+            hnTB = new TextBox();
+            cpTB = new TextBox();
             PanelContainer.SuspendLayout();
             NavPanel.SuspendLayout();
-            buttonsTBP.SuspendLayout();
+            buttonsTLP.SuspendLayout();
             BodyGroupBox.SuspendLayout();
-            bodyTB.SuspendLayout();
+            bodyTLP.SuspendLayout();
             SuspendLayout();
             // 
             // PanelContainer
             // 
             PanelContainer.Controls.Add(NavPanel);
-            PanelContainer.Controls.Add(buttonsTBP);
+            PanelContainer.Controls.Add(buttonsTLP);
             PanelContainer.Controls.Add(BodyGroupBox);
             PanelContainer.Dock = DockStyle.Fill;
             PanelContainer.Location = new Point(0, 0);
@@ -110,23 +108,23 @@
             DocumentReqTitleLabel.TabIndex = 27;
             DocumentReqTitleLabel.Text = "Residents";
             // 
-            // buttonsTBP
+            // buttonsTLP
             // 
-            buttonsTBP.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            buttonsTBP.ColumnCount = 3;
-            buttonsTBP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            buttonsTBP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
-            buttonsTBP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
-            buttonsTBP.Controls.Add(clearButton, 1, 0);
-            buttonsTBP.Controls.Add(cancelButton, 0, 0);
-            buttonsTBP.Controls.Add(addResidentButton, 2, 0);
-            buttonsTBP.Location = new Point(77, 448);
-            buttonsTBP.Name = "buttonsTBP";
-            buttonsTBP.RowCount = 1;
-            buttonsTBP.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            buttonsTBP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            buttonsTBP.Size = new Size(481, 47);
-            buttonsTBP.TabIndex = 34;
+            buttonsTLP.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            buttonsTLP.ColumnCount = 3;
+            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
+            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
+            buttonsTLP.Controls.Add(clearButton, 1, 0);
+            buttonsTLP.Controls.Add(cancelButton, 0, 0);
+            buttonsTLP.Controls.Add(addResidentButton, 2, 0);
+            buttonsTLP.Location = new Point(77, 448);
+            buttonsTLP.Name = "buttonsTLP";
+            buttonsTLP.RowCount = 1;
+            buttonsTLP.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            buttonsTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            buttonsTLP.Size = new Size(481, 47);
+            buttonsTLP.TabIndex = 34;
             // 
             // clearButton
             // 
@@ -172,9 +170,9 @@
             // 
             // BodyGroupBox
             // 
-            BodyGroupBox.Anchor = AnchorStyles.None;
-            BodyGroupBox.Controls.Add(ReqInformationHeaderLabel);
-            BodyGroupBox.Controls.Add(bodyTB);
+            BodyGroupBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            BodyGroupBox.Controls.Add(addResidentLabel);
+            BodyGroupBox.Controls.Add(bodyTLP);
             BodyGroupBox.Location = new Point(77, 109);
             BodyGroupBox.Margin = new Padding(0);
             BodyGroupBox.Name = "BodyGroupBox";
@@ -183,61 +181,57 @@
             BodyGroupBox.TabIndex = 30;
             BodyGroupBox.TabStop = false;
             // 
-            // ReqInformationHeaderLabel
+            // addResidentLabel
             // 
-            ReqInformationHeaderLabel.AutoSize = true;
-            ReqInformationHeaderLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ReqInformationHeaderLabel.Location = new Point(17, 4);
-            ReqInformationHeaderLabel.Name = "ReqInformationHeaderLabel";
-            ReqInformationHeaderLabel.Size = new Size(90, 17);
-            ReqInformationHeaderLabel.TabIndex = 32;
-            ReqInformationHeaderLabel.Text = "Add Resident";
+            addResidentLabel.AutoSize = true;
+            addResidentLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addResidentLabel.Location = new Point(17, 4);
+            addResidentLabel.Name = "addResidentLabel";
+            addResidentLabel.Size = new Size(90, 17);
+            addResidentLabel.TabIndex = 32;
+            addResidentLabel.Text = "Add Resident";
             // 
-            // bodyTB
+            // bodyTLP
             // 
-            bodyTB.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            bodyTB.ColumnCount = 2;
-            bodyTB.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            bodyTB.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            bodyTB.Controls.Add(fnLabel, 0, 0);
-            bodyTB.Controls.Add(mnLabel, 0, 1);
-            bodyTB.Controls.Add(lnTable, 0, 2);
-            bodyTB.Controls.Add(bdayLabel, 0, 3);
-            bodyTB.Controls.Add(ageLabel, 0, 4);
-            bodyTB.Controls.Add(zoneLabel, 0, 5);
-            bodyTB.Controls.Add(hnLabel, 0, 6);
-            bodyTB.Controls.Add(cpLabel, 0, 7);
-            bodyTB.Controls.Add(comboBox1, 1, 1);
-            bodyTB.Controls.Add(comboBox2, 1, 5);
-            bodyTB.Controls.Add(dateTimePicker1, 1, 3);
-            bodyTB.Controls.Add(textBox1, 1, 0);
-            bodyTB.Controls.Add(textBox2, 1, 2);
-            bodyTB.Controls.Add(textBox3, 1, 4);
-            bodyTB.Controls.Add(textBox4, 1, 6);
-            bodyTB.Controls.Add(textBox5, 1, 7);
-            bodyTB.Location = new Point(7, 30);
-            bodyTB.Margin = new Padding(0);
-            bodyTB.Name = "bodyTB";
-            bodyTB.Padding = new Padding(10);
-            bodyTB.RowCount = 9;
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            bodyTB.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            bodyTB.Size = new Size(467, 296);
-            bodyTB.TabIndex = 0;
+            bodyTLP.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            bodyTLP.ColumnCount = 2;
+            bodyTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            bodyTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            bodyTLP.Controls.Add(fnLabel, 0, 0);
+            bodyTLP.Controls.Add(mnLabel, 0, 1);
+            bodyTLP.Controls.Add(lnTable, 0, 2);
+            bodyTLP.Controls.Add(bdayLabel, 0, 3);
+            bodyTLP.Controls.Add(zoneLabel, 0, 4);
+            bodyTLP.Controls.Add(hnLabel, 0, 5);
+            bodyTLP.Controls.Add(cpLabel, 0, 6);
+            bodyTLP.Controls.Add(mnCB, 1, 1);
+            bodyTLP.Controls.Add(zoneCB, 1, 4);
+            bodyTLP.Controls.Add(bdayDTP, 1, 3);
+            bodyTLP.Controls.Add(fnTB, 1, 0);
+            bodyTLP.Controls.Add(lnTB, 1, 2);
+            bodyTLP.Controls.Add(hnTB, 1, 5);
+            bodyTLP.Controls.Add(cpTB, 1, 6);
+            bodyTLP.Location = new Point(7, 30);
+            bodyTLP.Margin = new Padding(0);
+            bodyTLP.Name = "bodyTLP";
+            bodyTLP.Padding = new Padding(10);
+            bodyTLP.RowCount = 7;
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            bodyTLP.Size = new Size(467, 289);
+            bodyTLP.TabIndex = 0;
             // 
             // fnLabel
             // 
             fnLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             fnLabel.AutoSize = true;
             fnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            fnLabel.Location = new Point(13, 20);
+            fnLabel.Location = new Point(13, 22);
             fnLabel.Name = "fnLabel";
             fnLabel.Size = new Size(128, 15);
             fnLabel.TabIndex = 0;
@@ -249,7 +243,7 @@
             mnLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             mnLabel.AutoSize = true;
             mnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            mnLabel.Location = new Point(13, 55);
+            mnLabel.Location = new Point(13, 62);
             mnLabel.Name = "mnLabel";
             mnLabel.Size = new Size(128, 15);
             mnLabel.TabIndex = 1;
@@ -261,7 +255,7 @@
             lnTable.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lnTable.AutoSize = true;
             lnTable.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lnTable.Location = new Point(13, 90);
+            lnTable.Location = new Point(13, 102);
             lnTable.Name = "lnTable";
             lnTable.Size = new Size(128, 15);
             lnTable.TabIndex = 2;
@@ -273,31 +267,19 @@
             bdayLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             bdayLabel.AutoSize = true;
             bdayLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            bdayLabel.Location = new Point(13, 125);
+            bdayLabel.Location = new Point(13, 142);
             bdayLabel.Name = "bdayLabel";
             bdayLabel.Size = new Size(128, 15);
             bdayLabel.TabIndex = 3;
             bdayLabel.Text = "Birthdate* :";
             bdayLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // ageLabel
-            // 
-            ageLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            ageLabel.AutoSize = true;
-            ageLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            ageLabel.Location = new Point(13, 160);
-            ageLabel.Name = "ageLabel";
-            ageLabel.Size = new Size(128, 15);
-            ageLabel.TabIndex = 4;
-            ageLabel.Text = "Age :";
-            ageLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // zoneLabel
             // 
             zoneLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             zoneLabel.AutoSize = true;
             zoneLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            zoneLabel.Location = new Point(13, 195);
+            zoneLabel.Location = new Point(13, 182);
             zoneLabel.Name = "zoneLabel";
             zoneLabel.Size = new Size(128, 15);
             zoneLabel.TabIndex = 5;
@@ -309,7 +291,7 @@
             hnLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             hnLabel.AutoSize = true;
             hnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            hnLabel.Location = new Point(13, 230);
+            hnLabel.Location = new Point(13, 222);
             hnLabel.Name = "hnLabel";
             hnLabel.Size = new Size(128, 15);
             hnLabel.TabIndex = 6;
@@ -321,83 +303,80 @@
             cpLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cpLabel.AutoSize = true;
             cpLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            cpLabel.Location = new Point(13, 265);
+            cpLabel.Location = new Point(13, 262);
             cpLabel.Name = "cpLabel";
             cpLabel.Size = new Size(128, 15);
             cpLabel.TabIndex = 7;
             cpLabel.Text = "Cellphone Number* :";
             cpLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // mnCB
             // 
-            comboBox1.Dock = DockStyle.Fill;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(147, 48);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(307, 23);
-            comboBox1.TabIndex = 8;
+            mnCB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            mnCB.FormattingEnabled = true;
+            mnCB.Location = new Point(147, 58);
+            mnCB.Name = "mnCB";
+            mnCB.Size = new Size(307, 23);
+            mnCB.TabIndex = 8;
             // 
-            // comboBox2
+            // zoneCB
             // 
-            comboBox2.Dock = DockStyle.Fill;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(147, 188);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(307, 23);
-            comboBox2.TabIndex = 10;
+            zoneCB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            zoneCB.FormattingEnabled = true;
+            zoneCB.Location = new Point(147, 178);
+            zoneCB.Name = "zoneCB";
+            zoneCB.Size = new Size(307, 23);
+            zoneCB.TabIndex = 10;
             // 
-            // dateTimePicker1
+            // bdayDTP
             // 
-            dateTimePicker1.Dock = DockStyle.Fill;
-            dateTimePicker1.Location = new Point(147, 118);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(307, 23);
-            dateTimePicker1.TabIndex = 9;
+            bdayDTP.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            bdayDTP.Location = new Point(147, 138);
+            bdayDTP.Name = "bdayDTP";
+            bdayDTP.Size = new Size(307, 23);
+            bdayDTP.TabIndex = 9;
             // 
-            // textBox1
+            // fnTB
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(147, 13);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(307, 23);
-            textBox1.TabIndex = 11;
+            fnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            fnTB.BorderStyle = BorderStyle.FixedSingle;
+            fnTB.Location = new Point(147, 18);
+            fnTB.Name = "fnTB";
+            fnTB.PlaceholderText = "Juan";
+            fnTB.Size = new Size(307, 23);
+            fnTB.TabIndex = 11;
             // 
-            // textBox2
+            // lnTB
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(147, 83);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(307, 23);
-            textBox2.TabIndex = 12;
+            lnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lnTB.BorderStyle = BorderStyle.FixedSingle;
+            lnTB.Location = new Point(147, 98);
+            lnTB.Name = "lnTB";
+            lnTB.PlaceholderText = "Dela Cruz";
+            lnTB.Size = new Size(307, 23);
+            lnTB.TabIndex = 12;
             // 
-            // textBox3
+            // hnTB
             // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Dock = DockStyle.Fill;
-            textBox3.Location = new Point(147, 153);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(307, 23);
-            textBox3.TabIndex = 13;
+            hnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            hnTB.BorderStyle = BorderStyle.FixedSingle;
+            hnTB.Location = new Point(147, 218);
+            hnTB.Name = "hnTB";
+            hnTB.Size = new Size(307, 23);
+            hnTB.TabIndex = 14;
+            hnTB.KeyPress += hnTB_KeyPress;
             // 
-            // textBox4
+            // cpTB
             // 
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Dock = DockStyle.Fill;
-            textBox4.Location = new Point(147, 223);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(307, 23);
-            textBox4.TabIndex = 14;
-            // 
-            // textBox5
-            // 
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Dock = DockStyle.Fill;
-            textBox5.Location = new Point(147, 258);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(307, 23);
-            textBox5.TabIndex = 15;
+            cpTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            cpTB.BorderStyle = BorderStyle.FixedSingle;
+            cpTB.Location = new Point(147, 258);
+            cpTB.MaxLength = 11;
+            cpTB.Name = "cpTB";
+            cpTB.PlaceholderText = "09XXXXXXXXX";
+            cpTB.Size = new Size(307, 23);
+            cpTB.TabIndex = 15;
+            cpTB.KeyPress += cpTB_KeyPress;
             // 
             // AddResident
             // 
@@ -409,11 +388,11 @@
             PanelContainer.ResumeLayout(false);
             NavPanel.ResumeLayout(false);
             NavPanel.PerformLayout();
-            buttonsTBP.ResumeLayout(false);
+            buttonsTLP.ResumeLayout(false);
             BodyGroupBox.ResumeLayout(false);
             BodyGroupBox.PerformLayout();
-            bodyTB.ResumeLayout(false);
-            bodyTB.PerformLayout();
+            bodyTLP.ResumeLayout(false);
+            bodyTLP.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -424,27 +403,25 @@
         private Label DocumentReqTitleLabel;
         private GroupBox BodyGroupBox;
         private Label nameLabel;
-        private TableLayoutPanel bodyTB;
+        private TableLayoutPanel bodyTLP;
         private Label fnLabel;
         private Label mnLabel;
         private Label lnTable;
         private Label bdayLabel;
-        private Label ageLabel;
-        private Label zoneLabel;
         private Label hnLabel;
         private Label cpLabel;
-        private ComboBox comboBox1;
-        private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Label ReqInformationHeaderLabel;
-        private TableLayoutPanel buttonsTBP;
+        private ComboBox mnCB;
+        private DateTimePicker bdayDTP;
+        private TextBox fnTB;
+        private TextBox lnTB;
+        private TextBox hnTB;
+        private TextBox cpTB;
+        private Label addResidentLabel;
+        private TableLayoutPanel buttonsTLP;
         private Button clearButton;
         private Button cancelButton;
         private Button addResidentButton;
+        private Label zoneLabel;
+        private ComboBox zoneCB;
     }
 }
