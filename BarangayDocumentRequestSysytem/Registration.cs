@@ -133,5 +133,15 @@ namespace BarangayDocumentRequestSysytem
             Lf.ShowDialog();
             this.Close();
         }
+
+        private void confirmPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void agreeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

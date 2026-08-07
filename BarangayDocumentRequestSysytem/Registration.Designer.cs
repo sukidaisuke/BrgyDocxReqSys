@@ -32,8 +32,6 @@
             welcomeText = new Label();
             leftPanel = new PictureBox();
             label1 = new Label();
-            createAccountButton = new Button();
-            label4 = new Label();
             label5 = new Label();
             linkLabel2 = new LinkLabel();
             userRegistrationPanel = new Panel();
@@ -67,9 +65,7 @@
             createUsername = new TextBox();
             label2 = new Label();
             logoMain = new PictureBox();
-            agreeCheckBox = new CheckBox();
             button2 = new Button();
-            label20 = new Label();
             label21 = new Label();
             linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)leftPanel).BeginInit();
@@ -81,12 +77,12 @@
             // 
             welcomeText.AutoSize = true;
             welcomeText.BackColor = Color.Transparent;
-            welcomeText.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            welcomeText.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             welcomeText.ForeColor = Color.DarkSlateBlue;
-            welcomeText.Location = new Point(789, 28);
+            welcomeText.Location = new Point(489, 8);
             welcomeText.Margin = new Padding(4, 0, 4, 0);
             welcomeText.Name = "welcomeText";
-            welcomeText.Size = new Size(251, 45);
+            welcomeText.Size = new Size(108, 20);
             welcomeText.TabIndex = 3;
             welcomeText.Text = "Create Account";
             welcomeText.Click += label1_Click;
@@ -94,9 +90,9 @@
             // leftPanel
             // 
             leftPanel.Image = (Image)resources.GetObject("leftPanel.Image");
-            leftPanel.Location = new Point(-33, -3);
+            leftPanel.Location = new Point(-22, -111);
             leftPanel.Name = "leftPanel";
-            leftPanel.Size = new Size(491, 775);
+            leftPanel.Size = new Size(303, 692);
             leftPanel.SizeMode = PictureBoxSizeMode.Zoom;
             leftPanel.TabIndex = 4;
             leftPanel.TabStop = false;
@@ -105,39 +101,15 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Gill Sans MT", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.SlateGray;
-            label1.Location = new Point(779, 73);
+            label1.Location = new Point(459, 22);
             label1.Name = "label1";
-            label1.Size = new Size(270, 30);
+            label1.Size = new Size(168, 18);
             label1.TabIndex = 5;
             label1.Text = "Create an acount to continue";
             label1.Click += label1_Click_1;
-            // 
-            // createAccountButton
-            // 
-            createAccountButton.BackColor = Color.DarkSlateBlue;
-            createAccountButton.Cursor = Cursors.Hand;
-            createAccountButton.ForeColor = SystemColors.ButtonHighlight;
-            createAccountButton.Location = new Point(1113, 858);
-            createAccountButton.Name = "createAccountButton";
-            createAccountButton.Size = new Size(364, 47);
-            createAccountButton.TabIndex = 12;
-            createAccountButton.Text = "Create Account";
-            createAccountButton.UseVisualStyleBackColor = false;
-            createAccountButton.Click += createAccountButton_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Gill Sans MT", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.SlateGray;
-            label4.Location = new Point(1113, 920);
-            label4.Name = "label4";
-            label4.Size = new Size(361, 23);
-            label4.TabIndex = 13;
-            label4.Text = "-------------------------------- OR --------------------------------";
-            label4.Click += label4_Click;
             // 
             // label5
             // 
@@ -196,20 +168,20 @@
             userRegistrationPanel.Controls.Add(label3);
             userRegistrationPanel.Controls.Add(createUsername);
             userRegistrationPanel.Controls.Add(label2);
-            userRegistrationPanel.Location = new Point(586, 123);
+            userRegistrationPanel.Location = new Point(319, 43);
             userRegistrationPanel.Name = "userRegistrationPanel";
-            userRegistrationPanel.Size = new Size(664, 451);
+            userRegistrationPanel.Size = new Size(432, 327);
             userRegistrationPanel.TabIndex = 16;
             userRegistrationPanel.Paint += panel1_Paint;
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label19.ForeColor = Color.SteelBlue;
-            label19.Location = new Point(44, 26);
+            label19.Location = new Point(6, 7);
             label19.Name = "label19";
-            label19.Size = new Size(139, 18);
+            label19.Size = new Size(116, 16);
             label19.TabIndex = 29;
             label19.Text = "Account Information";
             label19.Click += label19_Click;
@@ -217,75 +189,75 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold);
+            label18.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label18.ForeColor = Color.SteelBlue;
-            label18.Location = new Point(44, 171);
+            label18.Location = new Point(9, 113);
             label18.Name = "label18";
-            label18.Size = new Size(141, 18);
+            label18.Size = new Size(117, 16);
             label18.TabIndex = 28;
             label18.Text = "Personal Information";
             // 
             // securityAnswer
             // 
-            securityAnswer.Font = new Font("Gill Sans MT", 9F);
-            securityAnswer.Location = new Point(181, 397);
+            securityAnswer.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            securityAnswer.Location = new Point(113, 293);
             securityAnswer.Name = "securityAnswer";
-            securityAnswer.Size = new Size(431, 21);
+            securityAnswer.Size = new Size(313, 20);
             securityAnswer.TabIndex = 27;
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Gill Sans MT", 9F);
-            label17.Location = new Point(74, 400);
+            label17.Font = new Font("Gill Sans MT", 8.25F);
+            label17.Location = new Point(17, 297);
             label17.Name = "label17";
-            label17.Size = new Size(93, 18);
+            label17.Size = new Size(82, 16);
             label17.TabIndex = 26;
             label17.Text = "Security Answer:";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.SteelBlue;
-            label16.Location = new Point(44, 330);
+            label16.Location = new Point(9, 242);
             label16.Name = "label16";
-            label16.Size = new Size(208, 18);
+            label16.Size = new Size(172, 16);
             label16.TabIndex = 25;
             label16.Text = "For account recovery purposes:";
             // 
             // securityQuestions
             // 
-            securityQuestions.Font = new Font("Gill Sans MT", 9F);
+            securityQuestions.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             securityQuestions.FormattingEnabled = true;
-            securityQuestions.Location = new Point(181, 360);
+            securityQuestions.Location = new Point(113, 261);
             securityQuestions.Name = "securityQuestions";
-            securityQuestions.Size = new Size(431, 26);
+            securityQuestions.Size = new Size(313, 24);
             securityQuestions.TabIndex = 24;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new Font("Gill Sans MT", 9F);
-            label15.Location = new Point(74, 363);
+            label15.Font = new Font("Gill Sans MT", 8.25F);
+            label15.Location = new Point(13, 269);
             label15.Name = "label15";
-            label15.Size = new Size(101, 18);
+            label15.Size = new Size(90, 16);
             label15.TabIndex = 23;
             label15.Text = "Security Question:";
             // 
             // houseNumber
             // 
             houseNumber.Font = new Font("Gill Sans MT", 8.25F);
-            houseNumber.Location = new Point(491, 282);
+            houseNumber.Location = new Point(346, 210);
             houseNumber.Name = "houseNumber";
-            houseNumber.Size = new Size(121, 20);
+            houseNumber.Size = new Size(80, 20);
             houseNumber.TabIndex = 22;
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Gill Sans MT", 9F);
-            label14.Location = new Point(419, 282);
+            label14.Location = new Point(274, 210);
             label14.Name = "label14";
             label14.Size = new Size(66, 18);
             label14.TabIndex = 21;
@@ -293,19 +265,19 @@
             // 
             // contactNumber
             // 
-            contactNumber.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            contactNumber.Location = new Point(181, 280);
+            contactNumber.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            contactNumber.Location = new Point(114, 210);
             contactNumber.Name = "contactNumber";
-            contactNumber.Size = new Size(216, 21);
+            contactNumber.Size = new Size(150, 20);
             contactNumber.TabIndex = 20;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Gill Sans MT", 9F);
-            label13.Location = new Point(74, 282);
+            label13.Font = new Font("Gill Sans MT", 8.25F);
+            label13.Location = new Point(39, 214);
             label13.Name = "label13";
-            label13.Size = new Size(73, 18);
+            label13.Size = new Size(67, 16);
             label13.TabIndex = 19;
             label13.Text = "Contact No.:";
             // 
@@ -313,16 +285,16 @@
             // 
             purokNumber.Font = new Font("Gill Sans MT", 8.25F);
             purokNumber.FormattingEnabled = true;
-            purokNumber.Location = new Point(491, 254);
+            purokNumber.Location = new Point(346, 181);
             purokNumber.Name = "purokNumber";
-            purokNumber.Size = new Size(121, 24);
+            purokNumber.Size = new Size(80, 24);
             purokNumber.TabIndex = 18;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Gill Sans MT", 9F);
-            label12.Location = new Point(419, 257);
+            label12.Location = new Point(274, 185);
             label12.Name = "label12";
             label12.Size = new Size(63, 18);
             label12.TabIndex = 17;
@@ -332,16 +304,16 @@
             // 
             birthDate.Font = new Font("Gill Sans MT", 8.25F);
             birthDate.Format = DateTimePickerFormat.Custom;
-            birthDate.Location = new Point(491, 229);
+            birthDate.Location = new Point(346, 157);
             birthDate.Name = "birthDate";
-            birthDate.Size = new Size(121, 20);
+            birthDate.Size = new Size(80, 20);
             birthDate.TabIndex = 16;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Gill Sans MT", 9F);
-            label11.Location = new Point(419, 231);
+            label11.Location = new Point(280, 159);
             label11.Name = "label11";
             label11.Size = new Size(57, 18);
             label11.TabIndex = 14;
@@ -351,16 +323,16 @@
             // 
             sexIdentification.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sexIdentification.FormattingEnabled = true;
-            sexIdentification.Location = new Point(491, 200);
+            sexIdentification.Location = new Point(346, 128);
             sexIdentification.Name = "sexIdentification";
-            sexIdentification.Size = new Size(121, 24);
+            sexIdentification.Size = new Size(80, 24);
             sexIdentification.TabIndex = 13;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Gill Sans MT", 9F);
-            label10.Location = new Point(419, 203);
+            label10.Location = new Point(305, 134);
             label10.Name = "label10";
             label10.Size = new Size(32, 18);
             label10.TabIndex = 12;
@@ -368,167 +340,146 @@
             // 
             // lastName
             // 
-            lastName.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lastName.Location = new Point(181, 254);
+            lastName.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lastName.Location = new Point(114, 182);
             lastName.Name = "lastName";
-            lastName.Size = new Size(216, 21);
+            lastName.Size = new Size(150, 20);
             lastName.TabIndex = 11;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Gill Sans MT", 9F);
-            label9.Location = new Point(74, 257);
+            label9.Font = new Font("Gill Sans MT", 8.25F);
+            label9.Location = new Point(44, 186);
             label9.Name = "label9";
-            label9.Size = new Size(63, 18);
+            label9.Size = new Size(57, 16);
             label9.TabIndex = 10;
             label9.Text = "Last Name:";
             // 
             // middleName
             // 
-            middleName.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            middleName.Location = new Point(181, 228);
+            middleName.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            middleName.Location = new Point(114, 157);
             middleName.Name = "middleName";
-            middleName.Size = new Size(216, 21);
+            middleName.Size = new Size(150, 20);
             middleName.TabIndex = 9;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Gill Sans MT", 9F);
-            label8.Location = new Point(74, 231);
+            label8.Font = new Font("Gill Sans MT", 8.25F);
+            label8.Location = new Point(35, 163);
             label8.Name = "label8";
-            label8.Size = new Size(76, 18);
+            label8.Size = new Size(69, 16);
             label8.TabIndex = 8;
             label8.Text = "Middle Name:";
             // 
             // firstName
             // 
-            firstName.Font = new Font("Gill Sans MT", 9F);
-            firstName.Location = new Point(181, 200);
+            firstName.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            firstName.Location = new Point(114, 132);
             firstName.Name = "firstName";
-            firstName.Size = new Size(216, 21);
+            firstName.Size = new Size(150, 20);
             firstName.TabIndex = 7;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Gill Sans MT", 9F);
-            label7.Location = new Point(74, 203);
+            label7.Font = new Font("Gill Sans MT", 8.25F);
+            label7.Location = new Point(46, 136);
             label7.Name = "label7";
-            label7.Size = new Size(66, 18);
+            label7.Size = new Size(58, 16);
             label7.TabIndex = 6;
             label7.Text = "First Name:";
             // 
             // confirmPassword
             // 
-            confirmPassword.Font = new Font("Gill Sans MT", 9F);
-            confirmPassword.Location = new Point(181, 113);
+            confirmPassword.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            confirmPassword.Location = new Point(113, 80);
             confirmPassword.Name = "confirmPassword";
-            confirmPassword.Size = new Size(216, 21);
+            confirmPassword.Size = new Size(150, 20);
             confirmPassword.TabIndex = 5;
             confirmPassword.UseSystemPasswordChar = true;
+            confirmPassword.TextChanged += confirmPassword_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Gill Sans MT", 9F);
-            label6.Location = new Point(74, 113);
+            label6.Font = new Font("Gill Sans MT", 8.25F);
+            label6.Location = new Point(7, 84);
             label6.Name = "label6";
-            label6.Size = new Size(104, 18);
+            label6.Size = new Size(92, 16);
             label6.TabIndex = 4;
             label6.Text = "Confirm Password:";
             // 
             // createPassword
             // 
-            createPassword.Font = new Font("Gill Sans MT", 9F);
-            createPassword.Location = new Point(181, 84);
+            createPassword.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            createPassword.Location = new Point(113, 52);
             createPassword.Name = "createPassword";
-            createPassword.Size = new Size(216, 21);
+            createPassword.Size = new Size(150, 20);
             createPassword.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Gill Sans MT", 9F);
-            label3.Location = new Point(74, 84);
+            label3.Font = new Font("Gill Sans MT", 8.25F);
+            label3.Location = new Point(47, 56);
             label3.Name = "label3";
-            label3.Size = new Size(59, 18);
+            label3.Size = new Size(52, 16);
             label3.TabIndex = 2;
             label3.Text = "Password:";
             // 
             // createUsername
             // 
-            createUsername.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            createUsername.Location = new Point(181, 53);
+            createUsername.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            createUsername.Location = new Point(113, 25);
             createUsername.Name = "createUsername";
-            createUsername.Size = new Size(216, 21);
+            createUsername.Size = new Size(150, 20);
             createUsername.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Gill Sans MT", 9F);
-            label2.Location = new Point(74, 56);
+            label2.Font = new Font("Gill Sans MT", 8.25F);
+            label2.Location = new Point(45, 29);
             label2.Name = "label2";
-            label2.Size = new Size(62, 18);
+            label2.Size = new Size(54, 16);
             label2.TabIndex = 0;
             label2.Text = "Username:";
             label2.Click += label2_Click;
             // 
             // logoMain
             // 
+            logoMain.BackColor = Color.Transparent;
             logoMain.Image = (Image)resources.GetObject("logoMain.Image");
-            logoMain.Location = new Point(1105, 69);
+            logoMain.Location = new Point(646, 16);
             logoMain.Margin = new Padding(4, 5, 4, 5);
             logoMain.Name = "logoMain";
-            logoMain.Size = new Size(144, 50);
+            logoMain.Size = new Size(105, 24);
             logoMain.SizeMode = PictureBoxSizeMode.Zoom;
             logoMain.TabIndex = 17;
             logoMain.TabStop = false;
             // 
-            // agreeCheckBox
-            // 
-            agreeCheckBox.AutoSize = true;
-            agreeCheckBox.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            agreeCheckBox.ForeColor = SystemColors.ActiveCaptionText;
-            agreeCheckBox.Location = new Point(703, 578);
-            agreeCheckBox.Name = "agreeCheckBox";
-            agreeCheckBox.Size = new Size(441, 22);
-            agreeCheckBox.TabIndex = 30;
-            agreeCheckBox.Text = "By creating an account, you agree that the information provided is true and accurate.";
-            agreeCheckBox.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             button2.BackColor = Color.DarkSlateBlue;
-            button2.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(767, 614);
+            button2.Location = new Point(483, 373);
             button2.Name = "button2";
-            button2.Size = new Size(285, 35);
+            button2.Size = new Size(114, 28);
             button2.TabIndex = 32;
             button2.Text = "Create Account";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Gill Sans MT", 8.25F);
-            label20.ForeColor = Color.SlateGray;
-            label20.Location = new Point(858, 672);
-            label20.Name = "label20";
-            label20.Size = new Size(123, 16);
-            label20.TabIndex = 34;
-            label20.Text = "Already have an account?";
-            // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Font = new Font("Gill Sans MT", 8.25F);
+            label21.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label21.ForeColor = Color.SlateGray;
-            label21.Location = new Point(767, 652);
+            label21.Location = new Point(394, 404);
             label21.Name = "label21";
             label21.Size = new Size(285, 16);
             label21.TabIndex = 33;
@@ -539,7 +490,7 @@
             linkLabel1.AutoSize = true;
             linkLabel1.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             linkLabel1.LinkColor = Color.DarkSlateBlue;
-            linkLabel1.Location = new Point(869, 698);
+            linkLabel1.Location = new Point(492, 420);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(96, 18);
             linkLabel1.TabIndex = 35;
@@ -551,21 +502,17 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1366, 745);
+            ClientSize = new Size(796, 446);
             Controls.Add(linkLabel1);
-            Controls.Add(label20);
-            Controls.Add(label21);
-            Controls.Add(button2);
-            Controls.Add(agreeCheckBox);
             Controls.Add(logoMain);
             Controls.Add(userRegistrationPanel);
             Controls.Add(linkLabel2);
             Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(createAccountButton);
-            Controls.Add(label1);
+            Controls.Add(label21);
+            Controls.Add(button2);
             Controls.Add(leftPanel);
             Controls.Add(welcomeText);
+            Controls.Add(label1);
             Font = new Font("Gill Sans MT", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(4, 5, 4, 5);
@@ -587,8 +534,6 @@
         private PictureBox pictureBox2;
         private CheckBox checkBox1;
         private LinkLabel linkLabel1;
-        private Button createAccountButton;
-        private Label label4;
         private Label label5;
         private LinkLabel linkLabel2;
         private Panel userRegistrationPanel;
@@ -622,9 +567,7 @@
         private Label label16;
         private ComboBox securityQuestions;
         private Label label15;
-        private CheckBox agreeCheckBox;
         private Button button2;
-        private Label label20;
         private Label label21;
     }
 }
