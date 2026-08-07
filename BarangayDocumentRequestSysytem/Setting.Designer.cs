@@ -112,6 +112,7 @@
             aboutBTN.Text = "ⓘ About";
             aboutBTN.TextAlign = ContentAlignment.MiddleLeft;
             aboutBTN.UseVisualStyleBackColor = false;
+            aboutBTN.Click += aboutBTN_Click;
             // 
             // dbmsBTN
             // 
@@ -124,7 +125,7 @@
             dbmsBTN.Name = "dbmsBTN";
             dbmsBTN.Size = new Size(141, 54);
             dbmsBTN.TabIndex = 34;
-            dbmsBTN.Text = "💾 Database";
+            dbmsBTN.Text = "💾 Backup and         Restore";
             dbmsBTN.TextAlign = ContentAlignment.MiddleLeft;
             dbmsBTN.UseVisualStyleBackColor = false;
             // 
@@ -142,6 +143,7 @@
             signBTN.Text = "✍️ Signatories";
             signBTN.TextAlign = ContentAlignment.MiddleLeft;
             signBTN.UseVisualStyleBackColor = false;
+            signBTN.Click += signBTN_Click;
             // 
             // accountBTN
             // 

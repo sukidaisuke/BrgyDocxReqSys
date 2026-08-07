@@ -38,5 +38,15 @@ namespace BarangayDocumentRequestSysytem
         {
             LoadSettingsPage(new DocumentSettings());
         }
+
+        private void signBTN_Click(object sender, EventArgs e)
+        {
+            LoadSettingsPage(new Signatories());
+        }
+
+        private void aboutBTN_Click(object sender, EventArgs e)
+        {
+            LoadSettingsPage(new About());
+        }
     }
 }
