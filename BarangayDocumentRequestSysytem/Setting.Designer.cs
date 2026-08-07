@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             PanelContainer = new Panel();
+            contentPanel = new Panel();
             menuPanel = new Panel();
             menuTLP = new TableLayoutPanel();
             aboutBTN = new Button();
@@ -48,6 +49,7 @@
             // 
             // PanelContainer
             // 
+            PanelContainer.Controls.Add(contentPanel);
             PanelContainer.Controls.Add(menuPanel);
             PanelContainer.Controls.Add(NavPanel);
             PanelContainer.Dock = DockStyle.Fill;
@@ -55,7 +57,14 @@
             PanelContainer.Name = "PanelContainer";
             PanelContainer.Size = new Size(635, 512);
             PanelContainer.TabIndex = 0;
-            PanelContainer.Paint += panel1_Paint;
+            // 
+            // contentPanel
+            // 
+            contentPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            contentPanel.Location = new Point(221, 100);
+            contentPanel.Name = "contentPanel";
+            contentPanel.Size = new Size(414, 412);
+            contentPanel.TabIndex = 32;
             // 
             // menuPanel
             // 
@@ -64,7 +73,7 @@
             menuPanel.Dock = DockStyle.Left;
             menuPanel.Location = new Point(0, 100);
             menuPanel.Name = "menuPanel";
-            menuPanel.Size = new Size(194, 412);
+            menuPanel.Size = new Size(220, 412);
             menuPanel.TabIndex = 31;
             // 
             // menuTLP
@@ -77,7 +86,7 @@
             menuTLP.Controls.Add(accountBTN, 0, 1);
             menuTLP.Controls.Add(brgyInfoBTN, 0, 0);
             menuTLP.Controls.Add(docxSettingBTN, 0, 2);
-            menuTLP.Location = new Point(23, 25);
+            menuTLP.Location = new Point(36, 25);
             menuTLP.Name = "menuTLP";
             menuTLP.RowCount = 6;
             menuTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
@@ -148,6 +157,7 @@
             accountBTN.Text = "👤 Account";
             accountBTN.TextAlign = ContentAlignment.MiddleLeft;
             accountBTN.UseVisualStyleBackColor = false;
+            accountBTN.Click += accountBTN_Click;
             // 
             // brgyInfoBTN
             // 
@@ -163,6 +173,7 @@
             brgyInfoBTN.Text = "🏦 Barangay              Information";
             brgyInfoBTN.TextAlign = ContentAlignment.MiddleLeft;
             brgyInfoBTN.UseVisualStyleBackColor = false;
+            brgyInfoBTN.Click += brgyInfoBTN_Click;
             // 
             // docxSettingBTN
             // 
@@ -178,6 +189,7 @@
             docxSettingBTN.Text = "📄 Document            Settings";
             docxSettingBTN.TextAlign = ContentAlignment.MiddleLeft;
             docxSettingBTN.UseVisualStyleBackColor = false;
+            docxSettingBTN.Click += docxSettingBTN_Click;
             // 
             // NavPanel
             // 
@@ -244,5 +256,6 @@
         private Button dbmsBTN;
         private Button aboutBTN;
         private Button brgyInfoBTN;
+        private Panel contentPanel;
     }
 }
