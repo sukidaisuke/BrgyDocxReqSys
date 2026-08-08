@@ -35,8 +35,8 @@
             // 
             // PanelContainer
             // 
+            PanelContainer.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             PanelContainer.Controls.Add(DashboardContent);
-            PanelContainer.Dock = DockStyle.Fill;
             PanelContainer.Location = new Point(0, 0);
             PanelContainer.Name = "PanelContainer";
             PanelContainer.Size = new Size(635, 512);
@@ -44,6 +44,7 @@
             // 
             // DashboardContent
             // 
+            DashboardContent.Anchor = AnchorStyles.None;
             DashboardContent.AutoSize = true;
             DashboardContent.Font = new Font("Segoe UI", 48F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             DashboardContent.Location = new Point(33, 219);
