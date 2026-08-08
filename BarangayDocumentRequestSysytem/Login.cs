@@ -99,10 +99,23 @@ namespace BarangayDocumentRequestSysytem
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            DashboardTest Db = new DashboardTest();
-            Db.ShowDialog();
-            this.Show();
+            string username = userName.Text.Trim();
+            string pass = password.Text;
+
+            if (username == "admin" && pass == "admin67")
+            {
+                this.Hide();
+                DashboardTest Db = new DashboardTest();
+                Db.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                this.Hide();
+                UserPage up = new UserPage();
+                up.ShowDialog();
+                this.Close();
+            }
         }
     }
 }
