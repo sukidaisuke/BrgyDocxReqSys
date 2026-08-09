@@ -57,8 +57,10 @@
             bodyGB.Dock = DockStyle.Fill;
             bodyGB.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bodyGB.Location = new Point(0, 0);
+            bodyGB.Margin = new Padding(0);
             bodyGB.Name = "bodyGB";
-            bodyGB.Size = new Size(406, 403);
+            bodyGB.Padding = new Padding(7);
+            bodyGB.Size = new Size(390, 370);
             bodyGB.TabIndex = 1;
             bodyGB.TabStop = false;
             bodyGB.Text = "Account Settings";
@@ -71,11 +73,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(cancelButton, 0, 0);
             tableLayoutPanel1.Controls.Add(confirmBTN, 1, 0);
-            tableLayoutPanel1.Location = new Point(60, 324);
+            tableLayoutPanel1.Location = new Point(64, 287);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(295, 41);
+            tableLayoutPanel1.Size = new Size(271, 41);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // cancelButton
@@ -85,9 +87,9 @@
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cancelButton.ForeColor = Color.White;
-            cancelButton.Location = new Point(3, 3);
+            cancelButton.Location = new Point(4, 3);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(141, 35);
+            cancelButton.Size = new Size(126, 35);
             cancelButton.TabIndex = 34;
             cancelButton.Text = "❌ Cancel";
             cancelButton.UseVisualStyleBackColor = false;
@@ -99,16 +101,15 @@
             confirmBTN.FlatStyle = FlatStyle.Flat;
             confirmBTN.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             confirmBTN.ForeColor = Color.White;
-            confirmBTN.Location = new Point(150, 3);
+            confirmBTN.Location = new Point(139, 3);
             confirmBTN.Name = "confirmBTN";
-            confirmBTN.Size = new Size(142, 35);
+            confirmBTN.Size = new Size(127, 35);
             confirmBTN.TabIndex = 33;
             confirmBTN.Text = "✔ Confirm";
             confirmBTN.UseVisualStyleBackColor = false;
             // 
             // brgyInfoTLP
             // 
-            brgyInfoTLP.Anchor = AnchorStyles.None;
             brgyInfoTLP.ColumnCount = 2;
             brgyInfoTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             brgyInfoTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -118,10 +119,11 @@
             brgyInfoTLP.Controls.Add(pwPanel, 1, 1);
             brgyInfoTLP.Controls.Add(usernameTXT, 1, 0);
             brgyInfoTLP.Controls.Add(panel1, 1, 2);
-            brgyInfoTLP.Location = new Point(3, 23);
+            brgyInfoTLP.Dock = DockStyle.Top;
+            brgyInfoTLP.Location = new Point(7, 27);
             brgyInfoTLP.Margin = new Padding(0);
             brgyInfoTLP.Name = "brgyInfoTLP";
-            brgyInfoTLP.Padding = new Padding(5);
+            brgyInfoTLP.Padding = new Padding(7);
             brgyInfoTLP.RowCount = 3;
             brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
@@ -132,7 +134,7 @@
             brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            brgyInfoTLP.Size = new Size(400, 127);
+            brgyInfoTLP.Size = new Size(376, 134);
             brgyInfoTLP.TabIndex = 0;
             // 
             // pwConfirmLabel
@@ -140,9 +142,9 @@
             pwConfirmLabel.AutoSize = true;
             pwConfirmLabel.Dock = DockStyle.Fill;
             pwConfirmLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            pwConfirmLabel.Location = new Point(8, 85);
+            pwConfirmLabel.Location = new Point(10, 87);
             pwConfirmLabel.Name = "pwConfirmLabel";
-            pwConfirmLabel.Size = new Size(189, 40);
+            pwConfirmLabel.Size = new Size(175, 40);
             pwConfirmLabel.TabIndex = 3;
             pwConfirmLabel.Text = "Confirm Password : ";
             pwConfirmLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -152,9 +154,9 @@
             passwordLabel.AutoSize = true;
             passwordLabel.Dock = DockStyle.Fill;
             passwordLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            passwordLabel.Location = new Point(8, 45);
+            passwordLabel.Location = new Point(10, 47);
             passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(189, 40);
+            passwordLabel.Size = new Size(175, 40);
             passwordLabel.TabIndex = 5;
             passwordLabel.Text = "Password :";
             passwordLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -164,9 +166,9 @@
             usernameLabel.AutoSize = true;
             usernameLabel.Dock = DockStyle.Fill;
             usernameLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            usernameLabel.Location = new Point(8, 5);
+            usernameLabel.Location = new Point(10, 7);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new Size(189, 40);
+            usernameLabel.Size = new Size(175, 40);
             usernameLabel.TabIndex = 0;
             usernameLabel.Text = "Username :";
             usernameLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -176,9 +178,9 @@
             pwPanel.Controls.Add(passwordTXT);
             pwPanel.Controls.Add(hidepwBTN);
             pwPanel.Dock = DockStyle.Fill;
-            pwPanel.Location = new Point(203, 48);
+            pwPanel.Location = new Point(191, 50);
             pwPanel.Name = "pwPanel";
-            pwPanel.Size = new Size(189, 34);
+            pwPanel.Size = new Size(175, 34);
             pwPanel.TabIndex = 18;
             // 
             // passwordTXT
@@ -187,14 +189,14 @@
             passwordTXT.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             passwordTXT.Location = new Point(3, 4);
             passwordTXT.Name = "passwordTXT";
-            passwordTXT.Size = new Size(146, 25);
+            passwordTXT.Size = new Size(131, 25);
             passwordTXT.TabIndex = 18;
             passwordTXT.Text = "mjpascasio";
             passwordTXT.UseSystemPasswordChar = true;
             // 
             // hidepwBTN
             // 
-            hidepwBTN.Location = new Point(155, 2);
+            hidepwBTN.Location = new Point(136, 2);
             hidepwBTN.Name = "hidepwBTN";
             hidepwBTN.Size = new Size(31, 29);
             hidepwBTN.TabIndex = 17;
@@ -207,9 +209,9 @@
             usernameTXT.BorderStyle = BorderStyle.FixedSingle;
             usernameTXT.Dock = DockStyle.Fill;
             usernameTXT.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            usernameTXT.Location = new Point(203, 8);
+            usernameTXT.Location = new Point(191, 10);
             usernameTXT.Name = "usernameTXT";
-            usernameTXT.Size = new Size(189, 25);
+            usernameTXT.Size = new Size(175, 25);
             usernameTXT.TabIndex = 19;
             usernameTXT.Text = "Mark Jamin Pascasio";
             // 
@@ -218,14 +220,14 @@
             panel1.Controls.Add(hidePWConfirmBTN);
             panel1.Controls.Add(pwConfirmTXT);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(203, 88);
+            panel1.Location = new Point(191, 90);
             panel1.Name = "panel1";
-            panel1.Size = new Size(189, 34);
+            panel1.Size = new Size(175, 34);
             panel1.TabIndex = 20;
             // 
             // hidePWConfirmBTN
             // 
-            hidePWConfirmBTN.Location = new Point(155, 2);
+            hidePWConfirmBTN.Location = new Point(136, 2);
             hidePWConfirmBTN.Name = "hidePWConfirmBTN";
             hidePWConfirmBTN.Size = new Size(31, 29);
             hidePWConfirmBTN.TabIndex = 18;
@@ -239,7 +241,7 @@
             pwConfirmTXT.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pwConfirmTXT.Location = new Point(3, 4);
             pwConfirmTXT.Name = "pwConfirmTXT";
-            pwConfirmTXT.Size = new Size(146, 25);
+            pwConfirmTXT.Size = new Size(131, 25);
             pwConfirmTXT.TabIndex = 20;
             pwConfirmTXT.Text = "mjpascasio";
             pwConfirmTXT.UseSystemPasswordChar = true;
@@ -249,8 +251,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(bodyGB);
+            Margin = new Padding(0);
             Name = "Account";
-            Size = new Size(406, 403);
+            Size = new Size(390, 370);
             bodyGB.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             brgyInfoTLP.ResumeLayout(false);

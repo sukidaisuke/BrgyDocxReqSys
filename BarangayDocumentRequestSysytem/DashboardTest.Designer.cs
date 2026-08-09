@@ -41,6 +41,7 @@
             label12 = new Label();
             PanelContainer = new Panel();
             LabelDashboard = new Label();
+            logoutBTN = new Button();
             NavPanel.SuspendLayout();
             navTLP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoPicBox).BeginInit();
@@ -64,6 +65,7 @@
             navTLP.Anchor = AnchorStyles.None;
             navTLP.ColumnCount = 1;
             navTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            navTLP.Controls.Add(logoutBTN, 0, 6);
             navTLP.Controls.Add(SettingButton, 0, 5);
             navTLP.Controls.Add(activityButton, 0, 4);
             navTLP.Controls.Add(DashboardButton, 0, 0);
@@ -72,14 +74,15 @@
             navTLP.Controls.Add(ResidentButton, 0, 1);
             navTLP.Location = new Point(31, 90);
             navTLP.Name = "navTLP";
-            navTLP.RowCount = 6;
+            navTLP.RowCount = 7;
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            navTLP.Size = new Size(172, 363);
+            navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            navTLP.Size = new Size(172, 418);
             navTLP.TabIndex = 24;
             // 
             // SettingButton
@@ -91,7 +94,7 @@
             SettingButton.ForeColor = Color.White;
             SettingButton.Location = new Point(3, 303);
             SettingButton.Name = "SettingButton";
-            SettingButton.Size = new Size(166, 57);
+            SettingButton.Size = new Size(166, 54);
             SettingButton.TabIndex = 23;
             SettingButton.Text = "⚙️ Settings";
             SettingButton.TextAlign = ContentAlignment.MiddleLeft;
@@ -221,6 +224,21 @@
             LabelDashboard.TabIndex = 0;
             LabelDashboard.Text = "One La Union";
             // 
+            // logoutBTN
+            // 
+            logoutBTN.Dock = DockStyle.Fill;
+            logoutBTN.FlatAppearance.BorderSize = 0;
+            logoutBTN.FlatStyle = FlatStyle.Flat;
+            logoutBTN.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            logoutBTN.ForeColor = Color.White;
+            logoutBTN.Location = new Point(3, 363);
+            logoutBTN.Name = "logoutBTN";
+            logoutBTN.Size = new Size(166, 52);
+            logoutBTN.TabIndex = 24;
+            logoutBTN.Text = "[← Logout";
+            logoutBTN.TextAlign = ContentAlignment.MiddleLeft;
+            logoutBTN.UseVisualStyleBackColor = true;
+            // 
             // DashboardTest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -252,5 +270,6 @@
         private Label LabelDashboard;
         private Button SettingButton;
         private TableLayoutPanel navTLP;
+        private Button logoutBTN;
     }
 }

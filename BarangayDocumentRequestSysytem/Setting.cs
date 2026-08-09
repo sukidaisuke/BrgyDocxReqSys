@@ -48,5 +48,10 @@ namespace BarangayDocumentRequestSysytem
         {
             LoadSettingsPage(new About());
         }
+
+        private void bodyGB_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
