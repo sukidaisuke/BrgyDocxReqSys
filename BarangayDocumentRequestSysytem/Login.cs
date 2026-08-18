@@ -117,5 +117,27 @@ namespace BarangayDocumentRequestSysytem
                 this.Close();
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (password.UseSystemPasswordChar)
+            {
+                password.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                password.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
