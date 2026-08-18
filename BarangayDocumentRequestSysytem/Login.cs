@@ -134,5 +134,10 @@ namespace BarangayDocumentRequestSysytem
                 password.UseSystemPasswordChar = true;
             }
         }
+
+        private void password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -165,6 +165,8 @@
             password.Name = "password";
             password.Size = new Size(178, 14);
             password.TabIndex = 0;
+            password.UseSystemPasswordChar = true;
+            password.TextChanged += password_TextChanged;
             // 
             // label3
             // 
