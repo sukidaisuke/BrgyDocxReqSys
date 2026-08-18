@@ -47,6 +47,7 @@
             welcomeText = new Label();
             logoMain = new PictureBox();
             leftPanel = new PictureBox();
+            btnShowPassword = new Button();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
@@ -265,11 +266,24 @@
             leftPanel.TabIndex = 30;
             leftPanel.TabStop = false;
             // 
+            // btnShowPassword
+            // 
+            btnShowPassword.BackColor = SystemColors.Control;
+            btnShowPassword.Location = new Point(652, 221);
+            btnShowPassword.Name = "btnShowPassword";
+            btnShowPassword.Size = new Size(28, 23);
+            btnShowPassword.TabIndex = 31;
+            btnShowPassword.Text = "👁";
+            btnShowPassword.UseVisualStyleBackColor = false;
+            btnShowPassword.Click += button1_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnShowPassword);
             Controls.Add(leftPanel);
             Controls.Add(createAccountLink);
             Controls.Add(label5);
@@ -284,9 +298,10 @@
             Controls.Add(label1);
             Controls.Add(welcomeText);
             Controls.Add(logoMain);
+            MaximizeBox = false;
             Name = "Login";
             Text = "Barangay Document Request System";
-            WindowState = FormWindowState.Maximized;
+            Load += Login_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -319,5 +334,6 @@
         private Label welcomeText;
         private PictureBox logoMain;
         private PictureBox leftPanel;
+        private Button btnShowPassword;
     }
 }
