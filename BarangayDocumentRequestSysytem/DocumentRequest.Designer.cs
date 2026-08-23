@@ -32,27 +32,45 @@
             BodyGroupBox = new GroupBox();
             bodyTLP = new TableLayoutPanel();
             panel5 = new Panel();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            button11 = new Button();
+            button12 = new Button();
+            button13 = new Button();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
             pictureBox4 = new PictureBox();
             panel4 = new Panel();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            button8 = new Button();
+            button9 = new Button();
+            button10 = new Button();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
             pictureBox2 = new PictureBox();
             panel3 = new Panel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            button5 = new Button();
+            button6 = new Button();
+            button7 = new Button();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             pictureBox3 = new PictureBox();
             panel2 = new Panel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             btnTLP = new TableLayoutPanel();
+            button15 = new Button();
+            button14 = new Button();
             button1 = new Button();
             label1 = new Label();
             requesteeLBL1 = new Label();
@@ -71,33 +89,19 @@
             dividerPanel = new Panel();
             NavPanel = new Panel();
             nameLabel = new Label();
-            button14 = new Button();
-            button15 = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            button11 = new Button();
-            button12 = new Button();
-            button13 = new Button();
             BodyGroupBox.SuspendLayout();
             bodyTLP.SuspendLayout();
             panel5.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel4.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel3.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel2.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             btnTLP.SuspendLayout();
@@ -105,10 +109,6 @@
             PanelContainer.SuspendLayout();
             pageTLP.SuspendLayout();
             NavPanel.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
             // BodyGroupBox
@@ -160,24 +160,82 @@
             panel5.Size = new Size(547, 54);
             panel5.TabIndex = 39;
             // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 3;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
+            tableLayoutPanel4.Controls.Add(button11, 1, 0);
+            tableLayoutPanel4.Controls.Add(button12, 0, 0);
+            tableLayoutPanel4.Controls.Add(button13, 2, 0);
+            tableLayoutPanel4.Location = new Point(428, 7);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Size = new Size(106, 41);
+            tableLayoutPanel4.TabIndex = 32;
+            // 
+            // button11
+            // 
+            button11.BackColor = SystemColors.Control;
+            button11.Dock = DockStyle.Fill;
+            button11.FlatAppearance.BorderSize = 0;
+            button11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button11.ForeColor = Color.Black;
+            button11.Location = new Point(39, 3);
+            button11.Name = "button11";
+            button11.Size = new Size(30, 35);
+            button11.TabIndex = 2;
+            button11.Text = "✏️";
+            button11.UseVisualStyleBackColor = false;
+            // 
+            // button12
+            // 
+            button12.BackColor = SystemColors.Control;
+            button12.Dock = DockStyle.Fill;
+            button12.FlatAppearance.BorderSize = 0;
+            button12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button12.ForeColor = Color.Red;
+            button12.Location = new Point(3, 3);
+            button12.Name = "button12";
+            button12.Size = new Size(30, 35);
+            button12.TabIndex = 1;
+            button12.Text = "❌";
+            button12.UseVisualStyleBackColor = false;
+            // 
+            // button13
+            // 
+            button13.BackColor = SystemColors.Control;
+            button13.Dock = DockStyle.Fill;
+            button13.FlatAppearance.BorderSize = 0;
+            button13.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button13.ForeColor = Color.DarkSlateBlue;
+            button13.Location = new Point(75, 3);
+            button13.Name = "button13";
+            button13.Size = new Size(28, 35);
+            button13.TabIndex = 0;
+            button13.Text = "📄";
+            button13.UseVisualStyleBackColor = false;
+            // 
             // label11
             // 
             label11.AutoSize = true;
             label11.ForeColor = Color.Gray;
             label11.Location = new Point(243, 36);
             label11.Name = "label11";
-            label11.Size = new Size(136, 15);
+            label11.Size = new Size(168, 15);
             label11.TabIndex = 31;
-            label11.Text = "August 8, 2026 • 8:30 am";
+            label11.Text = "September 25, 2026 • 12:30 pm";
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Location = new Point(81, 36);
             label12.Name = "label12";
-            label12.Size = new Size(133, 15);
+            label12.Size = new Size(84, 15);
             label12.TabIndex = 30;
-            label12.Text = "Rose Antonette Barrogo";
+            label12.Text = "Juan Dela Cruz";
             // 
             // label13
             // 
@@ -216,24 +274,82 @@
             panel4.Size = new Size(547, 54);
             panel4.TabIndex = 38;
             // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 3;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
+            tableLayoutPanel3.Controls.Add(button8, 1, 0);
+            tableLayoutPanel3.Controls.Add(button9, 0, 0);
+            tableLayoutPanel3.Controls.Add(button10, 2, 0);
+            tableLayoutPanel3.Location = new Point(428, 7);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 1;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Size = new Size(106, 41);
+            tableLayoutPanel3.TabIndex = 32;
+            // 
+            // button8
+            // 
+            button8.BackColor = SystemColors.Control;
+            button8.Dock = DockStyle.Fill;
+            button8.FlatAppearance.BorderSize = 0;
+            button8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button8.ForeColor = Color.Black;
+            button8.Location = new Point(39, 3);
+            button8.Name = "button8";
+            button8.Size = new Size(30, 35);
+            button8.TabIndex = 2;
+            button8.Text = "✏️";
+            button8.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            button9.BackColor = SystemColors.Control;
+            button9.Dock = DockStyle.Fill;
+            button9.FlatAppearance.BorderSize = 0;
+            button9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button9.ForeColor = Color.Red;
+            button9.Location = new Point(3, 3);
+            button9.Name = "button9";
+            button9.Size = new Size(30, 35);
+            button9.TabIndex = 1;
+            button9.Text = "❌";
+            button9.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            button10.BackColor = SystemColors.Control;
+            button10.Dock = DockStyle.Fill;
+            button10.FlatAppearance.BorderSize = 0;
+            button10.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button10.ForeColor = Color.DarkSlateBlue;
+            button10.Location = new Point(75, 3);
+            button10.Name = "button10";
+            button10.Size = new Size(28, 35);
+            button10.TabIndex = 0;
+            button10.Text = "📄";
+            button10.UseVisualStyleBackColor = false;
+            // 
             // label8
             // 
             label8.AutoSize = true;
             label8.ForeColor = Color.Gray;
             label8.Location = new Point(243, 36);
             label8.Name = "label8";
-            label8.Size = new Size(136, 15);
+            label8.Size = new Size(142, 15);
             label8.TabIndex = 31;
-            label8.Text = "August 8, 2026 • 8:30 am";
+            label8.Text = "August 29, 2026 • 8:30 am";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Location = new Point(81, 36);
             label9.Name = "label9";
-            label9.Size = new Size(133, 15);
+            label9.Size = new Size(100, 15);
             label9.TabIndex = 30;
-            label9.Text = "Rose Antonette Barrogo";
+            label9.Text = "Jason Paul Munar";
             // 
             // label10
             // 
@@ -242,9 +358,9 @@
             label10.ForeColor = Color.DarkSlateBlue;
             label10.Location = new Point(78, 5);
             label10.Name = "label10";
-            label10.Size = new Size(204, 30);
+            label10.Size = new Size(265, 30);
             label10.TabIndex = 29;
-            label10.Text = "Barangay Clearance";
+            label10.Text = "Certificate of Good Moral";
             // 
             // pictureBox2
             // 
@@ -272,24 +388,82 @@
             panel3.Size = new Size(547, 54);
             panel3.TabIndex = 37;
             // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
+            tableLayoutPanel2.Controls.Add(button5, 1, 0);
+            tableLayoutPanel2.Controls.Add(button6, 0, 0);
+            tableLayoutPanel2.Controls.Add(button7, 2, 0);
+            tableLayoutPanel2.Location = new Point(428, 7);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(106, 41);
+            tableLayoutPanel2.TabIndex = 32;
+            // 
+            // button5
+            // 
+            button5.BackColor = SystemColors.Control;
+            button5.Dock = DockStyle.Fill;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.Black;
+            button5.Location = new Point(39, 3);
+            button5.Name = "button5";
+            button5.Size = new Size(30, 35);
+            button5.TabIndex = 2;
+            button5.Text = "✏️";
+            button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            button6.BackColor = SystemColors.Control;
+            button6.Dock = DockStyle.Fill;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button6.ForeColor = Color.Red;
+            button6.Location = new Point(3, 3);
+            button6.Name = "button6";
+            button6.Size = new Size(30, 35);
+            button6.TabIndex = 1;
+            button6.Text = "❌";
+            button6.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            button7.BackColor = SystemColors.Control;
+            button7.Dock = DockStyle.Fill;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button7.ForeColor = Color.DarkSlateBlue;
+            button7.Location = new Point(75, 3);
+            button7.Name = "button7";
+            button7.Size = new Size(28, 35);
+            button7.TabIndex = 0;
+            button7.Text = "📄";
+            button7.UseVisualStyleBackColor = false;
+            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Gray;
             label5.Location = new Point(243, 36);
             label5.Name = "label5";
-            label5.Size = new Size(136, 15);
+            label5.Size = new Size(142, 15);
             label5.TabIndex = 31;
-            label5.Text = "August 8, 2026 • 8:30 am";
+            label5.Text = "August 18, 2026 • 8:30 am";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(81, 36);
             label6.Name = "label6";
-            label6.Size = new Size(133, 15);
+            label6.Size = new Size(137, 15);
             label6.TabIndex = 30;
-            label6.Text = "Rose Antonette Barrogo";
+            label6.Text = "John Lawrence Balangue";
             // 
             // label7
             // 
@@ -298,9 +472,9 @@
             label7.ForeColor = Color.DarkSlateBlue;
             label7.Location = new Point(78, 5);
             label7.Name = "label7";
-            label7.Size = new Size(204, 30);
+            label7.Size = new Size(244, 30);
             label7.TabIndex = 29;
-            label7.Text = "Barangay Clearance";
+            label7.Text = "Certificate of Residency";
             // 
             // pictureBox3
             // 
@@ -328,24 +502,83 @@
             panel2.Size = new Size(547, 54);
             panel2.TabIndex = 36;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
+            tableLayoutPanel1.Controls.Add(button2, 1, 0);
+            tableLayoutPanel1.Controls.Add(button3, 0, 0);
+            tableLayoutPanel1.Controls.Add(button4, 2, 0);
+            tableLayoutPanel1.Location = new Point(428, 7);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(106, 41);
+            tableLayoutPanel1.TabIndex = 28;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.Control;
+            button2.Dock = DockStyle.Fill;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.Black;
+            button2.Location = new Point(39, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(30, 35);
+            button2.TabIndex = 2;
+            button2.Text = "✏️";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.Control;
+            button3.Dock = DockStyle.Fill;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button3.ForeColor = Color.Red;
+            button3.Location = new Point(3, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(30, 35);
+            button3.TabIndex = 1;
+            button3.Text = "❌";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = SystemColors.Control;
+            button4.Dock = DockStyle.Fill;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button4.ForeColor = Color.DarkSlateBlue;
+            button4.Location = new Point(75, 3);
+            button4.Name = "button4";
+            button4.Size = new Size(28, 35);
+            button4.TabIndex = 0;
+            button4.Text = "📄";
+            button4.UseVisualStyleBackColor = false;
+            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Gray;
             label2.Location = new Point(243, 36);
             label2.Name = "label2";
-            label2.Size = new Size(136, 15);
+            label2.Size = new Size(142, 15);
             label2.TabIndex = 27;
-            label2.Text = "August 8, 2026 • 8:30 am";
+            label2.Text = "August 11, 2026 • 8:30 am";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(81, 36);
             label3.Name = "label3";
-            label3.Size = new Size(133, 15);
+            label3.Size = new Size(125, 15);
             label3.TabIndex = 26;
-            label3.Text = "Rose Antonette Barrogo";
+            label3.Text = "John Russel Fernandez";
             // 
             // label4
             // 
@@ -400,6 +633,32 @@
             btnTLP.Size = new Size(106, 41);
             btnTLP.TabIndex = 24;
             // 
+            // button15
+            // 
+            button15.BackColor = SystemColors.Control;
+            button15.Dock = DockStyle.Fill;
+            button15.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button15.ForeColor = Color.Black;
+            button15.Location = new Point(39, 3);
+            button15.Name = "button15";
+            button15.Size = new Size(30, 35);
+            button15.TabIndex = 2;
+            button15.Text = "✏️";
+            button15.UseVisualStyleBackColor = false;
+            // 
+            // button14
+            // 
+            button14.BackColor = SystemColors.Control;
+            button14.Dock = DockStyle.Fill;
+            button14.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            button14.ForeColor = Color.Red;
+            button14.Location = new Point(3, 3);
+            button14.Name = "button14";
+            button14.Size = new Size(30, 35);
+            button14.TabIndex = 1;
+            button14.Text = "❌";
+            button14.UseVisualStyleBackColor = false;
+            // 
             // button1
             // 
             button1.BackColor = SystemColors.Control;
@@ -439,9 +698,9 @@
             reqLBL1.ForeColor = Color.DarkSlateBlue;
             reqLBL1.Location = new Point(78, 5);
             reqLBL1.Name = "reqLBL1";
-            reqLBL1.Size = new Size(204, 30);
+            reqLBL1.Size = new Size(244, 30);
             reqLBL1.TabIndex = 21;
-            reqLBL1.Text = "Barangay Clearance";
+            reqLBL1.Text = "Certificate of Indigency";
             // 
             // pictureBox6
             // 
@@ -621,265 +880,6 @@
             nameLabel.TabIndex = 27;
             nameLabel.Text = "Barangay Document Request System";
             // 
-            // button14
-            // 
-            button14.BackColor = SystemColors.Control;
-            button14.Dock = DockStyle.Fill;
-            button14.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button14.ForeColor = Color.Red;
-            button14.Location = new Point(3, 3);
-            button14.Name = "button14";
-            button14.Size = new Size(30, 35);
-            button14.TabIndex = 1;
-            button14.Text = "❌";
-            button14.UseVisualStyleBackColor = false;
-            // 
-            // button15
-            // 
-            button15.BackColor = SystemColors.Control;
-            button15.Dock = DockStyle.Fill;
-            button15.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button15.ForeColor = Color.Black;
-            button15.Location = new Point(39, 3);
-            button15.Name = "button15";
-            button15.Size = new Size(30, 35);
-            button15.TabIndex = 2;
-            button15.Text = "✏️";
-            button15.UseVisualStyleBackColor = false;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel1.Controls.Add(button2, 1, 0);
-            tableLayoutPanel1.Controls.Add(button3, 0, 0);
-            tableLayoutPanel1.Controls.Add(button4, 2, 0);
-            tableLayoutPanel1.Location = new Point(428, 7);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(106, 41);
-            tableLayoutPanel1.TabIndex = 28;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.Control;
-            button2.Dock = DockStyle.Fill;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.Black;
-            button2.Location = new Point(39, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(30, 35);
-            button2.TabIndex = 2;
-            button2.Text = "✏️";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.Control;
-            button3.Dock = DockStyle.Fill;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button3.ForeColor = Color.Red;
-            button3.Location = new Point(3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(30, 35);
-            button3.TabIndex = 1;
-            button3.Text = "❌";
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.Control;
-            button4.Dock = DockStyle.Fill;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button4.ForeColor = Color.DarkSlateBlue;
-            button4.Location = new Point(75, 3);
-            button4.Name = "button4";
-            button4.Size = new Size(28, 35);
-            button4.TabIndex = 0;
-            button4.Text = "📄";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 3;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel2.Controls.Add(button5, 1, 0);
-            tableLayoutPanel2.Controls.Add(button6, 0, 0);
-            tableLayoutPanel2.Controls.Add(button7, 2, 0);
-            tableLayoutPanel2.Location = new Point(428, 7);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(106, 41);
-            tableLayoutPanel2.TabIndex = 32;
-            // 
-            // button5
-            // 
-            button5.BackColor = SystemColors.Control;
-            button5.Dock = DockStyle.Fill;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.Black;
-            button5.Location = new Point(39, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(30, 35);
-            button5.TabIndex = 2;
-            button5.Text = "✏️";
-            button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            button6.BackColor = SystemColors.Control;
-            button6.Dock = DockStyle.Fill;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button6.ForeColor = Color.Red;
-            button6.Location = new Point(3, 3);
-            button6.Name = "button6";
-            button6.Size = new Size(30, 35);
-            button6.TabIndex = 1;
-            button6.Text = "❌";
-            button6.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            button7.BackColor = SystemColors.Control;
-            button7.Dock = DockStyle.Fill;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button7.ForeColor = Color.DarkSlateBlue;
-            button7.Location = new Point(75, 3);
-            button7.Name = "button7";
-            button7.Size = new Size(28, 35);
-            button7.TabIndex = 0;
-            button7.Text = "📄";
-            button7.UseVisualStyleBackColor = false;
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 3;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel3.Controls.Add(button8, 1, 0);
-            tableLayoutPanel3.Controls.Add(button9, 0, 0);
-            tableLayoutPanel3.Controls.Add(button10, 2, 0);
-            tableLayoutPanel3.Location = new Point(428, 7);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(106, 41);
-            tableLayoutPanel3.TabIndex = 32;
-            // 
-            // button8
-            // 
-            button8.BackColor = SystemColors.Control;
-            button8.Dock = DockStyle.Fill;
-            button8.FlatAppearance.BorderSize = 0;
-            button8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button8.ForeColor = Color.Black;
-            button8.Location = new Point(39, 3);
-            button8.Name = "button8";
-            button8.Size = new Size(30, 35);
-            button8.TabIndex = 2;
-            button8.Text = "✏️";
-            button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            button9.BackColor = SystemColors.Control;
-            button9.Dock = DockStyle.Fill;
-            button9.FlatAppearance.BorderSize = 0;
-            button9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button9.ForeColor = Color.Red;
-            button9.Location = new Point(3, 3);
-            button9.Name = "button9";
-            button9.Size = new Size(30, 35);
-            button9.TabIndex = 1;
-            button9.Text = "❌";
-            button9.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            button10.BackColor = SystemColors.Control;
-            button10.Dock = DockStyle.Fill;
-            button10.FlatAppearance.BorderSize = 0;
-            button10.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button10.ForeColor = Color.DarkSlateBlue;
-            button10.Location = new Point(75, 3);
-            button10.Name = "button10";
-            button10.Size = new Size(28, 35);
-            button10.TabIndex = 0;
-            button10.Text = "📄";
-            button10.UseVisualStyleBackColor = false;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 3;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel4.Controls.Add(button11, 1, 0);
-            tableLayoutPanel4.Controls.Add(button12, 0, 0);
-            tableLayoutPanel4.Controls.Add(button13, 2, 0);
-            tableLayoutPanel4.Location = new Point(428, 7);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(106, 41);
-            tableLayoutPanel4.TabIndex = 32;
-            // 
-            // button11
-            // 
-            button11.BackColor = SystemColors.Control;
-            button11.Dock = DockStyle.Fill;
-            button11.FlatAppearance.BorderSize = 0;
-            button11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button11.ForeColor = Color.Black;
-            button11.Location = new Point(39, 3);
-            button11.Name = "button11";
-            button11.Size = new Size(30, 35);
-            button11.TabIndex = 2;
-            button11.Text = "✏️";
-            button11.UseVisualStyleBackColor = false;
-            // 
-            // button12
-            // 
-            button12.BackColor = SystemColors.Control;
-            button12.Dock = DockStyle.Fill;
-            button12.FlatAppearance.BorderSize = 0;
-            button12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button12.ForeColor = Color.Red;
-            button12.Location = new Point(3, 3);
-            button12.Name = "button12";
-            button12.Size = new Size(30, 35);
-            button12.TabIndex = 1;
-            button12.Text = "❌";
-            button12.UseVisualStyleBackColor = false;
-            // 
-            // button13
-            // 
-            button13.BackColor = SystemColors.Control;
-            button13.Dock = DockStyle.Fill;
-            button13.FlatAppearance.BorderSize = 0;
-            button13.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button13.ForeColor = Color.DarkSlateBlue;
-            button13.Location = new Point(75, 3);
-            button13.Name = "button13";
-            button13.Size = new Size(28, 35);
-            button13.TabIndex = 0;
-            button13.Text = "📄";
-            button13.UseVisualStyleBackColor = false;
-            // 
             // DocumentRequest
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -892,15 +892,19 @@
             bodyTLP.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -911,10 +915,6 @@
             pageTLP.PerformLayout();
             NavPanel.ResumeLayout(false);
             NavPanel.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 

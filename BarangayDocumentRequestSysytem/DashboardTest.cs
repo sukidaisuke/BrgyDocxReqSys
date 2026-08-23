@@ -42,5 +42,25 @@ namespace BarangayDocumentRequestSysytem
         {
             LoadControl(new DocumentRequest());
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show(
+                "Are you sure you want to log out?\n\nYou will be returned to the login page.",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                this.Hide();
+
+                Login lg = new Login();
+                lg.ShowDialog();
+
+                this.Close();
+            }
+        }
     }
 }

@@ -111,6 +111,7 @@
             btnLogout.Text = "🚪  Logout";
             btnLogout.TextAlign = ContentAlignment.MiddleLeft;
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnSetting
             // 
