@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             PanelContainer = new Panel();
+            dividerPanel = new Panel();
             NavPanel = new Panel();
+            panel1 = new Panel();
             nameLabel = new Label();
             DocumentReqTitleLabel = new Label();
             buttonsTLP = new TableLayoutPanel();
@@ -62,6 +64,7 @@
             // 
             // PanelContainer
             // 
+            PanelContainer.Controls.Add(dividerPanel);
             PanelContainer.Controls.Add(NavPanel);
             PanelContainer.Controls.Add(buttonsTLP);
             PanelContainer.Controls.Add(BodyGroupBox);
@@ -72,25 +75,42 @@
             PanelContainer.TabIndex = 0;
             PanelContainer.Paint += PanelContainer_Paint;
             // 
+            // dividerPanel
+            // 
+            dividerPanel.BackColor = Color.Gray;
+            dividerPanel.Location = new Point(0, 86);
+            dividerPanel.Name = "dividerPanel";
+            dividerPanel.Size = new Size(634, 1);
+            dividerPanel.TabIndex = 35;
+            // 
             // NavPanel
             // 
-            NavPanel.BackColor = Color.DarkSlateBlue;
+            NavPanel.BackColor = SystemColors.Control;
+            NavPanel.Controls.Add(panel1);
             NavPanel.Controls.Add(nameLabel);
             NavPanel.Controls.Add(DocumentReqTitleLabel);
             NavPanel.Dock = DockStyle.Top;
             NavPanel.Location = new Point(0, 0);
             NavPanel.Name = "NavPanel";
-            NavPanel.Size = new Size(635, 100);
+            NavPanel.Size = new Size(635, 83);
             NavPanel.TabIndex = 29;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Gray;
+            panel1.Location = new Point(0, 86);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(634, 1);
+            panel1.TabIndex = 34;
             // 
             // nameLabel
             // 
             nameLabel.Anchor = AnchorStyles.Right;
             nameLabel.AutoSize = true;
-            nameLabel.BackColor = Color.DarkSlateBlue;
+            nameLabel.BackColor = SystemColors.Control;
             nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.ForeColor = Color.DarkGray;
-            nameLabel.Location = new Point(405, 12);
+            nameLabel.ForeColor = Color.Gray;
+            nameLabel.Location = new Point(408, 10);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(213, 15);
             nameLabel.TabIndex = 28;
@@ -100,11 +120,11 @@
             // 
             DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
             DocumentReqTitleLabel.AutoSize = true;
-            DocumentReqTitleLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DocumentReqTitleLabel.ForeColor = Color.White;
-            DocumentReqTitleLabel.Location = new Point(66, 34);
+            DocumentReqTitleLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            DocumentReqTitleLabel.ForeColor = Color.DarkSlateBlue;
+            DocumentReqTitleLabel.Location = new Point(66, 26);
             DocumentReqTitleLabel.Name = "DocumentReqTitleLabel";
-            DocumentReqTitleLabel.Size = new Size(106, 30);
+            DocumentReqTitleLabel.Size = new Size(123, 32);
             DocumentReqTitleLabel.TabIndex = 27;
             DocumentReqTitleLabel.Text = "Residents";
             // 
@@ -173,11 +193,11 @@
             BodyGroupBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             BodyGroupBox.Controls.Add(addResidentLabel);
             BodyGroupBox.Controls.Add(bodyTLP);
-            BodyGroupBox.Location = new Point(77, 109);
+            BodyGroupBox.Location = new Point(45, 104);
             BodyGroupBox.Margin = new Padding(0);
             BodyGroupBox.Name = "BodyGroupBox";
             BodyGroupBox.Padding = new Padding(7);
-            BodyGroupBox.Size = new Size(481, 326);
+            BodyGroupBox.Size = new Size(550, 326);
             BodyGroupBox.TabIndex = 30;
             BodyGroupBox.TabStop = false;
             // 
@@ -223,7 +243,7 @@
             bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            bodyTLP.Size = new Size(467, 289);
+            bodyTLP.Size = new Size(536, 289);
             bodyTLP.TabIndex = 0;
             // 
             // fnLabel
@@ -233,7 +253,7 @@
             fnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             fnLabel.Location = new Point(13, 22);
             fnLabel.Name = "fnLabel";
-            fnLabel.Size = new Size(128, 15);
+            fnLabel.Size = new Size(148, 15);
             fnLabel.TabIndex = 0;
             fnLabel.Text = "First Name* :";
             fnLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -245,7 +265,7 @@
             mnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             mnLabel.Location = new Point(13, 62);
             mnLabel.Name = "mnLabel";
-            mnLabel.Size = new Size(128, 15);
+            mnLabel.Size = new Size(148, 15);
             mnLabel.TabIndex = 1;
             mnLabel.Text = "Middle Name :";
             mnLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -257,7 +277,7 @@
             lnTable.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lnTable.Location = new Point(13, 102);
             lnTable.Name = "lnTable";
-            lnTable.Size = new Size(128, 15);
+            lnTable.Size = new Size(148, 15);
             lnTable.TabIndex = 2;
             lnTable.Text = "Last Name* :";
             lnTable.TextAlign = ContentAlignment.MiddleLeft;
@@ -269,7 +289,7 @@
             bdayLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             bdayLabel.Location = new Point(13, 142);
             bdayLabel.Name = "bdayLabel";
-            bdayLabel.Size = new Size(128, 15);
+            bdayLabel.Size = new Size(148, 15);
             bdayLabel.TabIndex = 3;
             bdayLabel.Text = "Birthdate* :";
             bdayLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -281,7 +301,7 @@
             zoneLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             zoneLabel.Location = new Point(13, 182);
             zoneLabel.Name = "zoneLabel";
-            zoneLabel.Size = new Size(128, 15);
+            zoneLabel.Size = new Size(148, 15);
             zoneLabel.TabIndex = 5;
             zoneLabel.Text = "Zone/Purok* :";
             zoneLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -293,7 +313,7 @@
             hnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             hnLabel.Location = new Point(13, 222);
             hnLabel.Name = "hnLabel";
-            hnLabel.Size = new Size(128, 15);
+            hnLabel.Size = new Size(148, 15);
             hnLabel.TabIndex = 6;
             hnLabel.Text = "House Number* :";
             hnLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -305,7 +325,7 @@
             cpLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             cpLabel.Location = new Point(13, 262);
             cpLabel.Name = "cpLabel";
-            cpLabel.Size = new Size(128, 15);
+            cpLabel.Size = new Size(148, 15);
             cpLabel.TabIndex = 7;
             cpLabel.Text = "Cellphone Number* :";
             cpLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -314,55 +334,55 @@
             // 
             mnCB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             mnCB.FormattingEnabled = true;
-            mnCB.Location = new Point(147, 58);
+            mnCB.Location = new Point(167, 58);
             mnCB.Name = "mnCB";
-            mnCB.Size = new Size(307, 23);
+            mnCB.Size = new Size(356, 23);
             mnCB.TabIndex = 8;
             // 
             // zoneCB
             // 
             zoneCB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             zoneCB.FormattingEnabled = true;
-            zoneCB.Location = new Point(147, 178);
+            zoneCB.Location = new Point(167, 178);
             zoneCB.Name = "zoneCB";
-            zoneCB.Size = new Size(307, 23);
+            zoneCB.Size = new Size(356, 23);
             zoneCB.TabIndex = 10;
             // 
             // bdayDTP
             // 
             bdayDTP.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            bdayDTP.Location = new Point(147, 138);
+            bdayDTP.Location = new Point(167, 138);
             bdayDTP.Name = "bdayDTP";
-            bdayDTP.Size = new Size(307, 23);
+            bdayDTP.Size = new Size(356, 23);
             bdayDTP.TabIndex = 9;
             // 
             // fnTB
             // 
             fnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             fnTB.BorderStyle = BorderStyle.FixedSingle;
-            fnTB.Location = new Point(147, 18);
+            fnTB.Location = new Point(167, 18);
             fnTB.Name = "fnTB";
             fnTB.PlaceholderText = "Juan";
-            fnTB.Size = new Size(307, 23);
+            fnTB.Size = new Size(356, 23);
             fnTB.TabIndex = 11;
             // 
             // lnTB
             // 
             lnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lnTB.BorderStyle = BorderStyle.FixedSingle;
-            lnTB.Location = new Point(147, 98);
+            lnTB.Location = new Point(167, 98);
             lnTB.Name = "lnTB";
             lnTB.PlaceholderText = "Dela Cruz";
-            lnTB.Size = new Size(307, 23);
+            lnTB.Size = new Size(356, 23);
             lnTB.TabIndex = 12;
             // 
             // hnTB
             // 
             hnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             hnTB.BorderStyle = BorderStyle.FixedSingle;
-            hnTB.Location = new Point(147, 218);
+            hnTB.Location = new Point(167, 218);
             hnTB.Name = "hnTB";
-            hnTB.Size = new Size(307, 23);
+            hnTB.Size = new Size(356, 23);
             hnTB.TabIndex = 14;
             hnTB.KeyPress += hnTB_KeyPress;
             // 
@@ -370,11 +390,11 @@
             // 
             cpTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cpTB.BorderStyle = BorderStyle.FixedSingle;
-            cpTB.Location = new Point(147, 258);
+            cpTB.Location = new Point(167, 258);
             cpTB.MaxLength = 11;
             cpTB.Name = "cpTB";
             cpTB.PlaceholderText = "09XXXXXXXXX";
-            cpTB.Size = new Size(307, 23);
+            cpTB.Size = new Size(356, 23);
             cpTB.TabIndex = 15;
             cpTB.KeyPress += cpTB_KeyPress;
             // 
@@ -423,5 +443,7 @@
         private Button addResidentButton;
         private Label zoneLabel;
         private ComboBox zoneCB;
+        private Panel dividerPanel;
+        private Panel panel1;
     }
 }

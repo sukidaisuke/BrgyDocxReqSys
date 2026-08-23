@@ -13,61 +13,34 @@ namespace BarangayDocumentRequestSysytem
         public DashboardTest()
         {
             InitializeComponent();
-        }
-        private void DocumentReqButton_Click(object sender, EventArgs e)
-        {
-            PanelContainer.Visible = true;
-
-            PanelContainer.Controls.Clear();
-
-            DocumentRequest documentRequest = new DocumentRequest();
-            documentRequest.Dock = DockStyle.Fill;
-
-            PanelContainer.Controls.Add(documentRequest);
+            LoadControl(new HomeControl());
         }
 
-        private void DashboardButton_Click(object sender, EventArgs e)
+        private void LoadControl(UserControl control)
         {
             PanelContainer.Controls.Clear();
-
-            Dashboard dashboardContent = new Dashboard(); // your dashboard UserControl
-            dashboardContent.Dock = DockStyle.Fill;
-
-            PanelContainer.Controls.Add(dashboardContent);
-            PanelContainer.Visible = true;
+            control.Dock = DockStyle.Fill;
+            PanelContainer.Controls.Add(control);
         }
 
-        private void ResidentButton_Click(object sender, EventArgs e)
+        private void btnResident_Click(object sender, EventArgs e)
         {
-            PanelContainer.Controls.Clear();
-
-            Resident residentContent = new Resident(); // your resident UserControl
-            residentContent.Dock = DockStyle.Fill;
-
-            PanelContainer.Controls.Add(residentContent);
-            PanelContainer.Visible = true;
+            LoadControl(new Resident());
         }
 
-        private void ReportButton_Click(object sender, EventArgs e)
+        private void btnSetting_Click(object sender, EventArgs e)
         {
-            PanelContainer.Controls.Clear();
-
-            Report reportContent = new Report(); // your setting UserControl
-            reportContent.Dock = DockStyle.Fill;
-
-            PanelContainer.Controls.Add(reportContent);
-            PanelContainer.Visible = true;
+            LoadControl(new Setting());
         }
 
-        private void SettingButton_Click(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            PanelContainer.Controls.Clear();
+            LoadControl(new HomeControl());
+        }
 
-            Setting settingContent = new Setting(); // your setting UserControl
-            settingContent.Dock = DockStyle.Fill;
-
-            PanelContainer.Controls.Add(settingContent);
-            PanelContainer.Visible = true;
+        private void btnPendingRequests_Click(object sender, EventArgs e)
+        {
+            LoadControl(new DocumentRequest());
         }
     }
 }

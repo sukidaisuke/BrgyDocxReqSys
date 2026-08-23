@@ -30,18 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardTest));
             NavPanel = new Panel();
+            panel1 = new Panel();
             navTLP = new TableLayoutPanel();
-            SettingButton = new Button();
-            activityButton = new Button();
-            DashboardButton = new Button();
-            ReportButton = new Button();
-            DocumentReqButton = new Button();
-            ResidentButton = new Button();
+            btnLogout = new Button();
+            btnSetting = new Button();
+            btnHome = new Button();
+            btnReport = new Button();
+            btnPendingRequests = new Button();
+            btnResident = new Button();
             logoPicBox = new PictureBox();
+            label1 = new Label();
             label12 = new Label();
             PanelContainer = new Panel();
             LabelDashboard = new Label();
             NavPanel.SuspendLayout();
+            panel1.SuspendLayout();
             navTLP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoPicBox).BeginInit();
             PanelContainer.SuspendLayout();
@@ -50,8 +53,7 @@
             // NavPanel
             // 
             NavPanel.BackColor = Color.FromArgb(12, 45, 93);
-            NavPanel.Controls.Add(navTLP);
-            NavPanel.Controls.Add(logoPicBox);
+            NavPanel.Controls.Add(panel1);
             NavPanel.Controls.Add(label12);
             NavPanel.Dock = DockStyle.Left;
             NavPanel.Location = new Point(0, 0);
@@ -59,18 +61,30 @@
             NavPanel.Size = new Size(209, 511);
             NavPanel.TabIndex = 19;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(12, 45, 93);
+            panel1.Controls.Add(navTLP);
+            panel1.Controls.Add(logoPicBox);
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(209, 511);
+            panel1.TabIndex = 21;
+            // 
             // navTLP
             // 
             navTLP.Anchor = AnchorStyles.None;
             navTLP.ColumnCount = 1;
             navTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            navTLP.Controls.Add(SettingButton, 0, 5);
-            navTLP.Controls.Add(activityButton, 0, 4);
-            navTLP.Controls.Add(DashboardButton, 0, 0);
-            navTLP.Controls.Add(ReportButton, 0, 3);
-            navTLP.Controls.Add(DocumentReqButton, 0, 2);
-            navTLP.Controls.Add(ResidentButton, 0, 1);
-            navTLP.Location = new Point(31, 90);
+            navTLP.Controls.Add(btnLogout, 0, 5);
+            navTLP.Controls.Add(btnSetting, 0, 4);
+            navTLP.Controls.Add(btnHome, 0, 0);
+            navTLP.Controls.Add(btnReport, 0, 3);
+            navTLP.Controls.Add(btnPendingRequests, 0, 2);
+            navTLP.Controls.Add(btnResident, 0, 1);
+            navTLP.Location = new Point(0, 76);
             navTLP.Name = "navTLP";
             navTLP.RowCount = 6;
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
@@ -79,117 +93,132 @@
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             navTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            navTLP.Size = new Size(172, 363);
+            navTLP.Size = new Size(209, 374);
             navTLP.TabIndex = 24;
             // 
-            // SettingButton
+            // btnLogout
             // 
-            SettingButton.Dock = DockStyle.Fill;
-            SettingButton.FlatAppearance.BorderSize = 0;
-            SettingButton.FlatStyle = FlatStyle.Flat;
-            SettingButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SettingButton.ForeColor = Color.White;
-            SettingButton.Location = new Point(3, 303);
-            SettingButton.Name = "SettingButton";
-            SettingButton.Size = new Size(166, 57);
-            SettingButton.TabIndex = 23;
-            SettingButton.Text = "⚙️ Settings";
-            SettingButton.TextAlign = ContentAlignment.MiddleLeft;
-            SettingButton.UseVisualStyleBackColor = true;
-            SettingButton.Click += SettingButton_Click;
+            btnLogout.Dock = DockStyle.Fill;
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Location = new Point(3, 303);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Padding = new Padding(20, 0, 0, 0);
+            btnLogout.Size = new Size(203, 68);
+            btnLogout.TabIndex = 23;
+            btnLogout.Text = "🚪  Logout";
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.UseVisualStyleBackColor = true;
             // 
-            // activityButton
+            // btnSetting
             // 
-            activityButton.Dock = DockStyle.Fill;
-            activityButton.FlatAppearance.BorderSize = 0;
-            activityButton.FlatStyle = FlatStyle.Flat;
-            activityButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            activityButton.ForeColor = Color.White;
-            activityButton.Location = new Point(3, 243);
-            activityButton.Name = "activityButton";
-            activityButton.Size = new Size(166, 54);
-            activityButton.TabIndex = 21;
-            activityButton.Text = "📁 Activity Log";
-            activityButton.TextAlign = ContentAlignment.MiddleLeft;
-            activityButton.UseVisualStyleBackColor = true;
+            btnSetting.Dock = DockStyle.Fill;
+            btnSetting.FlatAppearance.BorderSize = 0;
+            btnSetting.FlatStyle = FlatStyle.Flat;
+            btnSetting.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSetting.ForeColor = Color.White;
+            btnSetting.Location = new Point(3, 243);
+            btnSetting.Name = "btnSetting";
+            btnSetting.Padding = new Padding(20, 0, 0, 0);
+            btnSetting.Size = new Size(203, 54);
+            btnSetting.TabIndex = 21;
+            btnSetting.Text = "⚙️ Settings";
+            btnSetting.TextAlign = ContentAlignment.MiddleLeft;
+            btnSetting.UseVisualStyleBackColor = true;
+            btnSetting.Click += btnSetting_Click;
             // 
-            // DashboardButton
+            // btnHome
             // 
-            DashboardButton.BackColor = Color.FromArgb(12, 45, 93);
-            DashboardButton.Dock = DockStyle.Fill;
-            DashboardButton.FlatAppearance.BorderSize = 0;
-            DashboardButton.FlatStyle = FlatStyle.Flat;
-            DashboardButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DashboardButton.ForeColor = Color.White;
-            DashboardButton.Location = new Point(3, 3);
-            DashboardButton.Name = "DashboardButton";
-            DashboardButton.Size = new Size(166, 54);
-            DashboardButton.TabIndex = 21;
-            DashboardButton.Text = "🏠 Dashboard";
-            DashboardButton.TextAlign = ContentAlignment.MiddleLeft;
-            DashboardButton.UseVisualStyleBackColor = false;
-            DashboardButton.Click += DashboardButton_Click;
+            btnHome.BackColor = Color.FromArgb(12, 45, 93);
+            btnHome.Dock = DockStyle.Fill;
+            btnHome.FlatAppearance.BorderSize = 0;
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHome.ForeColor = Color.White;
+            btnHome.Location = new Point(3, 3);
+            btnHome.Name = "btnHome";
+            btnHome.Padding = new Padding(20, 0, 0, 0);
+            btnHome.Size = new Size(203, 54);
+            btnHome.TabIndex = 21;
+            btnHome.Text = "🏠 Home";
+            btnHome.TextAlign = ContentAlignment.MiddleLeft;
+            btnHome.UseVisualStyleBackColor = false;
+            btnHome.Click += btnHome_Click;
             // 
-            // ReportButton
+            // btnReport
             // 
-            ReportButton.Dock = DockStyle.Fill;
-            ReportButton.FlatAppearance.BorderSize = 0;
-            ReportButton.FlatStyle = FlatStyle.Flat;
-            ReportButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ReportButton.ForeColor = Color.White;
-            ReportButton.Location = new Point(3, 183);
-            ReportButton.Name = "ReportButton";
-            ReportButton.Size = new Size(166, 54);
-            ReportButton.TabIndex = 21;
-            ReportButton.Text = "📊 Reports";
-            ReportButton.TextAlign = ContentAlignment.MiddleLeft;
-            ReportButton.UseVisualStyleBackColor = true;
-            ReportButton.Click += ReportButton_Click;
+            btnReport.Dock = DockStyle.Fill;
+            btnReport.FlatAppearance.BorderSize = 0;
+            btnReport.FlatStyle = FlatStyle.Flat;
+            btnReport.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReport.ForeColor = Color.White;
+            btnReport.Location = new Point(3, 183);
+            btnReport.Name = "btnReport";
+            btnReport.Padding = new Padding(20, 0, 0, 0);
+            btnReport.Size = new Size(203, 54);
+            btnReport.TabIndex = 21;
+            btnReport.Text = "📊 Reports";
+            btnReport.TextAlign = ContentAlignment.MiddleLeft;
+            btnReport.UseVisualStyleBackColor = true;
             // 
-            // DocumentReqButton
+            // btnPendingRequests
             // 
-            DocumentReqButton.BackColor = Color.FromArgb(12, 45, 93);
-            DocumentReqButton.Dock = DockStyle.Fill;
-            DocumentReqButton.FlatAppearance.BorderSize = 0;
-            DocumentReqButton.FlatStyle = FlatStyle.Flat;
-            DocumentReqButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DocumentReqButton.ForeColor = Color.White;
-            DocumentReqButton.Location = new Point(3, 123);
-            DocumentReqButton.Name = "DocumentReqButton";
-            DocumentReqButton.Size = new Size(166, 54);
-            DocumentReqButton.TabIndex = 21;
-            DocumentReqButton.Text = "📄 Document\n       Request";
-            DocumentReqButton.TextAlign = ContentAlignment.MiddleLeft;
-            DocumentReqButton.UseVisualStyleBackColor = false;
-            DocumentReqButton.Click += DocumentReqButton_Click;
+            btnPendingRequests.BackColor = Color.FromArgb(12, 45, 93);
+            btnPendingRequests.Dock = DockStyle.Fill;
+            btnPendingRequests.FlatAppearance.BorderSize = 0;
+            btnPendingRequests.FlatStyle = FlatStyle.Flat;
+            btnPendingRequests.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPendingRequests.ForeColor = Color.White;
+            btnPendingRequests.Location = new Point(3, 123);
+            btnPendingRequests.Name = "btnPendingRequests";
+            btnPendingRequests.Padding = new Padding(20, 0, 0, 0);
+            btnPendingRequests.Size = new Size(203, 54);
+            btnPendingRequests.TabIndex = 21;
+            btnPendingRequests.Text = "🕒 Pending Request";
+            btnPendingRequests.TextAlign = ContentAlignment.MiddleLeft;
+            btnPendingRequests.UseVisualStyleBackColor = false;
+            btnPendingRequests.Click += btnPendingRequests_Click;
             // 
-            // ResidentButton
+            // btnResident
             // 
-            ResidentButton.Dock = DockStyle.Fill;
-            ResidentButton.FlatAppearance.BorderSize = 0;
-            ResidentButton.FlatStyle = FlatStyle.Flat;
-            ResidentButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ResidentButton.ForeColor = Color.White;
-            ResidentButton.Location = new Point(3, 63);
-            ResidentButton.Name = "ResidentButton";
-            ResidentButton.Size = new Size(166, 54);
-            ResidentButton.TabIndex = 21;
-            ResidentButton.Text = "👤 Residents";
-            ResidentButton.TextAlign = ContentAlignment.MiddleLeft;
-            ResidentButton.UseVisualStyleBackColor = true;
-            ResidentButton.Click += ResidentButton_Click;
+            btnResident.Dock = DockStyle.Fill;
+            btnResident.FlatAppearance.BorderSize = 0;
+            btnResident.FlatStyle = FlatStyle.Flat;
+            btnResident.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnResident.ForeColor = Color.White;
+            btnResident.Location = new Point(3, 63);
+            btnResident.Name = "btnResident";
+            btnResident.Padding = new Padding(20, 0, 0, 0);
+            btnResident.Size = new Size(203, 54);
+            btnResident.TabIndex = 21;
+            btnResident.Text = "👤 Residents";
+            btnResident.TextAlign = ContentAlignment.MiddleLeft;
+            btnResident.UseVisualStyleBackColor = true;
+            btnResident.Click += btnResident_Click;
             // 
             // logoPicBox
             // 
             logoPicBox.BackColor = Color.FromArgb(12, 45, 93);
             logoPicBox.Image = (Image)resources.GetObject("logoPicBox.Image");
             logoPicBox.InitialImage = (Image)resources.GetObject("logoPicBox.InitialImage");
-            logoPicBox.Location = new Point(0, -2);
+            logoPicBox.Location = new Point(3, 3);
             logoPicBox.Name = "logoPicBox";
-            logoPicBox.Size = new Size(209, 72);
+            logoPicBox.Size = new Size(155, 52);
             logoPicBox.SizeMode = PictureBoxSizeMode.Zoom;
             logoPicBox.TabIndex = 22;
             logoPicBox.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(31, 180);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 20);
+            label1.TabIndex = 2;
             // 
             // label12
             // 
@@ -232,6 +261,8 @@
             Text = "DashboardTest";
             NavPanel.ResumeLayout(false);
             NavPanel.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             navTLP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)logoPicBox).EndInit();
             PanelContainer.ResumeLayout(false);
@@ -241,16 +272,18 @@
 
         #endregion
         private Panel NavPanel;
-        private Button activityButton;
-        private Button ReportButton;
-        private Button DocumentReqButton;
-        private Button ResidentButton;
-        private Button DashboardButton;
         private Label label12;
         private Panel PanelContainer;
-        private PictureBox logoPicBox;
         private Label LabelDashboard;
-        private Button SettingButton;
+        private Panel panel1;
         private TableLayoutPanel navTLP;
+        private Button btnLogout;
+        private Button btnSetting;
+        private Button btnHome;
+        private Button btnReport;
+        private Button btnPendingRequests;
+        private Button btnResident;
+        private PictureBox logoPicBox;
+        private Label label1;
     }
 }

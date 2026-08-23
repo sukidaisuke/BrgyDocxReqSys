@@ -35,5 +35,20 @@ namespace BarangayDocumentRequestSysytem
         {
 
         }
+
+        private void searchTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PanelContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

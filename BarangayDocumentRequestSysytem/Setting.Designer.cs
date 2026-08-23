@@ -41,6 +41,7 @@
             NavPanel = new Panel();
             nameLabel = new Label();
             DocumentReqTitleLabel = new Label();
+            dividerPanel = new Panel();
             PanelContainer.SuspendLayout();
             menuPanel.SuspendLayout();
             menuTLP.SuspendLayout();
@@ -49,6 +50,7 @@
             // 
             // PanelContainer
             // 
+            PanelContainer.Controls.Add(dividerPanel);
             PanelContainer.Controls.Add(contentPanel);
             PanelContainer.Controls.Add(menuPanel);
             PanelContainer.Controls.Add(NavPanel);
@@ -61,19 +63,19 @@
             // contentPanel
             // 
             contentPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            contentPanel.Location = new Point(221, 100);
+            contentPanel.Location = new Point(205, 89);
             contentPanel.Name = "contentPanel";
             contentPanel.Size = new Size(414, 412);
             contentPanel.TabIndex = 32;
             // 
             // menuPanel
             // 
-            menuPanel.BackColor = Color.FromArgb(0, 0, 64);
+            menuPanel.BackColor = SystemColors.Control;
             menuPanel.Controls.Add(menuTLP);
             menuPanel.Dock = DockStyle.Left;
-            menuPanel.Location = new Point(0, 100);
+            menuPanel.Location = new Point(0, 83);
             menuPanel.Name = "menuPanel";
-            menuPanel.Size = new Size(220, 412);
+            menuPanel.Size = new Size(181, 429);
             menuPanel.TabIndex = 31;
             // 
             // menuTLP
@@ -86,7 +88,7 @@
             menuTLP.Controls.Add(accountBTN, 0, 1);
             menuTLP.Controls.Add(brgyInfoBTN, 0, 0);
             menuTLP.Controls.Add(docxSettingBTN, 0, 2);
-            menuTLP.Location = new Point(36, 25);
+            menuTLP.Location = new Point(17, 35);
             menuTLP.Name = "menuTLP";
             menuTLP.RowCount = 6;
             menuTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
@@ -100,11 +102,11 @@
             // 
             // aboutBTN
             // 
-            aboutBTN.BackColor = Color.FromArgb(0, 0, 64);
+            aboutBTN.BackColor = SystemColors.Control;
             aboutBTN.FlatAppearance.BorderSize = 0;
             aboutBTN.FlatStyle = FlatStyle.Flat;
             aboutBTN.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            aboutBTN.ForeColor = Color.White;
+            aboutBTN.ForeColor = Color.DarkSlateBlue;
             aboutBTN.Location = new Point(3, 303);
             aboutBTN.Name = "aboutBTN";
             aboutBTN.Size = new Size(141, 54);
@@ -116,11 +118,11 @@
             // 
             // dbmsBTN
             // 
-            dbmsBTN.BackColor = Color.FromArgb(0, 0, 64);
+            dbmsBTN.BackColor = SystemColors.Control;
             dbmsBTN.FlatAppearance.BorderSize = 0;
             dbmsBTN.FlatStyle = FlatStyle.Flat;
             dbmsBTN.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dbmsBTN.ForeColor = Color.White;
+            dbmsBTN.ForeColor = Color.DarkSlateBlue;
             dbmsBTN.Location = new Point(3, 243);
             dbmsBTN.Name = "dbmsBTN";
             dbmsBTN.Size = new Size(141, 54);
@@ -131,11 +133,11 @@
             // 
             // signBTN
             // 
-            signBTN.BackColor = Color.FromArgb(0, 0, 64);
+            signBTN.BackColor = SystemColors.Control;
             signBTN.FlatAppearance.BorderSize = 0;
             signBTN.FlatStyle = FlatStyle.Flat;
             signBTN.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            signBTN.ForeColor = Color.White;
+            signBTN.ForeColor = Color.DarkSlateBlue;
             signBTN.Location = new Point(3, 183);
             signBTN.Name = "signBTN";
             signBTN.Size = new Size(141, 54);
@@ -147,11 +149,11 @@
             // 
             // accountBTN
             // 
-            accountBTN.BackColor = Color.FromArgb(0, 0, 64);
+            accountBTN.BackColor = SystemColors.Control;
             accountBTN.FlatAppearance.BorderSize = 0;
             accountBTN.FlatStyle = FlatStyle.Flat;
             accountBTN.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accountBTN.ForeColor = Color.White;
+            accountBTN.ForeColor = Color.DarkSlateBlue;
             accountBTN.Location = new Point(3, 63);
             accountBTN.Name = "accountBTN";
             accountBTN.Size = new Size(141, 54);
@@ -163,11 +165,11 @@
             // 
             // brgyInfoBTN
             // 
-            brgyInfoBTN.BackColor = Color.FromArgb(0, 0, 64);
+            brgyInfoBTN.BackColor = SystemColors.Control;
             brgyInfoBTN.FlatAppearance.BorderSize = 0;
             brgyInfoBTN.FlatStyle = FlatStyle.Flat;
             brgyInfoBTN.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            brgyInfoBTN.ForeColor = Color.White;
+            brgyInfoBTN.ForeColor = Color.DarkSlateBlue;
             brgyInfoBTN.Location = new Point(3, 3);
             brgyInfoBTN.Name = "brgyInfoBTN";
             brgyInfoBTN.Size = new Size(141, 54);
@@ -179,11 +181,11 @@
             // 
             // docxSettingBTN
             // 
-            docxSettingBTN.BackColor = Color.FromArgb(0, 0, 64);
+            docxSettingBTN.BackColor = SystemColors.Control;
             docxSettingBTN.FlatAppearance.BorderSize = 0;
             docxSettingBTN.FlatStyle = FlatStyle.Flat;
             docxSettingBTN.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            docxSettingBTN.ForeColor = Color.White;
+            docxSettingBTN.ForeColor = Color.DarkSlateBlue;
             docxSettingBTN.Location = new Point(3, 123);
             docxSettingBTN.Name = "docxSettingBTN";
             docxSettingBTN.Size = new Size(141, 54);
@@ -195,23 +197,23 @@
             // 
             // NavPanel
             // 
-            NavPanel.BackColor = Color.DarkSlateBlue;
+            NavPanel.BackColor = SystemColors.Control;
             NavPanel.Controls.Add(nameLabel);
             NavPanel.Controls.Add(DocumentReqTitleLabel);
             NavPanel.Dock = DockStyle.Top;
             NavPanel.Location = new Point(0, 0);
             NavPanel.Name = "NavPanel";
-            NavPanel.Size = new Size(635, 100);
+            NavPanel.Size = new Size(635, 83);
             NavPanel.TabIndex = 30;
             // 
             // nameLabel
             // 
             nameLabel.Anchor = AnchorStyles.Right;
             nameLabel.AutoSize = true;
-            nameLabel.BackColor = Color.DarkSlateBlue;
+            nameLabel.BackColor = SystemColors.Control;
             nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.ForeColor = Color.DarkGray;
-            nameLabel.Location = new Point(405, 12);
+            nameLabel.ForeColor = Color.Gray;
+            nameLabel.Location = new Point(408, 10);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(213, 15);
             nameLabel.TabIndex = 29;
@@ -221,13 +223,21 @@
             // 
             DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
             DocumentReqTitleLabel.AutoSize = true;
-            DocumentReqTitleLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DocumentReqTitleLabel.ForeColor = Color.White;
-            DocumentReqTitleLabel.Location = new Point(66, 34);
+            DocumentReqTitleLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            DocumentReqTitleLabel.ForeColor = Color.DarkSlateBlue;
+            DocumentReqTitleLabel.Location = new Point(66, 26);
             DocumentReqTitleLabel.Name = "DocumentReqTitleLabel";
-            DocumentReqTitleLabel.Size = new Size(93, 30);
+            DocumentReqTitleLabel.Size = new Size(106, 32);
             DocumentReqTitleLabel.TabIndex = 27;
             DocumentReqTitleLabel.Text = "Settings";
+            // 
+            // dividerPanel
+            // 
+            dividerPanel.BackColor = Color.Gray;
+            dividerPanel.Location = new Point(0, 86);
+            dividerPanel.Name = "dividerPanel";
+            dividerPanel.Size = new Size(634, 1);
+            dividerPanel.TabIndex = 33;
             // 
             // Setting
             // 
@@ -259,5 +269,6 @@
         private Button aboutBTN;
         private Button brgyInfoBTN;
         private Panel contentPanel;
+        private Panel dividerPanel;
     }
 }

@@ -15,5 +15,9 @@ namespace BarangayDocumentRequestSysytem
             InitializeComponent();
         }
 
+        private void bodyTLP_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
