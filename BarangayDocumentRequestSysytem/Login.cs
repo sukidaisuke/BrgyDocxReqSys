@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BCrypt.Net;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -99,22 +101,61 @@ namespace BarangayDocumentRequestSysytem
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string username = userName.Text.Trim();
-            string pass = password.Text;
+            string usernameInput = userName.Text.Trim();
+            string passInput = password.Text;
 
-            if (username == "admin" && pass == "admin67")
+            // 1. Keep hardcoded Admin check
+            if (usernameInput == "admin" && passInput == "admin67")
             {
                 this.Hide();
                 DashboardTest Db = new DashboardTest();
                 Db.ShowDialog();
                 this.Close();
+                return;
             }
-            else
+
+            // 2. Check MySQL Database for regular users
+            string connectionString = "Server=localhost;Database=barangay_db;Uid=root;Pwd=;";
+            string query = "SELECT password FROM users WHERE username = @username";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                this.Hide();
-                UserPage up = new UserPage();
-                up.ShowDialog();
-                this.Close();
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", usernameInput);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null) // User exists in database
+                        {
+                            string storedHash = result.ToString();
+
+                            // Verify typed password against stored BCrypt hash
+                            if (BCrypt.Net.BCrypt.Verify(passInput, storedHash))
+                            {
+                                this.Hide();
+                                UserPage up = new UserPage();
+                                up.ShowDialog();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

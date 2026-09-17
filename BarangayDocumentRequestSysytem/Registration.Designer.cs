@@ -230,6 +230,7 @@
             // 
             securityQuestions.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             securityQuestions.FormattingEnabled = true;
+            securityQuestions.Items.AddRange(new object[] { "What is your favourite food?" });
             securityQuestions.Location = new Point(113, 261);
             securityQuestions.Name = "securityQuestions";
             securityQuestions.Size = new Size(313, 24);
@@ -285,6 +286,7 @@
             // 
             purokNumber.Font = new Font("Gill Sans MT", 8.25F);
             purokNumber.FormattingEnabled = true;
+            purokNumber.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" });
             purokNumber.Location = new Point(346, 181);
             purokNumber.Name = "purokNumber";
             purokNumber.Size = new Size(80, 24);
@@ -323,6 +325,7 @@
             // 
             sexIdentification.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sexIdentification.FormattingEnabled = true;
+            sexIdentification.Items.AddRange(new object[] { "Male", "Female", "Other" });
             sexIdentification.Location = new Point(346, 128);
             sexIdentification.Name = "sexIdentification";
             sexIdentification.Size = new Size(80, 24);
@@ -419,6 +422,7 @@
             createPassword.Name = "createPassword";
             createPassword.Size = new Size(150, 20);
             createPassword.TabIndex = 3;
+            createPassword.UseSystemPasswordChar = true;
             // 
             // label3
             // 
