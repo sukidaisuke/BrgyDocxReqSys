@@ -258,7 +258,8 @@
             // 
             securityQuestions.Font = new Font("Gill Sans MT", 9F);
             securityQuestions.FormattingEnabled = true;
-            securityQuestions.Location = new Point(181, 360);
+            securityQuestions.Items.AddRange(new object[] { "What is your favourite food?", "What is your favourite game?", "Who is your favourite person?" });
+            securityQuestions.Location = new Point(113, 261);
             securityQuestions.Name = "securityQuestions";
             securityQuestions.Size = new Size(431, 26);
             securityQuestions.TabIndex = 24;
@@ -313,7 +314,8 @@
             // 
             purokNumber.Font = new Font("Gill Sans MT", 8.25F);
             purokNumber.FormattingEnabled = true;
-            purokNumber.Location = new Point(491, 254);
+            purokNumber.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            purokNumber.Location = new Point(346, 181);
             purokNumber.Name = "purokNumber";
             purokNumber.Size = new Size(121, 24);
             purokNumber.TabIndex = 18;
@@ -351,10 +353,12 @@
             // 
             sexIdentification.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sexIdentification.FormattingEnabled = true;
-            sexIdentification.Location = new Point(491, 200);
+            sexIdentification.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            sexIdentification.Location = new Point(346, 128);
             sexIdentification.Name = "sexIdentification";
             sexIdentification.Size = new Size(121, 24);
             sexIdentification.TabIndex = 13;
+            sexIdentification.SelectedIndexChanged += sexIdentification_SelectedIndexChanged;
             // 
             // label10
             // 
@@ -446,6 +450,7 @@
             createPassword.Name = "createPassword";
             createPassword.Size = new Size(216, 21);
             createPassword.TabIndex = 3;
+            createPassword.UseSystemPasswordChar = true;
             // 
             // label3
             // 
