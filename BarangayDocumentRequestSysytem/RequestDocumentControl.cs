@@ -36,10 +36,10 @@ namespace BarangayDocumentRequestSysytem
 
         private void cmbDocumentType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string requirements = "";
-            bool needsAttachment = true;
+            if (cmbDocumentType.SelectedItem == null) return;
 
-            bool isOthers = cmbDocumentType.SelectedItem?.ToString() == "Others: (Please specify on the field below)";
+            string selectedType = cmbDocumentType.SelectedItem.ToString();
+            bool isOthers = selectedType == "Others: (Please specify on the field below)";
 
             txtOtherDocType.Enabled = isOthers;
             txtOtherDocType.BackColor = isOthers ? Color.White : Color.FromArgb(243, 244, 246);
@@ -49,8 +49,10 @@ namespace BarangayDocumentRequestSysytem
                 txtOtherDocType.Clear();
             }
 
+            string requirements = "";
+            bool needsAttachment = true; // Default to true for valid choices
 
-            switch (cmbDocumentType.SelectedItem.ToString())
+            switch (selectedType)
             {
                 case "Barangay Clearance":
                     requirements = "Valid ID";
@@ -61,7 +63,23 @@ namespace BarangayDocumentRequestSysytem
                 case "Certificate of Residency":
                     requirements = "Valid ID, Proof of Address";
                     break;
+                case "Certificate of Good Moral Character":
+                    requirements = "Valid ID, Barangay Clearance";
+                    break;
+                case "Business Permit Endorsement":
+                    requirements = "DTI Registration, Proof of Business Address";
+                    break;
+                case "Barangay ID":
+                    requirements = "Valid ID, 1x1 Photo";
+                    break;
+                case "Certificate of No Pending Case":
+                    requirements = "Court Documents";
+                    break;
+                case "Others: (Please specify on the field below)":
+                    requirements = "Supporting documents for your request";
+                    break;
                 default:
+                    // Only index 0 ("-- Select Document Type --") reaches here
                     requirements = "None";
                     needsAttachment = false;
                     break;
