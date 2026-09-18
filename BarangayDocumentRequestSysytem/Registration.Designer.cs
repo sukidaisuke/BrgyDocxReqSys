@@ -284,6 +284,7 @@
             // 
             // purokNumber
             // 
+            purokNumber.DropDownStyle = ComboBoxStyle.DropDownList;
             purokNumber.Font = new Font("Gill Sans MT", 8.25F);
             purokNumber.FormattingEnabled = true;
             purokNumber.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" });
@@ -323,6 +324,7 @@
             // 
             // sexIdentification
             // 
+            sexIdentification.DropDownStyle = ComboBoxStyle.DropDownList;
             sexIdentification.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sexIdentification.FormattingEnabled = true;
             sexIdentification.Items.AddRange(new object[] { "Male", "Female", "Other" });

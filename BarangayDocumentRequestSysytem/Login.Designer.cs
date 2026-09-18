@@ -211,6 +211,7 @@
             userName.Name = "userName";
             userName.Size = new Size(179, 16);
             userName.TabIndex = 0;
+            userName.TextChanged += userName_TextChanged;
             // 
             // label2
             // 
