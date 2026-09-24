@@ -266,13 +266,9 @@
 
         private GroupBox bodyGB;
         private TableLayoutPanel brgyInfoTLP;
-        private Label brgyCaptLabel;
         private Label pwConfirmLabel;
         private Label passwordLabel;
         private Label usernameLabel;
-        private Label username;
-        private Label brgyCapt;
-        private Label emailLabel;
         private Label email;
         private Label ohLabel;
         private Label oh;

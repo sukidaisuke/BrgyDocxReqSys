@@ -175,9 +175,9 @@
             lblShowingCount.AutoSize = true;
             lblShowingCount.Location = new Point(17, 422);
             lblShowingCount.Name = "lblShowingCount";
-            lblShowingCount.Size = new Size(155, 15);
+            lblShowingCount.Size = new Size(95, 15);
             lblShowingCount.TabIndex = 20;
-            lblShowingCount.Text = "Showing 1 to 4 of 4 requests";
+            lblShowingCount.Text = "Total Requests: 1";
             // 
             // button1
             // 

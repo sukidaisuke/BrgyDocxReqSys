@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#nullable disable
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,16 +22,9 @@ namespace BarangayDocumentRequestSysytem
             InitializeComponent();
         }
 
-        public static class UserSession
-        {
-            public static string Username { get; set; }
-            public static int UserId { get; set; }
-        }
-
         private void txtPurpose_TextChanged(object sender, EventArgs e)
         {
             lblPurposeCount.Text = $"{txtPurpose.Text.Length}/300";
-
 
         }
 

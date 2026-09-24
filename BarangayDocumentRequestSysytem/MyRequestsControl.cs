@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient; // My sql driver
+﻿#nullable disable
+using MySql.Data.MySqlClient; // MySQL driver
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,17 +12,34 @@ namespace BarangayDocumentRequestSysytem
 {
     public partial class MyRequestsControl : UserControl
     {
-
         private readonly string connectionString = "Server=localhost;Port=3306;Database=barangay_db;Uid=root;Pwd=;";
-
-        public static class UserSession
-        {
-            public static string Username { get; set; }
-        }
 
         public MyRequestsControl()
         {
             InitializeComponent();
+            ApplyCustomGridStyling();
+        }
+
+        private void ApplyCustomGridStyling()
+        {
+            // 1. Disable default OS styles so custom header colors take effect
+            dgvMyRequests.EnableHeadersVisualStyles = false;
+
+            // 2. Custom header colors matching your UI theme
+            Color headerBg = Color.FromArgb(186, 218, 231); // Light blue header color
+            Color headerFg = Color.FromArgb(30, 41, 59);    // Dark slate text
+
+            dgvMyRequests.ColumnHeadersDefaultCellStyle.BackColor = headerBg;
+            dgvMyRequests.ColumnHeadersDefaultCellStyle.ForeColor = headerFg;
+
+            // 3. Prevent column headers from turning blue when selected or clicked
+            dgvMyRequests.ColumnHeadersDefaultCellStyle.SelectionBackColor = headerBg;
+            dgvMyRequests.ColumnHeadersDefaultCellStyle.SelectionForeColor = headerFg;
+
+            // 4. Configure full-row selection with a clean, modern soft highlight
+            dgvMyRequests.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMyRequests.DefaultCellStyle.SelectionBackColor = Color.FromArgb(224, 242, 254);
+            dgvMyRequests.DefaultCellStyle.SelectionForeColor = Color.FromArgb(15, 23, 42);
         }
 
         private void MyRequestsControl_Load(object sender, EventArgs e)
@@ -29,24 +47,37 @@ namespace BarangayDocumentRequestSysytem
             LoadUserRequests();
         }
 
+        private void MyRequestsControl_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                LoadUserRequests();
+            }
+        }
+
         public void LoadUserRequests()
         {
             dgvMyRequests.Rows.Clear();
 
-            // Check if a user is logged in
-            if (string.IsNullOrEmpty(UserSession.Username)) UserSession.Username = " ";
+            int currentUserId = UserSession.UserId;
 
-            string query = @"SELECT RequestId, DocumentType, RequestedAt, Status 
+            // Session Check
+            if (currentUserId <= 0)
+            {
+                lblShowingCount.Text = "Please log in to view your requests.";
+                return;
+            }
+
+            string query = @"SELECT reference_no, document_type, request_at, status 
                     FROM documentrequests 
-                    WHERE RequesterUsername = @Username 
-                    ORDER BY RequestedAt DESC";
+                    WHERE user_id = @UserId 
+                    ORDER BY request_at DESC";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    // Bind global logged-in username
-                    cmd.Parameters.AddWithValue("@Username", UserSession.Username);
+                    cmd.Parameters.AddWithValue("@UserId", currentUserId);
 
                     try
                     {
@@ -55,20 +86,34 @@ namespace BarangayDocumentRequestSysytem
                         {
                             while (reader.Read())
                             {
-                                int reqId = Convert.ToInt32(reader["RequestId"]);
-                                string refNo = $"REQ-{reqId:D4}"; // Formats 1 into REQ-0001
-                                string docType = reader["DocumentType"].ToString();
-                                string dateReq = Convert.ToDateTime(reader["RequestedAt"]).ToString("MMM dd, yyyy");
-                                string status = reader["Status"].ToString();
+                                string refNo = reader["reference_no"] != DBNull.Value
+                                    ? reader["reference_no"].ToString()
+                                    : "N/A";
+                                string docType = reader["document_type"].ToString();
+
+                                string dateReq = reader["request_at"] != DBNull.Value
+                                    ? Convert.ToDateTime(reader["request_at"]).ToString("MMM dd, yyyy")
+                                    : "N/A";
+
+                                string status = reader["status"] != DBNull.Value
+                                    ? reader["status"].ToString()
+                                    : "Pending";
 
                                 dgvMyRequests.Rows.Add(refNo, docType, dateReq, status);
                             }
                         }
 
+                        // Footer counter text
                         int totalRows = dgvMyRequests.Rows.Count;
-                        lblShowingCount.Text = totalRows > 0
-                            ? $"Showing 1 to {totalRows} of {totalRows} requests"
-                            : "No request history found.";
+                        if (totalRows == 0)
+                        {
+                            lblShowingCount.Text = "No request history found.";
+                        }
+                        else
+                        {
+                            string pluralSuffix = totalRows == 1 ? "request" : "requests";
+                            lblShowingCount.Text = $"Total: {totalRows} {pluralSuffix}";
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -76,6 +121,10 @@ namespace BarangayDocumentRequestSysytem
                     }
                 }
             }
+
+            // Remove automatic default row/header highlight when opening the view
+            dgvMyRequests.ClearSelection();
+            dgvMyRequests.CurrentCell = null;
         }
 
         private void dgvMyRequests_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -106,7 +155,5 @@ namespace BarangayDocumentRequestSysytem
                 e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
-
-
     }
 }
