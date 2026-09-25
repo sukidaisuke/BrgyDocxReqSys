@@ -36,51 +36,51 @@
             pictureBox3 = new PictureBox();
             label13 = new Label();
             label9 = new Label();
-            label5 = new Label();
+            lblTotalCount = new Label();
             panel2 = new Panel();
             pictureBox2 = new PictureBox();
             label14 = new Label();
             label10 = new Label();
-            label6 = new Label();
+            lblPendingCount = new Label();
             panel3 = new Panel();
             pictureBox4 = new PictureBox();
             label15 = new Label();
             label11 = new Label();
-            label7 = new Label();
+            lblCompletedCount = new Label();
             panel4 = new Panel();
             pictureBox1 = new PictureBox();
             label16 = new Label();
             label12 = new Label();
-            label8 = new Label();
+            lblRejectedCount = new Label();
             panel5 = new Panel();
             panel11 = new Panel();
             panel13 = new Panel();
-            label24 = new Label();
-            label18 = new Label();
-            label20 = new Label();
+            lblReq2Status = new Label();
+            lblReq2Title = new Label();
+            lblReq2Date = new Label();
             pictureBox7 = new PictureBox();
             panel12 = new Panel();
             panel10 = new Panel();
             panel15 = new Panel();
-            label25 = new Label();
-            label22 = new Label();
-            label19 = new Label();
+            lblReq3Status = new Label();
+            lblReq3Date = new Label();
+            lblReq3Title = new Label();
             pictureBox8 = new PictureBox();
             panel8 = new Panel();
             panel14 = new Panel();
-            label26 = new Label();
-            label21 = new Label();
-            label17 = new Label();
+            lblReq1Status = new Label();
+            lblReq1Date = new Label();
+            lblReq1Title = new Label();
             pictureBox6 = new PictureBox();
             panel9 = new Panel();
             linkLabel1 = new LinkLabel();
             label1 = new Label();
             panel6 = new Panel();
             panel16 = new Panel();
-            label29 = new Label();
-            label27 = new Label();
+            lblAnnouncementDate = new Label();
+            lblAnnouncementBody = new Label();
             label23 = new Label();
-            label28 = new Label();
+            lblAnnouncementTitle = new Label();
             pictureBox9 = new PictureBox();
             panel7 = new Panel();
             pictureBox5 = new PictureBox();
@@ -123,7 +123,6 @@
             lblWelcome.Size = new Size(191, 26);
             lblWelcome.TabIndex = 0;
             lblWelcome.Text = "Welcome back, Juan!";
-            lblWelcome.Click += label1_Click;
             // 
             // lblSubtext
             // 
@@ -154,7 +153,7 @@
             panel1.Controls.Add(pictureBox3);
             panel1.Controls.Add(label13);
             panel1.Controls.Add(label9);
-            panel1.Controls.Add(label5);
+            panel1.Controls.Add(lblTotalCount);
             panel1.Location = new Point(13, 81);
             panel1.Name = "panel1";
             panel1.Size = new Size(135, 80);
@@ -195,15 +194,15 @@
             label9.TabIndex = 9;
             label9.Text = "Total Requests";
             // 
-            // label5
+            // lblTotalCount
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Impact", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(42, 4);
-            label5.Name = "label5";
-            label5.Size = new Size(30, 36);
-            label5.TabIndex = 8;
-            label5.Text = "3";
+            lblTotalCount.AutoSize = true;
+            lblTotalCount.Font = new Font("Impact", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotalCount.Location = new Point(42, 4);
+            lblTotalCount.Name = "lblTotalCount";
+            lblTotalCount.Size = new Size(31, 36);
+            lblTotalCount.TabIndex = 8;
+            lblTotalCount.Text = "0";
             // 
             // panel2
             // 
@@ -211,7 +210,7 @@
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(label10);
-            panel2.Controls.Add(label6);
+            panel2.Controls.Add(lblPendingCount);
             panel2.Location = new Point(154, 81);
             panel2.Name = "panel2";
             panel2.Size = new Size(135, 80);
@@ -252,15 +251,15 @@
             label10.TabIndex = 10;
             label10.Text = "Pending";
             // 
-            // label6
+            // lblPendingCount
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Impact", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(42, 4);
-            label6.Name = "label6";
-            label6.Size = new Size(26, 36);
-            label6.TabIndex = 9;
-            label6.Text = "1";
+            lblPendingCount.AutoSize = true;
+            lblPendingCount.Font = new Font("Impact", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPendingCount.Location = new Point(42, 4);
+            lblPendingCount.Name = "lblPendingCount";
+            lblPendingCount.Size = new Size(31, 36);
+            lblPendingCount.TabIndex = 9;
+            lblPendingCount.Text = "0";
             // 
             // panel3
             // 
@@ -268,7 +267,7 @@
             panel3.Controls.Add(pictureBox4);
             panel3.Controls.Add(label15);
             panel3.Controls.Add(label11);
-            panel3.Controls.Add(label7);
+            panel3.Controls.Add(lblCompletedCount);
             panel3.Location = new Point(295, 81);
             panel3.Name = "panel3";
             panel3.Size = new Size(135, 80);
@@ -309,15 +308,15 @@
             label11.TabIndex = 11;
             label11.Text = "Completed";
             // 
-            // label7
+            // lblCompletedCount
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Impact", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(50, 4);
-            label7.Name = "label7";
-            label7.Size = new Size(30, 36);
-            label7.TabIndex = 10;
-            label7.Text = "2";
+            lblCompletedCount.AutoSize = true;
+            lblCompletedCount.Font = new Font("Impact", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCompletedCount.Location = new Point(50, 4);
+            lblCompletedCount.Name = "lblCompletedCount";
+            lblCompletedCount.Size = new Size(31, 36);
+            lblCompletedCount.TabIndex = 10;
+            lblCompletedCount.Text = "0";
             // 
             // panel4
             // 
@@ -325,7 +324,7 @@
             panel4.Controls.Add(pictureBox1);
             panel4.Controls.Add(label16);
             panel4.Controls.Add(label12);
-            panel4.Controls.Add(label8);
+            panel4.Controls.Add(lblRejectedCount);
             panel4.Location = new Point(437, 81);
             panel4.Name = "panel4";
             panel4.Size = new Size(135, 80);
@@ -366,15 +365,15 @@
             label12.TabIndex = 12;
             label12.Text = "Rejected";
             // 
-            // label8
+            // lblRejectedCount
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Impact", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(48, 4);
-            label8.Name = "label8";
-            label8.Size = new Size(31, 36);
-            label8.TabIndex = 10;
-            label8.Text = "0";
+            lblRejectedCount.AutoSize = true;
+            lblRejectedCount.Font = new Font("Impact", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblRejectedCount.Location = new Point(48, 4);
+            lblRejectedCount.Name = "lblRejectedCount";
+            lblRejectedCount.Size = new Size(31, 36);
+            lblRejectedCount.TabIndex = 10;
+            lblRejectedCount.Text = "0";
             // 
             // panel5
             // 
@@ -395,8 +394,8 @@
             // 
             panel11.BackColor = SystemColors.ControlLightLight;
             panel11.Controls.Add(panel13);
-            panel11.Controls.Add(label18);
-            panel11.Controls.Add(label20);
+            panel11.Controls.Add(lblReq2Title);
+            panel11.Controls.Add(lblReq2Date);
             panel11.Controls.Add(pictureBox7);
             panel11.Controls.Add(panel12);
             panel11.Location = new Point(10, 111);
@@ -407,46 +406,46 @@
             // panel13
             // 
             panel13.BackColor = Color.FromArgb(220, 252, 231);
-            panel13.Controls.Add(label24);
+            panel13.Controls.Add(lblReq2Status);
             panel13.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel13.Location = new Point(179, 3);
             panel13.Name = "panel13";
             panel13.Size = new Size(74, 27);
             panel13.TabIndex = 21;
             // 
-            // label24
+            // lblReq2Status
             // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label24.ForeColor = Color.SeaGreen;
-            label24.Location = new Point(4, 4);
-            label24.Name = "label24";
-            label24.Size = new Size(64, 18);
-            label24.TabIndex = 0;
-            label24.Text = "Completed";
+            lblReq2Status.AutoSize = true;
+            lblReq2Status.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq2Status.ForeColor = Color.SeaGreen;
+            lblReq2Status.Location = new Point(4, 4);
+            lblReq2Status.Name = "lblReq2Status";
+            lblReq2Status.Size = new Size(64, 18);
+            lblReq2Status.TabIndex = 0;
+            lblReq2Status.Text = "Completed";
             // 
-            // label18
+            // lblReq2Title
             // 
-            label18.AutoSize = true;
-            label18.BackColor = Color.Transparent;
-            label18.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label18.Location = new Point(43, 12);
-            label18.Name = "label18";
-            label18.Size = new Size(118, 18);
-            label18.TabIndex = 20;
-            label18.Text = "Indigency Certificate";
+            lblReq2Title.AutoSize = true;
+            lblReq2Title.BackColor = Color.Transparent;
+            lblReq2Title.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq2Title.Location = new Point(43, 12);
+            lblReq2Title.Name = "lblReq2Title";
+            lblReq2Title.Size = new Size(118, 18);
+            lblReq2Title.TabIndex = 20;
+            lblReq2Title.Text = "Indigency Certificate";
             // 
-            // label20
+            // lblReq2Date
             // 
-            label20.AutoSize = true;
-            label20.BackColor = Color.Transparent;
-            label20.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label20.ForeColor = SystemColors.ControlDarkDark;
-            label20.Location = new Point(43, 30);
-            label20.Name = "label20";
-            label20.Size = new Size(116, 16);
-            label20.TabIndex = 15;
-            label20.Text = "July 17, 2026 • 7:33 AM";
+            lblReq2Date.AutoSize = true;
+            lblReq2Date.BackColor = Color.Transparent;
+            lblReq2Date.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq2Date.ForeColor = SystemColors.ControlDarkDark;
+            lblReq2Date.Location = new Point(43, 30);
+            lblReq2Date.Name = "lblReq2Date";
+            lblReq2Date.Size = new Size(116, 16);
+            lblReq2Date.TabIndex = 15;
+            lblReq2Date.Text = "July 17, 2026 • 7:33 AM";
             // 
             // pictureBox7
             // 
@@ -471,8 +470,8 @@
             // 
             panel10.BackColor = SystemColors.ButtonHighlight;
             panel10.Controls.Add(panel15);
-            panel10.Controls.Add(label22);
-            panel10.Controls.Add(label19);
+            panel10.Controls.Add(lblReq3Date);
+            panel10.Controls.Add(lblReq3Title);
             panel10.Controls.Add(pictureBox8);
             panel10.Location = new Point(10, 181);
             panel10.Name = "panel10";
@@ -482,46 +481,46 @@
             // panel15
             // 
             panel15.BackColor = Color.FromArgb(220, 252, 231);
-            panel15.Controls.Add(label25);
+            panel15.Controls.Add(lblReq3Status);
             panel15.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel15.Location = new Point(179, 3);
             panel15.Name = "panel15";
             panel15.Size = new Size(74, 27);
             panel15.TabIndex = 23;
             // 
-            // label25
+            // lblReq3Status
             // 
-            label25.AutoSize = true;
-            label25.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label25.ForeColor = Color.SeaGreen;
-            label25.Location = new Point(4, 4);
-            label25.Name = "label25";
-            label25.Size = new Size(64, 18);
-            label25.TabIndex = 1;
-            label25.Text = "Completed";
+            lblReq3Status.AutoSize = true;
+            lblReq3Status.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq3Status.ForeColor = Color.SeaGreen;
+            lblReq3Status.Location = new Point(4, 4);
+            lblReq3Status.Name = "lblReq3Status";
+            lblReq3Status.Size = new Size(64, 18);
+            lblReq3Status.TabIndex = 1;
+            lblReq3Status.Text = "Completed";
             // 
-            // label22
+            // lblReq3Date
             // 
-            label22.AutoSize = true;
-            label22.BackColor = Color.Transparent;
-            label22.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label22.ForeColor = SystemColors.ControlDarkDark;
-            label22.Location = new Point(46, 28);
-            label22.Name = "label22";
-            label22.Size = new Size(125, 16);
-            label22.TabIndex = 22;
-            label22.Text = "May 25, 2025 • 10:30 AM";
+            lblReq3Date.AutoSize = true;
+            lblReq3Date.BackColor = Color.Transparent;
+            lblReq3Date.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq3Date.ForeColor = SystemColors.ControlDarkDark;
+            lblReq3Date.Location = new Point(46, 28);
+            lblReq3Date.Name = "lblReq3Date";
+            lblReq3Date.Size = new Size(125, 16);
+            lblReq3Date.TabIndex = 22;
+            lblReq3Date.Text = "May 25, 2025 • 10:30 AM";
             // 
-            // label19
+            // lblReq3Title
             // 
-            label19.AutoSize = true;
-            label19.BackColor = Color.Transparent;
-            label19.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label19.Location = new Point(43, 10);
-            label19.Name = "label19";
-            label19.Size = new Size(135, 18);
-            label19.TabIndex = 21;
-            label19.Text = "Certificate of Residency";
+            lblReq3Title.AutoSize = true;
+            lblReq3Title.BackColor = Color.Transparent;
+            lblReq3Title.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq3Title.Location = new Point(43, 10);
+            lblReq3Title.Name = "lblReq3Title";
+            lblReq3Title.Size = new Size(135, 18);
+            lblReq3Title.TabIndex = 21;
+            lblReq3Title.Text = "Certificate of Residency";
             // 
             // pictureBox8
             // 
@@ -539,8 +538,8 @@
             // 
             panel8.BackColor = SystemColors.ControlLightLight;
             panel8.Controls.Add(panel14);
-            panel8.Controls.Add(label21);
-            panel8.Controls.Add(label17);
+            panel8.Controls.Add(lblReq1Date);
+            panel8.Controls.Add(lblReq1Title);
             panel8.Controls.Add(pictureBox6);
             panel8.Controls.Add(panel9);
             panel8.Location = new Point(10, 41);
@@ -551,46 +550,46 @@
             // panel14
             // 
             panel14.BackColor = Color.FromArgb(254, 243, 199);
-            panel14.Controls.Add(label26);
+            panel14.Controls.Add(lblReq1Status);
             panel14.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel14.Location = new Point(179, 3);
             panel14.Name = "panel14";
             panel14.Size = new Size(74, 27);
             panel14.TabIndex = 22;
             // 
-            // label26
+            // lblReq1Status
             // 
-            label26.AutoSize = true;
-            label26.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label26.ForeColor = Color.DarkGoldenrod;
-            label26.Location = new Point(14, 4);
-            label26.Name = "label26";
-            label26.Size = new Size(46, 18);
-            label26.TabIndex = 1;
-            label26.Text = "Pending";
+            lblReq1Status.AutoSize = true;
+            lblReq1Status.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq1Status.ForeColor = Color.DarkGoldenrod;
+            lblReq1Status.Location = new Point(14, 4);
+            lblReq1Status.Name = "lblReq1Status";
+            lblReq1Status.Size = new Size(46, 18);
+            lblReq1Status.TabIndex = 1;
+            lblReq1Status.Text = "Pending";
             // 
-            // label21
+            // lblReq1Date
             // 
-            label21.AutoSize = true;
-            label21.BackColor = Color.Transparent;
-            label21.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label21.ForeColor = SystemColors.ControlDarkDark;
-            label21.Location = new Point(46, 30);
-            label21.Name = "label21";
-            label21.Size = new Size(125, 16);
-            label21.TabIndex = 20;
-            label21.Text = "Sept 25, 2026 • 12:30 PM";
+            lblReq1Date.AutoSize = true;
+            lblReq1Date.BackColor = Color.Transparent;
+            lblReq1Date.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq1Date.ForeColor = SystemColors.ControlDarkDark;
+            lblReq1Date.Location = new Point(46, 30);
+            lblReq1Date.Name = "lblReq1Date";
+            lblReq1Date.Size = new Size(125, 16);
+            lblReq1Date.TabIndex = 20;
+            lblReq1Date.Text = "Sept 25, 2026 • 12:30 PM";
             // 
-            // label17
+            // lblReq1Title
             // 
-            label17.AutoSize = true;
-            label17.BackColor = Color.Transparent;
-            label17.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label17.Location = new Point(46, 12);
-            label17.Name = "label17";
-            label17.Size = new Size(115, 18);
-            label17.TabIndex = 16;
-            label17.Text = "Barangay Clearance";
+            lblReq1Title.AutoSize = true;
+            lblReq1Title.BackColor = Color.Transparent;
+            lblReq1Title.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReq1Title.Location = new Point(46, 12);
+            lblReq1Title.Name = "lblReq1Title";
+            lblReq1Title.Size = new Size(115, 18);
+            lblReq1Title.TabIndex = 16;
+            lblReq1Title.Text = "Barangay Clearance";
             // 
             // pictureBox6
             // 
@@ -648,39 +647,39 @@
             // 
             // panel16
             // 
-            panel16.Controls.Add(label29);
-            panel16.Controls.Add(label27);
+            panel16.Controls.Add(lblAnnouncementDate);
+            panel16.Controls.Add(lblAnnouncementBody);
             panel16.Controls.Add(label23);
-            panel16.Controls.Add(label28);
+            panel16.Controls.Add(lblAnnouncementTitle);
             panel16.Controls.Add(pictureBox9);
             panel16.Location = new Point(11, 40);
             panel16.Name = "panel16";
             panel16.Size = new Size(255, 125);
             panel16.TabIndex = 20;
             // 
-            // label29
+            // lblAnnouncementDate
             // 
-            label29.AutoSize = true;
-            label29.BackColor = Color.Transparent;
-            label29.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.ForeColor = SystemColors.ControlDarkDark;
-            label29.Location = new Point(55, 105);
-            label29.Name = "label29";
-            label29.Size = new Size(116, 16);
-            label29.TabIndex = 23;
-            label29.Text = "July 17, 2026 • 7:33 AM";
+            lblAnnouncementDate.AutoSize = true;
+            lblAnnouncementDate.BackColor = Color.Transparent;
+            lblAnnouncementDate.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAnnouncementDate.ForeColor = SystemColors.ControlDarkDark;
+            lblAnnouncementDate.Location = new Point(55, 105);
+            lblAnnouncementDate.Name = "lblAnnouncementDate";
+            lblAnnouncementDate.Size = new Size(116, 16);
+            lblAnnouncementDate.TabIndex = 23;
+            lblAnnouncementDate.Text = "July 17, 2026 • 7:33 AM";
             // 
-            // label27
+            // lblAnnouncementBody
             // 
-            label27.AutoSize = true;
-            label27.BackColor = Color.Transparent;
-            label27.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label27.ForeColor = SystemColors.ControlDarkDark;
-            label27.Location = new Point(55, 47);
-            label27.Name = "label27";
-            label27.Size = new Size(179, 54);
-            label27.TabIndex = 22;
-            label27.Text = "Please be advised that the claiming \r\nof documents is now from \r\n8:00 AM - 4:00 PM.";
+            lblAnnouncementBody.AutoSize = true;
+            lblAnnouncementBody.BackColor = Color.Transparent;
+            lblAnnouncementBody.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAnnouncementBody.ForeColor = SystemColors.ControlDarkDark;
+            lblAnnouncementBody.Location = new Point(55, 47);
+            lblAnnouncementBody.Name = "lblAnnouncementBody";
+            lblAnnouncementBody.Size = new Size(179, 54);
+            lblAnnouncementBody.TabIndex = 22;
+            lblAnnouncementBody.Text = "Please be advised that the claiming \r\nof documents is now from \r\n8:00 AM - 4:00 PM.";
             // 
             // label23
             // 
@@ -693,17 +692,16 @@
             label23.Size = new Size(0, 16);
             label23.TabIndex = 21;
             // 
-            // label28
+            // lblAnnouncementTitle
             // 
-            label28.AutoSize = true;
-            label28.BackColor = Color.Transparent;
-            label28.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label28.Location = new Point(55, 6);
-            label28.Name = "label28";
-            label28.Size = new Size(183, 36);
-            label28.TabIndex = 16;
-            label28.Text = "New Schedule for Claiming \r\nDocuments";
-            label28.Click += label28_Click;
+            lblAnnouncementTitle.AutoSize = true;
+            lblAnnouncementTitle.BackColor = Color.Transparent;
+            lblAnnouncementTitle.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAnnouncementTitle.Location = new Point(55, 6);
+            lblAnnouncementTitle.Name = "lblAnnouncementTitle";
+            lblAnnouncementTitle.Size = new Size(183, 36);
+            lblAnnouncementTitle.TabIndex = 16;
+            lblAnnouncementTitle.Text = "New Schedule for Claiming \r\nDocuments";
             // 
             // pictureBox9
             // 
@@ -801,7 +799,6 @@
             Controls.Add(lblWelcome);
             Name = "HomeControl";
             Size = new Size(586, 447);
-            Load += HomeControl_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -852,10 +849,10 @@
         private Panel panel2;
         private Panel panel3;
         private Panel panel4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
+        private Label lblTotalCount;
+        private Label lblPendingCount;
+        private Label lblCompletedCount;
+        private Label lblRejectedCount;
         private Label label13;
         private Label label9;
         private Label label14;
@@ -880,26 +877,26 @@
         private Panel panel10;
         private Panel panel8;
         private Panel panel9;
-        private Label label18;
-        private Label label20;
+        private Label lblReq2Title;
+        private Label lblReq2Date;
         private PictureBox pictureBox7;
-        private Label label22;
-        private Label label19;
+        private Label lblReq3Date;
+        private Label lblReq3Title;
         private PictureBox pictureBox8;
-        private Label label21;
-        private Label label17;
+        private Label lblReq1Date;
+        private Label lblReq1Title;
         private PictureBox pictureBox6;
         private Panel panel13;
-        private Label label24;
+        private Label lblReq2Status;
         private Panel panel15;
-        private Label label25;
+        private Label lblReq3Status;
         private Panel panel14;
-        private Label label26;
+        private Label lblReq1Status;
         private Panel panel16;
-        private Label label28;
+        private Label lblAnnouncementTitle;
         private PictureBox pictureBox9;
-        private Label label29;
-        private Label label27;
+        private Label lblAnnouncementDate;
+        private Label lblAnnouncementBody;
         private Label label23;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;

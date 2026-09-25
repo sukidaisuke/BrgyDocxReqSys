@@ -2,11 +2,6 @@
 using BCrypt.Net;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BarangayDocumentRequestSysytem
@@ -31,7 +26,6 @@ namespace BarangayDocumentRequestSysytem
             this.Hide();
             Registration Rg = new Registration();
             Rg.ShowDialog();
-            Rg = null;
             this.Close();
         }
 
@@ -43,7 +37,7 @@ namespace BarangayDocumentRequestSysytem
             // 1. Hardcoded Admin check
             if (usernameInput == "admin" && passInput == "admin67")
             {
-                UserSession.UserId = 0; // Admin ID
+                UserSession.UserId = 0;
                 UserSession.Username = usernameInput;
 
                 this.Hide();
@@ -53,7 +47,7 @@ namespace BarangayDocumentRequestSysytem
                 return;
             }
 
-            // 2. Check MySQL Database for regular users (Fetches both 'id' and 'password')
+            // 2. Query user record from MySQL
             string connectionString = "Server=localhost;Database=barangay_db;Uid=root;Pwd=;";
             string query = "SELECT user_id, password FROM users WHERE username = @username";
 
@@ -67,15 +61,26 @@ namespace BarangayDocumentRequestSysytem
                         cmd.Parameters.AddWithValue("@username", usernameInput);
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read()) // User found
+                            if (reader.Read())
                             {
                                 int fetchUserId = Convert.ToInt32(reader["user_id"]);
-                                string storedHash = reader["password"].ToString();
+                                string storedHash = reader["password"]?.ToString() ?? "";
 
-                                // Verify typed password against stored BCrypt hash
-                                if (BCrypt.Net.BCrypt.Verify(passInput, storedHash))
+                                bool isPasswordValid = false;
+
+                                try
                                 {
-                                    // Store values globally in UserSession
+                                    isPasswordValid = BCrypt.Net.BCrypt.Verify(passInput, storedHash);
+                                }
+                                catch
+                                {
+                                    // Fallback for non-BCrypt test passwords in database
+                                    isPasswordValid = (passInput == storedHash);
+                                }
+
+                                if (isPasswordValid)
+                                {
+                                    // Store user details in session
                                     UserSession.UserId = fetchUserId;
                                     UserSession.Username = usernameInput;
 
@@ -103,31 +108,13 @@ namespace BarangayDocumentRequestSysytem
             }
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            if (password.UseSystemPasswordChar)
-            {
-                password.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                password.UseSystemPasswordChar = true;
-            }
+            password.UseSystemPasswordChar = !password.UseSystemPasswordChar;
         }
 
-        private void password_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void userName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void Login_Load(object sender, EventArgs e) { }
+        private void password_TextChanged(object sender, EventArgs e) { }
+        private void userName_TextChanged(object sender, EventArgs e) { }
     }
 }

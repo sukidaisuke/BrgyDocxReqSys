@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             NavPanel = new Panel();
-            nameLabel = new Label();
             AddResidentButton = new Button();
             DocumentReqTitleLabel = new Label();
             bodyGB = new GroupBox();
@@ -86,6 +85,7 @@
             searchGB = new GroupBox();
             searchBTN = new Button();
             searchTB = new TextBox();
+            lblDate = new Label();
             NavPanel.SuspendLayout();
             bodyGB.SuspendLayout();
             pageTLP.SuspendLayout();
@@ -103,7 +103,7 @@
             // 
             NavPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NavPanel.BackColor = SystemColors.Control;
-            NavPanel.Controls.Add(nameLabel);
+            NavPanel.Controls.Add(lblDate);
             NavPanel.Controls.Add(AddResidentButton);
             NavPanel.Controls.Add(DocumentReqTitleLabel);
             NavPanel.Location = new Point(0, 0);
@@ -111,20 +111,6 @@
             NavPanel.Size = new Size(635, 83);
             NavPanel.TabIndex = 28;
             NavPanel.Paint += NavPanel_Paint;
-            // 
-            // nameLabel
-            // 
-            nameLabel.Anchor = AnchorStyles.Right;
-            nameLabel.AutoSize = true;
-            nameLabel.BackColor = SystemColors.Control;
-            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.ForeColor = Color.Gray;
-            nameLabel.Location = new Point(408, 10);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(213, 15);
-            nameLabel.TabIndex = 28;
-            nameLabel.Text = "Barangay Document Request System";
-            nameLabel.Click += nameLabel_Click;
             // 
             // AddResidentButton
             // 
@@ -816,6 +802,18 @@
             searchTB.TabIndex = 31;
             searchTB.TextChanged += searchTB_TextChanged;
             // 
+            // lblDate
+            // 
+            lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDate.ForeColor = Color.DimGray;
+            lblDate.Location = new Point(449, 10);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(172, 18);
+            lblDate.TabIndex = 37;
+            lblDate.Text = "📅 August 8, 2026 | Saturday";
+            // 
             // Resident
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -844,7 +842,6 @@
         #endregion
 
         private Panel NavPanel;
-        private Label nameLabel;
         private Button AddResidentButton;
         private Label DocumentReqTitleLabel;
         private GroupBox bodyGB;
@@ -901,5 +898,6 @@
         private Button searchBTN;
         private TextBox searchTB;
         private Panel dividerPanel;
+        private Label lblDate;
     }
 }

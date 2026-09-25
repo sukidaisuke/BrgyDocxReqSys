@@ -30,41 +30,41 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnnouncementsControl));
             panelAnnouncementsCard = new Panel();
-            label2 = new Label();
-            lblDate = new Label();
-            lblSubtext = new Label();
-            lblWelcome = new Label();
-            lblAllAnnouncements = new Label();
-            cmbFilterCategory = new ComboBox();
-            panel1 = new Panel();
-            pictureBox9 = new PictureBox();
-            label28 = new Label();
-            label27 = new Label();
-            label29 = new Label();
-            panel14 = new Panel();
-            label26 = new Label();
-            panel2 = new Panel();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            pictureBox1 = new PictureBox();
             panel3 = new Panel();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             pictureBox2 = new PictureBox();
+            panel2 = new Panel();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            pictureBox1 = new PictureBox();
+            panel1 = new Panel();
+            panel14 = new Panel();
+            label26 = new Label();
+            label29 = new Label();
+            label27 = new Label();
+            label28 = new Label();
+            pictureBox9 = new PictureBox();
+            cmbFilterCategory = new ComboBox();
+            lblAllAnnouncements = new Label();
+            label2 = new Label();
+            lblDate = new Label();
+            lblSubtext = new Label();
+            lblWelcome = new Label();
             lblShowingCount = new Label();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             panelAnnouncementsCard.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
-            panel14.SuspendLayout();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
             // 
             // panelAnnouncementsCard
@@ -82,155 +82,65 @@
             panelAnnouncementsCard.Size = new Size(559, 332);
             panelAnnouncementsCard.TabIndex = 19;
             // 
-            // label2
+            // panel3
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Gill Sans MT", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.InactiveCaption;
-            label2.Location = new Point(3, 19);
-            label2.Name = "label2";
-            label2.Size = new Size(550, 23);
-            label2.TabIndex = 19;
-            label2.Text = "____________________________________________________________";
+            panel3.BackColor = Color.AliceBlue;
+            panel3.Controls.Add(label6);
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(pictureBox2);
+            panel3.Location = new Point(12, 239);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(532, 79);
+            panel3.TabIndex = 25;
             // 
-            // lblDate
+            // label6
             // 
-            lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblDate.AutoSize = true;
-            lblDate.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDate.ForeColor = Color.DimGray;
-            lblDate.Location = new Point(402, 17);
-            lblDate.Name = "lblDate";
-            lblDate.Size = new Size(172, 18);
-            lblDate.TabIndex = 18;
-            lblDate.Text = "📅 August 8, 2026 | Saturday";
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = SystemColors.ControlDarkDark;
+            label6.Location = new Point(58, 60);
+            label6.Name = "label6";
+            label6.Size = new Size(125, 16);
+            label6.TabIndex = 24;
+            label6.Text = "May 22, 2025 • 11:28 AM";
             // 
-            // lblSubtext
+            // label7
             // 
-            lblSubtext.AutoSize = true;
-            lblSubtext.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSubtext.ForeColor = Color.DimGray;
-            lblSubtext.Location = new Point(15, 40);
-            lblSubtext.Name = "lblSubtext";
-            lblSubtext.Size = new Size(302, 18);
-            lblSubtext.TabIndex = 17;
-            lblSubtext.Text = "Stay updated with the latest news and announcements";
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ControlDarkDark;
+            label7.Location = new Point(58, 21);
+            label7.Name = "label7";
+            label7.Size = new Size(442, 36);
+            label7.TabIndex = 23;
+            label7.Text = "The system will undergo maintenance on May 25, 2025 from 12PM - 1PM. Thank you for \r\nunderstanding";
             // 
-            // lblWelcome
+            // label8
             // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.Font = new Font("Impact", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblWelcome.ForeColor = Color.DarkSlateBlue;
-            lblWelcome.Location = new Point(13, 14);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(151, 26);
-            lblWelcome.TabIndex = 16;
-            lblWelcome.Text = "Announcements";
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.DarkSlateBlue;
+            label8.Location = new Point(58, 3);
+            label8.Name = "label8";
+            label8.Size = new Size(137, 18);
+            label8.TabIndex = 18;
+            label8.Text = "System Maintenance";
             // 
-            // lblAllAnnouncements
+            // pictureBox2
             // 
-            lblAllAnnouncements.AutoSize = true;
-            lblAllAnnouncements.Font = new Font("Gill Sans MT", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAllAnnouncements.ForeColor = SystemColors.ActiveCaptionText;
-            lblAllAnnouncements.Location = new Point(12, 10);
-            lblAllAnnouncements.Name = "lblAllAnnouncements";
-            lblAllAnnouncements.Size = new Size(131, 21);
-            lblAllAnnouncements.TabIndex = 20;
-            lblAllAnnouncements.Text = "All Announcements";
-            // 
-            // cmbFilterCategory
-            // 
-            cmbFilterCategory.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbFilterCategory.FormattingEnabled = true;
-            cmbFilterCategory.Items.AddRange(new object[] { "All", "Last 3 months", "Last 6 months" });
-            cmbFilterCategory.Location = new Point(423, 9);
-            cmbFilterCategory.Name = "cmbFilterCategory";
-            cmbFilterCategory.Size = new Size(121, 23);
-            cmbFilterCategory.TabIndex = 21;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.AliceBlue;
-            panel1.Controls.Add(panel14);
-            panel1.Controls.Add(label29);
-            panel1.Controls.Add(label27);
-            panel1.Controls.Add(label28);
-            panel1.Controls.Add(pictureBox9);
-            panel1.Location = new Point(12, 57);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(532, 72);
-            panel1.TabIndex = 22;
-            // 
-            // pictureBox9
-            // 
-            pictureBox9.BackColor = Color.Transparent;
-            pictureBox9.BackgroundImageLayout = ImageLayout.None;
-            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(3, 3);
-            pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(49, 36);
-            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox9.TabIndex = 17;
-            pictureBox9.TabStop = false;
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.BackColor = Color.Transparent;
-            label28.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label28.ForeColor = Color.DarkSlateBlue;
-            label28.Location = new Point(58, 3);
-            label28.Name = "label28";
-            label28.Size = new Size(254, 18);
-            label28.TabIndex = 18;
-            label28.Text = "New Schedule for Claiming Documents";
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.BackColor = Color.Transparent;
-            label27.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label27.ForeColor = SystemColors.ControlDarkDark;
-            label27.Location = new Point(58, 21);
-            label27.Name = "label27";
-            label27.Size = new Size(405, 18);
-            label27.TabIndex = 23;
-            label27.Text = "Please be advised that the claiming of documents is now from 8:00 AM - 4:00 PM.";
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.BackColor = Color.Transparent;
-            label29.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.ForeColor = SystemColors.ControlDarkDark;
-            label29.Location = new Point(60, 48);
-            label29.Name = "label29";
-            label29.Size = new Size(116, 16);
-            label29.TabIndex = 24;
-            label29.Text = "July 17, 2026 • 7:33 AM";
-            // 
-            // panel14
-            // 
-            panel14.BackColor = Color.LightSteelBlue;
-            panel14.Controls.Add(label26);
-            panel14.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel14.Location = new Point(484, 0);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(48, 32);
-            panel14.TabIndex = 23;
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Font = new Font("Gill Sans MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label26.ForeColor = Color.MidnightBlue;
-            label26.Location = new Point(4, 6);
-            label26.Name = "label26";
-            label26.Size = new Size(43, 18);
-            label26.TabIndex = 1;
-            label26.Text = "New !!";
-            label26.Click += label26_Click;
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.BackgroundImageLayout = ImageLayout.None;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(3, 3);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(49, 36);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 17;
+            pictureBox2.TabStop = false;
             // 
             // panel2
             // 
@@ -292,66 +202,153 @@
             pictureBox1.TabIndex = 17;
             pictureBox1.TabStop = false;
             // 
-            // panel3
+            // panel1
             // 
-            panel3.BackColor = Color.AliceBlue;
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(label7);
-            panel3.Controls.Add(label8);
-            panel3.Controls.Add(pictureBox2);
-            panel3.Location = new Point(12, 239);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(532, 79);
-            panel3.TabIndex = 25;
+            panel1.BackColor = Color.AliceBlue;
+            panel1.Controls.Add(panel14);
+            panel1.Controls.Add(label29);
+            panel1.Controls.Add(label27);
+            panel1.Controls.Add(label28);
+            panel1.Controls.Add(pictureBox9);
+            panel1.Location = new Point(12, 57);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(532, 72);
+            panel1.TabIndex = 22;
             // 
-            // label6
+            // panel14
             // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = SystemColors.ControlDarkDark;
-            label6.Location = new Point(58, 60);
-            label6.Name = "label6";
-            label6.Size = new Size(125, 16);
-            label6.TabIndex = 24;
-            label6.Text = "May 22, 2025 • 11:28 AM";
-            label6.Click += label6_Click;
+            panel14.BackColor = Color.LightSteelBlue;
+            panel14.Controls.Add(label26);
+            panel14.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panel14.Location = new Point(484, 0);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(48, 32);
+            panel14.TabIndex = 23;
             // 
-            // label7
+            // label26
             // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.ForeColor = SystemColors.ControlDarkDark;
-            label7.Location = new Point(58, 21);
-            label7.Name = "label7";
-            label7.Size = new Size(442, 36);
-            label7.TabIndex = 23;
-            label7.Text = "The system will undergo maintenance on May 25, 2025 from 12PM - 1PM. Thank you for \r\nunderstanding";
+            label26.AutoSize = true;
+            label26.Font = new Font("Gill Sans MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label26.ForeColor = Color.MidnightBlue;
+            label26.Location = new Point(4, 6);
+            label26.Name = "label26";
+            label26.Size = new Size(43, 18);
+            label26.TabIndex = 1;
             // 
-            // label8
+            // label29
             // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.Transparent;
-            label8.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.DarkSlateBlue;
-            label8.Location = new Point(58, 3);
-            label8.Name = "label8";
-            label8.Size = new Size(137, 18);
-            label8.TabIndex = 18;
-            label8.Text = "System Maintenance";
+            label29.AutoSize = true;
+            label29.BackColor = Color.Transparent;
+            label29.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label29.ForeColor = SystemColors.ControlDarkDark;
+            label29.Location = new Point(60, 48);
+            label29.Name = "label29";
+            label29.Size = new Size(116, 16);
+            label29.TabIndex = 24;
+            label29.Text = "July 17, 2026 • 7:33 AM";
             // 
-            // pictureBox2
+            // label27
             // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.BackgroundImageLayout = ImageLayout.None;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(49, 36);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 17;
-            pictureBox2.TabStop = false;
+            label27.AutoSize = true;
+            label27.BackColor = Color.Transparent;
+            label27.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label27.ForeColor = SystemColors.ControlDarkDark;
+            label27.Location = new Point(58, 21);
+            label27.Name = "label27";
+            label27.Size = new Size(405, 18);
+            label27.TabIndex = 23;
+            label27.Text = "Please be advised that the claiming of documents is now from 8:00 AM - 4:00 PM.";
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.BackColor = Color.Transparent;
+            label28.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label28.ForeColor = Color.DarkSlateBlue;
+            label28.Location = new Point(58, 3);
+            label28.Name = "label28";
+            label28.Size = new Size(254, 18);
+            label28.TabIndex = 18;
+            label28.Text = "New Schedule for Claiming Documents";
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.BackColor = Color.Transparent;
+            pictureBox9.BackgroundImageLayout = ImageLayout.None;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(3, 3);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(49, 36);
+            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox9.TabIndex = 17;
+            pictureBox9.TabStop = false;
+            // 
+            // cmbFilterCategory
+            // 
+            cmbFilterCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFilterCategory.FormattingEnabled = true;
+            cmbFilterCategory.Items.AddRange(new object[] { "All", "Last 3 months", "Last 6 months" });
+            cmbFilterCategory.Location = new Point(423, 9);
+            cmbFilterCategory.Name = "cmbFilterCategory";
+            cmbFilterCategory.Size = new Size(121, 23);
+            cmbFilterCategory.TabIndex = 21;
+            // 
+            // lblAllAnnouncements
+            // 
+            lblAllAnnouncements.AutoSize = true;
+            lblAllAnnouncements.Font = new Font("Gill Sans MT", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAllAnnouncements.ForeColor = SystemColors.ActiveCaptionText;
+            lblAllAnnouncements.Location = new Point(12, 10);
+            lblAllAnnouncements.Name = "lblAllAnnouncements";
+            lblAllAnnouncements.Size = new Size(131, 21);
+            lblAllAnnouncements.TabIndex = 20;
+            lblAllAnnouncements.Text = "All Announcements";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Gill Sans MT", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.InactiveCaption;
+            label2.Location = new Point(3, 19);
+            label2.Name = "label2";
+            label2.Size = new Size(550, 23);
+            label2.TabIndex = 19;
+            label2.Text = "____________________________________________________________";
+            // 
+            // lblDate
+            // 
+            lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDate.ForeColor = Color.DimGray;
+            lblDate.Location = new Point(402, 17);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(172, 18);
+            lblDate.TabIndex = 18;
+            lblDate.Text = "📅 August 8, 2026 | Saturday";
+            // 
+            // lblSubtext
+            // 
+            lblSubtext.AutoSize = true;
+            lblSubtext.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSubtext.ForeColor = Color.DimGray;
+            lblSubtext.Location = new Point(15, 40);
+            lblSubtext.Name = "lblSubtext";
+            lblSubtext.Size = new Size(302, 18);
+            lblSubtext.TabIndex = 17;
+            lblSubtext.Text = "Stay updated with the latest news and announcements";
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Font = new Font("Impact", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblWelcome.ForeColor = Color.DarkSlateBlue;
+            lblWelcome.Location = new Point(13, 14);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(151, 26);
+            lblWelcome.TabIndex = 16;
+            lblWelcome.Text = "Announcements";
             // 
             // lblShowingCount
             // 
@@ -418,17 +415,17 @@
             Size = new Size(586, 447);
             panelAnnouncementsCard.ResumeLayout(false);
             panelAnnouncementsCard.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
-            panel14.ResumeLayout(false);
-            panel14.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel14.ResumeLayout(false);
+            panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

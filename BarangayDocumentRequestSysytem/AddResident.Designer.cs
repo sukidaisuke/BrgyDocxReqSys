@@ -30,10 +30,6 @@
         {
             PanelContainer = new Panel();
             dividerPanel = new Panel();
-            NavPanel = new Panel();
-            panel1 = new Panel();
-            nameLabel = new Label();
-            DocumentReqTitleLabel = new Label();
             buttonsTLP = new TableLayoutPanel();
             clearButton = new Button();
             cancelButton = new Button();
@@ -55,11 +51,16 @@
             lnTB = new TextBox();
             hnTB = new TextBox();
             cpTB = new TextBox();
+            DocumentReqTitleLabel = new Label();
+            nameLabel = new Label();
+            panel1 = new Panel();
+            lblDate = new Label();
+            NavPanel = new Panel();
             PanelContainer.SuspendLayout();
-            NavPanel.SuspendLayout();
             buttonsTLP.SuspendLayout();
             BodyGroupBox.SuspendLayout();
             bodyTLP.SuspendLayout();
+            NavPanel.SuspendLayout();
             SuspendLayout();
             // 
             // PanelContainer
@@ -82,51 +83,6 @@
             dividerPanel.Name = "dividerPanel";
             dividerPanel.Size = new Size(634, 1);
             dividerPanel.TabIndex = 35;
-            // 
-            // NavPanel
-            // 
-            NavPanel.BackColor = SystemColors.Control;
-            NavPanel.Controls.Add(panel1);
-            NavPanel.Controls.Add(nameLabel);
-            NavPanel.Controls.Add(DocumentReqTitleLabel);
-            NavPanel.Dock = DockStyle.Top;
-            NavPanel.Location = new Point(0, 0);
-            NavPanel.Name = "NavPanel";
-            NavPanel.Size = new Size(635, 83);
-            NavPanel.TabIndex = 29;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Gray;
-            panel1.Location = new Point(0, 86);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(634, 1);
-            panel1.TabIndex = 34;
-            // 
-            // nameLabel
-            // 
-            nameLabel.Anchor = AnchorStyles.Right;
-            nameLabel.AutoSize = true;
-            nameLabel.BackColor = SystemColors.Control;
-            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.ForeColor = Color.Gray;
-            nameLabel.Location = new Point(408, 10);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(213, 15);
-            nameLabel.TabIndex = 28;
-            nameLabel.Text = "Barangay Document Request System";
-            // 
-            // DocumentReqTitleLabel
-            // 
-            DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
-            DocumentReqTitleLabel.AutoSize = true;
-            DocumentReqTitleLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            DocumentReqTitleLabel.ForeColor = Color.DarkSlateBlue;
-            DocumentReqTitleLabel.Location = new Point(66, 26);
-            DocumentReqTitleLabel.Name = "DocumentReqTitleLabel";
-            DocumentReqTitleLabel.Size = new Size(123, 32);
-            DocumentReqTitleLabel.TabIndex = 27;
-            DocumentReqTitleLabel.Text = "Residents";
             // 
             // buttonsTLP
             // 
@@ -398,6 +354,63 @@
             cpTB.TabIndex = 15;
             cpTB.KeyPress += cpTB_KeyPress;
             // 
+            // DocumentReqTitleLabel
+            // 
+            DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
+            DocumentReqTitleLabel.AutoSize = true;
+            DocumentReqTitleLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            DocumentReqTitleLabel.ForeColor = Color.DarkSlateBlue;
+            DocumentReqTitleLabel.Location = new Point(66, 26);
+            DocumentReqTitleLabel.Name = "DocumentReqTitleLabel";
+            DocumentReqTitleLabel.Size = new Size(123, 32);
+            DocumentReqTitleLabel.TabIndex = 27;
+            DocumentReqTitleLabel.Text = "Residents";
+            // 
+            // nameLabel
+            // 
+            nameLabel.Anchor = AnchorStyles.Right;
+            nameLabel.AutoSize = true;
+            nameLabel.BackColor = SystemColors.Control;
+            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            nameLabel.ForeColor = Color.Gray;
+            nameLabel.Location = new Point(408, 10);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(0, 15);
+            nameLabel.TabIndex = 28;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Gray;
+            panel1.Location = new Point(0, 86);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(634, 1);
+            panel1.TabIndex = 34;
+            // 
+            // lblDate
+            // 
+            lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDate.ForeColor = Color.DimGray;
+            lblDate.Location = new Point(449, 10);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(172, 18);
+            lblDate.TabIndex = 35;
+            lblDate.Text = "📅 August 8, 2026 | Saturday";
+            // 
+            // NavPanel
+            // 
+            NavPanel.BackColor = SystemColors.Control;
+            NavPanel.Controls.Add(lblDate);
+            NavPanel.Controls.Add(panel1);
+            NavPanel.Controls.Add(nameLabel);
+            NavPanel.Controls.Add(DocumentReqTitleLabel);
+            NavPanel.Dock = DockStyle.Top;
+            NavPanel.Location = new Point(0, 0);
+            NavPanel.Name = "NavPanel";
+            NavPanel.Size = new Size(635, 83);
+            NavPanel.TabIndex = 29;
+            // 
             // AddResident
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -406,23 +419,20 @@
             Name = "AddResident";
             Size = new Size(635, 512);
             PanelContainer.ResumeLayout(false);
-            NavPanel.ResumeLayout(false);
-            NavPanel.PerformLayout();
             buttonsTLP.ResumeLayout(false);
             BodyGroupBox.ResumeLayout(false);
             BodyGroupBox.PerformLayout();
             bodyTLP.ResumeLayout(false);
             bodyTLP.PerformLayout();
+            NavPanel.ResumeLayout(false);
+            NavPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel PanelContainer;
-        private Panel NavPanel;
-        private Label DocumentReqTitleLabel;
         private GroupBox BodyGroupBox;
-        private Label nameLabel;
         private TableLayoutPanel bodyTLP;
         private Label fnLabel;
         private Label mnLabel;
@@ -444,6 +454,10 @@
         private Label zoneLabel;
         private ComboBox zoneCB;
         private Panel dividerPanel;
+        private Panel NavPanel;
+        private Label lblDate;
         private Panel panel1;
+        private Label nameLabel;
+        private Label DocumentReqTitleLabel;
     }
 }

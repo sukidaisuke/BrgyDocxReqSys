@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             PanelContainer = new Panel();
+            dividerPanel = new Panel();
             contentPanel = new Panel();
             menuPanel = new Panel();
             menuTLP = new TableLayoutPanel();
@@ -39,9 +40,8 @@
             brgyInfoBTN = new Button();
             docxSettingBTN = new Button();
             NavPanel = new Panel();
-            nameLabel = new Label();
             DocumentReqTitleLabel = new Label();
-            dividerPanel = new Panel();
+            lblDate = new Label();
             PanelContainer.SuspendLayout();
             menuPanel.SuspendLayout();
             menuTLP.SuspendLayout();
@@ -59,6 +59,14 @@
             PanelContainer.Name = "PanelContainer";
             PanelContainer.Size = new Size(635, 512);
             PanelContainer.TabIndex = 0;
+            // 
+            // dividerPanel
+            // 
+            dividerPanel.BackColor = Color.Gray;
+            dividerPanel.Location = new Point(0, 86);
+            dividerPanel.Name = "dividerPanel";
+            dividerPanel.Size = new Size(634, 1);
+            dividerPanel.TabIndex = 33;
             // 
             // contentPanel
             // 
@@ -127,7 +135,7 @@
             dbmsBTN.Name = "dbmsBTN";
             dbmsBTN.Size = new Size(141, 54);
             dbmsBTN.TabIndex = 34;
-            dbmsBTN.Text = "💾 Backup and         Restore";
+            dbmsBTN.Text = "💾 Information         Update";
             dbmsBTN.TextAlign = ContentAlignment.MiddleLeft;
             dbmsBTN.UseVisualStyleBackColor = false;
             // 
@@ -198,26 +206,13 @@
             // NavPanel
             // 
             NavPanel.BackColor = SystemColors.Control;
-            NavPanel.Controls.Add(nameLabel);
+            NavPanel.Controls.Add(lblDate);
             NavPanel.Controls.Add(DocumentReqTitleLabel);
             NavPanel.Dock = DockStyle.Top;
             NavPanel.Location = new Point(0, 0);
             NavPanel.Name = "NavPanel";
             NavPanel.Size = new Size(635, 83);
             NavPanel.TabIndex = 30;
-            // 
-            // nameLabel
-            // 
-            nameLabel.Anchor = AnchorStyles.Right;
-            nameLabel.AutoSize = true;
-            nameLabel.BackColor = SystemColors.Control;
-            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.ForeColor = Color.Gray;
-            nameLabel.Location = new Point(408, 10);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(213, 15);
-            nameLabel.TabIndex = 29;
-            nameLabel.Text = "Barangay Document Request System";
             // 
             // DocumentReqTitleLabel
             // 
@@ -231,13 +226,17 @@
             DocumentReqTitleLabel.TabIndex = 27;
             DocumentReqTitleLabel.Text = "Settings";
             // 
-            // dividerPanel
+            // lblDate
             // 
-            dividerPanel.BackColor = Color.Gray;
-            dividerPanel.Location = new Point(0, 86);
-            dividerPanel.Name = "dividerPanel";
-            dividerPanel.Size = new Size(634, 1);
-            dividerPanel.TabIndex = 33;
+            lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDate.ForeColor = Color.DimGray;
+            lblDate.Location = new Point(449, 10);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(172, 18);
+            lblDate.TabIndex = 37;
+            lblDate.Text = "📅 August 8, 2026 | Saturday";
             // 
             // Setting
             // 
@@ -258,7 +257,6 @@
 
         private Panel PanelContainer;
         private Panel NavPanel;
-        private Label nameLabel;
         private Label DocumentReqTitleLabel;
         private Panel menuPanel;
         private TableLayoutPanel menuTLP;
@@ -270,5 +268,6 @@
         private Button brgyInfoBTN;
         private Panel contentPanel;
         private Panel dividerPanel;
+        private Label lblDate;
     }
 }

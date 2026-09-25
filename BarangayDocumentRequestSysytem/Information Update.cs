@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace BarangayDocumentRequestSysytem
 {
-    public partial class AnnouncementsControl : UserControl
+    public partial class Information_Update : UserControl
     {
-        public AnnouncementsControl()
+        public Information_Update()
         {
             InitializeComponent();
         }

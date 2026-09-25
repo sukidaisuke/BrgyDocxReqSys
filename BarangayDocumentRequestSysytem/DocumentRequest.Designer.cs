@@ -88,7 +88,7 @@
             pageLBL = new Label();
             dividerPanel = new Panel();
             NavPanel = new Panel();
-            nameLabel = new Label();
+            lblDate = new Label();
             BodyGroupBox.SuspendLayout();
             bodyTLP.SuspendLayout();
             panel5.SuspendLayout();
@@ -860,25 +860,24 @@
             // 
             NavPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NavPanel.BackColor = SystemColors.Control;
-            NavPanel.Controls.Add(nameLabel);
+            NavPanel.Controls.Add(lblDate);
             NavPanel.Controls.Add(pendingReqLBL);
             NavPanel.Location = new Point(0, 0);
             NavPanel.Name = "NavPanel";
             NavPanel.Size = new Size(635, 83);
             NavPanel.TabIndex = 27;
             // 
-            // nameLabel
+            // lblDate
             // 
-            nameLabel.Anchor = AnchorStyles.Right;
-            nameLabel.AutoSize = true;
-            nameLabel.BackColor = SystemColors.Control;
-            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.ForeColor = Color.Gray;
-            nameLabel.Location = new Point(408, 10);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(213, 15);
-            nameLabel.TabIndex = 27;
-            nameLabel.Text = "Barangay Document Request System";
+            lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDate.ForeColor = Color.DimGray;
+            lblDate.Location = new Point(449, 10);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(172, 18);
+            lblDate.TabIndex = 36;
+            lblDate.Text = "📅 August 8, 2026 | Saturday";
             // 
             // DocumentRequest
             // 
@@ -926,7 +925,6 @@
         private Label ReqInformationHeaderLabel;
         private Panel PanelContainer;
         private Panel NavPanel;
-        private Label nameLabel;
         private Panel dividerPanel;
         private TableLayoutPanel pageTLP;
         private Button sampleBTN5;
@@ -981,5 +979,6 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private Label lblDate;
     }
 }

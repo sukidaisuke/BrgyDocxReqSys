@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable disable
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,10 +11,13 @@ namespace BarangayDocumentRequestSysytem
 {
     public partial class UserPage : Form
     {
+        private HomeControl homeControl;
+        private ProfileControl profileControl;
+
         public UserPage()
         {
             InitializeComponent();
-            LoadControl(new HomeControl());
+            ShowHomeView(); // Default landing screen
         }
 
         private void LoadControl(UserControl control)
@@ -21,11 +25,22 @@ namespace BarangayDocumentRequestSysytem
             panelContent.Controls.Clear();
             control.Dock = DockStyle.Fill;
             panelContent.Controls.Add(control);
+            control.BringToFront();
+        }
+
+        private void ShowHomeView()
+        {
+            if (homeControl == null)
+            {
+                homeControl = new HomeControl();
+            }
+            LoadControl(homeControl);
+            homeControl.LoadHomeData(); // Refresh transaction metrics
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            LoadControl(new HomeControl());
+            ShowHomeView();
         }
 
         private void btnRequestDoc_Click(object sender, EventArgs e)
@@ -45,7 +60,12 @@ namespace BarangayDocumentRequestSysytem
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            LoadControl(new ProfileControl());
+            if (profileControl == null)
+            {
+                profileControl = new ProfileControl();
+            }
+            LoadControl(profileControl);
+            profileControl.LoadUserProfile(); // Refresh profile details
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -66,16 +86,6 @@ namespace BarangayDocumentRequestSysytem
 
                 this.Close();
             }
-        }
-
-        private void panelContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void UserPage_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
