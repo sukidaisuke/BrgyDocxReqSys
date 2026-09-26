@@ -63,6 +63,7 @@
             lblDate.Size = new Size(172, 18);
             lblDate.TabIndex = 14;
             lblDate.Text = "📅 August 8, 2026 | Saturday";
+            lblDate.Click += lblDate_Click;
             // 
             // lblSubtext
             // 
@@ -127,7 +128,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(507, 63);
             panel2.TabIndex = 27;
-            panel2.Paint += panel2_Paint;
             // 
             // lblRequirementsList
             // 
@@ -141,7 +141,6 @@
             lblRequirementsList.TabIndex = 26;
             lblRequirementsList.Text = "Requirement(s)";
             lblRequirementsList.TextAlign = ContentAlignment.BottomRight;
-            lblRequirementsList.Click += label3_Click;
             // 
             // label1
             // 
@@ -165,12 +164,14 @@
             // 
             // btnAttachFile
             // 
+            btnAttachFile.FlatAppearance.BorderSize = 0;
             btnAttachFile.Location = new Point(399, 10);
             btnAttachFile.Name = "btnAttachFile";
             btnAttachFile.Size = new Size(90, 23);
             btnAttachFile.TabIndex = 30;
             btnAttachFile.Text = "⬆ Attach File";
             btnAttachFile.UseVisualStyleBackColor = true;
+            btnAttachFile.Click += btnAttachFile_Click;
             // 
             // lblFileStatus
             // 
@@ -255,7 +256,6 @@
             label2.Size = new Size(550, 23);
             label2.TabIndex = 19;
             label2.Text = "____________________________________________________________";
-            label2.Click += label2_Click;
             // 
             // txtOtherDocType
             // 

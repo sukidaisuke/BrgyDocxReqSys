@@ -15,14 +15,10 @@ namespace BarangayDocumentRequestSysytem
             InitializeComponent();
         }
 
-        private void PanelContainer_Paint(object sender, PaintEventArgs e)
+        private void FormOrControl_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void ReqInformationHeaderLabel_Click(object sender, EventArgs e)
-        {
-
+            // Sets the standard header date dynamically
+            lblDate.Text = DateHelper.CurrentHeaderDate;
         }
 
         private void hnTB_KeyPress(object sender, KeyPressEventArgs e)
@@ -41,6 +37,12 @@ namespace BarangayDocumentRequestSysytem
             {
                 e.Handled = true;
             }
+        }
+
+        private void Date_Tick(object sender, EventArgs e)
+        {
+            // Updates automatically every second
+            lblDate.Text = DateHelper.CurrentHeaderDate;
         }
     }
 }

@@ -212,7 +212,6 @@
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(586, 447);
             panelContent.TabIndex = 21;
-            panelContent.Paint += panelContent_Paint;
             // 
             // UserPage
             // 
@@ -224,7 +223,6 @@
             Controls.Add(NavPanel);
             Name = "UserPage";
             Text = "UserPage";
-            Load += UserPage_Load;
             NavPanel.ResumeLayout(false);
             NavPanel.PerformLayout();
             navTLP.ResumeLayout(false);

@@ -41,9 +41,6 @@
             txtSearch = new TextBox();
             cmbFilterStatus = new ComboBox();
             lblShowingCount = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
             panelTableCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMyRequests).BeginInit();
             SuspendLayout();
@@ -175,58 +172,15 @@
             lblShowingCount.AutoSize = true;
             lblShowingCount.Location = new Point(17, 422);
             lblShowingCount.Name = "lblShowingCount";
-            lblShowingCount.Size = new Size(155, 15);
+            lblShowingCount.Size = new Size(95, 15);
             lblShowingCount.TabIndex = 20;
-            lblShowingCount.Text = "Showing 1 to 4 of 4 requests";
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.DarkSlateBlue;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.ForeColor = Color.AliceBlue;
-            button1.Location = new Point(456, 421);
-            button1.Name = "button1";
-            button1.Size = new Size(32, 23);
-            button1.TabIndex = 21;
-            button1.Text = "◀";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.DarkSlateBlue;
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.FlatStyle = FlatStyle.Popup;
-            button2.ForeColor = Color.AliceBlue;
-            button2.Location = new Point(532, 421);
-            button2.Name = "button2";
-            button2.Size = new Size(32, 23);
-            button2.TabIndex = 22;
-            button2.Text = "▶";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.Lavender;
-            button3.BackgroundImageLayout = ImageLayout.None;
-            button3.FlatStyle = FlatStyle.Popup;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.DarkSlateBlue;
-            button3.Location = new Point(494, 421);
-            button3.Name = "button3";
-            button3.Size = new Size(32, 23);
-            button3.TabIndex = 23;
-            button3.Text = "1";
-            button3.UseVisualStyleBackColor = false;
+            lblShowingCount.Text = "Total Requests: 1";
             // 
             // MyRequestsControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(lblShowingCount);
             Controls.Add(cmbFilterStatus);
             Controls.Add(txtSearch);
@@ -255,8 +209,5 @@
         private DataGridViewTextBoxColumn colDateRequested;
         private DataGridViewTextBoxColumn colStatus;
         private Label lblShowingCount;
-        private Button button1;
-        private Button button2;
-        private Button button3;
     }
 }

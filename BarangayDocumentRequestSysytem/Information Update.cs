@@ -8,16 +8,11 @@ using System.Windows.Forms;
 
 namespace BarangayDocumentRequestSysytem
 {
-    public partial class DocumentRequest : UserControl
+    public partial class Information_Update : UserControl
     {
-        public DocumentRequest()
+        public Information_Update()
         {
             InitializeComponent();
-        }
-
-        private void bodyTLP_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

@@ -13,6 +13,7 @@ namespace BarangayDocumentRequestSysytem
         public Setting()
         {
             InitializeComponent();
+            LoadSettingsPage(new BarangayInfo());
         }
 
         private void LoadSettingsPage(UserControl page)

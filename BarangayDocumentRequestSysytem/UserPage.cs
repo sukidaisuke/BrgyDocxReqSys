@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable disable
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,10 +11,13 @@ namespace BarangayDocumentRequestSysytem
 {
     public partial class UserPage : Form
     {
+        private HomeControl homeControl;
+        private ProfileControl profileControl;
+
         public UserPage()
         {
             InitializeComponent();
-            LoadControl(new HomeControl());
+            ShowHomeView(); // Default landing screen
         }
 
         private void LoadControl(UserControl control)
@@ -21,11 +25,22 @@ namespace BarangayDocumentRequestSysytem
             panelContent.Controls.Clear();
             control.Dock = DockStyle.Fill;
             panelContent.Controls.Add(control);
+            control.BringToFront();
+        }
+
+        private void ShowHomeView()
+        {
+            if (homeControl == null)
+            {
+                homeControl = new HomeControl();
+            }
+            LoadControl(homeControl);
+            homeControl.LoadHomeData(); // Refresh transaction metrics
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            LoadControl(new HomeControl());
+            ShowHomeView();
         }
 
         private void btnRequestDoc_Click(object sender, EventArgs e)
@@ -38,37 +53,52 @@ namespace BarangayDocumentRequestSysytem
             LoadControl(new MyRequestsControl());
         }
 
+        private AnnouncementsControl announcementsControl;
+
         private void btnAnnouncements_Click(object sender, EventArgs e)
         {
-            LoadControl(new AnnouncementsControl());
+            if (announcementsControl == null)
+            {
+                announcementsControl = new AnnouncementsControl();
+            }
+
+            panelContent.Controls.Clear();
+            announcementsControl.Dock = DockStyle.Fill;
+            panelContent.Controls.Add(announcementsControl);
+            announcementsControl.BringToFront();
+
+            // Explicitly refresh live date & empty status
+            announcementsControl.UpdateDashboard();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            LoadControl(new ProfileControl());
+            if (profileControl == null)
+            {
+                profileControl = new ProfileControl();
+            }
+            LoadControl(profileControl);
+            profileControl.LoadUserProfile(); // Refresh profile details
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            var confirm = MessageBox.Show("Are you sure you want to log out?", "Logout",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show(
+                "Are you sure you want to log out?\n\nYou will be returned to the login page.",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
             if (confirm == DialogResult.Yes)
             {
                 this.Hide();
+
                 Login lg = new Login();
-                lg.Show();
+                lg.ShowDialog();
+
                 this.Close();
             }
-        }
-
-        private void panelContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void UserPage_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
