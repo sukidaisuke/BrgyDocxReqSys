@@ -34,22 +34,14 @@ namespace BarangayDocumentRequestSysytem
             string usernameInput = userName.Text.Trim();
             string passInput = password.Text;
 
-            // 1. Hardcoded Admin check
-            if (usernameInput == "admin" && passInput == "admin67")
+            if (string.IsNullOrEmpty(usernameInput) || string.IsNullOrEmpty(passInput))
             {
-                UserSession.UserId = 0;
-                UserSession.Username = usernameInput;
-
-                this.Hide();
-                DashboardTest Db = new DashboardTest();
-                Db.ShowDialog();
-                this.Close();
+                MessageBox.Show("Please enter both username and password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Query user record from MySQL
             string connectionString = "Server=localhost;Database=barangay_db;Uid=root;Pwd=;";
-            string query = "SELECT user_id, password FROM users WHERE username = @username";
+            string query = "SELECT user_id, password, role FROM users WHERE username = @username";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -65,6 +57,7 @@ namespace BarangayDocumentRequestSysytem
                             {
                                 int fetchUserId = Convert.ToInt32(reader["user_id"]);
                                 string storedHash = reader["password"]?.ToString() ?? "";
+                                string role = reader["role"]?.ToString() ?? "user";
 
                                 bool isPasswordValid = false;
 
@@ -74,19 +67,30 @@ namespace BarangayDocumentRequestSysytem
                                 }
                                 catch
                                 {
-                                    // Fallback for non-BCrypt test passwords in database
+                                    // Fallback for non-BCrypt/plain test passwords in database
                                     isPasswordValid = (passInput == storedHash);
                                 }
 
                                 if (isPasswordValid)
                                 {
-                                    // Store user details in session
+                                    // Store user session details
                                     UserSession.UserId = fetchUserId;
                                     UserSession.Username = usernameInput;
 
                                     this.Hide();
-                                    UserPage up = new UserPage();
-                                    up.ShowDialog();
+
+                                    // Redirect based on database role
+                                    if (string.Equals(role, "admin", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        DashboardTest adminDb = new DashboardTest();
+                                        adminDb.ShowDialog();
+                                    }
+                                    else
+                                    {
+                                        UserPage userPage = new UserPage();
+                                        userPage.ShowDialog();
+                                    }
+
                                     this.Close();
                                 }
                                 else

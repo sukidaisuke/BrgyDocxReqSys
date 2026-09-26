@@ -20,6 +20,11 @@ namespace BarangayDocumentRequestSysytem
         public RequestDocumentControl()
         {
             InitializeComponent();
+            // Set live date immediately
+            if (lblDate != null)
+            {
+                lblDate.Text = DateHelper.CurrentHeaderDate;
+            }
         }
 
         private void txtPurpose_TextChanged(object sender, EventArgs e)
@@ -229,6 +234,17 @@ namespace BarangayDocumentRequestSysytem
                     lblFileStatus.Text = Path.GetFileName(selectedFilePath);
                 }
             }
+        }
+        private void FormOrControl_Load(object sender, EventArgs e)
+        {
+            // Sets the standard header date dynamically
+            lblDate.Text = DateHelper.CurrentHeaderDate;
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+            // Updates automatically every second
+            lblDate.Text = DateHelper.CurrentHeaderDate;
         }
     }
 }

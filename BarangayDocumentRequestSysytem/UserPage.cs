@@ -53,9 +53,22 @@ namespace BarangayDocumentRequestSysytem
             LoadControl(new MyRequestsControl());
         }
 
+        private AnnouncementsControl announcementsControl;
+
         private void btnAnnouncements_Click(object sender, EventArgs e)
         {
-            LoadControl(new AnnouncementsControl());
+            if (announcementsControl == null)
+            {
+                announcementsControl = new AnnouncementsControl();
+            }
+
+            panelContent.Controls.Clear();
+            announcementsControl.Dock = DockStyle.Fill;
+            panelContent.Controls.Add(announcementsControl);
+            announcementsControl.BringToFront();
+
+            // Explicitly refresh live date & empty status
+            announcementsControl.UpdateDashboard();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)

@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnnouncementsControl));
             panelAnnouncementsCard = new Panel();
-            panel3 = new Panel();
+            panelCard3 = new Panel();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             pictureBox2 = new PictureBox();
-            panel2 = new Panel();
+            panelCard2 = new Panel();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             pictureBox1 = new PictureBox();
-            panel1 = new Panel();
+            panelCard1 = new Panel();
             panel14 = new Panel();
             label26 = new Label();
             label29 = new Label();
@@ -53,16 +53,16 @@
             lblDate = new Label();
             lblSubtext = new Label();
             lblWelcome = new Label();
-            lblShowingCount = new Label();
+            lblFooterCount = new Label();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             panelAnnouncementsCard.SuspendLayout();
-            panel3.SuspendLayout();
+            panelCard3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel2.SuspendLayout();
+            panelCard2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
+            panelCard1.SuspendLayout();
             panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
@@ -70,9 +70,9 @@
             // panelAnnouncementsCard
             // 
             panelAnnouncementsCard.BackColor = SystemColors.ButtonHighlight;
-            panelAnnouncementsCard.Controls.Add(panel3);
-            panelAnnouncementsCard.Controls.Add(panel2);
-            panelAnnouncementsCard.Controls.Add(panel1);
+            panelAnnouncementsCard.Controls.Add(panelCard3);
+            panelAnnouncementsCard.Controls.Add(panelCard2);
+            panelAnnouncementsCard.Controls.Add(panelCard1);
             panelAnnouncementsCard.Controls.Add(cmbFilterCategory);
             panelAnnouncementsCard.Controls.Add(lblAllAnnouncements);
             panelAnnouncementsCard.Controls.Add(label2);
@@ -82,17 +82,17 @@
             panelAnnouncementsCard.Size = new Size(559, 332);
             panelAnnouncementsCard.TabIndex = 19;
             // 
-            // panel3
+            // panelCard3
             // 
-            panel3.BackColor = Color.AliceBlue;
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(label7);
-            panel3.Controls.Add(label8);
-            panel3.Controls.Add(pictureBox2);
-            panel3.Location = new Point(12, 239);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(532, 79);
-            panel3.TabIndex = 25;
+            panelCard3.BackColor = Color.AliceBlue;
+            panelCard3.Controls.Add(label6);
+            panelCard3.Controls.Add(label7);
+            panelCard3.Controls.Add(label8);
+            panelCard3.Controls.Add(pictureBox2);
+            panelCard3.Location = new Point(12, 239);
+            panelCard3.Name = "panelCard3";
+            panelCard3.Size = new Size(532, 79);
+            panelCard3.TabIndex = 25;
             // 
             // label6
             // 
@@ -142,17 +142,17 @@
             pictureBox2.TabIndex = 17;
             pictureBox2.TabStop = false;
             // 
-            // panel2
+            // panelCard2
             // 
-            panel2.BackColor = Color.AliceBlue;
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(12, 142);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(532, 83);
-            panel2.TabIndex = 23;
+            panelCard2.BackColor = Color.AliceBlue;
+            panelCard2.Controls.Add(label3);
+            panelCard2.Controls.Add(label4);
+            panelCard2.Controls.Add(label5);
+            panelCard2.Controls.Add(pictureBox1);
+            panelCard2.Location = new Point(12, 142);
+            panelCard2.Name = "panelCard2";
+            panelCard2.Size = new Size(532, 83);
+            panelCard2.TabIndex = 23;
             // 
             // label3
             // 
@@ -202,18 +202,18 @@
             pictureBox1.TabIndex = 17;
             pictureBox1.TabStop = false;
             // 
-            // panel1
+            // panelCard1
             // 
-            panel1.BackColor = Color.AliceBlue;
-            panel1.Controls.Add(panel14);
-            panel1.Controls.Add(label29);
-            panel1.Controls.Add(label27);
-            panel1.Controls.Add(label28);
-            panel1.Controls.Add(pictureBox9);
-            panel1.Location = new Point(12, 57);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(532, 72);
-            panel1.TabIndex = 22;
+            panelCard1.BackColor = Color.AliceBlue;
+            panelCard1.Controls.Add(panel14);
+            panelCard1.Controls.Add(label29);
+            panelCard1.Controls.Add(label27);
+            panelCard1.Controls.Add(label28);
+            panelCard1.Controls.Add(pictureBox9);
+            panelCard1.Location = new Point(12, 57);
+            panelCard1.Name = "panelCard1";
+            panelCard1.Size = new Size(532, 72);
+            panelCard1.TabIndex = 22;
             // 
             // panel14
             // 
@@ -232,7 +232,7 @@
             label26.ForeColor = Color.MidnightBlue;
             label26.Location = new Point(4, 6);
             label26.Name = "label26";
-            label26.Size = new Size(43, 18);
+            label26.Size = new Size(0, 18);
             label26.TabIndex = 1;
             // 
             // label29
@@ -327,6 +327,7 @@
             lblDate.Size = new Size(172, 18);
             lblDate.TabIndex = 18;
             lblDate.Text = "📅 August 8, 2026 | Saturday";
+            lblDate.Click += lblDate_Click;
             // 
             // lblSubtext
             // 
@@ -350,14 +351,14 @@
             lblWelcome.TabIndex = 16;
             lblWelcome.Text = "Announcements";
             // 
-            // lblShowingCount
+            // lblFooterCount
             // 
-            lblShowingCount.AutoSize = true;
-            lblShowingCount.Location = new Point(15, 407);
-            lblShowingCount.Name = "lblShowingCount";
-            lblShowingCount.Size = new Size(155, 15);
-            lblShowingCount.TabIndex = 21;
-            lblShowingCount.Text = "Showing 1 to 4 of 4 requests";
+            lblFooterCount.AutoSize = true;
+            lblFooterCount.Location = new Point(15, 407);
+            lblFooterCount.Name = "lblFooterCount";
+            lblFooterCount.Size = new Size(146, 15);
+            lblFooterCount.TabIndex = 21;
+            lblFooterCount.Text = "Showing 0 announcement";
             // 
             // button3
             // 
@@ -406,7 +407,7 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(lblShowingCount);
+            Controls.Add(lblFooterCount);
             Controls.Add(panelAnnouncementsCard);
             Controls.Add(lblDate);
             Controls.Add(lblSubtext);
@@ -415,14 +416,14 @@
             Size = new Size(586, 447);
             panelAnnouncementsCard.ResumeLayout(false);
             panelAnnouncementsCard.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            panelCard3.ResumeLayout(false);
+            panelCard3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            panelCard2.ResumeLayout(false);
+            panelCard2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelCard1.ResumeLayout(false);
+            panelCard1.PerformLayout();
             panel14.ResumeLayout(false);
             panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
@@ -439,24 +440,24 @@
         private Label lblWelcome;
         private Label lblAllAnnouncements;
         private ComboBox cmbFilterCategory;
-        private Panel panel1;
+        private Panel panelCard1;
         private PictureBox pictureBox9;
         private Label label28;
         private Label label27;
         private Label label29;
         private Panel panel14;
         private Label label26;
-        private Panel panel2;
+        private Panel panelCard2;
         private Label label3;
         private Label label4;
         private Label label5;
         private PictureBox pictureBox1;
-        private Panel panel3;
+        private Panel panelCard3;
         private Label label6;
         private Label label7;
         private Label label8;
         private PictureBox pictureBox2;
-        private Label lblShowingCount;
+        private Label lblFooterCount;
         private Button button3;
         private Button button2;
         private Button button1;

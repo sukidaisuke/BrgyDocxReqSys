@@ -13,11 +13,14 @@ namespace BarangayDocumentRequestSysytem
         public HomeControl()
         {
             InitializeComponent();
+            // Set live date immediately upon creation
+            UpdateHeaderDate();
         }
 
         private void HomeControl_Load(object sender, EventArgs e)
         {
             LoadHomeData();
+            UpdateHeaderDate();
         }
 
         private void HomeControl_VisibleChanged(object sender, EventArgs e)
@@ -25,6 +28,7 @@ namespace BarangayDocumentRequestSysytem
             if (this.Visible)
             {
                 LoadHomeData();
+                    UpdateHeaderDate();
             }
         }
 
@@ -210,6 +214,26 @@ namespace BarangayDocumentRequestSysytem
             {
                 lbl.Text = text ?? "";
             }
+        }
+
+        private void UpdateHeaderDate()
+        {
+            if (lblDate != null)
+            {
+                lblDate.Text = DateHelper.CurrentHeaderDate;
+            }
+        }
+
+        private void FormOrControl_Load(object sender, EventArgs e)
+        {
+            // Sets the standard header date dynamically
+            lblDate.Text = DateHelper.CurrentHeaderDate;
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+            // Updates automatically every second
+            lblDate.Text = DateHelper.CurrentHeaderDate;
         }
 
         private T FindChildControl<T>(Control parent, string name) where T : Control

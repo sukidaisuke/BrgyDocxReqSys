@@ -14,6 +14,11 @@ namespace BarangayDocumentRequestSysytem
         {
             InitializeComponent();
             LockAdminFields();
+            // Set live date immediately
+            if (lblDate != null)
+            {
+                lblDate.Text = DateHelper.CurrentHeaderDate;
+            }
         }
 
         private void LockAdminFields()
@@ -199,6 +204,18 @@ namespace BarangayDocumentRequestSysytem
         {
             ResetPassword resetModal = new ResetPassword();
             resetModal.ShowDialog();
+        }
+
+        private void FormOrControl_Load(object sender, EventArgs e)
+        {
+            // Sets the standard header date dynamically
+            lblDate.Text = DateHelper.CurrentHeaderDate;
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+            // Updates automatically every second
+            lblDate.Text = DateHelper.CurrentHeaderDate;
         }
     }
 }

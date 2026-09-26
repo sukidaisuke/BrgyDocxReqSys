@@ -18,6 +18,11 @@ namespace BarangayDocumentRequestSysytem
         {
             InitializeComponent();
             ApplyCustomGridStyling();
+            // Set live date immediately
+            if (lblDate != null)
+            {
+                lblDate.Text = DateHelper.CurrentHeaderDate;
+            }
         }
 
         private void ApplyCustomGridStyling()

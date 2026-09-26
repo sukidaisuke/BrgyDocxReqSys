@@ -63,6 +63,7 @@
             lblDate.Size = new Size(172, 18);
             lblDate.TabIndex = 14;
             lblDate.Text = "📅 August 8, 2026 | Saturday";
+            lblDate.Click += lblDate_Click;
             // 
             // lblSubtext
             // 

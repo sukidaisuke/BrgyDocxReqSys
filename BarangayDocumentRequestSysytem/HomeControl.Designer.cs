@@ -146,6 +146,7 @@
             lblDate.Size = new Size(172, 18);
             lblDate.TabIndex = 2;
             lblDate.Text = "📅 August 8, 2026 | Saturday";
+            lblDate.Click += lblDate_Click;
             // 
             // panel1
             // 
@@ -408,7 +409,7 @@
             panel13.BackColor = Color.FromArgb(220, 252, 231);
             panel13.Controls.Add(lblReq2Status);
             panel13.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel13.Location = new Point(179, 3);
+            panel13.Location = new Point(179, 35);
             panel13.Name = "panel13";
             panel13.Size = new Size(74, 27);
             panel13.TabIndex = 21;
@@ -483,7 +484,7 @@
             panel15.BackColor = Color.FromArgb(220, 252, 231);
             panel15.Controls.Add(lblReq3Status);
             panel15.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel15.Location = new Point(179, 3);
+            panel15.Location = new Point(179, 35);
             panel15.Name = "panel15";
             panel15.Size = new Size(74, 27);
             panel15.TabIndex = 23;
@@ -552,7 +553,7 @@
             panel14.BackColor = Color.FromArgb(254, 243, 199);
             panel14.Controls.Add(lblReq1Status);
             panel14.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panel14.Location = new Point(179, 3);
+            panel14.Location = new Point(179, 35);
             panel14.Name = "panel14";
             panel14.Size = new Size(74, 27);
             panel14.TabIndex = 22;
