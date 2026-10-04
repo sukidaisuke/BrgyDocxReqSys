@@ -32,6 +32,9 @@
             lblSubtext = new Label();
             lblWelcome = new Label();
             panel1 = new Panel();
+            cmbPurpose = new ComboBox();
+            txtOtherPurpose = new TextBox();
+            hScrollBar1 = new HScrollBar();
             btnSubmitRequest = new Button();
             panel2 = new Panel();
             lblRequirementsList = new Label();
@@ -39,8 +42,6 @@
             panel3 = new Panel();
             btnAttachFile = new Button();
             lblFileStatus = new Label();
-            lblPurposeCount = new Label();
-            txtPurpose = new TextBox();
             lblPurpose = new Label();
             cmbDocumentType = new ComboBox();
             lblDocType = new Label();
@@ -63,7 +64,6 @@
             lblDate.Size = new Size(172, 18);
             lblDate.TabIndex = 14;
             lblDate.Text = "📅 August 8, 2026 | Saturday";
-            lblDate.Click += lblDate_Click;
             // 
             // lblSubtext
             // 
@@ -90,10 +90,11 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Controls.Add(cmbPurpose);
+            panel1.Controls.Add(txtOtherPurpose);
+            panel1.Controls.Add(hScrollBar1);
             panel1.Controls.Add(btnSubmitRequest);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(lblPurposeCount);
-            panel1.Controls.Add(txtPurpose);
             panel1.Controls.Add(lblPurpose);
             panel1.Controls.Add(cmbDocumentType);
             panel1.Controls.Add(lblDocType);
@@ -104,6 +105,32 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(559, 361);
             panel1.TabIndex = 15;
+            // 
+            // cmbPurpose
+            // 
+            cmbPurpose.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPurpose.FormattingEnabled = true;
+            cmbPurpose.Items.AddRange(new object[] { "-- Select Document Type --", "Barangay Clearance", "Certificate of Residency", "Certificate of Indigency", "Certificate of Good Moral Character", "Barangay ID", "Business Permit Endorsement", "Certificate of No Pending Case", "Others: (Please specify on the field below)" });
+            cmbPurpose.Location = new Point(26, 157);
+            cmbPurpose.Name = "cmbPurpose";
+            cmbPurpose.Size = new Size(507, 23);
+            cmbPurpose.TabIndex = 31;
+            cmbPurpose.SelectedIndexChanged += cmbPurpose_SelectedIndexChanged;
+            // 
+            // txtOtherPurpose
+            // 
+            txtOtherPurpose.Enabled = false;
+            txtOtherPurpose.Location = new Point(26, 180);
+            txtOtherPurpose.Name = "txtOtherPurpose";
+            txtOtherPurpose.Size = new Size(507, 23);
+            txtOtherPurpose.TabIndex = 32;
+            // 
+            // hScrollBar1
+            // 
+            hScrollBar1.Location = new Point(557, 239);
+            hScrollBar1.Name = "hScrollBar1";
+            hScrollBar1.Size = new Size(80, 17);
+            hScrollBar1.TabIndex = 30;
             // 
             // btnSubmitRequest
             // 
@@ -183,27 +210,6 @@
             lblFileStatus.TabIndex = 29;
             lblFileStatus.Text = "No file attached.";
             // 
-            // lblPurposeCount
-            // 
-            lblPurposeCount.AutoSize = true;
-            lblPurposeCount.ForeColor = SystemColors.AppWorkspace;
-            lblPurposeCount.Location = new Point(464, 183);
-            lblPurposeCount.Name = "lblPurposeCount";
-            lblPurposeCount.Size = new Size(36, 15);
-            lblPurposeCount.TabIndex = 24;
-            lblPurposeCount.Text = "0/300";
-            // 
-            // txtPurpose
-            // 
-            txtPurpose.BorderStyle = BorderStyle.FixedSingle;
-            txtPurpose.Location = new Point(28, 148);
-            txtPurpose.Multiline = true;
-            txtPurpose.Name = "txtPurpose";
-            txtPurpose.ScrollBars = ScrollBars.Vertical;
-            txtPurpose.Size = new Size(507, 78);
-            txtPurpose.TabIndex = 23;
-            txtPurpose.TextChanged += txtPurpose_TextChanged;
-            // 
             // lblPurpose
             // 
             lblPurpose.AutoSize = true;
@@ -276,6 +282,7 @@
             Controls.Add(lblWelcome);
             Name = "RequestDocumentControl";
             Size = new Size(586, 447);
+            Load += RequestDocumentControl_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -297,8 +304,6 @@
         private Label lblPurpose;
         private ComboBox cmbDocumentType;
         private Label lblDocType;
-        private TextBox txtPurpose;
-        private Label lblPurposeCount;
         private Panel panel2;
         private Label lblRequirementsList;
         private Panel panel3;
@@ -307,5 +312,8 @@
         private Label label1;
         private Button btnSubmitRequest;
         private TextBox txtOtherDocType;
+        private HScrollBar hScrollBar1;
+        private ComboBox cmbPurpose;
+        private TextBox txtOtherPurpose;
     }
 }

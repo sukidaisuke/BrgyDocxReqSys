@@ -74,28 +74,27 @@ namespace BarangayDocumentRequestSysytem
         }
 
         // --- Sidebar Button Events ---
-
-        private void btnHome_Click(object sender, EventArgs e)
+        private void btnHome_Click_1(object sender, EventArgs e)
         {
             LoadControl(new AdminControl());
         }
 
-        private void btnResident_Click(object sender, EventArgs e)
+        private void btnResident_Click_1(object sender, EventArgs e)
         {
             LoadControl(new Resident());
         }
 
-        private void btnPendingRequests_Click(object sender, EventArgs e)
+        private void btnPendingRequests_Click_1(object sender, EventArgs e)
         {
             LoadControl(new DocumentRequest());
         }
 
-        private void btnSetting_Click(object sender, EventArgs e)
+        private void btnSetting_Click_1(object sender, EventArgs e)
         {
             LoadControl(new Setting());
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnLogout_Click_1(object sender, EventArgs e)
         {
             DialogResult confirm = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)

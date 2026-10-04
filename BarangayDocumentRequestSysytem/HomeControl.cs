@@ -28,7 +28,7 @@ namespace BarangayDocumentRequestSysytem
             if (this.Visible)
             {
                 LoadHomeData();
-                    UpdateHeaderDate();
+                UpdateHeaderDate();
             }
         }
 
@@ -131,16 +131,19 @@ namespace BarangayDocumentRequestSysytem
 
                                 SetLabelText($"lblReq{index}Title", docType);
                                 SetLabelText($"lblReq{index}Date", formattedDate);
-                                SetLabelText($"lblReq{index}Status", status);
+
+                                // Use UpdateStatusBadge instead of SetLabelText for dynamic styling
+                                UpdateStatusBadge($"lblReq{index}Status", status);
 
                                 index++;
                             }
 
+                            // Clear remaining empty slots
                             for (int i = index; i <= 3; i++)
                             {
                                 SetLabelText($"lblReq{i}Title", "");
                                 SetLabelText($"lblReq{i}Date", "");
-                                SetLabelText($"lblReq{i}Status", "");
+                                UpdateStatusBadge($"lblReq{i}Status", "");
                             }
                         }
                     }
@@ -252,6 +255,75 @@ namespace BarangayDocumentRequestSysytem
                 }
             }
             return null;
+        }
+
+        private void UpdateStatusBadge(string controlName, string status)
+        {
+            Label lbl = FindChildControl<Label>(this, controlName);
+            if (lbl == null) return;
+
+            if (string.IsNullOrWhiteSpace(status))
+            {
+                lbl.Text = "";
+                lbl.Visible = false;
+                if (lbl.Parent is Panel pnl) pnl.Visible = false;
+                return;
+            }
+
+            lbl.Visible = true;
+            if (lbl.Parent is Panel pnlParent) pnlParent.Visible = true;
+
+            // Force fixed label bounds and middle alignment
+            lbl.AutoSize = false;
+            lbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl.Text = status;
+
+            string normalizedStatus = status.Trim().ToLower();
+            Color backColor;
+            Color textColor;
+
+            switch (normalizedStatus)
+            {
+                // GREEN: Completed / Approved / Processed
+                case "completed":
+                case "approved":
+                case "processed":
+                    backColor = Color.FromArgb(220, 252, 231); // Soft Green
+                    textColor = Color.FromArgb(22, 101, 52);   // Dark Green Text
+                    break;
+
+                // YELLOW: Pending / For Review
+                case "pending":
+                case "for review":
+                case "in progress":
+                    backColor = Color.FromArgb(254, 249, 195); // Soft Yellow
+                    textColor = Color.FromArgb(133, 77, 14);   // Dark Amber Text
+                    break;
+
+                // RED: Failed / Rejected / Disapproved / Cancelled
+                case "failed":
+                case "rejected":
+                case "disapproved":
+                case "cancelled":
+                    backColor = Color.FromArgb(254, 226, 226); // Soft Red
+                    textColor = Color.FromArgb(153, 27, 27);   // Dark Red Text
+                    break;
+
+                // DEFAULT: Soft Gray
+                default:
+                    backColor = Color.FromArgb(243, 244, 246);
+                    textColor = Color.FromArgb(75, 85, 99);
+                    break;
+            }
+
+            lbl.BackColor = backColor;
+            lbl.ForeColor = textColor;
+
+            // Sync parent panel container color if badges are hosted inside panels
+            if (lbl.Parent is Panel badgePanel)
+            {
+                badgePanel.BackColor = backColor;
+            }
         }
     }
 }

@@ -1,100 +1,163 @@
 ﻿#nullable disable
-using System.IO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient; // MySQL driver
+using MySql.Data.MySqlClient;
 
 namespace BarangayDocumentRequestSysytem
 {
     public partial class RequestDocumentControl : UserControl
     {
-        // XAMPP default MySQL connection string
         private string connectionString = "Server=localhost;Database=barangay_db;Uid=root;Pwd=;";
         private string selectedFilePath = string.Empty;
 
         public RequestDocumentControl()
         {
             InitializeComponent();
-            // Set live date immediately
+        }
+
+        private void RequestDocumentControl_Load(object sender, EventArgs e)
+        {
             if (lblDate != null)
             {
                 lblDate.Text = DateHelper.CurrentHeaderDate;
             }
+
+            // Populate Document Types dynamically from Database
+            LoadDocumentTypesFromDatabase();
         }
 
-        private void txtPurpose_TextChanged(object sender, EventArgs e)
+        // --- 1. Populate cmbDocumentType from MySQL ---
+        private void LoadDocumentTypesFromDatabase()
         {
-            lblPurposeCount.Text = $"{txtPurpose.Text.Length}/300";
+            cmbDocumentType.Items.Clear();
+            cmbDocumentType.Items.Add("-- Select Document Type --");
 
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT id, document_name, requirements, requires_attachment FROM document_types ORDER BY document_name ASC";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                cmbDocumentType.Items.Add(new DocumentTypeItem
+                                {
+                                    Id = Convert.ToInt32(reader["id"]),
+                                    Name = reader["document_name"].ToString(),
+                                    Requirements = reader["requirements"].ToString(),
+                                    RequiresAttachment = Convert.ToBoolean(reader["requires_attachment"])
+                                });
+                            }
+                        }
+                    }
+
+                    cmbDocumentType.Items.Add("Others: (Please specify on the field below)");
+                    cmbDocumentType.SelectedIndex = 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load document types: " + ex.Message, "Database Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
+        // --- 2. Handle Document Type Selection ---
         private void cmbDocumentType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbDocumentType.SelectedItem == null) return;
+            cmbPurpose.Items.Clear();
+            cmbPurpose.Items.Add("-- Select Purpose --");
+            cmbPurpose.SelectedIndex = 0;
 
-            string selectedType = cmbDocumentType.SelectedItem.ToString();
-            bool isOthers = selectedType == "Others: (Please specify on the field below)";
+            // Reset and disable purpose text box when document type changes
+            txtOtherPurpose.Enabled = false;
+            txtOtherPurpose.BackColor = Color.FromArgb(243, 244, 246);
+            txtOtherPurpose.Clear();
 
+            if (cmbDocumentType.SelectedIndex <= 0)
+            {
+                lblRequirementsList.Text = "None";
+                btnAttachFile.Enabled = false;
+                txtOtherDocType.Enabled = false;
+                txtOtherDocType.BackColor = Color.FromArgb(243, 244, 246);
+                return;
+            }
+
+            // Check if "Others" selected in Document Type
+            bool isOthers = cmbDocumentType.SelectedItem.ToString() == "Others: (Please specify on the field below)";
             txtOtherDocType.Enabled = isOthers;
             txtOtherDocType.BackColor = isOthers ? Color.White : Color.FromArgb(243, 244, 246);
 
-            if (!isOthers)
+            if (isOthers)
+            {
+                lblRequirementsList.Text = "Supporting documents for your request";
+                btnAttachFile.Enabled = true;
+                cmbPurpose.Items.Add("Other Purpose");
+                return;
+            }
+            else
             {
                 txtOtherDocType.Clear();
             }
 
-            string requirements = "";
-            bool needsAttachment = true; // Default to true for valid choices
-
-            switch (selectedType)
+            if (cmbDocumentType.SelectedItem is DocumentTypeItem selectedDoc)
             {
-                case "Barangay Clearance":
-                    requirements = "Valid ID";
-                    break;
-                case "Certificate of Indigency":
-                    requirements = "Valid ID, Proof of low income";
-                    break;
-                case "Certificate of Residency":
-                    requirements = "Valid ID, Proof of Address";
-                    break;
-                case "Certificate of Good Moral Character":
-                    requirements = "Valid ID, Barangay Clearance";
-                    break;
-                case "Business Permit Endorsement":
-                    requirements = "DTI Registration, Proof of Business Address";
-                    break;
-                case "Barangay ID":
-                    requirements = "Valid ID, 1x1 Photo";
-                    break;
-                case "Certificate of No Pending Case":
-                    requirements = "Court Documents";
-                    break;
-                case "Others: (Please specify on the field below)":
-                    requirements = "Supporting documents for your request";
-                    break;
-                default:
-                    // Only index 0 ("-- Select Document Type --") reaches here
-                    requirements = "None";
-                    needsAttachment = false;
-                    break;
+                lblRequirementsList.Text = selectedDoc.Requirements;
+                btnAttachFile.Enabled = selectedDoc.RequiresAttachment;
+                LoadPurposesForDocumentType(selectedDoc.Id);
             }
-
-            lblRequirementsList.Text = requirements;
-            btnAttachFile.Enabled = needsAttachment;
         }
 
+        // --- 3. Populate cmbPurpose dynamically based on Selected Document ---
+        private void LoadPurposesForDocumentType(int docTypeId)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT id, purpose_name FROM document_purposes WHERE doc_type_id = @DocTypeId ORDER BY purpose_name ASC";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@DocTypeId", docTypeId);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                cmbPurpose.Items.Add(new PurposeItem
+                                {
+                                    Id = Convert.ToInt32(reader["id"]),
+                                    Name = reader["purpose_name"].ToString()
+                                });
+                            }
+                        }
+                    }
+
+                    cmbPurpose.Items.Add("Others");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load document purposes: " + ex.Message, "Database Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // --- 4. Submit Request Handler ---
         private void btnSubmitRequest_Click(object sender, EventArgs e)
         {
-            // Retrieve logged-in session data
-            string requesterUsername = UserSession.Username;
             int currentUserId = UserSession.UserId;
+            string requesterUsername = UserSession.Username;
 
-            // Session Check
             if (currentUserId <= 0)
             {
                 MessageBox.Show("Invalid session. Please log in again.", "Session Error",
@@ -102,25 +165,7 @@ namespace BarangayDocumentRequestSysytem
                 return;
             }
 
-            // 1. Purpose required
-            if (string.IsNullOrWhiteSpace(txtPurpose.Text))
-            {
-                MessageBox.Show("Please enter the purpose of your request.", "Missing Information",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPurpose.Focus();
-                return;
-            }
-
-            // 2. Purpose length check
-            if (txtPurpose.Text.Trim().Length < 10)
-            {
-                MessageBox.Show("Purpose must be at least 10 characters long.", "Missing Information",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPurpose.Focus();
-                return;
-            }
-
-            // 3. Document type required
+            // 1. Document Type Check
             if (cmbDocumentType.SelectedIndex <= 0)
             {
                 MessageBox.Show("Please select a document type.", "Missing Information",
@@ -129,7 +174,28 @@ namespace BarangayDocumentRequestSysytem
                 return;
             }
 
-            // 4. "Others" check
+            // 2. Purpose Combo Box Check
+            if (cmbPurpose.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Please select a purpose for your request.", "Missing Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbPurpose.Focus();
+                return;
+            }
+
+            // 2.5. Check if "Other Purpose" requires text box input
+            string selectedPurposeStr = cmbPurpose.SelectedItem.ToString();
+            bool isOtherPurpose = selectedPurposeStr == "Others" || selectedPurposeStr == "Other Purpose";
+
+            if (isOtherPurpose && string.IsNullOrWhiteSpace(txtOtherPurpose.Text))
+            {
+                MessageBox.Show("Please specify your purpose in the field below.", "Missing Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtOtherPurpose.Focus();
+                return;
+            }
+
+            // 3. "Others" Document Type Specification Check
             if (cmbDocumentType.SelectedItem?.ToString() == "Others: (Please specify on the field below)" && string.IsNullOrWhiteSpace(txtOtherDocType.Text))
             {
                 MessageBox.Show("Please specify the document type.", "Missing Information",
@@ -138,7 +204,7 @@ namespace BarangayDocumentRequestSysytem
                 return;
             }
 
-            // 5. Attachment check
+            // 4. Attachment Check
             if (btnAttachFile.Enabled && lblFileStatus.Text == "No file attached.")
             {
                 MessageBox.Show("Please attach the required document(s) before submitting.", "Missing Information",
@@ -146,12 +212,15 @@ namespace BarangayDocumentRequestSysytem
                 return;
             }
 
-            // Determine final Document Type string
-            string documentType = cmbDocumentType.SelectedItem.ToString() == "Others: (Please specify on the field below)"
+            // Resolve Document Type & Purpose String Values
+            string finalDocumentType = cmbDocumentType.SelectedItem.ToString() == "Others: (Please specify on the field below)"
                 ? txtOtherDocType.Text.Trim()
                 : cmbDocumentType.SelectedItem.ToString();
 
-            // Read binary attachment data
+            // Determine final Purpose value to save into MySQL
+            string finalPurpose = isOtherPurpose ? txtOtherPurpose.Text.Trim() : selectedPurposeStr;
+
+            // Read Attachment File Bytes
             byte[] fileBytes = null;
             string fileName = null;
 
@@ -161,14 +230,13 @@ namespace BarangayDocumentRequestSysytem
                 fileName = Path.GetFileName(selectedFilePath);
             }
 
-            // Database Insert Operation
+            // Database Operations
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
                 {
                     conn.Open();
 
-                    // 1. Calculate next user sequence count
                     string countQuery = "SELECT COALESCE(MAX(user_req_no), 0) + 1 FROM documentrequests WHERE user_id = @UserId";
                     int nextUserReqNo = 1;
 
@@ -178,10 +246,8 @@ namespace BarangayDocumentRequestSysytem
                         nextUserReqNo = Convert.ToInt32(countCmd.ExecuteScalar());
                     }
 
-                    // 2. Format Reference Number (e.g., REQ-0005-001)
                     string referenceNo = $"REQ-{currentUserId:D4}-{nextUserReqNo:D3}";
 
-                    // 3. Insert record into database (Includes 'username')
                     string insertQuery = @"INSERT INTO documentrequests 
                                   (user_id, user_req_no, reference_no, username, document_type, purpose, attachment_name, attachment_data) 
                                   VALUES (@UserId, @UserRequestNo, @ReferenceNo, @Username, @DocumentType, @Purpose, @FileName, @FileData)";
@@ -192,8 +258,8 @@ namespace BarangayDocumentRequestSysytem
                         cmd.Parameters.AddWithValue("@UserRequestNo", nextUserReqNo);
                         cmd.Parameters.AddWithValue("@ReferenceNo", referenceNo);
                         cmd.Parameters.AddWithValue("@Username", string.IsNullOrEmpty(requesterUsername) ? DBNull.Value : (object)requesterUsername);
-                        cmd.Parameters.AddWithValue("@DocumentType", documentType);
-                        cmd.Parameters.AddWithValue("@Purpose", txtPurpose.Text.Trim());
+                        cmd.Parameters.AddWithValue("@DocumentType", finalDocumentType);
+                        cmd.Parameters.AddWithValue("@Purpose", finalPurpose);
                         cmd.Parameters.AddWithValue("@FileName", string.IsNullOrEmpty(fileName) ? DBNull.Value : (object)fileName);
                         cmd.Parameters.AddWithValue("@FileData", fileBytes == null ? DBNull.Value : (object)fileBytes);
 
@@ -202,10 +268,10 @@ namespace BarangayDocumentRequestSysytem
                         MessageBox.Show($"Your request has been submitted!\nReference Number: {referenceNo}",
                                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Reset form
+                        // Reset Form Controls
                         cmbDocumentType.SelectedIndex = 0;
+                        cmbPurpose.SelectedIndex = 0;
                         txtOtherDocType.Clear();
-                        txtPurpose.Clear();
                         lblFileStatus.Text = "No file attached.";
                         selectedFilePath = string.Empty;
                     }
@@ -221,30 +287,56 @@ namespace BarangayDocumentRequestSysytem
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                // Define allowable file types
                 openFileDialog.Filter = "Document Files (*.pdf;*.docx;*.doc;*.jpg;*.png)|*.pdf;*.docx;*.doc;*.jpg;*.png|PDF Files (*.pdf)|*.pdf|Word Documents (*.docx;*.doc)|*.docx;*.doc|All Files (*.*)|*.*";
                 openFileDialog.Title = "Select Requirement Attachment";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    // Store full file path
                     selectedFilePath = openFileDialog.FileName;
-
-                    // Display only the file name on the label (replace 'lblFileName' with your label's Name property)
                     lblFileStatus.Text = Path.GetFileName(selectedFilePath);
                 }
             }
         }
-        private void FormOrControl_Load(object sender, EventArgs e)
+
+        public class DocumentTypeItem
         {
-            // Sets the standard header date dynamically
-            lblDate.Text = DateHelper.CurrentHeaderDate;
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Requirements { get; set; }
+            public bool RequiresAttachment { get; set; }
+
+            public override string ToString()
+            {
+                return Name; // Displays in ComboBox
+            }
         }
 
-        private void lblDate_Click(object sender, EventArgs e)
+        public class PurposeItem
         {
-            // Updates automatically every second
-            lblDate.Text = DateHelper.CurrentHeaderDate;
+            public int Id { get; set; }
+            public string Name { get; set; }
+
+            public override string ToString()
+            {
+                return Name; // Displays in ComboBox
+            }
+        }
+
+        private void cmbPurpose_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPurpose.SelectedItem == null) return;
+
+            string selectedPurpose = cmbPurpose.SelectedItem.ToString();
+            bool isOtherPurpose = selectedPurpose == "Others" || selectedPurpose == "Other Purpose";
+
+            // Enable/Disable the purpose text box
+            txtOtherPurpose.Enabled = isOtherPurpose;
+            txtOtherPurpose.BackColor = isOtherPurpose ? Color.White : Color.FromArgb(243, 244, 246);
+
+            if (!isOtherPurpose)
+            {
+                txtOtherPurpose.Clear();
+            }
         }
     }
 }

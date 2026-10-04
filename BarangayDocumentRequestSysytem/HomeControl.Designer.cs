@@ -416,7 +416,6 @@
             // 
             // lblReq2Status
             // 
-            lblReq2Status.AutoSize = true;
             lblReq2Status.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblReq2Status.ForeColor = Color.SeaGreen;
             lblReq2Status.Location = new Point(4, 4);
@@ -491,7 +490,6 @@
             // 
             // lblReq3Status
             // 
-            lblReq3Status.AutoSize = true;
             lblReq3Status.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblReq3Status.ForeColor = Color.SeaGreen;
             lblReq3Status.Location = new Point(4, 4);
@@ -560,12 +558,11 @@
             // 
             // lblReq1Status
             // 
-            lblReq1Status.AutoSize = true;
             lblReq1Status.Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblReq1Status.ForeColor = Color.DarkGoldenrod;
-            lblReq1Status.Location = new Point(14, 4);
+            lblReq1Status.Location = new Point(4, 4);
             lblReq1Status.Name = "lblReq1Status";
-            lblReq1Status.Size = new Size(46, 18);
+            lblReq1Status.Size = new Size(67, 18);
             lblReq1Status.TabIndex = 1;
             lblReq1Status.Text = "Pending";
             // 
@@ -800,6 +797,7 @@
             Controls.Add(lblWelcome);
             Name = "HomeControl";
             Size = new Size(586, 447);
+            Load += HomeControl_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -817,17 +815,14 @@
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
             panel13.ResumeLayout(false);
-            panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
             panel15.ResumeLayout(false);
-            panel15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
             panel14.ResumeLayout(false);
-            panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();

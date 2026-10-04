@@ -110,8 +110,7 @@
             btnLogout.TabIndex = 23;
             btnLogout.Text = "🚪  Logout";
             btnLogout.TextAlign = ContentAlignment.MiddleLeft;
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
+            btnLogout.Click += btnLogout_Click_1;
             // 
             // btnSetting
             // 
@@ -128,7 +127,7 @@
             btnSetting.Text = "⚙️ Settings";
             btnSetting.TextAlign = ContentAlignment.MiddleLeft;
             btnSetting.UseVisualStyleBackColor = true;
-            btnSetting.Click += btnSetting_Click;
+            btnSetting.Click += btnSetting_Click_1;
             // 
             // btnHome
             // 
@@ -146,7 +145,7 @@
             btnHome.Text = "🏠 Home";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
             btnHome.UseVisualStyleBackColor = false;
-            btnHome.Click += btnHome_Click;
+            btnHome.Click += btnHome_Click_1;
             // 
             // btnReport
             // 
@@ -180,7 +179,7 @@
             btnPendingRequests.Text = "🕒 Pending Request";
             btnPendingRequests.TextAlign = ContentAlignment.MiddleLeft;
             btnPendingRequests.UseVisualStyleBackColor = false;
-            btnPendingRequests.Click += btnPendingRequests_Click;
+            btnPendingRequests.Click += btnPendingRequests_Click_1;
             // 
             // btnResident
             // 
@@ -197,7 +196,7 @@
             btnResident.Text = "👤 Residents";
             btnResident.TextAlign = ContentAlignment.MiddleLeft;
             btnResident.UseVisualStyleBackColor = true;
-            btnResident.Click += btnResident_Click;
+            btnResident.Click += btnResident_Click_1;
             // 
             // logoPicBox
             // 
