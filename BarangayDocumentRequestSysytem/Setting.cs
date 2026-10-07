@@ -49,5 +49,10 @@ namespace BarangayDocumentRequestSysytem
         {
             LoadSettingsPage(new About());
         }
+
+        private void dbmsBTN_Click(object sender, EventArgs e)
+        {
+            LoadSettingsPage(new Information_Update());
+        }
     }
 }

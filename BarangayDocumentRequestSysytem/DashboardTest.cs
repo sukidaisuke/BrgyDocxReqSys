@@ -94,13 +94,22 @@ namespace BarangayDocumentRequestSysytem
             LoadControl(new Setting());
         }
 
-        private void btnLogout_Click_1(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            DialogResult confirm = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show(
+                "Are you sure you want to log out?\n\nYou will be returned to the login page.",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
             if (confirm == DialogResult.Yes)
             {
-                Login loginForm = new Login();
-                loginForm.Show();
+                this.Hide();
+
+                Login lg = new Login();
+                lg.ShowDialog();
+
                 this.Close();
             }
         }

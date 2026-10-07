@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿#nullable disable
+using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -10,14 +11,362 @@ namespace BarangayDocumentRequestSysytem
 {
     public partial class DocumentRequest : UserControl
     {
+        private readonly string connectionString = "Server=localhost;Port=3306;Database=barangay_db;Uid=root;Pwd=;";
+        private int currentSelectedRequestId = -1;
+
         public DocumentRequest()
         {
             InitializeComponent();
+
+            this.Load += DocumentRequest_Load;
+            this.VisibleChanged += DocumentRequest_VisibleChanged;
         }
 
-        private void bodyTLP_Paint(object sender, PaintEventArgs e)
+        private void DocumentRequest_Load(object sender, EventArgs e)
         {
+            if (!this.DesignMode)
+            {
+                UpdateHeaderDate();
+                LoadPendingRequests();
 
+                if (cmbHistoryStatusFilter != null && cmbHistoryStatusFilter.SelectedIndex < 0)
+                {
+                    cmbHistoryStatusFilter.SelectedIndex = 0; // Default to "All"
+                }
+            }
+        }
+
+        private void DocumentRequest_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible && !this.DesignMode)
+            {
+                LoadPendingRequests();
+            }
+        }
+
+        private void UpdateHeaderDate()
+        {
+            if (lblDate != null)
+            {
+                lblDate.Text = $"📅 {DateTime.Now:MMMM d, yyyy | dddd}";
+            }
+        }
+
+        // --- 1. Load Pending Requests from MySQL ---
+        public void LoadPendingRequests()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = @"
+                        SELECT 
+                            r.request_id, 
+                            r.document_type, 
+                            r.request_at, 
+                            r.status, 
+                            COALESCE(NULLIF(TRIM(CONCAT(u.first_name, ' ', u.last_name)), ''), r.username, 'Resident') AS resident_name,
+                            DATE_FORMAT(r.request_at, '%M %d, %Y • %h:%i %p') AS formatted_date
+                        FROM documentrequests r 
+                        LEFT JOIN users u ON r.user_id = u.user_id 
+                        WHERE LOWER(r.status) = 'pending'
+                        ORDER BY r.request_at DESC, r.request_id DESC";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dgvRequests.DataSource = dt;
+
+                            if (lblTotalRequests != null)
+                            {
+                                lblTotalRequests.Text = $"Total: {dt.Rows.Count} Request(s)";
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading pending requests: {ex.Message}", "Database Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // --- 2. Action Buttons Click Events (Decline ❌, View 👁️, Approve ✔) ---
+        private void DgvRequests_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            int requestId = Convert.ToInt32(dgvRequests.Rows[e.RowIndex].Cells["request_id"].Value);
+            string colName = dgvRequests.Columns[e.ColumnIndex].Name;
+
+            if (colName == "btnReject")
+            {
+                DialogResult dialogResult = MessageBox.Show(
+                    $"Are you sure you want to DECLINE request #{requestId}?",
+                    "Confirm Rejection",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    UpdateRequestStatus(requestId, "Rejected");
+                }
+            }
+            else if (colName == "btnView")
+            {
+                ShowRequestDetailsModal(requestId);
+            }
+            else if (colName == "btnApprove")
+            {
+                DialogResult dialogResult = MessageBox.Show(
+                    $"Are you sure you want to APPROVE request #{requestId}?",
+                    "Confirm Approval",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    UpdateRequestStatus(requestId, "Approved");
+                }
+            }
+        }
+
+        // --- 3. Open Request Details Floating Modal ---
+        private void ShowRequestDetailsModal(int requestId)
+        {
+            currentSelectedRequestId = requestId;
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"
+                        SELECT r.request_id, r.document_type, r.purpose, r.attachment_name, r.attachment_data,
+                               r.status, r.request_at, 
+                               COALESCE(NULLIF(TRIM(CONCAT(u.first_name, ' ', u.last_name)), ''), r.username, 'Resident') AS resident_name
+                        FROM documentrequests r
+                        LEFT JOIN users u ON r.user_id = u.user_id
+                        WHERE r.request_id = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", requestId);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                lblModalTitle.Text = $"📄 Request Details (#{requestId})";
+                                lblDetailResident.Text = $"Resident: {reader["resident_name"]}";
+                                lblDetailDocType.Text = $"Document: {reader["document_type"]}";
+                                lblDetailDate.Text = $"Requested: {Convert.ToDateTime(reader["request_at"]):MMM dd, yyyy • hh:mm tt}";
+
+                                string purposeText = reader["purpose"]?.ToString();
+                                txtDetailPurpose.Text = string.IsNullOrWhiteSpace(purposeText) ? "No purpose specified." : purposeText;
+
+                                string attachName = reader["attachment_name"]?.ToString();
+                                lblAttachmentName.Text = string.IsNullOrWhiteSpace(attachName) ? "(No attachment provided)" : attachName;
+
+                                if (picAttachment.Image != null)
+                                {
+                                    picAttachment.Image.Dispose();
+                                    picAttachment.Image = null;
+                                }
+
+                                if (reader["attachment_data"] != DBNull.Value)
+                                {
+                                    byte[] imgBytes = (byte[])reader["attachment_data"];
+                                    if (imgBytes.Length > 0)
+                                    {
+                                        using (MemoryStream ms = new MemoryStream(imgBytes))
+                                        {
+                                            picAttachment.Image = Image.FromStream(ms);
+                                        }
+                                    }
+                                }
+
+                                pnlModalOverlay.BringToFront();
+                                pnlModalOverlay.Visible = true;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error fetching request details: {ex.Message}", "Database Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // --- 4. Request Details Modal Events ---
+        private void BtnModalClose_Click(object sender, EventArgs e)
+        {
+            pnlModalOverlay.Visible = false;
+            if (picAttachment.Image != null)
+            {
+                picAttachment.Image.Dispose();
+                picAttachment.Image = null;
+            }
+            currentSelectedRequestId = -1;
+        }
+
+        private void BtnModalApprove_Click(object sender, EventArgs e)
+        {
+            if (currentSelectedRequestId > 0)
+            {
+                UpdateRequestStatus(currentSelectedRequestId, "Approved");
+                BtnModalClose_Click(sender, e);
+            }
+        }
+
+        private void BtnModalDecline_Click(object sender, EventArgs e)
+        {
+            if (currentSelectedRequestId > 0)
+            {
+                UpdateRequestStatus(currentSelectedRequestId, "Rejected");
+                BtnModalClose_Click(sender, e);
+            }
+        }
+
+        // --- 5. Update Request Status ---
+        private void UpdateRequestStatus(int requestId, string newStatus)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "UPDATE documentrequests SET status = @status WHERE request_id = @id";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@status", newStatus);
+                        cmd.Parameters.AddWithValue("@id", requestId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show($"Request #{requestId} updated to '{newStatus}'.", "Status Updated",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LoadPendingRequests();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to update status: {ex.Message}", "Database Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // --- 6. HISTORY MODAL EVENT HANDLERS & LOGIC ---
+        private void BtnRequestHistory_Click(object sender, EventArgs e)
+        {
+            LoadHistoryRequests();
+            pnlHistoryModalOverlay.BringToFront();
+            pnlHistoryModalOverlay.Visible = true;
+        }
+
+        private void BtnHistoryClose_Click(object sender, EventArgs e)
+        {
+            pnlHistoryModalOverlay.Visible = false;
+        }
+
+        private void CmbHistoryStatusFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadHistoryRequests();
+        }
+
+        public void LoadHistoryRequests()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string filter = cmbHistoryStatusFilter.SelectedItem != null
+                        ? cmbHistoryStatusFilter.SelectedItem.ToString()
+                        : "All";
+
+                    StringBuilder query = new StringBuilder(@"
+                        SELECT 
+                            r.request_id, 
+                            r.document_type, 
+                            r.status, 
+                            COALESCE(NULLIF(TRIM(CONCAT(u.first_name, ' ', u.last_name)), ''), r.username, 'Resident') AS resident_name,
+                            DATE_FORMAT(r.request_at, '%b %d, %Y • %h:%i %p') AS formatted_date
+                        FROM documentrequests r 
+                        LEFT JOIN users u ON r.user_id = u.user_id 
+                        WHERE LOWER(r.status) != 'pending'");
+
+                    if (!filter.Equals("All", StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (filter.Equals("Approved", StringComparison.OrdinalIgnoreCase))
+                        {
+                            query.Append(" AND (LOWER(r.status) = 'approved' OR LOWER(r.status) = 'completed')");
+                        }
+                        else
+                        {
+                            query.Append(" AND LOWER(r.status) = @status");
+                        }
+                    }
+
+                    query.Append(" ORDER BY r.request_at DESC, r.request_id DESC");
+
+                    using (MySqlCommand cmd = new MySqlCommand(query.ToString(), conn))
+                    {
+                        if (!filter.Equals("All", StringComparison.OrdinalIgnoreCase) &&
+                            !filter.Equals("Approved", StringComparison.OrdinalIgnoreCase))
+                        {
+                            cmd.Parameters.AddWithValue("@status", filter.ToLower());
+                        }
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dgvHistoryRequests.DataSource = dt;
+
+                            if (lblHistoryTotal != null)
+                            {
+                                lblHistoryTotal.Text = $"Total History Records: {dt.Rows.Count}";
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading history records: {ex.Message}", "Database Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void DgvHistoryRequests_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvHistoryRequests.Columns[e.ColumnIndex].DataPropertyName == "status" && e.Value != null)
+            {
+                string statusStr = e.Value.ToString();
+                if (statusStr.Equals("Approved", StringComparison.OrdinalIgnoreCase) ||
+                    statusStr.Equals("Completed", StringComparison.OrdinalIgnoreCase))
+                {
+                    e.CellStyle.BackColor = Color.FromArgb(220, 252, 231); // Soft green
+                    e.CellStyle.ForeColor = Color.FromArgb(22, 128, 61);   // Dark green
+                }
+                else if (statusStr.Equals("Rejected", StringComparison.OrdinalIgnoreCase))
+                {
+                    e.CellStyle.BackColor = Color.FromArgb(254, 226, 226); // Soft red
+                    e.CellStyle.ForeColor = Color.FromArgb(185, 28, 28);   // Dark red
+                }
+                e.CellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+                e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
     }
 }

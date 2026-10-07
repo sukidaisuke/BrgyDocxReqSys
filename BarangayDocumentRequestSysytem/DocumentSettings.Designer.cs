@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             bodyGB = new GroupBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            pr1Price = new Label();
-            pr2Label = new Label();
-            pr2Price = new Label();
-            pr3Label = new Label();
-            pr3Price = new Label();
-            pr4Label = new Label();
-            pr4Price = new Label();
-            pr1Label = new Label();
+            btnSaveAll = new Button();
+            dgvDocumentSettings = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
+            colDocName = new DataGridViewTextBoxColumn();
+            colPrice = new DataGridViewTextBoxColumn();
+            colAction = new DataGridViewButtonColumn();
             bodyGB.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDocumentSettings).BeginInit();
             SuspendLayout();
             // 
             // bodyGB
             // 
-            bodyGB.Controls.Add(tableLayoutPanel1);
+            bodyGB.Controls.Add(btnSaveAll);
+            bodyGB.Controls.Add(dgvDocumentSettings);
             bodyGB.Dock = DockStyle.Fill;
             bodyGB.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            bodyGB.ForeColor = Color.FromArgb(30, 41, 59);
             bodyGB.Location = new Point(0, 0);
             bodyGB.Name = "bodyGB";
             bodyGB.Size = new Size(406, 403);
@@ -54,125 +55,91 @@
             bodyGB.TabStop = false;
             bodyGB.Text = "Document Settings";
             // 
-            // tableLayoutPanel1
+            // btnSaveAll
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.None;
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(pr1Price, 1, 0);
-            tableLayoutPanel1.Controls.Add(pr2Label, 0, 1);
-            tableLayoutPanel1.Controls.Add(pr2Price, 1, 1);
-            tableLayoutPanel1.Controls.Add(pr3Label, 0, 2);
-            tableLayoutPanel1.Controls.Add(pr3Price, 1, 2);
-            tableLayoutPanel1.Controls.Add(pr4Label, 0, 3);
-            tableLayoutPanel1.Controls.Add(pr4Price, 1, 3);
-            tableLayoutPanel1.Controls.Add(pr1Label, 0, 0);
-            tableLayoutPanel1.Location = new Point(6, 63);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.Size = new Size(394, 163);
-            tableLayoutPanel1.TabIndex = 0;
+            btnSaveAll.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnSaveAll.BackColor = Color.FromArgb(30, 41, 59);
+            btnSaveAll.Cursor = Cursors.Hand;
+            btnSaveAll.FlatAppearance.BorderSize = 0;
+            btnSaveAll.FlatStyle = FlatStyle.Flat;
+            btnSaveAll.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            btnSaveAll.ForeColor = Color.White;
+            btnSaveAll.Location = new Point(12, 355);
+            btnSaveAll.Name = "btnSaveAll";
+            btnSaveAll.Size = new Size(382, 36);
+            btnSaveAll.TabIndex = 1;
+            btnSaveAll.Text = "💾 Save All Price Changes";
+            btnSaveAll.UseVisualStyleBackColor = false;
+            btnSaveAll.Click += btnSaveAll_Click;
             // 
-            // pr1Price
+            // dgvDocumentSettings
             // 
-            pr1Price.AutoSize = true;
-            pr1Price.Dock = DockStyle.Fill;
-            pr1Price.Font = new Font("Segoe UI", 9.75F);
-            pr1Price.Location = new Point(200, 0);
-            pr1Price.Name = "pr1Price";
-            pr1Price.Size = new Size(191, 40);
-            pr1Price.TabIndex = 1;
-            pr1Price.Text = "₱ 50.00";
-            pr1Price.TextAlign = ContentAlignment.MiddleLeft;
+            dgvDocumentSettings.AllowUserToAddRows = false;
+            dgvDocumentSettings.AllowUserToDeleteRows = false;
+            dgvDocumentSettings.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvDocumentSettings.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDocumentSettings.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvDocumentSettings.BorderStyle = BorderStyle.FixedSingle;
+            dgvDocumentSettings.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvDocumentSettings.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(186, 218, 231);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(186, 218, 231);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDocumentSettings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvDocumentSettings.ColumnHeadersHeight = 38;
+            dgvDocumentSettings.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvDocumentSettings.Columns.AddRange(new DataGridViewColumn[] { colId, colDocName, colPrice, colAction });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(30, 41, 59);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(224, 242, 254);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(15, 23, 42);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvDocumentSettings.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvDocumentSettings.EnableHeadersVisualStyles = false;
+            dgvDocumentSettings.GridColor = Color.FromArgb(229, 231, 235);
+            dgvDocumentSettings.Location = new Point(12, 30);
+            dgvDocumentSettings.MultiSelect = false;
+            dgvDocumentSettings.Name = "dgvDocumentSettings";
+            dgvDocumentSettings.RowHeadersVisible = false;
+            dgvDocumentSettings.RowTemplate.Height = 42;
+            dgvDocumentSettings.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDocumentSettings.Size = new Size(382, 312);
+            dgvDocumentSettings.TabIndex = 0;
+            dgvDocumentSettings.CellContentClick += dgvDocumentSettings_CellContentClick;
             // 
-            // pr2Label
+            // colId
             // 
-            pr2Label.AutoSize = true;
-            pr2Label.Dock = DockStyle.Fill;
-            pr2Label.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            pr2Label.Location = new Point(3, 40);
-            pr2Label.Name = "pr2Label";
-            pr2Label.Size = new Size(191, 40);
-            pr2Label.TabIndex = 2;
-            pr2Label.Text = "Certificate of Residency :";
-            pr2Label.TextAlign = ContentAlignment.MiddleLeft;
+            colId.HeaderText = "ID";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            colId.Visible = false;
             // 
-            // pr2Price
+            // colDocName
             // 
-            pr2Price.AutoSize = true;
-            pr2Price.Dock = DockStyle.Fill;
-            pr2Price.Font = new Font("Segoe UI", 9.75F);
-            pr2Price.Location = new Point(200, 40);
-            pr2Price.Name = "pr2Price";
-            pr2Price.Size = new Size(191, 40);
-            pr2Price.TabIndex = 3;
-            pr2Price.Text = "₱ 30.00";
-            pr2Price.TextAlign = ContentAlignment.MiddleLeft;
+            colDocName.FillWeight = 190F;
+            colDocName.HeaderText = "Document Name";
+            colDocName.Name = "colDocName";
+            colDocName.ReadOnly = true;
             // 
-            // pr3Label
+            // colPrice
             // 
-            pr3Label.AutoSize = true;
-            pr3Label.Dock = DockStyle.Fill;
-            pr3Label.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            pr3Label.Location = new Point(3, 80);
-            pr3Label.Name = "pr3Label";
-            pr3Label.Size = new Size(191, 40);
-            pr3Label.TabIndex = 4;
-            pr3Label.Text = "Certificate of Indigency :";
-            pr3Label.TextAlign = ContentAlignment.MiddleLeft;
+            colPrice.FillWeight = 110F;
+            colPrice.HeaderText = "Price (₱)";
+            colPrice.Name = "colPrice";
             // 
-            // pr3Price
+            // colAction
             // 
-            pr3Price.AutoSize = true;
-            pr3Price.Dock = DockStyle.Fill;
-            pr3Price.Font = new Font("Segoe UI", 9.75F);
-            pr3Price.Location = new Point(200, 80);
-            pr3Price.Name = "pr3Price";
-            pr3Price.Size = new Size(191, 40);
-            pr3Price.TabIndex = 5;
-            pr3Price.Text = "₱ 0.00";
-            pr3Price.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // pr4Label
-            // 
-            pr4Label.AutoSize = true;
-            pr4Label.Dock = DockStyle.Fill;
-            pr4Label.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            pr4Label.Location = new Point(3, 120);
-            pr4Label.Name = "pr4Label";
-            pr4Label.Size = new Size(191, 43);
-            pr4Label.TabIndex = 6;
-            pr4Label.Text = "Business Permit :";
-            pr4Label.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // pr4Price
-            // 
-            pr4Price.AutoSize = true;
-            pr4Price.Dock = DockStyle.Fill;
-            pr4Price.Font = new Font("Segoe UI", 9.75F);
-            pr4Price.Location = new Point(200, 120);
-            pr4Price.Name = "pr4Price";
-            pr4Price.Size = new Size(191, 43);
-            pr4Price.TabIndex = 7;
-            pr4Price.Text = "₱ 100.00";
-            pr4Price.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // pr1Label
-            // 
-            pr1Label.AutoSize = true;
-            pr1Label.Dock = DockStyle.Fill;
-            pr1Label.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            pr1Label.Location = new Point(3, 0);
-            pr1Label.Name = "pr1Label";
-            pr1Label.Size = new Size(191, 40);
-            pr1Label.TabIndex = 0;
-            pr1Label.Text = "Barangay Clearance :";
-            pr1Label.TextAlign = ContentAlignment.MiddleLeft;
+            colAction.FillWeight = 90F;
+            colAction.HeaderText = "Action";
+            colAction.Name = "colAction";
+            colAction.Text = "Update";
+            colAction.UseColumnTextForButtonValue = true;
             // 
             // DocumentSettings
             // 
@@ -181,23 +148,21 @@
             Controls.Add(bodyGB);
             Name = "DocumentSettings";
             Size = new Size(406, 403);
+            Load += DocumentSettings_Load;
+            VisibleChanged += DocumentSettings_VisibleChanged;
             bodyGB.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDocumentSettings).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private GroupBox bodyGB;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Label pr1Price;
-        private Label pr2Label;
-        private Label pr2Price;
-        private Label pr3Label;
-        private Label pr3Price;
-        private Label pr4Label;
-        private Label pr4Price;
-        private Label pr1Label;
+        private DataGridView dgvDocumentSettings;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewTextBoxColumn colDocName;
+        private DataGridViewTextBoxColumn colPrice;
+        private DataGridViewButtonColumn colAction;
+        private Button btnSaveAll;
     }
 }

@@ -29,6 +29,33 @@ namespace BarangayDocumentRequestSysytem
             LoadDocumentTypesFromDatabase();
         }
 
+        // Helper to safely get price from DB column or standard Barangay rates
+        private decimal GetDocumentFee(string docName, MySqlDataReader reader)
+        {
+            try
+            {
+                int priceOrdinal = reader.GetOrdinal("price");
+                if (!reader.IsDBNull(priceOrdinal))
+                {
+                    return Convert.ToDecimal(reader.GetValue(priceOrdinal));
+                }
+            }
+            catch
+            {
+                // Fallback if 'price' column does not exist in document_types table
+            }
+
+            // Standard Barangay Document Rates
+            if (docName.Equals("Certificate of Indigency", StringComparison.OrdinalIgnoreCase))
+                return 0.00m;
+            if (docName.Equals("Barangay ID", StringComparison.OrdinalIgnoreCase))
+                return 100.00m;
+            if (docName.Equals("Business Permit Endorsement", StringComparison.OrdinalIgnoreCase))
+                return 150.00m;
+
+            return 50.00m; // Default standard clearance fee
+        }
+
         // --- 1. Populate cmbDocumentType from MySQL ---
         private void LoadDocumentTypesFromDatabase()
         {
@@ -40,7 +67,7 @@ namespace BarangayDocumentRequestSysytem
                 try
                 {
                     conn.Open();
-                    string query = "SELECT id, document_name, requirements, requires_attachment FROM document_types ORDER BY document_name ASC";
+                    string query = "SELECT * FROM document_types ORDER BY document_name ASC";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
@@ -48,12 +75,14 @@ namespace BarangayDocumentRequestSysytem
                         {
                             while (reader.Read())
                             {
+                                string docName = reader["document_name"].ToString();
                                 cmbDocumentType.Items.Add(new DocumentTypeItem
                                 {
                                     Id = Convert.ToInt32(reader["id"]),
-                                    Name = reader["document_name"].ToString(),
+                                    Name = docName,
                                     Requirements = reader["requirements"].ToString(),
-                                    RequiresAttachment = Convert.ToBoolean(reader["requires_attachment"])
+                                    RequiresAttachment = Convert.ToBoolean(reader["requires_attachment"]),
+                                    Price = GetDocumentFee(docName, reader)
                                 });
                             }
                         }
@@ -85,6 +114,7 @@ namespace BarangayDocumentRequestSysytem
             if (cmbDocumentType.SelectedIndex <= 0)
             {
                 lblRequirementsList.Text = "None";
+                lblFeeAmount.Text = "₱0.00";
                 btnAttachFile.Enabled = false;
                 txtOtherDocType.Enabled = false;
                 txtOtherDocType.BackColor = Color.FromArgb(243, 244, 246);
@@ -99,6 +129,7 @@ namespace BarangayDocumentRequestSysytem
             if (isOthers)
             {
                 lblRequirementsList.Text = "Supporting documents for your request";
+                lblFeeAmount.Text = "₱50.00";
                 btnAttachFile.Enabled = true;
                 cmbPurpose.Items.Add("Other Purpose");
                 return;
@@ -111,6 +142,7 @@ namespace BarangayDocumentRequestSysytem
             if (cmbDocumentType.SelectedItem is DocumentTypeItem selectedDoc)
             {
                 lblRequirementsList.Text = selectedDoc.Requirements;
+                lblFeeAmount.Text = selectedDoc.Price > 0 ? $"₱{selectedDoc.Price:N2}" : "FREE";
                 btnAttachFile.Enabled = selectedDoc.RequiresAttachment;
                 LoadPurposesForDocumentType(selectedDoc.Id);
             }
@@ -304,6 +336,7 @@ namespace BarangayDocumentRequestSysytem
             public string Name { get; set; }
             public string Requirements { get; set; }
             public bool RequiresAttachment { get; set; }
+            public decimal Price { get; set; }
 
             public override string ToString()
             {

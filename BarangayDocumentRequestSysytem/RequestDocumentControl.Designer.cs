@@ -39,6 +39,8 @@
             panel2 = new Panel();
             lblRequirementsList = new Label();
             label1 = new Label();
+            lblFeeTitle = new Label();
+            lblFeeAmount = new Label();
             panel3 = new Panel();
             btnAttachFile = new Button();
             lblFileStatus = new Label();
@@ -148,6 +150,8 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ButtonFace;
+            panel2.Controls.Add(lblFeeAmount);
+            panel2.Controls.Add(lblFeeTitle);
             panel2.Controls.Add(lblRequirementsList);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(panel3);
@@ -166,7 +170,7 @@
             lblRequirementsList.RightToLeft = RightToLeft.Yes;
             lblRequirementsList.Size = new Size(85, 18);
             lblRequirementsList.TabIndex = 26;
-            lblRequirementsList.Text = "Requirement(s)";
+            lblRequirementsList.Text = "None";
             lblRequirementsList.TextAlign = ContentAlignment.BottomRight;
             // 
             // label1
@@ -179,6 +183,30 @@
             label1.Size = new Size(83, 18);
             label1.TabIndex = 28;
             label1.Text = "Requirements: ";
+            // 
+            // lblFeeTitle
+            // 
+            lblFeeTitle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFeeTitle.AutoSize = true;
+            lblFeeTitle.Font = new Font("Gill Sans MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFeeTitle.ForeColor = SystemColors.ControlDarkDark;
+            lblFeeTitle.Location = new Point(370, 3);
+            lblFeeTitle.Name = "lblFeeTitle";
+            lblFeeTitle.Size = new Size(33, 18);
+            lblFeeTitle.TabIndex = 29;
+            lblFeeTitle.Text = "Fee:";
+            // 
+            // lblFeeAmount
+            // 
+            lblFeeAmount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFeeAmount.AutoSize = true;
+            lblFeeAmount.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFeeAmount.ForeColor = Color.SlateBlue;
+            lblFeeAmount.Location = new Point(408, 2);
+            lblFeeAmount.Name = "lblFeeAmount";
+            lblFeeAmount.Size = new Size(45, 18);
+            lblFeeAmount.TabIndex = 30;
+            lblFeeAmount.Text = "₱0.00";
             // 
             // panel3
             // 
@@ -315,5 +343,7 @@
         private HScrollBar hScrollBar1;
         private ComboBox cmbPurpose;
         private TextBox txtOtherPurpose;
+        private Label lblFeeTitle;
+        private Label lblFeeAmount;
     }
 }

@@ -2,15 +2,8 @@
 {
     partial class MyRequestsControl
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
@@ -34,9 +23,9 @@
             lblPageTitle = new Label();
             panelTableCard = new Panel();
             dgvMyRequests = new DataGridView();
-            colRefNo = new DataGridViewTextBoxColumn();
             colDocType = new DataGridViewTextBoxColumn();
             colDateRequested = new DataGridViewTextBoxColumn();
+            colFee = new DataGridViewTextBoxColumn();
             colStatus = new DataGridViewTextBoxColumn();
             txtSearch = new TextBox();
             cmbFilterStatus = new ComboBox();
@@ -98,7 +87,7 @@
             dgvMyRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMyRequests.ColumnHeadersHeight = 45;
             dgvMyRequests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvMyRequests.Columns.AddRange(new DataGridViewColumn[] { colRefNo, colDocType, colDateRequested, colStatus });
+            dgvMyRequests.Columns.AddRange(new DataGridViewColumn[] { colDocType, colDateRequested, colFee, colStatus });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -121,26 +110,30 @@
             dgvMyRequests.CellContentClick += dgvMyRequests_CellContentClick;
             dgvMyRequests.CellFormatting += dgvMyRequests_CellFormatting;
             // 
-            // colRefNo
-            // 
-            colRefNo.HeaderText = "Reference No.";
-            colRefNo.Name = "colRefNo";
-            colRefNo.ReadOnly = true;
-            // 
             // colDocType
             // 
+            colDocType.FillWeight = 210F;
             colDocType.HeaderText = "Document Type";
             colDocType.Name = "colDocType";
             colDocType.ReadOnly = true;
             // 
             // colDateRequested
             // 
+            colDateRequested.FillWeight = 100F;
             colDateRequested.HeaderText = "Date Requested";
             colDateRequested.Name = "colDateRequested";
             colDateRequested.ReadOnly = true;
             // 
+            // colFee
+            // 
+            colFee.FillWeight = 75F;
+            colFee.HeaderText = "Fee";
+            colFee.Name = "colFee";
+            colFee.ReadOnly = true;
+            // 
             // colStatus
             // 
+            colStatus.FillWeight = 95F;
             colStatus.HeaderText = "Status";
             colStatus.Name = "colStatus";
             colStatus.ReadOnly = true;
@@ -155,17 +148,21 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(275, 23);
             txtSearch.TabIndex = 0;
-            txtSearch.Text = "🔍  Search by document type or reference no.";
+            txtSearch.Text = "🔍  Search by document type...";
+            txtSearch.Enter += txtSearch_Enter;
+            txtSearch.Leave += txtSearch_Leave;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // cmbFilterStatus
             // 
             cmbFilterStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFilterStatus.FormattingEnabled = true;
-            cmbFilterStatus.Items.AddRange(new object[] { "All", "Pending", "Completed", "Rejected" });
+            cmbFilterStatus.Items.AddRange(new object[] { "All", "Pending", "Approved", "Completed", "Rejected" });
             cmbFilterStatus.Location = new Point(443, 51);
             cmbFilterStatus.Name = "cmbFilterStatus";
             cmbFilterStatus.Size = new Size(121, 23);
             cmbFilterStatus.TabIndex = 1;
+            cmbFilterStatus.SelectedIndexChanged += cmbFilterStatus_SelectedIndexChanged;
             // 
             // lblShowingCount
             // 
@@ -204,9 +201,9 @@
         private TextBox txtSearch;
         private ComboBox cmbFilterStatus;
         private DataGridView dgvMyRequests;
-        private DataGridViewTextBoxColumn colRefNo;
         private DataGridViewTextBoxColumn colDocType;
         private DataGridViewTextBoxColumn colDateRequested;
+        private DataGridViewTextBoxColumn colFee;
         private DataGridViewTextBoxColumn colStatus;
         private Label lblShowingCount;
     }

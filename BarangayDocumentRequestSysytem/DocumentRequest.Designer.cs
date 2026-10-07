@@ -2,15 +2,8 @@
 {
     partial class DocumentRequest
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,963 +15,736 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocumentRequest));
-            BodyGroupBox = new GroupBox();
-            bodyTLP = new TableLayoutPanel();
-            panel5 = new Panel();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            button11 = new Button();
-            button12 = new Button();
-            button13 = new Button();
-            label11 = new Label();
-            label12 = new Label();
-            label13 = new Label();
-            pictureBox4 = new PictureBox();
-            panel4 = new Panel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            pictureBox2 = new PictureBox();
-            panel3 = new Panel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            pictureBox3 = new PictureBox();
-            panel2 = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            pictureBox1 = new PictureBox();
-            panel1 = new Panel();
-            btnTLP = new TableLayoutPanel();
-            button15 = new Button();
-            button14 = new Button();
-            button1 = new Button();
-            label1 = new Label();
-            requesteeLBL1 = new Label();
-            reqLBL1 = new Label();
-            pictureBox6 = new PictureBox();
-            ReqInformationHeaderLabel = new Label();
-            pendingReqLBL = new Label();
-            PanelContainer = new Panel();
-            pageTLP = new TableLayoutPanel();
-            sampleBTN5 = new Button();
-            sampleBTN4 = new Button();
-            sampleBTN3 = new Button();
-            sampleBTN2 = new Button();
-            sampleBTN1 = new Button();
-            pageLBL = new Label();
-            dividerPanel = new Panel();
-            NavPanel = new Panel();
-            lblDate = new Label();
-            BodyGroupBox.SuspendLayout();
-            bodyTLP.SuspendLayout();
-            panel5.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            panel4.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel3.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            panel2.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
-            btnTLP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            PanelContainer.SuspendLayout();
-            pageTLP.SuspendLayout();
-            NavPanel.SuspendLayout();
-            SuspendLayout();
-            // 
-            // BodyGroupBox
-            // 
-            BodyGroupBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            BodyGroupBox.Controls.Add(bodyTLP);
-            BodyGroupBox.Controls.Add(ReqInformationHeaderLabel);
-            BodyGroupBox.Location = new Point(32, 102);
-            BodyGroupBox.Name = "BodyGroupBox";
-            BodyGroupBox.Padding = new Padding(7);
-            BodyGroupBox.Size = new Size(567, 330);
-            BodyGroupBox.TabIndex = 21;
-            BodyGroupBox.TabStop = false;
-            // 
-            // bodyTLP
-            // 
-            bodyTLP.ColumnCount = 1;
-            bodyTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            bodyTLP.Controls.Add(panel5, 0, 4);
-            bodyTLP.Controls.Add(panel4, 0, 3);
-            bodyTLP.Controls.Add(panel3, 0, 2);
-            bodyTLP.Controls.Add(panel2, 0, 1);
-            bodyTLP.Controls.Add(panel1, 0, 0);
-            bodyTLP.Dock = DockStyle.Fill;
-            bodyTLP.Location = new Point(7, 23);
-            bodyTLP.Margin = new Padding(0);
-            bodyTLP.Name = "bodyTLP";
-            bodyTLP.RowCount = 5;
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            bodyTLP.Size = new Size(553, 300);
-            bodyTLP.TabIndex = 23;
-            bodyTLP.Paint += bodyTLP_Paint;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = SystemColors.ControlLight;
-            panel5.Controls.Add(tableLayoutPanel4);
-            panel5.Controls.Add(label11);
-            panel5.Controls.Add(label12);
-            panel5.Controls.Add(label13);
-            panel5.Controls.Add(pictureBox4);
-            panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(3, 243);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(547, 54);
-            panel5.TabIndex = 39;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 3;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel4.Controls.Add(button11, 1, 0);
-            tableLayoutPanel4.Controls.Add(button12, 0, 0);
-            tableLayoutPanel4.Controls.Add(button13, 2, 0);
-            tableLayoutPanel4.Location = new Point(428, 7);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(106, 41);
-            tableLayoutPanel4.TabIndex = 32;
-            // 
-            // button11
-            // 
-            button11.BackColor = SystemColors.Control;
-            button11.Dock = DockStyle.Fill;
-            button11.FlatAppearance.BorderSize = 0;
-            button11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button11.ForeColor = Color.Black;
-            button11.Location = new Point(39, 3);
-            button11.Name = "button11";
-            button11.Size = new Size(30, 35);
-            button11.TabIndex = 2;
-            button11.Text = "✏️";
-            button11.UseVisualStyleBackColor = false;
-            // 
-            // button12
-            // 
-            button12.BackColor = SystemColors.Control;
-            button12.Dock = DockStyle.Fill;
-            button12.FlatAppearance.BorderSize = 0;
-            button12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button12.ForeColor = Color.Red;
-            button12.Location = new Point(3, 3);
-            button12.Name = "button12";
-            button12.Size = new Size(30, 35);
-            button12.TabIndex = 1;
-            button12.Text = "❌";
-            button12.UseVisualStyleBackColor = false;
-            // 
-            // button13
-            // 
-            button13.BackColor = SystemColors.Control;
-            button13.Dock = DockStyle.Fill;
-            button13.FlatAppearance.BorderSize = 0;
-            button13.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button13.ForeColor = Color.DarkSlateBlue;
-            button13.Location = new Point(75, 3);
-            button13.Name = "button13";
-            button13.Size = new Size(28, 35);
-            button13.TabIndex = 0;
-            button13.Text = "📄";
-            button13.UseVisualStyleBackColor = false;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.ForeColor = Color.Gray;
-            label11.Location = new Point(243, 36);
-            label11.Name = "label11";
-            label11.Size = new Size(168, 15);
-            label11.TabIndex = 31;
-            label11.Text = "September 25, 2026 • 12:30 pm";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(81, 36);
-            label12.Name = "label12";
-            label12.Size = new Size(84, 15);
-            label12.TabIndex = 30;
-            label12.Text = "Juan Dela Cruz";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.DarkSlateBlue;
-            label13.Location = new Point(78, 5);
-            label13.Name = "label13";
-            label13.Size = new Size(204, 30);
-            label13.TabIndex = 29;
-            label13.Text = "Barangay Clearance";
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.BackgroundImageLayout = ImageLayout.None;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(19, 9);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(49, 36);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 20;
-            pictureBox4.TabStop = false;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = SystemColors.ControlLight;
-            panel4.Controls.Add(tableLayoutPanel3);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(label9);
-            panel4.Controls.Add(label10);
-            panel4.Controls.Add(pictureBox2);
-            panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(3, 183);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(547, 54);
-            panel4.TabIndex = 38;
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 3;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel3.Controls.Add(button8, 1, 0);
-            tableLayoutPanel3.Controls.Add(button9, 0, 0);
-            tableLayoutPanel3.Controls.Add(button10, 2, 0);
-            tableLayoutPanel3.Location = new Point(428, 7);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(106, 41);
-            tableLayoutPanel3.TabIndex = 32;
-            // 
-            // button8
-            // 
-            button8.BackColor = SystemColors.Control;
-            button8.Dock = DockStyle.Fill;
-            button8.FlatAppearance.BorderSize = 0;
-            button8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button8.ForeColor = Color.Black;
-            button8.Location = new Point(39, 3);
-            button8.Name = "button8";
-            button8.Size = new Size(30, 35);
-            button8.TabIndex = 2;
-            button8.Text = "✏️";
-            button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            button9.BackColor = SystemColors.Control;
-            button9.Dock = DockStyle.Fill;
-            button9.FlatAppearance.BorderSize = 0;
-            button9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button9.ForeColor = Color.Red;
-            button9.Location = new Point(3, 3);
-            button9.Name = "button9";
-            button9.Size = new Size(30, 35);
-            button9.TabIndex = 1;
-            button9.Text = "❌";
-            button9.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            button10.BackColor = SystemColors.Control;
-            button10.Dock = DockStyle.Fill;
-            button10.FlatAppearance.BorderSize = 0;
-            button10.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button10.ForeColor = Color.DarkSlateBlue;
-            button10.Location = new Point(75, 3);
-            button10.Name = "button10";
-            button10.Size = new Size(28, 35);
-            button10.TabIndex = 0;
-            button10.Text = "📄";
-            button10.UseVisualStyleBackColor = false;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.ForeColor = Color.Gray;
-            label8.Location = new Point(243, 36);
-            label8.Name = "label8";
-            label8.Size = new Size(142, 15);
-            label8.TabIndex = 31;
-            label8.Text = "August 29, 2026 • 8:30 am";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(81, 36);
-            label9.Name = "label9";
-            label9.Size = new Size(100, 15);
-            label9.TabIndex = 30;
-            label9.Text = "Jason Paul Munar";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.DarkSlateBlue;
-            label10.Location = new Point(78, 5);
-            label10.Name = "label10";
-            label10.Size = new Size(265, 30);
-            label10.TabIndex = 29;
-            label10.Text = "Certificate of Good Moral";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.BackgroundImageLayout = ImageLayout.None;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(19, 9);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(49, 36);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 18;
-            pictureBox2.TabStop = false;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = SystemColors.ControlLight;
-            panel3.Controls.Add(tableLayoutPanel2);
-            panel3.Controls.Add(label5);
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(label7);
-            panel3.Controls.Add(pictureBox3);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 123);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(547, 54);
-            panel3.TabIndex = 37;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 3;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel2.Controls.Add(button5, 1, 0);
-            tableLayoutPanel2.Controls.Add(button6, 0, 0);
-            tableLayoutPanel2.Controls.Add(button7, 2, 0);
-            tableLayoutPanel2.Location = new Point(428, 7);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(106, 41);
-            tableLayoutPanel2.TabIndex = 32;
-            // 
-            // button5
-            // 
-            button5.BackColor = SystemColors.Control;
-            button5.Dock = DockStyle.Fill;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.Black;
-            button5.Location = new Point(39, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(30, 35);
-            button5.TabIndex = 2;
-            button5.Text = "✏️";
-            button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            button6.BackColor = SystemColors.Control;
-            button6.Dock = DockStyle.Fill;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button6.ForeColor = Color.Red;
-            button6.Location = new Point(3, 3);
-            button6.Name = "button6";
-            button6.Size = new Size(30, 35);
-            button6.TabIndex = 1;
-            button6.Text = "❌";
-            button6.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            button7.BackColor = SystemColors.Control;
-            button7.Dock = DockStyle.Fill;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button7.ForeColor = Color.DarkSlateBlue;
-            button7.Location = new Point(75, 3);
-            button7.Name = "button7";
-            button7.Size = new Size(28, 35);
-            button7.TabIndex = 0;
-            button7.Text = "📄";
-            button7.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.ForeColor = Color.Gray;
-            label5.Location = new Point(243, 36);
-            label5.Name = "label5";
-            label5.Size = new Size(142, 15);
-            label5.TabIndex = 31;
-            label5.Text = "August 18, 2026 • 8:30 am";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(81, 36);
-            label6.Name = "label6";
-            label6.Size = new Size(137, 15);
-            label6.TabIndex = 30;
-            label6.Text = "John Lawrence Balangue";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.DarkSlateBlue;
-            label7.Location = new Point(78, 5);
-            label7.Name = "label7";
-            label7.Size = new Size(244, 30);
-            label7.TabIndex = 29;
-            label7.Text = "Certificate of Residency";
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.BackgroundImageLayout = ImageLayout.None;
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(19, 8);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(49, 36);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 19;
-            pictureBox3.TabStop = false;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = SystemColors.ControlLight;
-            panel2.Controls.Add(tableLayoutPanel1);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 63);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(547, 54);
-            panel2.TabIndex = 36;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            tableLayoutPanel1.Controls.Add(button2, 1, 0);
-            tableLayoutPanel1.Controls.Add(button3, 0, 0);
-            tableLayoutPanel1.Controls.Add(button4, 2, 0);
-            tableLayoutPanel1.Location = new Point(428, 7);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(106, 41);
-            tableLayoutPanel1.TabIndex = 28;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.Control;
-            button2.Dock = DockStyle.Fill;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.Black;
-            button2.Location = new Point(39, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(30, 35);
-            button2.TabIndex = 2;
-            button2.Text = "✏️";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.Control;
-            button3.Dock = DockStyle.Fill;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button3.ForeColor = Color.Red;
-            button3.Location = new Point(3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(30, 35);
-            button3.TabIndex = 1;
-            button3.Text = "❌";
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.Control;
-            button4.Dock = DockStyle.Fill;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button4.ForeColor = Color.DarkSlateBlue;
-            button4.Location = new Point(75, 3);
-            button4.Name = "button4";
-            button4.Size = new Size(28, 35);
-            button4.TabIndex = 0;
-            button4.Text = "📄";
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.Gray;
-            label2.Location = new Point(243, 36);
-            label2.Name = "label2";
-            label2.Size = new Size(142, 15);
-            label2.TabIndex = 27;
-            label2.Text = "August 11, 2026 • 8:30 am";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(81, 36);
-            label3.Name = "label3";
-            label3.Size = new Size(125, 15);
-            label3.TabIndex = 26;
-            label3.Text = "John Russel Fernandez";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.DarkSlateBlue;
-            label4.Location = new Point(78, 5);
-            label4.Name = "label4";
-            label4.Size = new Size(204, 30);
-            label4.TabIndex = 25;
-            label4.Text = "Barangay Clearance";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImageLayout = ImageLayout.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(19, 8);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(49, 36);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 18;
-            pictureBox1.TabStop = false;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ControlLight;
-            panel1.Controls.Add(btnTLP);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(requesteeLBL1);
-            panel1.Controls.Add(reqLBL1);
-            panel1.Controls.Add(pictureBox6);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(547, 54);
-            panel1.TabIndex = 35;
-            // 
-            // btnTLP
-            // 
-            btnTLP.ColumnCount = 3;
-            btnTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            btnTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            btnTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
-            btnTLP.Controls.Add(button15, 1, 0);
-            btnTLP.Controls.Add(button14, 0, 0);
-            btnTLP.Controls.Add(button1, 2, 0);
-            btnTLP.Location = new Point(428, 7);
-            btnTLP.Name = "btnTLP";
-            btnTLP.RowCount = 1;
-            btnTLP.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            btnTLP.Size = new Size(106, 41);
-            btnTLP.TabIndex = 24;
-            // 
-            // button15
-            // 
-            button15.BackColor = SystemColors.Control;
-            button15.Dock = DockStyle.Fill;
-            button15.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button15.ForeColor = Color.Black;
-            button15.Location = new Point(39, 3);
-            button15.Name = "button15";
-            button15.Size = new Size(30, 35);
-            button15.TabIndex = 2;
-            button15.Text = "✏️";
-            button15.UseVisualStyleBackColor = false;
-            // 
-            // button14
-            // 
-            button14.BackColor = SystemColors.Control;
-            button14.Dock = DockStyle.Fill;
-            button14.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button14.ForeColor = Color.Red;
-            button14.Location = new Point(3, 3);
-            button14.Name = "button14";
-            button14.Size = new Size(30, 35);
-            button14.TabIndex = 1;
-            button14.Text = "❌";
-            button14.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.Control;
-            button1.Dock = DockStyle.Fill;
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button1.ForeColor = Color.DarkSlateBlue;
-            button1.Location = new Point(75, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(28, 35);
-            button1.TabIndex = 0;
-            button1.Text = "📄";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.Gray;
-            label1.Location = new Point(243, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(136, 15);
-            label1.TabIndex = 23;
-            label1.Text = "August 8, 2026 • 8:30 am";
-            // 
-            // requesteeLBL1
-            // 
-            requesteeLBL1.AutoSize = true;
-            requesteeLBL1.Location = new Point(81, 36);
-            requesteeLBL1.Name = "requesteeLBL1";
-            requesteeLBL1.Size = new Size(133, 15);
-            requesteeLBL1.TabIndex = 22;
-            requesteeLBL1.Text = "Rose Antonette Barrogo";
-            // 
-            // reqLBL1
-            // 
-            reqLBL1.AutoSize = true;
-            reqLBL1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            reqLBL1.ForeColor = Color.DarkSlateBlue;
-            reqLBL1.Location = new Point(78, 5);
-            reqLBL1.Name = "reqLBL1";
-            reqLBL1.Size = new Size(244, 30);
-            reqLBL1.TabIndex = 21;
-            reqLBL1.Text = "Certificate of Indigency";
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.BackColor = Color.Transparent;
-            pictureBox6.BackgroundImageLayout = ImageLayout.None;
-            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(19, 8);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(49, 36);
-            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox6.TabIndex = 17;
-            pictureBox6.TabStop = false;
-            // 
-            // ReqInformationHeaderLabel
-            // 
-            ReqInformationHeaderLabel.AutoSize = true;
-            ReqInformationHeaderLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ReqInformationHeaderLabel.Location = new Point(17, 4);
-            ReqInformationHeaderLabel.Name = "ReqInformationHeaderLabel";
-            ReqInformationHeaderLabel.Size = new Size(83, 17);
-            ReqInformationHeaderLabel.TabIndex = 22;
-            ReqInformationHeaderLabel.Text = "Request List";
-            // 
-            // pendingReqLBL
-            // 
-            pendingReqLBL.Anchor = AnchorStyles.Left;
-            pendingReqLBL.AutoSize = true;
-            pendingReqLBL.BackColor = SystemColors.Control;
-            pendingReqLBL.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            pendingReqLBL.ForeColor = Color.DarkSlateBlue;
-            pendingReqLBL.Location = new Point(66, 26);
-            pendingReqLBL.Name = "pendingReqLBL";
-            pendingReqLBL.Size = new Size(206, 32);
-            pendingReqLBL.TabIndex = 23;
-            pendingReqLBL.Text = "Pending Request";
+            System.Windows.Forms.DataGridViewCellStyle cellStyleHeader = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle cellStyleDefault = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle cellStyleReject = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle cellStyleView = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle cellStyleApprove = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle cellStyleHistHeader = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle cellStyleHistDefault = new System.Windows.Forms.DataGridViewCellStyle();
+
+            this.PanelContainer = new System.Windows.Forms.Panel();
+            this.BodyGroupBox = new System.Windows.Forms.GroupBox();
+            this.dgvRequests = new System.Windows.Forms.DataGridView();
+            this.request_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.document_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resident_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.request_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReject = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnApprove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.footerPanel = new System.Windows.Forms.Panel();
+            this.lblTotalRequests = new System.Windows.Forms.Label();
+            this.dividerPanel = new System.Windows.Forms.Panel();
+            this.NavPanel = new System.Windows.Forms.Panel();
+            this.btnRequestHistory = new System.Windows.Forms.Button();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.pendingReqLBL = new System.Windows.Forms.Label();
+
+            // Modal Overlay Controls (Details)
+            this.pnlModalOverlay = new System.Windows.Forms.Panel();
+            this.pnlModalCard = new System.Windows.Forms.Panel();
+            this.pnlModalHeader = new System.Windows.Forms.Panel();
+            this.lblModalTitle = new System.Windows.Forms.Label();
+            this.btnModalCloseX = new System.Windows.Forms.Button();
+            this.lblDetailResident = new System.Windows.Forms.Label();
+            this.lblDetailDocType = new System.Windows.Forms.Label();
+            this.lblDetailDate = new System.Windows.Forms.Label();
+            this.lblDetailPurposeTitle = new System.Windows.Forms.Label();
+            this.txtDetailPurpose = new System.Windows.Forms.TextBox();
+            this.lblDetailAttachmentTitle = new System.Windows.Forms.Label();
+            this.lblAttachmentName = new System.Windows.Forms.Label();
+            this.picAttachment = new System.Windows.Forms.PictureBox();
+            this.pnlModalFooter = new System.Windows.Forms.Panel();
+            this.btnModalApprove = new System.Windows.Forms.Button();
+            this.btnModalDecline = new System.Windows.Forms.Button();
+            this.btnModalClose = new System.Windows.Forms.Button();
+
+            // History Modal Overlay Controls
+            this.pnlHistoryModalOverlay = new System.Windows.Forms.Panel();
+            this.pnlHistoryModalCard = new System.Windows.Forms.Panel();
+            this.pnlHistoryHeader = new System.Windows.Forms.Panel();
+            this.lblHistoryTitle = new System.Windows.Forms.Label();
+            this.btnHistoryCloseX = new System.Windows.Forms.Button();
+            this.pnlHistoryFilterBar = new System.Windows.Forms.Panel();
+            this.lblHistoryFilterTitle = new System.Windows.Forms.Label();
+            this.cmbHistoryStatusFilter = new System.Windows.Forms.ComboBox();
+            this.dgvHistoryRequests = new System.Windows.Forms.DataGridView();
+            this.hist_request_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hist_resident_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hist_document_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hist_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hist_formatted_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlHistoryFooter = new System.Windows.Forms.Panel();
+            this.lblHistoryTotal = new System.Windows.Forms.Label();
+            this.btnHistoryClose = new System.Windows.Forms.Button();
+
+            this.PanelContainer.SuspendLayout();
+            this.BodyGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRequests)).BeginInit();
+            this.footerPanel.SuspendLayout();
+            this.NavPanel.SuspendLayout();
+            this.pnlModalOverlay.SuspendLayout();
+            this.pnlModalCard.SuspendLayout();
+            this.pnlModalHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAttachment)).BeginInit();
+            this.pnlModalFooter.SuspendLayout();
+            this.pnlHistoryModalOverlay.SuspendLayout();
+            this.pnlHistoryModalCard.SuspendLayout();
+            this.pnlHistoryHeader.SuspendLayout();
+            this.pnlHistoryFilterBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistoryRequests)).BeginInit();
+            this.pnlHistoryFooter.SuspendLayout();
+            this.SuspendLayout();
+
             // 
             // PanelContainer
             // 
-            PanelContainer.Controls.Add(pageTLP);
-            PanelContainer.Controls.Add(dividerPanel);
-            PanelContainer.Controls.Add(BodyGroupBox);
-            PanelContainer.Controls.Add(NavPanel);
-            PanelContainer.Dock = DockStyle.Fill;
-            PanelContainer.Location = new Point(0, 0);
-            PanelContainer.Name = "PanelContainer";
-            PanelContainer.Size = new Size(635, 512);
-            PanelContainer.TabIndex = 27;
+            this.PanelContainer.Controls.Add(this.pnlHistoryModalOverlay);
+            this.PanelContainer.Controls.Add(this.pnlModalOverlay);
+            this.PanelContainer.Controls.Add(this.BodyGroupBox);
+            this.PanelContainer.Controls.Add(this.footerPanel);
+            this.PanelContainer.Controls.Add(this.dividerPanel);
+            this.PanelContainer.Controls.Add(this.NavPanel);
+            this.PanelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelContainer.Location = new System.Drawing.Point(0, 0);
+            this.PanelContainer.Name = "PanelContainer";
+            this.PanelContainer.Size = new System.Drawing.Size(635, 512);
+            this.PanelContainer.TabIndex = 27;
+
             // 
-            // pageTLP
+            // BodyGroupBox
             // 
-            pageTLP.ColumnCount = 6;
-            pageTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 368F));
-            pageTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            pageTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 37F));
-            pageTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 41F));
-            pageTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 42F));
-            pageTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 14F));
-            pageTLP.Controls.Add(sampleBTN5, 5, 0);
-            pageTLP.Controls.Add(sampleBTN4, 4, 0);
-            pageTLP.Controls.Add(sampleBTN3, 3, 0);
-            pageTLP.Controls.Add(sampleBTN2, 2, 0);
-            pageTLP.Controls.Add(sampleBTN1, 1, 0);
-            pageTLP.Controls.Add(pageLBL, 0, 0);
-            pageTLP.Location = new Point(32, 443);
-            pageTLP.Name = "pageTLP";
-            pageTLP.RowCount = 1;
-            pageTLP.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            pageTLP.Size = new Size(567, 35);
-            pageTLP.TabIndex = 34;
+            this.BodyGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BodyGroupBox.Controls.Add(this.dgvRequests);
+            this.BodyGroupBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BodyGroupBox.Location = new System.Drawing.Point(24, 98);
+            this.BodyGroupBox.Name = "BodyGroupBox";
+            this.BodyGroupBox.Padding = new System.Windows.Forms.Padding(10);
+            this.BodyGroupBox.Size = new System.Drawing.Size(587, 360);
+            this.BodyGroupBox.TabIndex = 21;
+            this.BodyGroupBox.TabStop = false;
+            this.BodyGroupBox.Text = "Request List";
+
             // 
-            // sampleBTN5
+            // dgvRequests
             // 
-            sampleBTN5.Anchor = AnchorStyles.None;
-            sampleBTN5.FlatAppearance.BorderSize = 0;
-            sampleBTN5.FlatStyle = FlatStyle.Flat;
-            sampleBTN5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sampleBTN5.Location = new Point(531, 6);
-            sampleBTN5.Name = "sampleBTN5";
-            sampleBTN5.Size = new Size(33, 23);
-            sampleBTN5.TabIndex = 5;
-            sampleBTN5.Text = ">";
-            sampleBTN5.UseVisualStyleBackColor = true;
+            this.dgvRequests.AllowUserToAddRows = false;
+            this.dgvRequests.AllowUserToDeleteRows = false;
+            this.dgvRequests.AllowUserToResizeRows = false;
+            this.dgvRequests.AutoGenerateColumns = false;
+            this.dgvRequests.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRequests.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvRequests.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+
+            this.dgvRequests.EnableHeadersVisualStyles = false;
+            cellStyleHeader.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            cellStyleHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            cellStyleHeader.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            cellStyleHeader.ForeColor = System.Drawing.Color.White;
+            cellStyleHeader.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            cellStyleHeader.SelectionForeColor = System.Drawing.Color.White;
+            cellStyleHeader.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRequests.ColumnHeadersDefaultCellStyle = cellStyleHeader;
+            this.dgvRequests.ColumnHeadersHeight = 40;
+            this.dgvRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            cellStyleDefault.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            cellStyleDefault.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular);
+            cellStyleDefault.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            cellStyleDefault.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvRequests.DefaultCellStyle = cellStyleDefault;
+
+            this.dgvRequests.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRequests.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvRequests.Location = new System.Drawing.Point(10, 28);
+            this.dgvRequests.MultiSelect = false;
+            this.dgvRequests.Name = "dgvRequests";
+            this.dgvRequests.ReadOnly = true;
+            this.dgvRequests.RowHeadersVisible = false;
+            this.dgvRequests.RowTemplate.Height = 48;
+            this.dgvRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRequests.Size = new System.Drawing.Size(567, 322);
+            this.dgvRequests.TabIndex = 0;
+            this.dgvRequests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvRequests_CellContentClick);
+
+            // Columns Definition
+            this.request_id.DataPropertyName = "request_id";
+            this.request_id.HeaderText = "ID";
+            this.request_id.Name = "request_id";
+            this.request_id.ReadOnly = true;
+            this.request_id.Visible = false;
+
+            this.document_type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.document_type.DataPropertyName = "document_type";
+            this.document_type.FillWeight = 35F;
+            this.document_type.HeaderText = "Document Requested";
+            this.document_type.Name = "document_type";
+            this.document_type.ReadOnly = true;
+
+            this.resident_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.resident_name.DataPropertyName = "resident_name";
+            this.resident_name.FillWeight = 30F;
+            this.resident_name.HeaderText = "Resident Name";
+            this.resident_name.Name = "resident_name";
+            this.resident_name.ReadOnly = true;
+
+            this.request_at.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.request_at.DataPropertyName = "formatted_date";
+            this.request_at.FillWeight = 25F;
+            this.request_at.HeaderText = "Date & Time Requested";
+            this.request_at.Name = "request_at";
+            this.request_at.ReadOnly = true;
+
+            cellStyleReject.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            cellStyleReject.ForeColor = System.Drawing.Color.Crimson;
+            cellStyleReject.SelectionForeColor = System.Drawing.Color.Crimson;
+            this.btnReject.DefaultCellStyle = cellStyleReject;
+            this.btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReject.HeaderText = "Decline";
+            this.btnReject.Name = "btnReject";
+            this.btnReject.ReadOnly = true;
+            this.btnReject.Text = "❌";
+            this.btnReject.UseColumnTextForButtonValue = true;
+            this.btnReject.Width = 65;
+
+            cellStyleView.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            cellStyleView.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            cellStyleView.SelectionForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnView.DefaultCellStyle = cellStyleView;
+            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnView.HeaderText = "View";
+            this.btnView.Name = "btnView";
+            this.btnView.ReadOnly = true;
+            this.btnView.Text = "👁️";
+            this.btnView.UseColumnTextForButtonValue = true;
+            this.btnView.Width = 55;
+
+            cellStyleApprove.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            cellStyleApprove.ForeColor = System.Drawing.Color.ForestGreen;
+            cellStyleApprove.SelectionForeColor = System.Drawing.Color.ForestGreen;
+            this.btnApprove.DefaultCellStyle = cellStyleApprove;
+            this.btnApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApprove.HeaderText = "Approve";
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.ReadOnly = true;
+            this.btnApprove.Text = "✔️";
+            this.btnApprove.UseColumnTextForButtonValue = true;
+            this.btnApprove.Width = 65;
+
+            this.dgvRequests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+                this.request_id,
+                this.document_type,
+                this.resident_name,
+                this.request_at,
+                this.btnReject,
+                this.btnView,
+                this.btnApprove
+            });
+
             // 
-            // sampleBTN4
+            // FLOATING DETAILS MODAL OVERLAY SETUP
             // 
-            sampleBTN4.Anchor = AnchorStyles.None;
-            sampleBTN4.FlatAppearance.BorderSize = 0;
-            sampleBTN4.FlatStyle = FlatStyle.Flat;
-            sampleBTN4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sampleBTN4.Location = new Point(490, 6);
-            sampleBTN4.Name = "sampleBTN4";
-            sampleBTN4.Size = new Size(34, 23);
-            sampleBTN4.TabIndex = 4;
-            sampleBTN4.Text = "4";
-            sampleBTN4.UseVisualStyleBackColor = true;
+            this.pnlModalOverlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlModalOverlay.Controls.Add(this.pnlModalCard);
+            this.pnlModalOverlay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlModalOverlay.Location = new System.Drawing.Point(0, 0);
+            this.pnlModalOverlay.Name = "pnlModalOverlay";
+            this.pnlModalOverlay.Size = new System.Drawing.Size(635, 512);
+            this.pnlModalOverlay.TabIndex = 99;
+            this.pnlModalOverlay.Visible = false;
+
+            this.pnlModalCard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlModalCard.BackColor = System.Drawing.Color.White;
+            this.pnlModalCard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlModalCard.Controls.Add(this.pnlModalHeader);
+            this.pnlModalCard.Controls.Add(this.lblDetailResident);
+            this.pnlModalCard.Controls.Add(this.lblDetailDocType);
+            this.pnlModalCard.Controls.Add(this.lblDetailDate);
+            this.pnlModalCard.Controls.Add(this.lblDetailPurposeTitle);
+            this.pnlModalCard.Controls.Add(this.txtDetailPurpose);
+            this.pnlModalCard.Controls.Add(this.lblDetailAttachmentTitle);
+            this.pnlModalCard.Controls.Add(this.lblAttachmentName);
+            this.pnlModalCard.Controls.Add(this.picAttachment);
+            this.pnlModalCard.Controls.Add(this.pnlModalFooter);
+            this.pnlModalCard.Location = new System.Drawing.Point(50, 25);
+            this.pnlModalCard.Name = "pnlModalCard";
+            this.pnlModalCard.Size = new System.Drawing.Size(535, 460);
+            this.pnlModalCard.TabIndex = 0;
+
+            this.pnlModalHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            this.pnlModalHeader.Controls.Add(this.lblModalTitle);
+            this.pnlModalHeader.Controls.Add(this.btnModalCloseX);
+            this.pnlModalHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlModalHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlModalHeader.Name = "pnlModalHeader";
+            this.pnlModalHeader.Size = new System.Drawing.Size(533, 40);
+
+            this.lblModalTitle.AutoSize = true;
+            this.lblModalTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblModalTitle.ForeColor = System.Drawing.Color.White;
+            this.lblModalTitle.Location = new System.Drawing.Point(15, 10);
+            this.lblModalTitle.Text = "📄 Document Request Details";
+
+            this.btnModalCloseX.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnModalCloseX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModalCloseX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnModalCloseX.ForeColor = System.Drawing.Color.White;
+            this.btnModalCloseX.FlatAppearance.BorderSize = 0;
+            this.btnModalCloseX.Size = new System.Drawing.Size(40, 40);
+            this.btnModalCloseX.Text = "✕";
+            this.btnModalCloseX.Click += new System.EventHandler(this.BtnModalClose_Click);
+
+            this.lblDetailResident.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblDetailResident.Location = new System.Drawing.Point(15, 52);
+            this.lblDetailResident.Size = new System.Drawing.Size(250, 20);
+            this.lblDetailResident.Text = "Resident: -";
+
+            this.lblDetailDocType.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblDetailDocType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            this.lblDetailDocType.Location = new System.Drawing.Point(275, 52);
+            this.lblDetailDocType.Size = new System.Drawing.Size(240, 20);
+            this.lblDetailDocType.Text = "Document: -";
+
+            this.lblDetailDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblDetailDate.ForeColor = System.Drawing.Color.DimGray;
+            this.lblDetailDate.Location = new System.Drawing.Point(15, 76);
+            this.lblDetailDate.Size = new System.Drawing.Size(500, 20);
+            this.lblDetailDate.Text = "Requested: -";
+
+            this.lblDetailPurposeTitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblDetailPurposeTitle.Location = new System.Drawing.Point(15, 102);
+            this.lblDetailPurposeTitle.Size = new System.Drawing.Size(100, 18);
+            this.lblDetailPurposeTitle.Text = "Purpose:";
+
+            this.txtDetailPurpose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
+            this.txtDetailPurpose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDetailPurpose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDetailPurpose.Location = new System.Drawing.Point(15, 122);
+            this.txtDetailPurpose.Multiline = true;
+            this.txtDetailPurpose.ReadOnly = true;
+            this.txtDetailPurpose.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDetailPurpose.Size = new System.Drawing.Size(500, 52);
+
+            this.lblDetailAttachmentTitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblDetailAttachmentTitle.Location = new System.Drawing.Point(15, 182);
+            this.lblDetailAttachmentTitle.Size = new System.Drawing.Size(150, 18);
+            this.lblDetailAttachmentTitle.Text = "Attachment / Requirements:";
+
+            this.lblAttachmentName.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Italic);
+            this.lblAttachmentName.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lblAttachmentName.Location = new System.Drawing.Point(170, 182);
+            this.lblAttachmentName.Size = new System.Drawing.Size(345, 18);
+            this.lblAttachmentName.Text = "(No file uploaded)";
+
+            this.picAttachment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.picAttachment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picAttachment.Location = new System.Drawing.Point(15, 204);
+            this.picAttachment.Size = new System.Drawing.Size(500, 188);
+            this.picAttachment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+
+            this.pnlModalFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
+            this.pnlModalFooter.Controls.Add(this.btnModalApprove);
+            this.pnlModalFooter.Controls.Add(this.btnModalDecline);
+            this.pnlModalFooter.Controls.Add(this.btnModalClose);
+            this.pnlModalFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlModalFooter.Location = new System.Drawing.Point(0, 408);
+            this.pnlModalFooter.Name = "pnlModalFooter";
+            this.pnlModalFooter.Size = new System.Drawing.Size(533, 50);
+
+            this.btnModalApprove.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnModalApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModalApprove.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModalApprove.ForeColor = System.Drawing.Color.White;
+            this.btnModalApprove.Location = new System.Drawing.Point(423, 10);
+            this.btnModalApprove.Size = new System.Drawing.Size(95, 30);
+            this.btnModalApprove.Text = "✔️ Approve";
+            this.btnModalApprove.UseVisualStyleBackColor = false;
+            this.btnModalApprove.Click += new System.EventHandler(this.BtnModalApprove_Click);
+
+            this.btnModalDecline.BackColor = System.Drawing.Color.Crimson;
+            this.btnModalDecline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModalDecline.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModalDecline.ForeColor = System.Drawing.Color.White;
+            this.btnModalDecline.Location = new System.Drawing.Point(320, 10);
+            this.btnModalDecline.Size = new System.Drawing.Size(95, 30);
+            this.btnModalDecline.Text = "❌ Decline";
+            this.btnModalDecline.UseVisualStyleBackColor = false;
+            this.btnModalDecline.Click += new System.EventHandler(this.BtnModalDecline_Click);
+
+            this.btnModalClose.BackColor = System.Drawing.Color.Gray;
+            this.btnModalClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModalClose.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModalClose.ForeColor = System.Drawing.Color.White;
+            this.btnModalClose.Location = new System.Drawing.Point(15, 10);
+            this.btnModalClose.Size = new System.Drawing.Size(80, 30);
+            this.btnModalClose.Text = "Close";
+            this.btnModalClose.UseVisualStyleBackColor = false;
+            this.btnModalClose.Click += new System.EventHandler(this.BtnModalClose_Click);
+
             // 
-            // sampleBTN3
+            // FLOATING REQUEST HISTORY MODAL OVERLAY SETUP
             // 
-            sampleBTN3.Anchor = AnchorStyles.None;
-            sampleBTN3.FlatAppearance.BorderSize = 0;
-            sampleBTN3.FlatStyle = FlatStyle.Flat;
-            sampleBTN3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sampleBTN3.Location = new Point(448, 6);
-            sampleBTN3.Name = "sampleBTN3";
-            sampleBTN3.Size = new Size(34, 23);
-            sampleBTN3.TabIndex = 3;
-            sampleBTN3.Text = "3";
-            sampleBTN3.UseVisualStyleBackColor = true;
+            this.pnlHistoryModalOverlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlHistoryModalOverlay.Controls.Add(this.pnlHistoryModalCard);
+            this.pnlHistoryModalOverlay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlHistoryModalOverlay.Location = new System.Drawing.Point(0, 0);
+            this.pnlHistoryModalOverlay.Name = "pnlHistoryModalOverlay";
+            this.pnlHistoryModalOverlay.Size = new System.Drawing.Size(635, 512);
+            this.pnlHistoryModalOverlay.TabIndex = 100;
+            this.pnlHistoryModalOverlay.Visible = false;
+
+            // History Card Panel
+            this.pnlHistoryModalCard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlHistoryModalCard.BackColor = System.Drawing.Color.White;
+            this.pnlHistoryModalCard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHistoryModalCard.Controls.Add(this.dgvHistoryRequests);
+            this.pnlHistoryModalCard.Controls.Add(this.pnlHistoryFilterBar);
+            this.pnlHistoryModalCard.Controls.Add(this.pnlHistoryHeader);
+            this.pnlHistoryModalCard.Controls.Add(this.pnlHistoryFooter);
+            this.pnlHistoryModalCard.Location = new System.Drawing.Point(25, 20);
+            this.pnlHistoryModalCard.Name = "pnlHistoryModalCard";
+            this.pnlHistoryModalCard.Size = new System.Drawing.Size(585, 470);
+            this.pnlHistoryModalCard.TabIndex = 0;
+
+            // History Header
+            this.pnlHistoryHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            this.pnlHistoryHeader.Controls.Add(this.lblHistoryTitle);
+            this.pnlHistoryHeader.Controls.Add(this.btnHistoryCloseX);
+            this.pnlHistoryHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHistoryHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHistoryHeader.Name = "pnlHistoryHeader";
+            this.pnlHistoryHeader.Size = new System.Drawing.Size(583, 40);
+
+            this.lblHistoryTitle.AutoSize = true;
+            this.lblHistoryTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblHistoryTitle.ForeColor = System.Drawing.Color.White;
+            this.lblHistoryTitle.Location = new System.Drawing.Point(15, 10);
+            this.lblHistoryTitle.Text = "📜 Processed Request History";
+
+            this.btnHistoryCloseX.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnHistoryCloseX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoryCloseX.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnHistoryCloseX.ForeColor = System.Drawing.Color.White;
+            this.btnHistoryCloseX.FlatAppearance.BorderSize = 0;
+            this.btnHistoryCloseX.Size = new System.Drawing.Size(40, 40);
+            this.btnHistoryCloseX.Text = "✕";
+            this.btnHistoryCloseX.Click += new System.EventHandler(this.BtnHistoryClose_Click);
+
+            // History Filter Bar
+            this.pnlHistoryFilterBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
+            this.pnlHistoryFilterBar.Controls.Add(this.lblHistoryFilterTitle);
+            this.pnlHistoryFilterBar.Controls.Add(this.cmbHistoryStatusFilter);
+            this.pnlHistoryFilterBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHistoryFilterBar.Location = new System.Drawing.Point(0, 40);
+            this.pnlHistoryFilterBar.Name = "pnlHistoryFilterBar";
+            this.pnlHistoryFilterBar.Size = new System.Drawing.Size(583, 40);
+
+            this.lblHistoryFilterTitle.AutoSize = true;
+            this.lblHistoryFilterTitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblHistoryFilterTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.lblHistoryFilterTitle.Location = new System.Drawing.Point(15, 12);
+            this.lblHistoryFilterTitle.Text = "Filter by Status:";
+
+            this.cmbHistoryStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHistoryStatusFilter.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmbHistoryStatusFilter.FormattingEnabled = true;
+            this.cmbHistoryStatusFilter.Items.AddRange(new object[] { "All", "Approved", "Rejected" });
+            this.cmbHistoryStatusFilter.Location = new System.Drawing.Point(110, 8);
+            this.cmbHistoryStatusFilter.Name = "cmbHistoryStatusFilter";
+            this.cmbHistoryStatusFilter.Size = new System.Drawing.Size(130, 23);
+            this.cmbHistoryStatusFilter.SelectedIndexChanged += new System.EventHandler(this.CmbHistoryStatusFilter_SelectedIndexChanged);
+
+            // History DataGridView
+            this.dgvHistoryRequests.AllowUserToAddRows = false;
+            this.dgvHistoryRequests.AllowUserToDeleteRows = false;
+            this.dgvHistoryRequests.AllowUserToResizeRows = false;
+            this.dgvHistoryRequests.AutoGenerateColumns = false;
+            this.dgvHistoryRequests.BackgroundColor = System.Drawing.Color.White;
+            this.dgvHistoryRequests.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvHistoryRequests.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+
+            this.dgvHistoryRequests.EnableHeadersVisualStyles = false;
+            cellStyleHistHeader.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            cellStyleHistHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            cellStyleHistHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            cellStyleHistHeader.ForeColor = System.Drawing.Color.White;
+            cellStyleHistHeader.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            cellStyleHistHeader.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvHistoryRequests.ColumnHeadersDefaultCellStyle = cellStyleHistHeader;
+            this.dgvHistoryRequests.ColumnHeadersHeight = 35;
+
+            cellStyleHistDefault.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            cellStyleHistDefault.Font = new System.Drawing.Font("Segoe UI", 9F);
+            cellStyleHistDefault.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            cellStyleHistDefault.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvHistoryRequests.DefaultCellStyle = cellStyleHistDefault;
+
+            this.dgvHistoryRequests.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHistoryRequests.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.dgvHistoryRequests.Location = new System.Drawing.Point(0, 80);
+            this.dgvHistoryRequests.MultiSelect = false;
+            this.dgvHistoryRequests.Name = "dgvHistoryRequests";
+            this.dgvHistoryRequests.ReadOnly = true;
+            this.dgvHistoryRequests.RowHeadersVisible = false;
+            this.dgvHistoryRequests.RowTemplate.Height = 40;
+            this.dgvHistoryRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHistoryRequests.Size = new System.Drawing.Size(583, 340);
+            this.dgvHistoryRequests.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvHistoryRequests_CellFormatting);
+
+            // History Columns
+            this.hist_request_id.DataPropertyName = "request_id";
+            this.hist_request_id.HeaderText = "ID";
+            this.hist_request_id.Name = "hist_request_id";
+            this.hist_request_id.ReadOnly = true;
+            this.hist_request_id.Width = 45;
+
+            this.hist_resident_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.hist_resident_name.DataPropertyName = "resident_name";
+            this.hist_resident_name.FillWeight = 30F;
+            this.hist_resident_name.HeaderText = "Resident Name";
+            this.hist_resident_name.Name = "hist_resident_name";
+            this.hist_resident_name.ReadOnly = true;
+
+            this.hist_document_type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.hist_document_type.DataPropertyName = "document_type";
+            this.hist_document_type.FillWeight = 35F;
+            this.hist_document_type.HeaderText = "Document Requested";
+            this.hist_document_type.Name = "hist_document_type";
+            this.hist_document_type.ReadOnly = true;
+
+            this.hist_status.DataPropertyName = "status";
+            this.hist_status.HeaderText = "Status";
+            this.hist_status.Name = "hist_status";
+            this.hist_status.ReadOnly = true;
+            this.hist_status.Width = 90;
+
+            this.hist_formatted_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.hist_formatted_date.DataPropertyName = "formatted_date";
+            this.hist_formatted_date.FillWeight = 35F;
+            this.hist_formatted_date.HeaderText = "Date Requested";
+            this.hist_formatted_date.Name = "hist_formatted_date";
+            this.hist_formatted_date.ReadOnly = true;
+
+            this.dgvHistoryRequests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+                this.hist_request_id,
+                this.hist_resident_name,
+                this.hist_document_type,
+                this.hist_status,
+                this.hist_formatted_date
+            });
+
+            // History Footer
+            this.pnlHistoryFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
+            this.pnlHistoryFooter.Controls.Add(this.lblHistoryTotal);
+            this.pnlHistoryFooter.Controls.Add(this.btnHistoryClose);
+            this.pnlHistoryFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlHistoryFooter.Location = new System.Drawing.Point(0, 420);
+            this.pnlHistoryFooter.Name = "pnlHistoryFooter";
+            this.pnlHistoryFooter.Size = new System.Drawing.Size(583, 48);
+
+            this.lblHistoryTotal.AutoSize = true;
+            this.lblHistoryTotal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblHistoryTotal.ForeColor = System.Drawing.Color.DimGray;
+            this.lblHistoryTotal.Location = new System.Drawing.Point(15, 16);
+            this.lblHistoryTotal.Text = "Total History Records: 0";
+
+            this.btnHistoryClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHistoryClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            this.btnHistoryClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoryClose.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnHistoryClose.ForeColor = System.Drawing.Color.White;
+            this.btnHistoryClose.Location = new System.Drawing.Point(485, 10);
+            this.btnHistoryClose.Size = new System.Drawing.Size(85, 28);
+            this.btnHistoryClose.Text = "Close";
+            this.btnHistoryClose.UseVisualStyleBackColor = false;
+            this.btnHistoryClose.Click += new System.EventHandler(this.BtnHistoryClose_Click);
+
             // 
-            // sampleBTN2
+            // footerPanel
             // 
-            sampleBTN2.Anchor = AnchorStyles.None;
-            sampleBTN2.FlatAppearance.BorderSize = 0;
-            sampleBTN2.FlatStyle = FlatStyle.Flat;
-            sampleBTN2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sampleBTN2.Location = new Point(411, 6);
-            sampleBTN2.Name = "sampleBTN2";
-            sampleBTN2.Size = new Size(31, 23);
-            sampleBTN2.TabIndex = 2;
-            sampleBTN2.Text = "2";
-            sampleBTN2.UseVisualStyleBackColor = true;
+            this.footerPanel.Controls.Add(this.lblTotalRequests);
+            this.footerPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.footerPanel.Location = new System.Drawing.Point(0, 468);
+            this.footerPanel.Name = "footerPanel";
+            this.footerPanel.Size = new System.Drawing.Size(635, 44);
+            this.footerPanel.TabIndex = 34;
+
             // 
-            // sampleBTN1
+            // lblTotalRequests
             // 
-            sampleBTN1.BackColor = Color.DarkSlateBlue;
-            sampleBTN1.Dock = DockStyle.Fill;
-            sampleBTN1.FlatAppearance.BorderSize = 0;
-            sampleBTN1.FlatStyle = FlatStyle.Flat;
-            sampleBTN1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sampleBTN1.ForeColor = Color.White;
-            sampleBTN1.Location = new Point(371, 3);
-            sampleBTN1.Name = "sampleBTN1";
-            sampleBTN1.Size = new Size(34, 29);
-            sampleBTN1.TabIndex = 1;
-            sampleBTN1.Text = "1";
-            sampleBTN1.UseVisualStyleBackColor = false;
-            // 
-            // pageLBL
-            // 
-            pageLBL.Anchor = AnchorStyles.Left;
-            pageLBL.AutoSize = true;
-            pageLBL.Location = new Point(3, 10);
-            pageLBL.Name = "pageLBL";
-            pageLBL.Size = new Size(182, 15);
-            pageLBL.TabIndex = 6;
-            pageLBL.Text = "Showing 1 to 5 out of 67 requests";
+            this.lblTotalRequests.AutoSize = true;
+            this.lblTotalRequests.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblTotalRequests.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTotalRequests.Location = new System.Drawing.Point(24, 12);
+            this.lblTotalRequests.Name = "lblTotalRequests";
+            this.lblTotalRequests.Size = new System.Drawing.Size(126, 17);
+            this.lblTotalRequests.TabIndex = 6;
+            this.lblTotalRequests.Text = "Total: 0 Request(s)";
+
             // 
             // dividerPanel
             // 
-            dividerPanel.BackColor = Color.Gray;
-            dividerPanel.Location = new Point(0, 86);
-            dividerPanel.Name = "dividerPanel";
-            dividerPanel.Size = new Size(634, 1);
-            dividerPanel.TabIndex = 33;
+            this.dividerPanel.BackColor = System.Drawing.Color.Gray;
+            this.dividerPanel.Location = new System.Drawing.Point(0, 86);
+            this.dividerPanel.Name = "dividerPanel";
+            this.dividerPanel.Size = new System.Drawing.Size(634, 1);
+            this.dividerPanel.TabIndex = 33;
+
             // 
             // NavPanel
             // 
-            NavPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NavPanel.BackColor = SystemColors.Control;
-            NavPanel.Controls.Add(lblDate);
-            NavPanel.Controls.Add(pendingReqLBL);
-            NavPanel.Location = new Point(0, 0);
-            NavPanel.Name = "NavPanel";
-            NavPanel.Size = new Size(635, 83);
-            NavPanel.TabIndex = 27;
+            this.NavPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NavPanel.Controls.Add(this.btnRequestHistory);
+            this.NavPanel.Controls.Add(this.lblDate);
+            this.NavPanel.Controls.Add(this.pendingReqLBL);
+            this.NavPanel.Location = new System.Drawing.Point(0, 0);
+            this.NavPanel.Name = "NavPanel";
+            this.NavPanel.Size = new System.Drawing.Size(635, 83);
+            this.NavPanel.TabIndex = 27;
+
+            // 
+            // btnRequestHistory
+            // 
+            this.btnRequestHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRequestHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            this.btnRequestHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRequestHistory.FlatAppearance.BorderSize = 0;
+            this.btnRequestHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRequestHistory.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnRequestHistory.ForeColor = System.Drawing.Color.White;
+            this.btnRequestHistory.Location = new System.Drawing.Point(430, 42);
+            this.btnRequestHistory.Name = "btnRequestHistory";
+            this.btnRequestHistory.Size = new System.Drawing.Size(178, 30);
+            this.btnRequestHistory.TabIndex = 37;
+            this.btnRequestHistory.Text = "📜 Request History";
+            this.btnRequestHistory.UseVisualStyleBackColor = false;
+            this.btnRequestHistory.Click += new System.EventHandler(this.BtnRequestHistory_Click);
+
             // 
             // lblDate
             // 
-            lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblDate.AutoSize = true;
-            lblDate.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDate.ForeColor = Color.DimGray;
-            lblDate.Location = new Point(449, 10);
-            lblDate.Name = "lblDate";
-            lblDate.Size = new Size(172, 18);
-            lblDate.TabIndex = 36;
-            lblDate.Text = "📅 August 8, 2026 | Saturday";
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular);
+            this.lblDate.ForeColor = System.Drawing.Color.DimGray;
+            this.lblDate.Location = new System.Drawing.Point(420, 15);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(188, 17);
+            this.lblDate.TabIndex = 36;
+            this.lblDate.Text = "📅 Date";
+
             // 
-            // DocumentRequest
+            // pendingReqLBL
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(PanelContainer);
-            Name = "DocumentRequest";
-            Size = new Size(635, 512);
-            BodyGroupBox.ResumeLayout(false);
-            BodyGroupBox.PerformLayout();
-            bodyTLP.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            btnTLP.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            PanelContainer.ResumeLayout(false);
-            pageTLP.ResumeLayout(false);
-            pageTLP.PerformLayout();
-            NavPanel.ResumeLayout(false);
-            NavPanel.PerformLayout();
-            ResumeLayout(false);
+            this.pendingReqLBL.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pendingReqLBL.AutoSize = true;
+            this.pendingReqLBL.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.pendingReqLBL.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.pendingReqLBL.Location = new System.Drawing.Point(24, 24);
+            this.pendingReqLBL.Name = "pendingReqLBL";
+            this.pendingReqLBL.Size = new System.Drawing.Size(206, 32);
+            this.pendingReqLBL.TabIndex = 23;
+            this.pendingReqLBL.Text = "Pending Request";
+
+            // 
+            // DocumentRequest Setup
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PanelContainer);
+            this.Name = "DocumentRequest";
+            this.Size = new System.Drawing.Size(635, 512);
+
+            this.PanelContainer.ResumeLayout(false);
+            this.BodyGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRequests)).EndInit();
+            this.pnlModalOverlay.ResumeLayout(false);
+            this.pnlModalCard.ResumeLayout(false);
+            this.pnlModalCard.PerformLayout();
+            this.pnlModalHeader.ResumeLayout(false);
+            this.pnlModalHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAttachment)).EndInit();
+            this.pnlModalFooter.ResumeLayout(false);
+            this.pnlHistoryModalOverlay.ResumeLayout(false);
+            this.pnlHistoryModalCard.ResumeLayout(false);
+            this.pnlHistoryHeader.ResumeLayout(false);
+            this.pnlHistoryHeader.PerformLayout();
+            this.pnlHistoryFilterBar.ResumeLayout(false);
+            this.pnlHistoryFilterBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistoryRequests)).EndInit();
+            this.pnlHistoryFooter.ResumeLayout(false);
+            this.pnlHistoryFooter.PerformLayout();
+            this.footerPanel.ResumeLayout(false);
+            this.footerPanel.PerformLayout();
+            this.NavPanel.ResumeLayout(false);
+            this.NavPanel.PerformLayout();
+            this.ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox BodyGroupBox;
-        private Label NewReqSubTitleLabel;
-        private Label pendingReqLBL;
-        private Label ReqInformationHeaderLabel;
-        private Panel PanelContainer;
-        private Panel NavPanel;
-        private Panel dividerPanel;
-        private TableLayoutPanel pageTLP;
-        private Button sampleBTN5;
-        private Button sampleBTN4;
-        private Button sampleBTN3;
-        private Button sampleBTN2;
-        private Button sampleBTN1;
-        private Label pageLBL;
-        private TableLayoutPanel bodyTLP;
-        private Panel panel5;
-        private Panel panel4;
-        private Panel panel3;
-        private Panel panel2;
-        private Panel panel1;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox6;
-        private Label reqLBL1;
-        private Label requesteeLBL1;
-        private Label label1;
-        private TableLayoutPanel btnTLP;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label8;
-        private Label label9;
-        private Label label10;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Button button1;
-        private Button button15;
-        private Button button14;
-        private TableLayoutPanel tableLayoutPanel4;
-        private Button button11;
-        private Button button12;
-        private Button button13;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Button button8;
-        private Button button9;
-        private Button button10;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Label lblDate;
+        private System.Windows.Forms.Panel PanelContainer;
+        private System.Windows.Forms.GroupBox BodyGroupBox;
+        private System.Windows.Forms.DataGridView dgvRequests;
+        private System.Windows.Forms.Panel footerPanel;
+        private System.Windows.Forms.Label lblTotalRequests;
+        private System.Windows.Forms.Panel dividerPanel;
+        private System.Windows.Forms.Panel NavPanel;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label pendingReqLBL;
+        private System.Windows.Forms.Button btnRequestHistory;
+
+        // DataGridView Columns
+        private System.Windows.Forms.DataGridViewTextBoxColumn request_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn document_type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resident_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn request_at;
+        private System.Windows.Forms.DataGridViewButtonColumn btnReject;
+        private System.Windows.Forms.DataGridViewButtonColumn btnView;
+        private System.Windows.Forms.DataGridViewButtonColumn btnApprove;
+
+        // Overlay Modal Controls (Details)
+        private System.Windows.Forms.Panel pnlModalOverlay;
+        private System.Windows.Forms.Panel pnlModalCard;
+        private System.Windows.Forms.Panel pnlModalHeader;
+        private System.Windows.Forms.Label lblModalTitle;
+        private System.Windows.Forms.Button btnModalCloseX;
+        private System.Windows.Forms.Label lblDetailResident;
+        private System.Windows.Forms.Label lblDetailDocType;
+        private System.Windows.Forms.Label lblDetailDate;
+        private System.Windows.Forms.Label lblDetailPurposeTitle;
+        private System.Windows.Forms.TextBox txtDetailPurpose;
+        private System.Windows.Forms.Label lblDetailAttachmentTitle;
+        private System.Windows.Forms.Label lblAttachmentName;
+        private System.Windows.Forms.PictureBox picAttachment;
+        private System.Windows.Forms.Panel pnlModalFooter;
+        private System.Windows.Forms.Button btnModalApprove;
+        private System.Windows.Forms.Button btnModalDecline;
+        private System.Windows.Forms.Button btnModalClose;
+
+        // Overlay Modal Controls (Request History)
+        private System.Windows.Forms.Panel pnlHistoryModalOverlay;
+        private System.Windows.Forms.Panel pnlHistoryModalCard;
+        private System.Windows.Forms.Panel pnlHistoryHeader;
+        private System.Windows.Forms.Label lblHistoryTitle;
+        private System.Windows.Forms.Button btnHistoryCloseX;
+        private System.Windows.Forms.Panel pnlHistoryFilterBar;
+        private System.Windows.Forms.Label lblHistoryFilterTitle;
+        private System.Windows.Forms.ComboBox cmbHistoryStatusFilter;
+        private System.Windows.Forms.DataGridView dgvHistoryRequests;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hist_request_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hist_resident_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hist_document_type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hist_status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hist_formatted_date;
+        private System.Windows.Forms.Panel pnlHistoryFooter;
+        private System.Windows.Forms.Label lblHistoryTotal;
+        private System.Windows.Forms.Button btnHistoryClose;
     }
 }

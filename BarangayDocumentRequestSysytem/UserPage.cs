@@ -20,6 +20,15 @@ namespace BarangayDocumentRequestSysytem
             ShowHomeView(); // Default landing screen
         }
 
+        private void UserPage_Load(object sender, EventArgs e)
+        {
+            // Ensure ProfileControl checks status AFTER UserSession is set
+            if (profileControl != null)
+            {
+                profileControl.RefreshControl();
+            }
+        }
+
         private void LoadControl(UserControl control)
         {
             panelContent.Controls.Clear();

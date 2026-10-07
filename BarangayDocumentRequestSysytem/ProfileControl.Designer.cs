@@ -298,6 +298,7 @@
             button3.TabIndex = 30;
             button3.Text = "✏️ Request Information Update";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // lblAllAnnouncements
             // 

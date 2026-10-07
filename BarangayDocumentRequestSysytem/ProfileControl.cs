@@ -14,7 +14,6 @@ namespace BarangayDocumentRequestSysytem
         {
             InitializeComponent();
             LockAdminFields();
-            // Set live date immediately
             if (lblDate != null)
             {
                 lblDate.Text = DateHelper.CurrentHeaderDate;
@@ -23,17 +22,17 @@ namespace BarangayDocumentRequestSysytem
 
         private void LockAdminFields()
         {
-            SetReadOnly("txtResidency");
-            SetReadOnly("txtVoterStatus");
-            SetReadOnly("txtFullName");
-            SetReadOnly("txtDateOfBirth");
-            SetReadOnly("txtSex");
-            SetReadOnly("txtAddress");
+            if (button2 != null)
+            {
+                button2.Visible = false; // Hide quick save button by default
+            }
+            SetProfileFieldsReadOnly(true);
         }
 
         private void ProfileControl_Load(object sender, EventArgs e)
         {
             LoadUserProfile();
+            CheckUpdateRequestStatus();
         }
 
         private void ProfileControl_VisibleChanged(object sender, EventArgs e)
@@ -41,7 +40,14 @@ namespace BarangayDocumentRequestSysytem
             if (this.Visible)
             {
                 LoadUserProfile();
+                CheckUpdateRequestStatus();
             }
+        }
+
+        public void RefreshControl()
+        {
+            LoadUserProfile();
+            CheckUpdateRequestStatus();
         }
 
         public void LoadUserProfile()
@@ -73,7 +79,6 @@ namespace BarangayDocumentRequestSysytem
                         {
                             if (reader.Read())
                             {
-                                // 1. Full Name
                                 string fName = reader["first_name"]?.ToString() ?? "";
                                 string mName = reader["middle_name"]?.ToString() ?? "";
                                 string lName = reader["last_name"]?.ToString() ?? "";
@@ -81,35 +86,25 @@ namespace BarangayDocumentRequestSysytem
                                 string fullName = $"{fName}{middleInitial} {lName}".Trim();
                                 SetText("txtFullName", fullName);
 
-                                // 2. Birthdate
                                 if (reader["birthdate"] != DBNull.Value)
                                 {
                                     DateTime bdate = Convert.ToDateTime(reader["birthdate"]);
                                     SetText("txtDateOfBirth", bdate.ToString("MMMM dd, yyyy"));
                                 }
 
-                                // 3. Sex
                                 SetText("txtSex", reader["sex"]?.ToString());
-
-                                // 4. Contact Number
                                 SetText("txtContactNumber", reader["contact_no"]?.ToString());
 
-                                // 5. Full Address
                                 string house = reader["house_no"]?.ToString() ?? "";
                                 string purok = reader["purok_no"]?.ToString() ?? "";
                                 string fullAddress = $"House No. {house}, Purok {purok}, Barangay Sevilla, San Fernando City, La Union";
                                 SetText("txtAddress", fullAddress);
 
-                                // 6. Admin Verification Fields
                                 string residency = reader["years_of_residency"] != DBNull.Value ? reader["years_of_residency"].ToString() : "Unverified";
                                 string voter = reader["voter_status"] != DBNull.Value ? reader["voter_status"].ToString() : "Non-Voter";
 
                                 SetText("txtResidency", residency);
                                 SetText("txtVoterStatus", voter);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"No record found in MySQL for user_id: {currentUserId}", "Database Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
@@ -121,22 +116,233 @@ namespace BarangayDocumentRequestSysytem
             }
         }
 
+        private void CheckUpdateRequestStatus()
+        {
+            int currentUserId = UserSession.UserId;
+            if (currentUserId <= 0)
+            {
+                // Session not yet set or cleared
+                if (button2 != null) button2.Visible = false;
+                button3.Text = "✏️ Request Information Update";
+                button3.Enabled = true;
+                SetProfileFieldsReadOnly(true);
+                return;
+            }
+
+            string query = @"SELECT status FROM info_update_requests 
+                     WHERE user_id = @UserId 
+                     ORDER BY request_id DESC LIMIT 1";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserId", currentUserId);
+                    try
+                    {
+                        conn.Open();
+                        object result = cmd.ExecuteScalar();
+                        string status = result != null ? result.ToString().Trim() : "";
+
+                        if (status.Equals("Pending", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (button2 != null) button2.Visible = false;
+                            button3.Text = "⏳ Pending Approval";
+                            button3.Enabled = false;
+                            SetProfileFieldsReadOnly(true);
+                        }
+                        else if (status.Equals("Approved", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (button2 != null) button2.Visible = true; // Show save button ONLY when Approved
+                            button3.Text = "💾 Save Updated Information";
+                            button3.Enabled = true;
+                            SetProfileFieldsReadOnly(false); // Enable text editing for user
+                        }
+                        else // 'Completed', 'Rejected', or no record
+                        {
+                            if (button2 != null) button2.Visible = false;
+                            button3.Text = "✏️ Request Information Update";
+                            button3.Enabled = true;
+                            SetProfileFieldsReadOnly(true);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error checking update request status: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int currentUserId = UserSession.UserId;
+            if (currentUserId <= 0) return;
+
+            if (button3.Text.Contains("Request Information Update"))
+            {
+                // Double-check if a pending request already exists in DB
+                string checkQuery = "SELECT COUNT(*) FROM info_update_requests WHERE user_id = @UserId AND status = 'Pending'";
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@UserId", currentUserId);
+                        long pendingCount = Convert.ToInt64(checkCmd.ExecuteScalar());
+                        if (pendingCount > 0)
+                        {
+                            MessageBox.Show("You already have a pending update request waiting for Admin approval.", "Request Pending", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            CheckUpdateRequestStatus();
+                            return;
+                        }
+                    }
+
+                    // Insert new request
+                    string insertQuery = "INSERT INTO info_update_requests (user_id, status) VALUES (@UserId, 'Pending')";
+                    using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@UserId", currentUserId);
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Your update request has been sent to the Barangay Administrator for approval.", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CheckUpdateRequestStatus();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error filing request: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else if (button3.Text.Contains("Save Updated Information"))
+            {
+                SaveProfileUpdates();
+            }
+        }
+
+        private void SaveProfileUpdates()
+        {
+            int currentUserId = UserSession.UserId;
+            if (currentUserId <= 0) return;
+
+            TextBox fullNameTxt = FindChildTextBox(this, "txtFullName");
+            TextBox sexTxt = FindChildTextBox(this, "txtSex");
+            TextBox contactTxt = FindChildTextBox(this, "txtContactNumber");
+            TextBox dobTxt = FindChildTextBox(this, "txtDateOfBirth");
+
+            string fullName = fullNameTxt != null ? fullNameTxt.Text.Trim() : "";
+            string sex = sexTxt != null ? sexTxt.Text.Trim() : "";
+            string contact = contactTxt != null ? contactTxt.Text.Trim() : "";
+            string dobString = dobTxt != null ? dobTxt.Text.Trim() : "";
+
+            string[] nameParts = fullName.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string firstName = nameParts.Length > 0 ? nameParts[0] : "";
+            string lastName = nameParts.Length > 1 ? nameParts[nameParts.Length - 1] : "";
+            string middleName = nameParts.Length > 2 ? string.Join(" ", nameParts, 1, nameParts.Length - 2) : "";
+
+            DateTime? birthdate = null;
+            if (DateTime.TryParse(dobString, out DateTime parsedDob))
+            {
+                birthdate = parsedDob;
+            }
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        string updateProfileQuery = @"UPDATE users 
+                                                     SET first_name = @FirstName, 
+                                                         last_name = @LastName, 
+                                                         sex = @Sex, 
+                                                         contact_no = @Contact";
+
+                        if (!string.IsNullOrEmpty(middleName))
+                        {
+                            updateProfileQuery += ", middle_name = @MiddleName";
+                        }
+
+                        if (birthdate.HasValue)
+                        {
+                            updateProfileQuery += ", birthdate = @Birthdate";
+                        }
+
+                        updateProfileQuery += " WHERE user_id = @UserId";
+
+                        using (MySqlCommand cmd = new MySqlCommand(updateProfileQuery, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@FirstName", firstName);
+                            cmd.Parameters.AddWithValue("@LastName", lastName);
+                            if (!string.IsNullOrEmpty(middleName))
+                            {
+                                cmd.Parameters.AddWithValue("@MiddleName", middleName);
+                            }
+                            cmd.Parameters.AddWithValue("@Sex", sex);
+                            cmd.Parameters.AddWithValue("@Contact", contact);
+                            if (birthdate.HasValue)
+                            {
+                                cmd.Parameters.AddWithValue("@Birthdate", birthdate.Value.ToString("yyyy-MM-dd"));
+                            }
+                            cmd.Parameters.AddWithValue("@UserId", currentUserId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        string updateReqQuery = "UPDATE info_update_requests SET status = 'Completed' WHERE user_id = @UserId AND status = 'Approved'";
+                        using (MySqlCommand cmdReq = new MySqlCommand(updateReqQuery, conn, transaction))
+                        {
+                            cmdReq.Parameters.AddWithValue("@UserId", currentUserId);
+                            cmdReq.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+
+                        MessageBox.Show("Your profile has been updated successfully!\n\nTo make further changes in the future, please file a new request.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        LoadUserProfile();
+                        CheckUpdateRequestStatus();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to save updates: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void SetProfileFieldsReadOnly(bool readOnly)
+        {
+            SetTextBoxReadOnly("txtFullName", readOnly);
+            SetTextBoxReadOnly("txtDateOfBirth", readOnly);
+            SetTextBoxReadOnly("txtSex", readOnly);
+            SetTextBoxReadOnly("txtContactNumber", readOnly);
+            SetTextBoxReadOnly("txtAddress", readOnly);
+
+            // Keep admin-verified status fields permanently locked
+            SetTextBoxReadOnly("txtResidency", true);
+            SetTextBoxReadOnly("txtVoterStatus", true);
+        }
+
+        private void SetTextBoxReadOnly(string name, bool readOnly)
+        {
+            TextBox target = FindChildTextBox(this, name);
+            if (target != null)
+            {
+                target.ReadOnly = readOnly;
+                target.Enabled = true;
+                target.BackColor = readOnly ? Color.FromArgb(243, 244, 246) : Color.White;
+            }
+        }
+
         private void SetText(string name, string value)
         {
             TextBox target = FindChildTextBox(this, name);
             if (target != null)
             {
                 target.Text = value ?? "";
-            }
-        }
-
-        private void SetReadOnly(string name)
-        {
-            TextBox target = FindChildTextBox(this, name);
-            if (target != null)
-            {
-                target.ReadOnly = true;
-                target.BackColor = Color.FromArgb(243, 244, 246);
             }
         }
 
@@ -160,44 +366,7 @@ namespace BarangayDocumentRequestSysytem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            TextBox contactTxt = FindChildTextBox(this, "txtContactNumber");
-            string contactValue = contactTxt != null ? contactTxt.Text : "";
-
-            if (string.IsNullOrWhiteSpace(contactValue))
-            {
-                MessageBox.Show("Contact number cannot be empty.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int currentUserId = UserSession.UserId;
-            if (currentUserId <= 0) return;
-
-            string query = "UPDATE users SET contact_no = @Contact WHERE user_id = @UserId";
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Contact", contactValue.Trim());
-                    cmd.Parameters.AddWithValue("@UserId", currentUserId);
-
-                    try
-                    {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Contact information updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Failed to update contact number: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-
-        private void btnRequestUpdate_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Your update request has been sent to the Barangay Administrator for verification.", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SaveProfileUpdates();
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
@@ -208,13 +377,11 @@ namespace BarangayDocumentRequestSysytem
 
         private void FormOrControl_Load(object sender, EventArgs e)
         {
-            // Sets the standard header date dynamically
             lblDate.Text = DateHelper.CurrentHeaderDate;
         }
 
         private void lblDate_Click(object sender, EventArgs e)
         {
-            // Updates automatically every second
             lblDate.Text = DateHelper.CurrentHeaderDate;
         }
     }

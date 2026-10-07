@@ -110,7 +110,7 @@
             btnLogout.TabIndex = 23;
             btnLogout.Text = "🚪  Logout";
             btnLogout.TextAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Click += btnLogout_Click_1;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnSetting
             // 

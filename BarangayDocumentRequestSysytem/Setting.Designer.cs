@@ -40,8 +40,8 @@
             brgyInfoBTN = new Button();
             docxSettingBTN = new Button();
             NavPanel = new Panel();
-            DocumentReqTitleLabel = new Label();
             lblDate = new Label();
+            DocumentReqTitleLabel = new Label();
             PanelContainer.SuspendLayout();
             menuPanel.SuspendLayout();
             menuTLP.SuspendLayout();
@@ -138,6 +138,7 @@
             dbmsBTN.Text = "💾 Information         Update";
             dbmsBTN.TextAlign = ContentAlignment.MiddleLeft;
             dbmsBTN.UseVisualStyleBackColor = false;
+            dbmsBTN.Click += dbmsBTN_Click;
             // 
             // signBTN
             // 
@@ -214,18 +215,6 @@
             NavPanel.Size = new Size(635, 83);
             NavPanel.TabIndex = 30;
             // 
-            // DocumentReqTitleLabel
-            // 
-            DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
-            DocumentReqTitleLabel.AutoSize = true;
-            DocumentReqTitleLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            DocumentReqTitleLabel.ForeColor = Color.DarkSlateBlue;
-            DocumentReqTitleLabel.Location = new Point(66, 26);
-            DocumentReqTitleLabel.Name = "DocumentReqTitleLabel";
-            DocumentReqTitleLabel.Size = new Size(106, 32);
-            DocumentReqTitleLabel.TabIndex = 27;
-            DocumentReqTitleLabel.Text = "Settings";
-            // 
             // lblDate
             // 
             lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -237,6 +226,18 @@
             lblDate.Size = new Size(172, 18);
             lblDate.TabIndex = 37;
             lblDate.Text = "📅 August 8, 2026 | Saturday";
+            // 
+            // DocumentReqTitleLabel
+            // 
+            DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
+            DocumentReqTitleLabel.AutoSize = true;
+            DocumentReqTitleLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            DocumentReqTitleLabel.ForeColor = Color.DarkSlateBlue;
+            DocumentReqTitleLabel.Location = new Point(66, 26);
+            DocumentReqTitleLabel.Name = "DocumentReqTitleLabel";
+            DocumentReqTitleLabel.Size = new Size(106, 32);
+            DocumentReqTitleLabel.TabIndex = 27;
+            DocumentReqTitleLabel.Text = "Settings";
             // 
             // Setting
             // 
