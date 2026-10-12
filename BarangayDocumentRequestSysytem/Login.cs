@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿#nullable disable
+using BCrypt.Net;
+using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
 
 namespace BarangayDocumentRequestSysytem
@@ -13,71 +11,6 @@ namespace BarangayDocumentRequestSysytem
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void backgroundWhite_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void leftPanel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void logoMain_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void leftPanel_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Registration_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void forgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -93,29 +26,99 @@ namespace BarangayDocumentRequestSysytem
             this.Hide();
             Registration Rg = new Registration();
             Rg.ShowDialog();
-            Rg = null;
             this.Close();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string username = userName.Text.Trim();
-            string pass = password.Text;
+            string usernameInput = userName.Text.Trim();
+            string passInput = password.Text;
 
-            if (username == "admin" && pass == "admin67")
+            if (string.IsNullOrEmpty(usernameInput) || string.IsNullOrEmpty(passInput))
             {
-                this.Hide();
-                DashboardTest Db = new DashboardTest();
-                Db.ShowDialog();
-                this.Close();
+                MessageBox.Show("Please enter both username and password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            string connectionString = "Server=localhost;Database=barangay_db;Uid=root;Pwd=;";
+            string query = "SELECT user_id, password, role FROM users WHERE username = @username";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                this.Hide();
-                UserPage up = new UserPage();
-                up.ShowDialog();
-                this.Close();
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", usernameInput);
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int fetchUserId = Convert.ToInt32(reader["user_id"]);
+                                string storedHash = reader["password"]?.ToString() ?? "";
+                                string role = reader["role"]?.ToString() ?? "user";
+
+                                bool isPasswordValid = false;
+
+                                try
+                                {
+                                    isPasswordValid = BCrypt.Net.BCrypt.Verify(passInput, storedHash);
+                                }
+                                catch
+                                {
+                                    // Fallback for non-BCrypt/plain test passwords in database
+                                    isPasswordValid = (passInput == storedHash);
+                                }
+
+                                if (isPasswordValid)
+                                {
+                                    // Store user session details
+                                    UserSession.UserId = fetchUserId;
+                                    UserSession.Username = usernameInput;
+
+                                    this.Hide();
+
+                                    // Redirect based on database role
+                                    if (string.Equals(role, "admin", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        DashboardTest adminDb = new DashboardTest();
+                                        adminDb.ShowDialog();
+                                    }
+                                    else
+                                    {
+                                        UserPage userPage = new UserPage();
+                                        userPage.ShowDialog();
+                                    }
+
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Username not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            password.UseSystemPasswordChar = !password.UseSystemPasswordChar;
+        }
+
+        private void Login_Load(object sender, EventArgs e) { }
+        private void password_TextChanged(object sender, EventArgs e) { }
+        private void userName_TextChanged(object sender, EventArgs e) { }
     }
 }

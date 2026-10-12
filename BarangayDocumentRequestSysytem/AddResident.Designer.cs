@@ -29,39 +29,41 @@
         private void InitializeComponent()
         {
             PanelContainer = new Panel();
+            dividerPanel = new Panel();
             NavPanel = new Panel();
-            nameLabel = new Label();
+            lblDate = new Label();
             DocumentReqTitleLabel = new Label();
             buttonsTLP = new TableLayoutPanel();
-            clearButton = new Button();
             cancelButton = new Button();
-            addResidentButton = new Button();
+            clearButton = new Button();
+            updateButton = new Button();
             BodyGroupBox = new GroupBox();
             addResidentLabel = new Label();
             bodyTLP = new TableLayoutPanel();
+            idLabel = new Label();
+            searchContainer = new Panel();
+            resIdTB = new TextBox();
+            btnSearch = new Button();
             fnLabel = new Label();
-            mnLabel = new Label();
-            lnTable = new Label();
-            bdayLabel = new Label();
-            zoneLabel = new Label();
-            hnLabel = new Label();
-            cpLabel = new Label();
-            mnCB = new ComboBox();
-            zoneCB = new ComboBox();
-            bdayDTP = new DateTimePicker();
-            fnTB = new TextBox();
-            lnTB = new TextBox();
-            hnTB = new TextBox();
-            cpTB = new TextBox();
+            lblValFullName = new Label();
+            addrLabel = new Label();
+            lblValAddress = new Label();
+            residencyLabel = new Label();
+            residencyNUD = new NumericUpDown();
+            voterLabel = new Label();
+            voterCB = new ComboBox();
             PanelContainer.SuspendLayout();
             NavPanel.SuspendLayout();
             buttonsTLP.SuspendLayout();
             BodyGroupBox.SuspendLayout();
             bodyTLP.SuspendLayout();
+            searchContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)residencyNUD).BeginInit();
             SuspendLayout();
             // 
             // PanelContainer
             // 
+            PanelContainer.Controls.Add(dividerPanel);
             PanelContainer.Controls.Add(NavPanel);
             PanelContainer.Controls.Add(buttonsTLP);
             PanelContainer.Controls.Add(BodyGroupBox);
@@ -70,313 +72,294 @@
             PanelContainer.Name = "PanelContainer";
             PanelContainer.Size = new Size(635, 512);
             PanelContainer.TabIndex = 0;
-            PanelContainer.Paint += PanelContainer_Paint;
+            // 
+            // dividerPanel
+            // 
+            dividerPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dividerPanel.BackColor = Color.FromArgb(200, 200, 200); // Soft Light Grey
+            dividerPanel.Location = new Point(0, 83);
+            dividerPanel.Name = "dividerPanel";
+            dividerPanel.Size = new Size(635, 1);
+            dividerPanel.TabIndex = 35;
             // 
             // NavPanel
             // 
-            NavPanel.BackColor = Color.DarkSlateBlue;
-            NavPanel.Controls.Add(nameLabel);
+            NavPanel.BackColor = SystemColors.Control;
+            NavPanel.Controls.Add(lblDate);
             NavPanel.Controls.Add(DocumentReqTitleLabel);
             NavPanel.Dock = DockStyle.Top;
             NavPanel.Location = new Point(0, 0);
             NavPanel.Name = "NavPanel";
-            NavPanel.Size = new Size(635, 100);
+            NavPanel.Size = new Size(635, 83);
             NavPanel.TabIndex = 29;
             // 
-            // nameLabel
+            // lblDate
             // 
-            nameLabel.Anchor = AnchorStyles.Right;
-            nameLabel.AutoSize = true;
-            nameLabel.BackColor = Color.DarkSlateBlue;
-            nameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.ForeColor = Color.DarkGray;
-            nameLabel.Location = new Point(405, 12);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(213, 15);
-            nameLabel.TabIndex = 28;
-            nameLabel.Text = "Barangay Document Request System";
+            lblDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Segoe UI", 9.5F);
+            lblDate.ForeColor = Color.DimGray;
+            lblDate.Location = new Point(420, 12);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(57, 17);
+            lblDate.TabIndex = 35;
+            lblDate.Text = "📅 Date";
             // 
             // DocumentReqTitleLabel
             // 
             DocumentReqTitleLabel.Anchor = AnchorStyles.Left;
             DocumentReqTitleLabel.AutoSize = true;
-            DocumentReqTitleLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DocumentReqTitleLabel.ForeColor = Color.White;
-            DocumentReqTitleLabel.Location = new Point(66, 34);
+            DocumentReqTitleLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            DocumentReqTitleLabel.ForeColor = Color.DarkSlateBlue;
+            DocumentReqTitleLabel.Location = new Point(24, 24);
             DocumentReqTitleLabel.Name = "DocumentReqTitleLabel";
-            DocumentReqTitleLabel.Size = new Size(106, 30);
-            DocumentReqTitleLabel.TabIndex = 27;
+            DocumentReqTitleLabel.Size = new Size(123, 32);
+            DocumentReqTitleLabel.TabIndex = 37;
             DocumentReqTitleLabel.Text = "Residents";
             // 
             // buttonsTLP
             // 
             buttonsTLP.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             buttonsTLP.ColumnCount = 3;
-            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
-            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
-            buttonsTLP.Controls.Add(clearButton, 1, 0);
+            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
+            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
+            buttonsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
             buttonsTLP.Controls.Add(cancelButton, 0, 0);
-            buttonsTLP.Controls.Add(addResidentButton, 2, 0);
+            buttonsTLP.Controls.Add(clearButton, 1, 0);
+            buttonsTLP.Controls.Add(updateButton, 2, 0);
             buttonsTLP.Location = new Point(77, 448);
             buttonsTLP.Name = "buttonsTLP";
             buttonsTLP.RowCount = 1;
-            buttonsTLP.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             buttonsTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             buttonsTLP.Size = new Size(481, 47);
-            buttonsTLP.TabIndex = 34;
-            // 
-            // clearButton
-            // 
-            clearButton.Anchor = AnchorStyles.Top;
-            clearButton.BackColor = SystemColors.ControlDarkDark;
-            clearButton.FlatStyle = FlatStyle.Flat;
-            clearButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            clearButton.ForeColor = Color.White;
-            clearButton.Location = new Point(163, 3);
-            clearButton.Name = "clearButton";
-            clearButton.Size = new Size(154, 41);
-            clearButton.TabIndex = 35;
-            clearButton.Text = "⌫ Clear";
-            clearButton.UseVisualStyleBackColor = false;
+            buttonsTLP.TabIndex = 36;
             // 
             // cancelButton
             // 
             cancelButton.Anchor = AnchorStyles.Top;
             cancelButton.BackColor = Color.Red;
             cancelButton.FlatStyle = FlatStyle.Flat;
-            cancelButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cancelButton.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             cancelButton.ForeColor = Color.White;
-            cancelButton.Location = new Point(3, 3);
+            cancelButton.Location = new Point(5, 3);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(154, 41);
-            cancelButton.TabIndex = 33;
+            cancelButton.Size = new Size(150, 40);
+            cancelButton.TabIndex = 0;
             cancelButton.Text = "❌ Cancel";
             cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
             // 
-            // addResidentButton
+            // clearButton
             // 
-            addResidentButton.Anchor = AnchorStyles.Top;
-            addResidentButton.BackColor = Color.DarkSlateBlue;
-            addResidentButton.FlatStyle = FlatStyle.Flat;
-            addResidentButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            addResidentButton.ForeColor = Color.White;
-            addResidentButton.Location = new Point(323, 3);
-            addResidentButton.Name = "addResidentButton";
-            addResidentButton.Size = new Size(155, 41);
-            addResidentButton.TabIndex = 32;
-            addResidentButton.Text = "➕ Add Resident";
-            addResidentButton.UseVisualStyleBackColor = false;
+            clearButton.Anchor = AnchorStyles.Top;
+            clearButton.BackColor = SystemColors.ControlDarkDark;
+            clearButton.FlatStyle = FlatStyle.Flat;
+            clearButton.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            clearButton.ForeColor = Color.White;
+            clearButton.Location = new Point(165, 3);
+            clearButton.Name = "clearButton";
+            clearButton.Size = new Size(150, 40);
+            clearButton.TabIndex = 1;
+            clearButton.Text = "⌫ Reset";
+            clearButton.UseVisualStyleBackColor = false;
+            clearButton.Click += clearButton_Click;
+            // 
+            // updateButton
+            // 
+            updateButton.Anchor = AnchorStyles.Top;
+            updateButton.BackColor = Color.DarkSlateBlue;
+            updateButton.Enabled = false;
+            updateButton.FlatStyle = FlatStyle.Flat;
+            updateButton.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            updateButton.ForeColor = Color.White;
+            updateButton.Location = new Point(323, 3);
+            updateButton.Name = "updateButton";
+            updateButton.Size = new Size(155, 40);
+            updateButton.TabIndex = 2;
+            updateButton.Text = "💾 Save Changes";
+            updateButton.UseVisualStyleBackColor = false;
+            updateButton.Click += updateButton_Click;
             // 
             // BodyGroupBox
             // 
             BodyGroupBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             BodyGroupBox.Controls.Add(addResidentLabel);
             BodyGroupBox.Controls.Add(bodyTLP);
-            BodyGroupBox.Location = new Point(77, 109);
-            BodyGroupBox.Margin = new Padding(0);
+            BodyGroupBox.Location = new Point(45, 104);
             BodyGroupBox.Name = "BodyGroupBox";
-            BodyGroupBox.Padding = new Padding(7);
-            BodyGroupBox.Size = new Size(481, 326);
+            BodyGroupBox.Padding = new Padding(10);
+            BodyGroupBox.Size = new Size(545, 326);
             BodyGroupBox.TabIndex = 30;
             BodyGroupBox.TabStop = false;
             // 
             // addResidentLabel
             // 
             addResidentLabel.AutoSize = true;
-            addResidentLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            addResidentLabel.Location = new Point(17, 4);
+            addResidentLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            addResidentLabel.ForeColor = Color.FromArgb(48, 44, 105);
+            addResidentLabel.Location = new Point(15, 0);
             addResidentLabel.Name = "addResidentLabel";
-            addResidentLabel.Size = new Size(90, 17);
-            addResidentLabel.TabIndex = 32;
-            addResidentLabel.Text = "Add Resident";
+            addResidentLabel.Size = new Size(240, 19);
+            addResidentLabel.TabIndex = 0;
+            addResidentLabel.Text = "🛠️ Modify Residency & Voter Status";
             // 
             // bodyTLP
             // 
             bodyTLP.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             bodyTLP.ColumnCount = 2;
-            bodyTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            bodyTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            bodyTLP.Controls.Add(fnLabel, 0, 0);
-            bodyTLP.Controls.Add(mnLabel, 0, 1);
-            bodyTLP.Controls.Add(lnTable, 0, 2);
-            bodyTLP.Controls.Add(bdayLabel, 0, 3);
-            bodyTLP.Controls.Add(zoneLabel, 0, 4);
-            bodyTLP.Controls.Add(hnLabel, 0, 5);
-            bodyTLP.Controls.Add(cpLabel, 0, 6);
-            bodyTLP.Controls.Add(mnCB, 1, 1);
-            bodyTLP.Controls.Add(zoneCB, 1, 4);
-            bodyTLP.Controls.Add(bdayDTP, 1, 3);
-            bodyTLP.Controls.Add(fnTB, 1, 0);
-            bodyTLP.Controls.Add(lnTB, 1, 2);
-            bodyTLP.Controls.Add(hnTB, 1, 5);
-            bodyTLP.Controls.Add(cpTB, 1, 6);
-            bodyTLP.Location = new Point(7, 30);
-            bodyTLP.Margin = new Padding(0);
+            bodyTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32F));
+            bodyTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68F));
+            bodyTLP.Controls.Add(idLabel, 0, 0);
+            bodyTLP.Controls.Add(searchContainer, 1, 0);
+            bodyTLP.Controls.Add(fnLabel, 0, 1);
+            bodyTLP.Controls.Add(lblValFullName, 1, 1);
+            bodyTLP.Controls.Add(addrLabel, 0, 2);
+            bodyTLP.Controls.Add(lblValAddress, 1, 2);
+            bodyTLP.Controls.Add(residencyLabel, 0, 3);
+            bodyTLP.Controls.Add(residencyNUD, 1, 3);
+            bodyTLP.Controls.Add(voterLabel, 0, 4);
+            bodyTLP.Controls.Add(voterCB, 1, 4);
+            bodyTLP.Location = new Point(10, 28);
             bodyTLP.Name = "bodyTLP";
-            bodyTLP.Padding = new Padding(10);
-            bodyTLP.RowCount = 7;
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            bodyTLP.Size = new Size(467, 289);
+            bodyTLP.RowCount = 5;
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            bodyTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            bodyTLP.Size = new Size(525, 275);
             bodyTLP.TabIndex = 0;
+            // 
+            // idLabel
+            // 
+            idLabel.Anchor = AnchorStyles.Left;
+            idLabel.AutoSize = true;
+            idLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            idLabel.Location = new Point(3, 15);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new Size(113, 15);
+            idLabel.TabIndex = 0;
+            idLabel.Text = "Enter Resident ID*:";
+            // 
+            // searchContainer
+            // 
+            searchContainer.Controls.Add(resIdTB);
+            searchContainer.Controls.Add(btnSearch);
+            searchContainer.Dock = DockStyle.Fill;
+            searchContainer.Location = new Point(171, 3);
+            searchContainer.Name = "searchContainer";
+            searchContainer.Size = new Size(351, 39);
+            searchContainer.TabIndex = 1;
+            // 
+            // resIdTB
+            // 
+            resIdTB.Location = new Point(0, 8);
+            resIdTB.Name = "resIdTB";
+            resIdTB.PlaceholderText = "e.g., RES-001 or 1";
+            resIdTB.Size = new Size(230, 23);
+            resIdTB.TabIndex = 0;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = Color.DarkSlateBlue;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(240, 7);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(95, 27);
+            btnSearch.TabIndex = 1;
+            btnSearch.Text = "🔍 Search";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // fnLabel
             // 
-            fnLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            fnLabel.Anchor = AnchorStyles.Left;
             fnLabel.AutoSize = true;
             fnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            fnLabel.Location = new Point(13, 22);
+            fnLabel.Location = new Point(3, 60);
             fnLabel.Name = "fnLabel";
-            fnLabel.Size = new Size(128, 15);
-            fnLabel.TabIndex = 0;
-            fnLabel.Text = "First Name* :";
-            fnLabel.TextAlign = ContentAlignment.MiddleLeft;
+            fnLabel.Size = new Size(65, 15);
+            fnLabel.TabIndex = 2;
+            fnLabel.Text = "Full Name:";
             // 
-            // mnLabel
+            // lblValFullName
             // 
-            mnLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            mnLabel.AutoSize = true;
-            mnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            mnLabel.Location = new Point(13, 62);
-            mnLabel.Name = "mnLabel";
-            mnLabel.Size = new Size(128, 15);
-            mnLabel.TabIndex = 1;
-            mnLabel.Text = "Middle Name :";
-            mnLabel.TextAlign = ContentAlignment.MiddleLeft;
+            lblValFullName.Anchor = AnchorStyles.Left;
+            lblValFullName.AutoSize = true;
+            lblValFullName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblValFullName.ForeColor = Color.FromArgb(48, 44, 105);
+            lblValFullName.Location = new Point(171, 59);
+            lblValFullName.Name = "lblValFullName";
+            lblValFullName.Size = new Size(157, 17);
+            lblValFullName.TabIndex = 3;
+            lblValFullName.Text = "— Search Resident ID —";
             // 
-            // lnTable
+            // addrLabel
             // 
-            lnTable.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            lnTable.AutoSize = true;
-            lnTable.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lnTable.Location = new Point(13, 102);
-            lnTable.Name = "lnTable";
-            lnTable.Size = new Size(128, 15);
-            lnTable.TabIndex = 2;
-            lnTable.Text = "Last Name* :";
-            lnTable.TextAlign = ContentAlignment.MiddleLeft;
+            addrLabel.Anchor = AnchorStyles.Left;
+            addrLabel.AutoSize = true;
+            addrLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            addrLabel.Location = new Point(3, 105);
+            addrLabel.Name = "addrLabel";
+            addrLabel.Size = new Size(54, 15);
+            addrLabel.TabIndex = 4;
+            addrLabel.Text = "Address:";
             // 
-            // bdayLabel
+            // lblValAddress
             // 
-            bdayLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            bdayLabel.AutoSize = true;
-            bdayLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            bdayLabel.Location = new Point(13, 142);
-            bdayLabel.Name = "bdayLabel";
-            bdayLabel.Size = new Size(128, 15);
-            bdayLabel.TabIndex = 3;
-            bdayLabel.Text = "Birthdate* :";
-            bdayLabel.TextAlign = ContentAlignment.MiddleLeft;
+            lblValAddress.Anchor = AnchorStyles.Left;
+            lblValAddress.AutoSize = true;
+            lblValAddress.Font = new Font("Segoe UI", 9F);
+            lblValAddress.ForeColor = Color.DimGray;
+            lblValAddress.Location = new Point(171, 105);
+            lblValAddress.Name = "lblValAddress";
+            lblValAddress.Size = new Size(134, 15);
+            lblValAddress.TabIndex = 5;
+            lblValAddress.Text = "— Search Resident ID —";
             // 
-            // zoneLabel
+            // residencyLabel
             // 
-            zoneLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            zoneLabel.AutoSize = true;
-            zoneLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            zoneLabel.Location = new Point(13, 182);
-            zoneLabel.Name = "zoneLabel";
-            zoneLabel.Size = new Size(128, 15);
-            zoneLabel.TabIndex = 5;
-            zoneLabel.Text = "Zone/Purok* :";
-            zoneLabel.TextAlign = ContentAlignment.MiddleLeft;
+            residencyLabel.Anchor = AnchorStyles.Left;
+            residencyLabel.AutoSize = true;
+            residencyLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            residencyLabel.Location = new Point(3, 150);
+            residencyLabel.Name = "residencyLabel";
+            residencyLabel.Size = new Size(118, 15);
+            residencyLabel.TabIndex = 6;
+            residencyLabel.Text = "Years of Residency*:";
             // 
-            // hnLabel
+            // residencyNUD
             // 
-            hnLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            hnLabel.AutoSize = true;
-            hnLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            hnLabel.Location = new Point(13, 222);
-            hnLabel.Name = "hnLabel";
-            hnLabel.Size = new Size(128, 15);
-            hnLabel.TabIndex = 6;
-            hnLabel.Text = "House Number* :";
-            hnLabel.TextAlign = ContentAlignment.MiddleLeft;
+            residencyNUD.Anchor = AnchorStyles.Left;
+            residencyNUD.Location = new Point(171, 146);
+            residencyNUD.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
+            residencyNUD.Name = "residencyNUD";
+            residencyNUD.Size = new Size(120, 23);
+            residencyNUD.TabIndex = 7;
             // 
-            // cpLabel
+            // voterLabel
             // 
-            cpLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cpLabel.AutoSize = true;
-            cpLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            cpLabel.Location = new Point(13, 262);
-            cpLabel.Name = "cpLabel";
-            cpLabel.Size = new Size(128, 15);
-            cpLabel.TabIndex = 7;
-            cpLabel.Text = "Cellphone Number* :";
-            cpLabel.TextAlign = ContentAlignment.MiddleLeft;
+            voterLabel.Anchor = AnchorStyles.Left;
+            voterLabel.AutoSize = true;
+            voterLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            voterLabel.Location = new Point(3, 220);
+            voterLabel.Name = "voterLabel";
+            voterLabel.Size = new Size(84, 15);
+            voterLabel.TabIndex = 8;
+            voterLabel.Text = "Voter Status*:";
             // 
-            // mnCB
+            // voterCB
             // 
-            mnCB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            mnCB.FormattingEnabled = true;
-            mnCB.Location = new Point(147, 58);
-            mnCB.Name = "mnCB";
-            mnCB.Size = new Size(307, 23);
-            mnCB.TabIndex = 8;
-            // 
-            // zoneCB
-            // 
-            zoneCB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            zoneCB.FormattingEnabled = true;
-            zoneCB.Location = new Point(147, 178);
-            zoneCB.Name = "zoneCB";
-            zoneCB.Size = new Size(307, 23);
-            zoneCB.TabIndex = 10;
-            // 
-            // bdayDTP
-            // 
-            bdayDTP.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            bdayDTP.Location = new Point(147, 138);
-            bdayDTP.Name = "bdayDTP";
-            bdayDTP.Size = new Size(307, 23);
-            bdayDTP.TabIndex = 9;
-            // 
-            // fnTB
-            // 
-            fnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            fnTB.BorderStyle = BorderStyle.FixedSingle;
-            fnTB.Location = new Point(147, 18);
-            fnTB.Name = "fnTB";
-            fnTB.PlaceholderText = "Juan";
-            fnTB.Size = new Size(307, 23);
-            fnTB.TabIndex = 11;
-            // 
-            // lnTB
-            // 
-            lnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            lnTB.BorderStyle = BorderStyle.FixedSingle;
-            lnTB.Location = new Point(147, 98);
-            lnTB.Name = "lnTB";
-            lnTB.PlaceholderText = "Dela Cruz";
-            lnTB.Size = new Size(307, 23);
-            lnTB.TabIndex = 12;
-            // 
-            // hnTB
-            // 
-            hnTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            hnTB.BorderStyle = BorderStyle.FixedSingle;
-            hnTB.Location = new Point(147, 218);
-            hnTB.Name = "hnTB";
-            hnTB.Size = new Size(307, 23);
-            hnTB.TabIndex = 14;
-            hnTB.KeyPress += hnTB_KeyPress;
-            // 
-            // cpTB
-            // 
-            cpTB.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cpTB.BorderStyle = BorderStyle.FixedSingle;
-            cpTB.Location = new Point(147, 258);
-            cpTB.MaxLength = 11;
-            cpTB.Name = "cpTB";
-            cpTB.PlaceholderText = "09XXXXXXXXX";
-            cpTB.Size = new Size(307, 23);
-            cpTB.TabIndex = 15;
-            cpTB.KeyPress += cpTB_KeyPress;
+            voterCB.Anchor = AnchorStyles.Left;
+            voterCB.DropDownStyle = ComboBoxStyle.DropDownList;
+            voterCB.FormattingEnabled = true;
+            voterCB.Items.AddRange(new object[] { "Yes", "No" });
+            voterCB.Location = new Point(171, 216);
+            voterCB.Name = "voterCB";
+            voterCB.Size = new Size(180, 23);
+            voterCB.TabIndex = 9;
             // 
             // AddResident
             // 
@@ -393,35 +376,39 @@
             BodyGroupBox.PerformLayout();
             bodyTLP.ResumeLayout(false);
             bodyTLP.PerformLayout();
+            searchContainer.ResumeLayout(false);
+            searchContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)residencyNUD).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel PanelContainer;
-        private Panel NavPanel;
-        private Label DocumentReqTitleLabel;
         private GroupBox BodyGroupBox;
-        private Label nameLabel;
         private TableLayoutPanel bodyTLP;
-        private Label fnLabel;
-        private Label mnLabel;
-        private Label lnTable;
-        private Label bdayLabel;
-        private Label hnLabel;
-        private Label cpLabel;
-        private ComboBox mnCB;
-        private DateTimePicker bdayDTP;
-        private TextBox fnTB;
-        private TextBox lnTB;
-        private TextBox hnTB;
-        private TextBox cpTB;
         private Label addResidentLabel;
         private TableLayoutPanel buttonsTLP;
         private Button clearButton;
         private Button cancelButton;
-        private Button addResidentButton;
-        private Label zoneLabel;
-        private ComboBox zoneCB;
+        private Button updateButton;
+        private Panel dividerPanel;
+        private Panel NavPanel;
+        private Label lblDate;
+        private Label DocumentReqTitleLabel;
+
+        // Custom CRUD controls
+        private Label idLabel;
+        private Panel searchContainer;
+        private TextBox resIdTB;
+        private Button btnSearch;
+        private Label fnLabel;
+        private Label lblValFullName;
+        private Label addrLabel;
+        private Label lblValAddress;
+        private Label residencyLabel;
+        private NumericUpDown residencyNUD;
+        private Label voterLabel;
+        private ComboBox voterCB;
     }
 }

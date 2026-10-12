@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿#nullable disable
+using System;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BarangayDocumentRequestSysytem
@@ -13,61 +10,113 @@ namespace BarangayDocumentRequestSysytem
         public DashboardTest()
         {
             InitializeComponent();
-        }
-        private void DocumentReqButton_Click(object sender, EventArgs e)
-        {
-            PanelContainer.Visible = true;
-
-            PanelContainer.Controls.Clear();
-
-            DocumentRequest documentRequest = new DocumentRequest();
-            documentRequest.Dock = DockStyle.Fill;
-
-            PanelContainer.Controls.Add(documentRequest);
+            LoadControl(new AdminControl());
         }
 
-        private void DashboardButton_Click(object sender, EventArgs e)
+        private void DashboardTest_Load(object sender, EventArgs e)
         {
-            PanelContainer.Controls.Clear();
-
-            Dashboard dashboardContent = new Dashboard(); // your dashboard UserControl
-            dashboardContent.Dock = DockStyle.Fill;
-
-            PanelContainer.Controls.Add(dashboardContent);
-            PanelContainer.Visible = true;
+            // Auto-load AdminControl once DashboardTest finishes initializing
+            LoadControl(new AdminControl());
         }
 
-        private void ResidentButton_Click(object sender, EventArgs e)
+        // --- Navigation Helper Function ---
+        private void LoadControl(UserControl userControl)
         {
-            PanelContainer.Controls.Clear();
+            if (userControl == null) return;
 
-            Resident residentContent = new Resident(); // your resident UserControl
-            residentContent.Dock = DockStyle.Fill;
+            // Locate target content display panel
+            Control container = FindControlByName<Panel>(this, "panelContent")
+                             ?? FindControlByName<Panel>(this, "panelMain")
+                             ?? FindMainContainerPanel();
 
-            PanelContainer.Controls.Add(residentContent);
-            PanelContainer.Visible = true;
+            if (container != null)
+            {
+                // Properly dispose previous controls to free up memory
+                foreach (Control ctrl in container.Controls)
+                {
+                    ctrl.Dispose();
+                }
+                container.Controls.Clear();
+
+                userControl.Dock = DockStyle.Fill;
+                container.Controls.Add(userControl);
+                userControl.BringToFront();
+            }
         }
 
-        private void ReportButton_Click(object sender, EventArgs e)
+        private T FindControlByName<T>(Control parent, string name) where T : Control
         {
-            PanelContainer.Controls.Clear();
-
-            Report reportContent = new Report(); // your setting UserControl
-            reportContent.Dock = DockStyle.Fill;
-
-            PanelContainer.Controls.Add(reportContent);
-            PanelContainer.Visible = true;
+            foreach (Control c in parent.Controls)
+            {
+                if (c is T match && string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return match;
+                }
+                if (c.HasChildren)
+                {
+                    T childMatch = FindControlByName<T>(c, name);
+                    if (childMatch != null) return childMatch;
+                }
+            }
+            return null;
         }
 
-        private void SettingButton_Click(object sender, EventArgs e)
+        private Control FindMainContainerPanel()
         {
-            PanelContainer.Controls.Clear();
+            foreach (Control c in this.Controls)
+            {
+                if (c is Panel p && c.Dock != DockStyle.Left && c.Dock != DockStyle.Top)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
 
-            Setting settingContent = new Setting(); // your setting UserControl
-            settingContent.Dock = DockStyle.Fill;
+        // --- Sidebar Button Events ---
+        private void btnHome_Click_1(object sender, EventArgs e)
+        {
+            LoadControl(new AdminControl());
+        }
 
-            PanelContainer.Controls.Add(settingContent);
-            PanelContainer.Visible = true;
+        private void btnResident_Click_1(object sender, EventArgs e)
+        {
+            LoadControl(new Resident());
+        }
+
+        private void btnPendingRequests_Click_1(object sender, EventArgs e)
+        {
+            LoadControl(new DocumentRequest());
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            LoadControl(new ReportsControl());
+        }
+
+        private void btnSetting_Click_1(object sender, EventArgs e)
+        {
+            LoadControl(new Setting());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show(
+                "Are you sure you want to log out?\n\nYou will be returned to the login page.",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                this.Hide();
+
+                Login lg = new Login();
+                lg.ShowDialog();
+
+                this.Close();
+            }
         }
     }
 }

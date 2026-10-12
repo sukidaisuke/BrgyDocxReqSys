@@ -85,7 +85,6 @@
             welcomeText.Size = new Size(108, 20);
             welcomeText.TabIndex = 3;
             welcomeText.Text = "Create Account";
-            welcomeText.Click += label1_Click;
             // 
             // leftPanel
             // 
@@ -96,7 +95,6 @@
             leftPanel.SizeMode = PictureBoxSizeMode.Zoom;
             leftPanel.TabIndex = 4;
             leftPanel.TabStop = false;
-            leftPanel.Click += leftPanel_Click_2;
             // 
             // label1
             // 
@@ -109,7 +107,6 @@
             label1.Size = new Size(168, 18);
             label1.TabIndex = 5;
             label1.Text = "Create an acount to continue";
-            label1.Click += label1_Click_1;
             // 
             // label5
             // 
@@ -121,7 +118,6 @@
             label5.Size = new Size(174, 23);
             label5.TabIndex = 14;
             label5.Text = "Already have an account?";
-            label5.Click += label5_Click;
             // 
             // linkLabel2
             // 
@@ -172,7 +168,6 @@
             userRegistrationPanel.Name = "userRegistrationPanel";
             userRegistrationPanel.Size = new Size(432, 327);
             userRegistrationPanel.TabIndex = 16;
-            userRegistrationPanel.Paint += panel1_Paint;
             // 
             // label19
             // 
@@ -184,7 +179,6 @@
             label19.Size = new Size(116, 16);
             label19.TabIndex = 29;
             label19.Text = "Account Information";
-            label19.Click += label19_Click;
             // 
             // label18
             // 
@@ -230,6 +224,7 @@
             // 
             securityQuestions.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             securityQuestions.FormattingEnabled = true;
+            securityQuestions.Items.AddRange(new object[] { "What is your favourite food?" });
             securityQuestions.Location = new Point(113, 261);
             securityQuestions.Name = "securityQuestions";
             securityQuestions.Size = new Size(313, 24);
@@ -283,8 +278,10 @@
             // 
             // purokNumber
             // 
+            purokNumber.DropDownStyle = ComboBoxStyle.DropDownList;
             purokNumber.Font = new Font("Gill Sans MT", 8.25F);
             purokNumber.FormattingEnabled = true;
+            purokNumber.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" });
             purokNumber.Location = new Point(346, 181);
             purokNumber.Name = "purokNumber";
             purokNumber.Size = new Size(80, 24);
@@ -321,8 +318,10 @@
             // 
             // sexIdentification
             // 
+            sexIdentification.DropDownStyle = ComboBoxStyle.DropDownList;
             sexIdentification.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sexIdentification.FormattingEnabled = true;
+            sexIdentification.Items.AddRange(new object[] { "Male", "Female", "Other" });
             sexIdentification.Location = new Point(346, 128);
             sexIdentification.Name = "sexIdentification";
             sexIdentification.Size = new Size(80, 24);
@@ -400,7 +399,6 @@
             confirmPassword.Size = new Size(150, 20);
             confirmPassword.TabIndex = 5;
             confirmPassword.UseSystemPasswordChar = true;
-            confirmPassword.TextChanged += confirmPassword_TextChanged;
             // 
             // label6
             // 
@@ -419,6 +417,7 @@
             createPassword.Name = "createPassword";
             createPassword.Size = new Size(150, 20);
             createPassword.TabIndex = 3;
+            createPassword.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -447,7 +446,6 @@
             label2.Size = new Size(54, 16);
             label2.TabIndex = 0;
             label2.Text = "Username:";
-            label2.Click += label2_Click;
             // 
             // logoMain
             // 
@@ -518,7 +516,6 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "Registration";
             Text = "Barangay Document Request System";
-            Load += Registration_Load;
             ((System.ComponentModel.ISupportInitialize)leftPanel).EndInit();
             userRegistrationPanel.ResumeLayout(false);
             userRegistrationPanel.PerformLayout();

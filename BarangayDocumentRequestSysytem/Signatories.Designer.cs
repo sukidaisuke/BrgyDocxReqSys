@@ -2,15 +2,8 @@
 {
     partial class Signatories
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,157 +15,220 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             bodyGB = new GroupBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            s1Name = new Label();
-            s2Label = new Label();
-            s2Name = new Label();
-            s3Label = new Label();
-            s3Name = new Label();
-            s4Label = new Label();
-            s4Name = new Label();
-            s1Label = new Label();
+            dgvSignatories = new DataGridView();
+            editorGB = new GroupBox();
+            editorTLP = new TableLayoutPanel();
+            lblPosition = new Label();
+            cmbPosition = new ComboBox();
+            lblName = new Label();
+            txtName = new TextBox();
+            lblStatus = new Label();
+            cmbStatus = new ComboBox();
+            actionsTLP = new TableLayoutPanel();
+            btnNew = new Button();
+            btnSave = new Button();
+            btnDelete = new Button();
             bodyGB.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSignatories).BeginInit();
+            editorGB.SuspendLayout();
+            editorTLP.SuspendLayout();
+            actionsTLP.SuspendLayout();
             SuspendLayout();
             // 
             // bodyGB
             // 
-            bodyGB.Controls.Add(tableLayoutPanel1);
+            bodyGB.Controls.Add(dgvSignatories);
+            bodyGB.Controls.Add(editorGB);
             bodyGB.Dock = DockStyle.Fill;
             bodyGB.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             bodyGB.Location = new Point(0, 0);
             bodyGB.Name = "bodyGB";
-            bodyGB.Size = new Size(406, 403);
+            bodyGB.Padding = new Padding(10);
+            bodyGB.Size = new Size(430, 420);
             bodyGB.TabIndex = 0;
             bodyGB.TabStop = false;
-            bodyGB.Text = "Signatories";
+            bodyGB.Text = "📜 Barangay Official Signatories";
             // 
-            // tableLayoutPanel1
+            // dgvSignatories
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.None;
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(s1Name, 1, 0);
-            tableLayoutPanel1.Controls.Add(s2Label, 0, 1);
-            tableLayoutPanel1.Controls.Add(s2Name, 1, 1);
-            tableLayoutPanel1.Controls.Add(s3Label, 0, 2);
-            tableLayoutPanel1.Controls.Add(s3Name, 1, 2);
-            tableLayoutPanel1.Controls.Add(s4Label, 0, 3);
-            tableLayoutPanel1.Controls.Add(s4Name, 1, 3);
-            tableLayoutPanel1.Controls.Add(s1Label, 0, 0);
-            tableLayoutPanel1.Location = new Point(6, 63);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.Size = new Size(394, 163);
-            tableLayoutPanel1.TabIndex = 1;
+            dgvSignatories.AllowUserToAddRows = false;
+            dgvSignatories.AllowUserToDeleteRows = false;
+            dgvSignatories.BackgroundColor = Color.White;
+            dgvSignatories.BorderStyle = BorderStyle.Fixed3D;
+            dgvSignatories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSignatories.Dock = DockStyle.Fill;
+            dgvSignatories.Location = new Point(10, 30);
+            dgvSignatories.Name = "dgvSignatories";
+            dgvSignatories.ReadOnly = true;
+            dgvSignatories.RowTemplate.Height = 28;
+            dgvSignatories.Size = new Size(410, 190);
+            dgvSignatories.TabIndex = 0;
+            dgvSignatories.CellClick += dgvSignatories_CellClick;
             // 
-            // s1Name
+            // editorGB
             // 
-            s1Name.AutoSize = true;
-            s1Name.Dock = DockStyle.Fill;
-            s1Name.Font = new Font("Segoe UI", 9.75F);
-            s1Name.Location = new Point(200, 0);
-            s1Name.Name = "s1Name";
-            s1Name.Size = new Size(191, 40);
-            s1Name.TabIndex = 1;
-            s1Name.Text = "Juan Dela Cruz";
-            s1Name.TextAlign = ContentAlignment.MiddleLeft;
+            editorGB.Controls.Add(editorTLP);
+            editorGB.Controls.Add(actionsTLP);
+            editorGB.Dock = DockStyle.Bottom;
+            editorGB.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            editorGB.ForeColor = Color.FromArgb(48, 44, 105);
+            editorGB.Location = new Point(10, 220);
+            editorGB.Name = "editorGB";
+            editorGB.Size = new Size(410, 190);
+            editorGB.TabIndex = 1;
+            editorGB.TabStop = false;
+            editorGB.Text = "⚙️ Edit Selected Official";
             // 
-            // s2Label
+            // editorTLP
             // 
-            s2Label.AutoSize = true;
-            s2Label.Dock = DockStyle.Fill;
-            s2Label.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            s2Label.Location = new Point(3, 40);
-            s2Label.Name = "s2Label";
-            s2Label.Size = new Size(191, 40);
-            s2Label.TabIndex = 2;
-            s2Label.Text = "Secretary :";
-            s2Label.TextAlign = ContentAlignment.MiddleLeft;
+            editorTLP.ColumnCount = 2;
+            editorTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
+            editorTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65F));
+            editorTLP.Controls.Add(lblPosition, 0, 0);
+            editorTLP.Controls.Add(cmbPosition, 1, 0);
+            editorTLP.Controls.Add(lblName, 0, 1);
+            editorTLP.Controls.Add(txtName, 1, 1);
+            editorTLP.Controls.Add(lblStatus, 0, 2);
+            editorTLP.Controls.Add(cmbStatus, 1, 2);
+            editorTLP.Dock = DockStyle.Top;
+            editorTLP.Location = new Point(3, 19);
+            editorTLP.Name = "editorTLP";
+            editorTLP.RowCount = 3;
+            editorTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            editorTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            editorTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            editorTLP.Size = new Size(404, 115);
+            editorTLP.TabIndex = 0;
             // 
-            // s2Name
+            // lblPosition
             // 
-            s2Name.AutoSize = true;
-            s2Name.Dock = DockStyle.Fill;
-            s2Name.Font = new Font("Segoe UI", 9.75F);
-            s2Name.Location = new Point(200, 40);
-            s2Name.Name = "s2Name";
-            s2Name.Size = new Size(191, 40);
-            s2Name.TabIndex = 3;
-            s2Name.Text = "Andrew Garfield";
-            s2Name.TextAlign = ContentAlignment.MiddleLeft;
+            lblPosition.Anchor = AnchorStyles.Left;
+            lblPosition.AutoSize = true;
+            lblPosition.ForeColor = Color.Black;
+            lblPosition.Location = new Point(3, 11);
+            lblPosition.Name = "lblPosition";
+            lblPosition.Size = new Size(90, 15);
+            lblPosition.TabIndex = 0;
+            lblPosition.Text = "Position / Title:";
             // 
-            // s3Label
+            // cmbPosition
             // 
-            s3Label.AutoSize = true;
-            s3Label.Dock = DockStyle.Fill;
-            s3Label.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            s3Label.Location = new Point(3, 80);
-            s3Label.Name = "s3Label";
-            s3Label.Size = new Size(191, 40);
-            s3Label.TabIndex = 4;
-            s3Label.Text = "Treasurer :";
-            s3Label.TextAlign = ContentAlignment.MiddleLeft;
+            cmbPosition.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            cmbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPosition.Font = new Font("Segoe UI", 9F);
+            cmbPosition.FormattingEnabled = true;
+            cmbPosition.Items.AddRange(new object[] { "Barangay Captain", "Barangay Kagawad", "Barangay Secretary", "Barangay Treasurer", "SK Chairman", "Chief Tanod", "Lupon Tagapamayapa Member", "Barangay Health Worker (BHW)", "Barangay Nutrition Scholar (BNS)" });
+            cmbPosition.Location = new Point(144, 7);
+            cmbPosition.Name = "cmbPosition";
+            cmbPosition.Size = new Size(257, 23);
+            cmbPosition.TabIndex = 1;
             // 
-            // s3Name
+            // lblName
             // 
-            s3Name.AutoSize = true;
-            s3Name.Dock = DockStyle.Fill;
-            s3Name.Font = new Font("Segoe UI", 9.75F);
-            s3Name.Location = new Point(200, 80);
-            s3Name.Name = "s3Name";
-            s3Name.Size = new Size(191, 40);
-            s3Name.TabIndex = 5;
-            s3Name.Text = "Tobey Maguire";
-            s3Name.TextAlign = ContentAlignment.MiddleLeft;
+            lblName.Anchor = AnchorStyles.Left;
+            lblName.AutoSize = true;
+            lblName.ForeColor = Color.Black;
+            lblName.Location = new Point(3, 49);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(86, 15);
+            lblName.TabIndex = 2;
+            lblName.Text = "Official Name:";
             // 
-            // s4Label
+            // txtName
             // 
-            s4Label.AutoSize = true;
-            s4Label.Dock = DockStyle.Fill;
-            s4Label.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            s4Label.Location = new Point(3, 120);
-            s4Label.Name = "s4Label";
-            s4Label.Size = new Size(191, 43);
-            s4Label.TabIndex = 6;
-            s4Label.Text = "SK Chairman :";
-            s4Label.TextAlign = ContentAlignment.MiddleLeft;
+            txtName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtName.Font = new Font("Segoe UI", 9F);
+            txtName.Location = new Point(144, 45);
+            txtName.Name = "txtName";
+            txtName.PlaceholderText = "e.g., Juan Dela Cruz";
+            txtName.Size = new Size(257, 23);
+            txtName.TabIndex = 3;
             // 
-            // s4Name
+            // lblStatus
             // 
-            s4Name.AutoSize = true;
-            s4Name.Dock = DockStyle.Fill;
-            s4Name.Font = new Font("Segoe UI", 9.75F);
-            s4Name.Location = new Point(200, 120);
-            s4Name.Name = "s4Name";
-            s4Name.Size = new Size(191, 43);
-            s4Name.TabIndex = 7;
-            s4Name.Text = "Tom Holland";
-            s4Name.TextAlign = ContentAlignment.MiddleLeft;
+            lblStatus.Anchor = AnchorStyles.Left;
+            lblStatus.AutoSize = true;
+            lblStatus.ForeColor = Color.Black;
+            lblStatus.Location = new Point(3, 88);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(45, 15);
+            lblStatus.TabIndex = 4;
+            lblStatus.Text = "Status:";
             // 
-            // s1Label
+            // cmbStatus
             // 
-            s1Label.AutoSize = true;
-            s1Label.Dock = DockStyle.Fill;
-            s1Label.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            s1Label.Location = new Point(3, 0);
-            s1Label.Name = "s1Label";
-            s1Label.Size = new Size(191, 40);
-            s1Label.TabIndex = 0;
-            s1Label.Text = "Barangay Captain :";
-            s1Label.TextAlign = ContentAlignment.MiddleLeft;
+            cmbStatus.Anchor = AnchorStyles.Left;
+            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatus.Font = new Font("Segoe UI", 9F);
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Items.AddRange(new object[] { "Active", "Inactive" });
+            cmbStatus.Location = new Point(144, 84);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(150, 23);
+            cmbStatus.TabIndex = 5;
+            // 
+            // actionsTLP
+            // 
+            actionsTLP.ColumnCount = 3;
+            actionsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
+            actionsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33F));
+            actionsTLP.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.34F));
+            actionsTLP.Controls.Add(btnNew, 0, 0);
+            actionsTLP.Controls.Add(btnSave, 1, 0);
+            actionsTLP.Controls.Add(btnDelete, 2, 0);
+            actionsTLP.Dock = DockStyle.Bottom;
+            actionsTLP.Location = new Point(3, 142);
+            actionsTLP.Name = "actionsTLP";
+            actionsTLP.RowCount = 1;
+            actionsTLP.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            actionsTLP.Size = new Size(404, 45);
+            actionsTLP.TabIndex = 1;
+            // 
+            // btnNew
+            // 
+            btnNew.Anchor = AnchorStyles.None;
+            btnNew.BackColor = Color.Gray;
+            btnNew.FlatStyle = FlatStyle.Flat;
+            btnNew.ForeColor = Color.White;
+            btnNew.Location = new Point(8, 6);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(118, 33);
+            btnNew.TabIndex = 0;
+            btnNew.Text = "⌫ Reset";
+            btnNew.UseVisualStyleBackColor = false;
+            btnNew.Click += btnNew_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.Anchor = AnchorStyles.None;
+            btnSave.BackColor = Color.FromArgb(48, 44, 105);
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(142, 6);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(118, 33);
+            btnSave.TabIndex = 1;
+            btnSave.Text = "➕ Add New";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.None;
+            btnDelete.BackColor = Color.DarkRed;
+            btnDelete.Enabled = false;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(276, 6);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(120, 33);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "🗑️ Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // Signatories
             // 
@@ -180,24 +236,31 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(bodyGB);
             Name = "Signatories";
-            Size = new Size(406, 403);
+            Size = new Size(430, 420);
             bodyGB.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSignatories).EndInit();
+            editorGB.ResumeLayout(false);
+            editorTLP.ResumeLayout(false);
+            editorTLP.PerformLayout();
+            actionsTLP.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox bodyGB;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Label s1Name;
-        private Label s2Label;
-        private Label s2Name;
-        private Label s3Label;
-        private Label s3Name;
-        private Label s4Label;
-        private Label s4Name;
-        private Label s1Label;
+        private System.Windows.Forms.GroupBox bodyGB;
+        private System.Windows.Forms.DataGridView dgvSignatories;
+        private System.Windows.Forms.GroupBox editorGB;
+        private System.Windows.Forms.TableLayoutPanel editorTLP;
+        private System.Windows.Forms.Label lblPosition;
+        private System.Windows.Forms.ComboBox cmbPosition;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.TableLayoutPanel actionsTLP;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

@@ -2,15 +2,8 @@
 {
     partial class ResetPassword
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,104 +15,194 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            txtNewPassword = new TextBox();
-            txtConfirmPassword = new TextBox();
-            btnReset = new Button();
-            SuspendLayout();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblSubtitle = new System.Windows.Forms.Label();
+            this.dividerHeader = new System.Windows.Forms.Panel();
+            this.lblCurrentPassword = new System.Windows.Forms.Label();
+            this.txtCurrentPassword = new System.Windows.Forms.TextBox();
+            this.lblNewPassword = new System.Windows.Forms.Label();
+            this.txtNewPassword = new System.Windows.Forms.TextBox();
+            this.lblConfirmPassword = new System.Windows.Forms.Label();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+
             // 
-            // label1
+            // lblTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Gill Sans MT", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkSlateBlue;
-            label1.Location = new Point(154, 34);
-            label1.Name = "label1";
-            label1.Size = new Size(168, 23);
-            label1.TabIndex = 2;
-            label1.Text = "Reset your Password";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblTitle.Location = new System.Drawing.Point(30, 22);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(227, 30);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Reset Your Password";
+
             // 
-            // label2
+            // lblSubtitle
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Gill Sans MT", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(63, 98);
-            label2.Name = "label2";
-            label2.Size = new Size(117, 23);
-            label2.TabIndex = 3;
-            label2.Text = "New Password: ";
+            this.lblSubtitle.AutoSize = true;
+            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSubtitle.ForeColor = System.Drawing.Color.DimGray;
+            this.lblSubtitle.Location = new System.Drawing.Point(32, 55);
+            this.lblSubtitle.Name = "lblSubtitle";
+            this.lblSubtitle.Size = new System.Drawing.Size(325, 15);
+            this.lblSubtitle.TabIndex = 1;
+            this.lblSubtitle.Text = "Please enter your current password before setting a new one.";
+
             // 
-            // label3
+            // dividerHeader
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Gill Sans MT", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(63, 142);
-            label3.Name = "label3";
-            label3.Size = new Size(134, 23);
-            label3.TabIndex = 4;
-            label3.Text = "Confirm Password:";
+            this.dividerHeader.BackColor = System.Drawing.Color.Gainsboro;
+            this.dividerHeader.Location = new System.Drawing.Point(30, 80);
+            this.dividerHeader.Name = "dividerHeader";
+            this.dividerHeader.Size = new System.Drawing.Size(385, 1);
+            this.dividerHeader.TabIndex = 2;
+
+            // 
+            // lblCurrentPassword
+            // 
+            this.lblCurrentPassword.AutoSize = true;
+            this.lblCurrentPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblCurrentPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.lblCurrentPassword.Location = new System.Drawing.Point(30, 98);
+            this.lblCurrentPassword.Name = "lblCurrentPassword";
+            this.lblCurrentPassword.Size = new System.Drawing.Size(121, 17);
+            this.lblCurrentPassword.TabIndex = 3;
+            this.lblCurrentPassword.Text = "Current Password";
+
+            // 
+            // txtCurrentPassword
+            // 
+            this.txtCurrentPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtCurrentPassword.Location = new System.Drawing.Point(30, 120);
+            this.txtCurrentPassword.Name = "txtCurrentPassword";
+            this.txtCurrentPassword.Size = new System.Drawing.Size(385, 25);
+            this.txtCurrentPassword.TabIndex = 4;
+            this.txtCurrentPassword.UseSystemPasswordChar = true;
+
+            // 
+            // lblNewPassword
+            // 
+            this.lblNewPassword.AutoSize = true;
+            this.lblNewPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblNewPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.lblNewPassword.Location = new System.Drawing.Point(30, 160);
+            this.lblNewPassword.Name = "lblNewPassword";
+            this.lblNewPassword.Size = new System.Drawing.Size(100, 17);
+            this.lblNewPassword.TabIndex = 5;
+            this.lblNewPassword.Text = "New Password";
+
             // 
             // txtNewPassword
             // 
-            txtNewPassword.Location = new Point(205, 98);
-            txtNewPassword.Name = "txtNewPassword";
-            txtNewPassword.Size = new Size(210, 23);
-            txtNewPassword.TabIndex = 5;
+            this.txtNewPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtNewPassword.Location = new System.Drawing.Point(30, 182);
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.Size = new System.Drawing.Size(385, 25);
+            this.txtNewPassword.TabIndex = 6;
+            this.txtNewPassword.UseSystemPasswordChar = true;
+
+            // 
+            // lblConfirmPassword
+            // 
+            this.lblConfirmPassword.AutoSize = true;
+            this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblConfirmPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
+            this.lblConfirmPassword.Location = new System.Drawing.Point(30, 222);
+            this.lblConfirmPassword.Name = "lblConfirmPassword";
+            this.lblConfirmPassword.Size = new System.Drawing.Size(157, 17);
+            this.lblConfirmPassword.TabIndex = 7;
+            this.lblConfirmPassword.Text = "Confirm New Password";
+
             // 
             // txtConfirmPassword
             // 
-            txtConfirmPassword.Location = new Point(205, 142);
-            txtConfirmPassword.Name = "txtConfirmPassword";
-            txtConfirmPassword.Size = new Size(210, 23);
-            txtConfirmPassword.TabIndex = 6;
-            txtConfirmPassword.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(30, 244);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(385, 25);
+            this.txtConfirmPassword.TabIndex = 8;
+            this.txtConfirmPassword.UseSystemPasswordChar = true;
+
             // 
             // btnReset
             // 
-            btnReset.BackColor = Color.SteelBlue;
-            btnReset.Font = new Font("Gill Sans MT", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnReset.ForeColor = SystemColors.ButtonHighlight;
-            btnReset.Location = new Point(163, 217);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new Size(170, 33);
-            btnReset.TabIndex = 7;
-            btnReset.Text = "Reset Password";
-            btnReset.UseVisualStyleBackColor = false;
-            btnReset.Click += btnReset_Click;
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(44)))), ((int)(((byte)(105)))));
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnReset.ForeColor = System.Drawing.Color.White;
+            this.btnReset.Location = new System.Drawing.Point(245, 300);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(170, 36);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "Reset Password";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
+            this.btnCancel.Location = new System.Drawing.Point(140, 300);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(95, 36);
+            this.btnCancel.TabIndex = 10;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+
             // 
             // ResetPassword
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(484, 311);
-            Controls.Add(btnReset);
-            Controls.Add(txtConfirmPassword);
-            Controls.Add(txtNewPassword);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Name = "ResetPassword";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "ResetPassword";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(445, 365);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.txtConfirmPassword);
+            this.Controls.Add(this.lblConfirmPassword);
+            this.Controls.Add(this.txtNewPassword);
+            this.Controls.Add(this.lblNewPassword);
+            this.Controls.Add(this.txtCurrentPassword);
+            this.Controls.Add(this.lblCurrentPassword);
+            this.Controls.Add(this.dividerHeader);
+            this.Controls.Add(this.lblSubtitle);
+            this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "ResetPassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Reset Password";
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private TextBox txtNewPassword;
-        private TextBox txtConfirmPassword;
-        private Button btnReset;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblSubtitle;
+        private System.Windows.Forms.Panel dividerHeader;
+        private System.Windows.Forms.Label lblCurrentPassword;
+        private System.Windows.Forms.TextBox txtCurrentPassword;
+        private System.Windows.Forms.Label lblNewPassword;
+        private System.Windows.Forms.TextBox txtNewPassword;
+        private System.Windows.Forms.Label lblConfirmPassword;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

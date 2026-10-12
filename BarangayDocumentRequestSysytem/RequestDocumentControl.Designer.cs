@@ -32,15 +32,18 @@
             lblSubtext = new Label();
             lblWelcome = new Label();
             panel1 = new Panel();
+            cmbPurpose = new ComboBox();
+            txtOtherPurpose = new TextBox();
+            hScrollBar1 = new HScrollBar();
             btnSubmitRequest = new Button();
             panel2 = new Panel();
             lblRequirementsList = new Label();
             label1 = new Label();
+            lblFeeTitle = new Label();
+            lblFeeAmount = new Label();
             panel3 = new Panel();
             btnAttachFile = new Button();
             lblFileStatus = new Label();
-            lblPurposeCount = new Label();
-            txtPurpose = new TextBox();
             lblPurpose = new Label();
             cmbDocumentType = new ComboBox();
             lblDocType = new Label();
@@ -89,10 +92,11 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Controls.Add(cmbPurpose);
+            panel1.Controls.Add(txtOtherPurpose);
+            panel1.Controls.Add(hScrollBar1);
             panel1.Controls.Add(btnSubmitRequest);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(lblPurposeCount);
-            panel1.Controls.Add(txtPurpose);
             panel1.Controls.Add(lblPurpose);
             panel1.Controls.Add(cmbDocumentType);
             panel1.Controls.Add(lblDocType);
@@ -103,6 +107,32 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(559, 361);
             panel1.TabIndex = 15;
+            // 
+            // cmbPurpose
+            // 
+            cmbPurpose.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPurpose.FormattingEnabled = true;
+            cmbPurpose.Items.AddRange(new object[] { "-- Select Document Type --", "Barangay Clearance", "Certificate of Residency", "Certificate of Indigency", "Certificate of Good Moral Character", "Barangay ID", "Business Permit Endorsement", "Certificate of No Pending Case", "Others: (Please specify on the field below)" });
+            cmbPurpose.Location = new Point(26, 157);
+            cmbPurpose.Name = "cmbPurpose";
+            cmbPurpose.Size = new Size(507, 23);
+            cmbPurpose.TabIndex = 31;
+            cmbPurpose.SelectedIndexChanged += cmbPurpose_SelectedIndexChanged;
+            // 
+            // txtOtherPurpose
+            // 
+            txtOtherPurpose.Enabled = false;
+            txtOtherPurpose.Location = new Point(26, 180);
+            txtOtherPurpose.Name = "txtOtherPurpose";
+            txtOtherPurpose.Size = new Size(507, 23);
+            txtOtherPurpose.TabIndex = 32;
+            // 
+            // hScrollBar1
+            // 
+            hScrollBar1.Location = new Point(557, 239);
+            hScrollBar1.Name = "hScrollBar1";
+            hScrollBar1.Size = new Size(80, 17);
+            hScrollBar1.TabIndex = 30;
             // 
             // btnSubmitRequest
             // 
@@ -120,6 +150,8 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ButtonFace;
+            panel2.Controls.Add(lblFeeAmount);
+            panel2.Controls.Add(lblFeeTitle);
             panel2.Controls.Add(lblRequirementsList);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(panel3);
@@ -127,7 +159,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(507, 63);
             panel2.TabIndex = 27;
-            panel2.Paint += panel2_Paint;
             // 
             // lblRequirementsList
             // 
@@ -139,9 +170,8 @@
             lblRequirementsList.RightToLeft = RightToLeft.Yes;
             lblRequirementsList.Size = new Size(85, 18);
             lblRequirementsList.TabIndex = 26;
-            lblRequirementsList.Text = "Requirement(s)";
+            lblRequirementsList.Text = "None";
             lblRequirementsList.TextAlign = ContentAlignment.BottomRight;
-            lblRequirementsList.Click += label3_Click;
             // 
             // label1
             // 
@@ -154,6 +184,30 @@
             label1.TabIndex = 28;
             label1.Text = "Requirements: ";
             // 
+            // lblFeeTitle
+            // 
+            lblFeeTitle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFeeTitle.AutoSize = true;
+            lblFeeTitle.Font = new Font("Gill Sans MT", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFeeTitle.ForeColor = SystemColors.ControlDarkDark;
+            lblFeeTitle.Location = new Point(370, 3);
+            lblFeeTitle.Name = "lblFeeTitle";
+            lblFeeTitle.Size = new Size(33, 18);
+            lblFeeTitle.TabIndex = 29;
+            lblFeeTitle.Text = "Fee:";
+            // 
+            // lblFeeAmount
+            // 
+            lblFeeAmount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblFeeAmount.AutoSize = true;
+            lblFeeAmount.Font = new Font("Gill Sans MT", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFeeAmount.ForeColor = Color.SlateBlue;
+            lblFeeAmount.Location = new Point(408, 2);
+            lblFeeAmount.Name = "lblFeeAmount";
+            lblFeeAmount.Size = new Size(45, 18);
+            lblFeeAmount.TabIndex = 30;
+            lblFeeAmount.Text = "₱0.00";
+            // 
             // panel3
             // 
             panel3.Controls.Add(btnAttachFile);
@@ -165,12 +219,14 @@
             // 
             // btnAttachFile
             // 
+            btnAttachFile.FlatAppearance.BorderSize = 0;
             btnAttachFile.Location = new Point(399, 10);
             btnAttachFile.Name = "btnAttachFile";
             btnAttachFile.Size = new Size(90, 23);
             btnAttachFile.TabIndex = 30;
             btnAttachFile.Text = "⬆ Attach File";
             btnAttachFile.UseVisualStyleBackColor = true;
+            btnAttachFile.Click += btnAttachFile_Click;
             // 
             // lblFileStatus
             // 
@@ -181,27 +237,6 @@
             lblFileStatus.Size = new Size(94, 15);
             lblFileStatus.TabIndex = 29;
             lblFileStatus.Text = "No file attached.";
-            // 
-            // lblPurposeCount
-            // 
-            lblPurposeCount.AutoSize = true;
-            lblPurposeCount.ForeColor = SystemColors.AppWorkspace;
-            lblPurposeCount.Location = new Point(464, 183);
-            lblPurposeCount.Name = "lblPurposeCount";
-            lblPurposeCount.Size = new Size(36, 15);
-            lblPurposeCount.TabIndex = 24;
-            lblPurposeCount.Text = "0/300";
-            // 
-            // txtPurpose
-            // 
-            txtPurpose.BorderStyle = BorderStyle.FixedSingle;
-            txtPurpose.Location = new Point(28, 148);
-            txtPurpose.Multiline = true;
-            txtPurpose.Name = "txtPurpose";
-            txtPurpose.ScrollBars = ScrollBars.Vertical;
-            txtPurpose.Size = new Size(507, 78);
-            txtPurpose.TabIndex = 23;
-            txtPurpose.TextChanged += txtPurpose_TextChanged;
             // 
             // lblPurpose
             // 
@@ -255,7 +290,6 @@
             label2.Size = new Size(550, 23);
             label2.TabIndex = 19;
             label2.Text = "____________________________________________________________";
-            label2.Click += label2_Click;
             // 
             // txtOtherDocType
             // 
@@ -276,6 +310,7 @@
             Controls.Add(lblWelcome);
             Name = "RequestDocumentControl";
             Size = new Size(586, 447);
+            Load += RequestDocumentControl_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -297,8 +332,6 @@
         private Label lblPurpose;
         private ComboBox cmbDocumentType;
         private Label lblDocType;
-        private TextBox txtPurpose;
-        private Label lblPurposeCount;
         private Panel panel2;
         private Label lblRequirementsList;
         private Panel panel3;
@@ -307,5 +340,10 @@
         private Label label1;
         private Button btnSubmitRequest;
         private TextBox txtOtherDocType;
+        private HScrollBar hScrollBar1;
+        private ComboBox cmbPurpose;
+        private TextBox txtOtherPurpose;
+        private Label lblFeeTitle;
+        private Label lblFeeAmount;
     }
 }

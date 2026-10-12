@@ -56,6 +56,7 @@
             bodyGB.Controls.Add(brgyInfoTLP);
             bodyGB.Dock = DockStyle.Fill;
             bodyGB.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bodyGB.ForeColor = Color.FromArgb(30, 41, 59);
             bodyGB.Location = new Point(0, 0);
             bodyGB.Name = "bodyGB";
             bodyGB.Size = new Size(406, 403);
@@ -82,6 +83,7 @@
             // 
             cancelButton.Anchor = AnchorStyles.Top;
             cancelButton.BackColor = Color.Red;
+            cancelButton.Cursor = Cursors.Hand;
             cancelButton.FlatStyle = FlatStyle.Flat;
             cancelButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cancelButton.ForeColor = Color.White;
@@ -91,11 +93,13 @@
             cancelButton.TabIndex = 34;
             cancelButton.Text = "❌ Cancel";
             cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
             // 
             // confirmBTN
             // 
             confirmBTN.Anchor = AnchorStyles.Top;
             confirmBTN.BackColor = Color.DarkSlateBlue;
+            confirmBTN.Cursor = Cursors.Hand;
             confirmBTN.FlatStyle = FlatStyle.Flat;
             confirmBTN.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             confirmBTN.ForeColor = Color.White;
@@ -105,6 +109,7 @@
             confirmBTN.TabIndex = 33;
             confirmBTN.Text = "✔ Confirm";
             confirmBTN.UseVisualStyleBackColor = false;
+            confirmBTN.Click += confirmBTN_Click;
             // 
             // brgyInfoTLP
             // 
@@ -126,12 +131,6 @@
             brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            brgyInfoTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             brgyInfoTLP.Size = new Size(400, 127);
             brgyInfoTLP.TabIndex = 0;
             // 
@@ -189,11 +188,11 @@
             passwordTXT.Name = "passwordTXT";
             passwordTXT.Size = new Size(146, 25);
             passwordTXT.TabIndex = 18;
-            passwordTXT.Text = "mjpascasio";
             passwordTXT.UseSystemPasswordChar = true;
             // 
             // hidepwBTN
             // 
+            hidepwBTN.Cursor = Cursors.Hand;
             hidepwBTN.Location = new Point(155, 2);
             hidepwBTN.Name = "hidepwBTN";
             hidepwBTN.Size = new Size(31, 29);
@@ -211,7 +210,6 @@
             usernameTXT.Name = "usernameTXT";
             usernameTXT.Size = new Size(189, 25);
             usernameTXT.TabIndex = 19;
-            usernameTXT.Text = "Mark Jamin Pascasio";
             // 
             // panel1
             // 
@@ -225,6 +223,7 @@
             // 
             // hidePWConfirmBTN
             // 
+            hidePWConfirmBTN.Cursor = Cursors.Hand;
             hidePWConfirmBTN.Location = new Point(155, 2);
             hidePWConfirmBTN.Name = "hidePWConfirmBTN";
             hidePWConfirmBTN.Size = new Size(31, 29);
@@ -241,7 +240,6 @@
             pwConfirmTXT.Name = "pwConfirmTXT";
             pwConfirmTXT.Size = new Size(146, 25);
             pwConfirmTXT.TabIndex = 20;
-            pwConfirmTXT.Text = "mjpascasio";
             pwConfirmTXT.UseSystemPasswordChar = true;
             // 
             // Account
@@ -251,6 +249,8 @@
             Controls.Add(bodyGB);
             Name = "Account";
             Size = new Size(406, 403);
+            Load += Account_Load;
+            VisibleChanged += Account_VisibleChanged;
             bodyGB.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             brgyInfoTLP.ResumeLayout(false);
@@ -266,16 +266,9 @@
 
         private GroupBox bodyGB;
         private TableLayoutPanel brgyInfoTLP;
-        private Label brgyCaptLabel;
         private Label pwConfirmLabel;
         private Label passwordLabel;
         private Label usernameLabel;
-        private Label username;
-        private Label brgyCapt;
-        private Label emailLabel;
-        private Label email;
-        private Label ohLabel;
-        private Label oh;
         private Panel pwPanel;
         private Button hidepwBTN;
         private TextBox passwordTXT;
