@@ -162,6 +162,7 @@
             btnReport.Text = "📊 Reports";
             btnReport.TextAlign = ContentAlignment.MiddleLeft;
             btnReport.UseVisualStyleBackColor = true;
+            btnReport.Click += btnReport_Click;
             // 
             // btnPendingRequests
             // 

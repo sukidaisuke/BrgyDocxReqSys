@@ -589,7 +589,7 @@
             // 
             // dividerPanel
             // 
-            this.dividerPanel.BackColor = System.Drawing.Color.Gray;
+            this.dividerPanel.BackColor = System.Drawing.Color.FromArgb(200, 200, 200);
             this.dividerPanel.Location = new System.Drawing.Point(0, 86);
             this.dividerPanel.Name = "dividerPanel";
             this.dividerPanel.Size = new System.Drawing.Size(634, 1);

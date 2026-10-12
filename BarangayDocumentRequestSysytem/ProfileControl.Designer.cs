@@ -357,6 +357,7 @@
             button4.TabIndex = 32;
             button4.Text = "🔒 Change Password";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += btnChangePassword_Click;
             // 
             // label12
             // 

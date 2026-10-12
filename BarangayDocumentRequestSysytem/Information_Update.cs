@@ -21,14 +21,16 @@ namespace BarangayDocumentRequestSysytem
 
         public void LoadRequests()
         {
+            // Only fetch pending requests
             string query = @"SELECT 
-                                r.request_id AS 'Request ID',
+                                r.request_id,
                                 CONCAT(u.first_name, ' ', u.last_name) AS 'Resident Name',
                                 u.contact_no AS 'Contact Number',
                                 r.request_date AS 'Date Requested',
                                 r.status AS 'Status'
                              FROM info_update_requests r
                              JOIN users u ON r.user_id = u.user_id
+                             WHERE r.status = 'Pending'
                              ORDER BY r.request_id DESC";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -42,6 +44,12 @@ namespace BarangayDocumentRequestSysytem
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
                         dgvRequests.DataSource = dt;
+
+                        // Hide the request_id column visually, but keep it available in code
+                        if (dgvRequests.Columns["request_id"] != null)
+                        {
+                            dgvRequests.Columns["request_id"].Visible = false;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -69,7 +77,7 @@ namespace BarangayDocumentRequestSysytem
                 return;
             }
 
-            int requestId = Convert.ToInt32(dgvRequests.SelectedRows[0].Cells["Request ID"].Value);
+            int requestId = Convert.ToInt32(dgvRequests.SelectedRows[0].Cells["request_id"].Value);
 
             string query = "UPDATE info_update_requests SET status = @Status WHERE request_id = @RequestId";
 
@@ -98,6 +106,14 @@ namespace BarangayDocumentRequestSysytem
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadRequests();
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            using (RequestHistoryForm historyForm = new RequestHistoryForm())
+            {
+                historyForm.ShowDialog(this);
+            }
         }
     }
 }

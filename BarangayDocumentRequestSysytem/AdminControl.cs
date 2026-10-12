@@ -1,7 +1,6 @@
 ﻿#nullable disable
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -17,6 +16,7 @@ namespace BarangayDocumentRequestSysytem
 
             this.Load += AdminControl_Load;
             this.VisibleChanged += AdminControl_VisibleChanged;
+            this.SizeChanged += AdminControl_SizeChanged;
         }
 
         private void AdminControl_Load(object sender, EventArgs e)
@@ -35,6 +35,11 @@ namespace BarangayDocumentRequestSysytem
             }
         }
 
+        private void AdminControl_SizeChanged(object sender, EventArgs e)
+        {
+            AdjustHeaderDatePosition();
+        }
+
         public void RefreshDashboardData()
         {
             UpdateHeaderDate();
@@ -44,7 +49,20 @@ namespace BarangayDocumentRequestSysytem
 
         private void UpdateHeaderDate()
         {
-            SetLabelText(DateHelper.CurrentHeaderDate, "lblHeaderDate", "lblDate", "lblAdminDate");
+            if (lblHeaderDate != null)
+            {
+                lblHeaderDate.Text = $"📅 {DateTime.Now:MMMM d, yyyy | dddd}";
+                AdjustHeaderDatePosition();
+            }
+        }
+
+        private void AdjustHeaderDatePosition()
+        {
+            if (lblHeaderDate != null && NavPanel != null)
+            {
+                // Align Date right margin (20px from right edge) to match Residents view
+                lblHeaderDate.Left = NavPanel.Width - lblHeaderDate.Width - 20;
+            }
         }
 
         // --- 1. Fetch Real Summary Counters from Database ---
@@ -55,10 +73,10 @@ namespace BarangayDocumentRequestSysytem
             int completedRequests = GetDatabaseCount("SELECT COUNT(*) FROM documentrequests WHERE LOWER(status) IN ('approved', 'completed', 'processed', 'ready for pickup')");
             int totalAnnouncements = GetDatabaseCount("SELECT COUNT(*) FROM announcements");
 
-            SetLabelText(totalResidents.ToString(), "lblResidentsCount", "lblResidents", "lblTotalResidents");
-            SetLabelText(pendingRequests.ToString(), "lblPendingCount", "lblPending", "lblPendingRequests");
-            SetLabelText(completedRequests.ToString(), "lblCompletedCount", "lblIssuedCount", "lblIssued", "lblCompleted");
-            SetLabelText(totalAnnouncements.ToString(), "lblAnnounceCount", "lblNoticesCount", "lblNotices", "lblAnnouncements");
+            if (lblResidentsCount != null) lblResidentsCount.Text = totalResidents.ToString();
+            if (lblPendingCount != null) lblPendingCount.Text = pendingRequests.ToString();
+            if (lblCompletedCount != null) lblCompletedCount.Text = completedRequests.ToString();
+            if (lblAnnounceCount != null) lblAnnounceCount.Text = totalAnnouncements.ToString();
         }
 
         private int GetDatabaseCount(string query)
@@ -77,7 +95,6 @@ namespace BarangayDocumentRequestSysytem
             }
             catch (Exception ex)
             {
-                // Displays connection or query errors explicitly if MySQL fails
                 Console.WriteLine($"Database Count Error: {ex.Message}");
                 return 0;
             }
@@ -124,10 +141,9 @@ namespace BarangayDocumentRequestSysytem
                                 index++;
                             }
 
-                            // Clear remaining rows if DB has fewer than 3 records
                             for (int i = index; i <= 3; i++)
                             {
-                                SetRowData(i, "", "", "");
+                                SetRowData(i, "No Request", "-", "");
                             }
                         }
                     }
@@ -140,81 +156,21 @@ namespace BarangayDocumentRequestSysytem
             }
         }
 
-        // --- 3. Robust Label Location & Data Assignment ---
+        // --- 3. Assign Row Data & Format Status Badges ---
         private void SetRowData(int rowIndex, string title, string sub, string status)
         {
-            // Title mapping (Fallback search checks for default designer text if control names differ)
-            Label lblTitle = FindLabelByNamesOrPlaceholder($"lblReq{rowIndex}Title", $"lblTitle{rowIndex}",
-                rowIndex == 1 ? "Barangay Clearance" : rowIndex == 2 ? "Indigency Certificate" : "Residency Certificate");
-            if (lblTitle != null) lblTitle.Text = title;
+            Label lblTitle = rowIndex == 1 ? lblReq1Title : rowIndex == 2 ? lblReq2Title : lblReq3Title;
+            Label lblSub = rowIndex == 1 ? lblReq1Sub : rowIndex == 2 ? lblReq2Sub : lblReq3Sub;
 
-            // Subtitle mapping
-            Label lblSub = FindLabelByNamesOrPlaceholder($"lblReq{rowIndex}Sub", $"lblReq{rowIndex}Date",
-                rowIndex == 1 ? "Juan Dela Cruz" : rowIndex == 2 ? "Maria Clara" : "Jose Rizal");
+            if (lblTitle != null) lblTitle.Text = title;
             if (lblSub != null) lblSub.Text = sub;
 
-            // Badge mapping
             UpdateStatusBadge(rowIndex, status);
-        }
-
-        private void SetLabelText(string text, params string[] possibleNames)
-        {
-            foreach (string name in possibleNames)
-            {
-                Label lbl = FindChildControl<Label>(this, name);
-                if (lbl != null)
-                {
-                    lbl.Text = text ?? "";
-                    return;
-                }
-            }
-        }
-
-        private Label FindLabelByNamesOrPlaceholder(string primaryName, string secondaryName, string placeholderText)
-        {
-            Label lbl = FindChildControl<Label>(this, primaryName) ?? FindChildControl<Label>(this, secondaryName);
-            if (lbl != null) return lbl;
-
-            // Fallback: locate by matching current designer text
-            List<Label> allLabels = new List<Label>();
-            GetAllControlsOfType(this, allLabels);
-            foreach (Label l in allLabels)
-            {
-                if (l.Text.Contains(placeholderText))
-                {
-                    return l;
-                }
-            }
-
-            return null;
         }
 
         private void UpdateStatusBadge(int rowIndex, string status)
         {
-            Label lbl = FindChildControl<Label>(this, $"lblReq{rowIndex}Status")
-                     ?? FindChildControl<Label>(this, $"lblStatus{rowIndex}");
-
-            if (lbl == null)
-            {
-                // Fallback search for status badges by matching initial designer text
-                List<Label> allLabels = new List<Label>();
-                GetAllControlsOfType(this, allLabels);
-                int count = 1;
-                foreach (Label l in allLabels)
-                {
-                    if (l.Text.Equals("Pending", StringComparison.OrdinalIgnoreCase) ||
-                        l.Text.Equals("Approved", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (count == rowIndex)
-                        {
-                            lbl = l;
-                            break;
-                        }
-                        count++;
-                    }
-                }
-            }
-
+            Label lbl = rowIndex == 1 ? lblReq1Status : rowIndex == 2 ? lblReq2Status : lblReq3Status;
             if (lbl == null) return;
 
             if (string.IsNullOrWhiteSpace(status))
@@ -226,12 +182,6 @@ namespace BarangayDocumentRequestSysytem
 
             lbl.Visible = true;
             lbl.Text = status;
-
-            // Reset card background to keep the row panel white/light gray
-            if (lbl.Parent is Panel parentPanel && parentPanel.Width > 150)
-            {
-                parentPanel.BackColor = Color.FromArgb(249, 250, 251); // Light gray card background
-            }
 
             string normalizedStatus = status.Trim().ToLower();
             Color backColor;
@@ -268,43 +218,8 @@ namespace BarangayDocumentRequestSysytem
                     break;
             }
 
-            // Apply colors ONLY to the status label badge itself
             lbl.BackColor = backColor;
             lbl.ForeColor = textColor;
-        }
-
-        private T FindChildControl<T>(Control parent, string name) where T : Control
-        {
-            foreach (Control c in parent.Controls)
-            {
-                if (c is T match && string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase))
-                {
-                    return match;
-                }
-
-                if (c.HasChildren)
-                {
-                    T childMatch = FindChildControl<T>(c, name);
-                    if (childMatch != null) return childMatch;
-                }
-            }
-            return null;
-        }
-
-        private void GetAllControlsOfType<T>(Control parent, List<T> resultList) where T : Control
-        {
-            foreach (Control c in parent.Controls)
-            {
-                if (c is T match)
-                {
-                    resultList.Add(match);
-                }
-
-                if (c.HasChildren)
-                {
-                    GetAllControlsOfType<T>(c, resultList);
-                }
-            }
         }
     }
 }

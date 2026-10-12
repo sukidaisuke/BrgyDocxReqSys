@@ -13,6 +13,7 @@ namespace BarangayDocumentRequestSysytem
     {
         private HomeControl homeControl;
         private ProfileControl profileControl;
+        private AnnouncementsControl announcementsControl;
 
         public UserPage()
         {
@@ -22,7 +23,6 @@ namespace BarangayDocumentRequestSysytem
 
         private void UserPage_Load(object sender, EventArgs e)
         {
-            // Ensure ProfileControl checks status AFTER UserSession is set
             if (profileControl != null)
             {
                 profileControl.RefreshControl();
@@ -62,8 +62,6 @@ namespace BarangayDocumentRequestSysytem
             LoadControl(new MyRequestsControl());
         }
 
-        private AnnouncementsControl announcementsControl;
-
         private void btnAnnouncements_Click(object sender, EventArgs e)
         {
             if (announcementsControl == null)
@@ -76,7 +74,6 @@ namespace BarangayDocumentRequestSysytem
             panelContent.Controls.Add(announcementsControl);
             announcementsControl.BringToFront();
 
-            // Explicitly refresh live date & empty status
             announcementsControl.UpdateDashboard();
         }
 
@@ -87,7 +84,7 @@ namespace BarangayDocumentRequestSysytem
                 profileControl = new ProfileControl();
             }
             LoadControl(profileControl);
-            profileControl.LoadUserProfile(); // Refresh profile details
+            profileControl.RefreshControl(); // Refreshes both profile details & update request status
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

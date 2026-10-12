@@ -325,5 +325,10 @@ namespace BarangayDocumentRequestSysytem
                 badgePanel.BackColor = backColor;
             }
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }

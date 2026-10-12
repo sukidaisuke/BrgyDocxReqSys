@@ -32,7 +32,6 @@
             dividerPanel = new Panel();
             NavPanel = new Panel();
             lblDate = new Label();
-            panel1 = new Panel();
             DocumentReqTitleLabel = new Label();
             buttonsTLP = new TableLayoutPanel();
             cancelButton = new Button();
@@ -76,17 +75,17 @@
             // 
             // dividerPanel
             // 
-            dividerPanel.BackColor = Color.Gray;
-            dividerPanel.Location = new Point(0, 86);
+            dividerPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dividerPanel.BackColor = Color.FromArgb(200, 200, 200); // Soft Light Grey
+            dividerPanel.Location = new Point(0, 83);
             dividerPanel.Name = "dividerPanel";
-            dividerPanel.Size = new Size(634, 1);
+            dividerPanel.Size = new Size(635, 1);
             dividerPanel.TabIndex = 35;
             // 
             // NavPanel
             // 
             NavPanel.BackColor = SystemColors.Control;
             NavPanel.Controls.Add(lblDate);
-            NavPanel.Controls.Add(panel1);
             NavPanel.Controls.Add(DocumentReqTitleLabel);
             NavPanel.Dock = DockStyle.Top;
             NavPanel.Location = new Point(0, 0);
@@ -105,14 +104,6 @@
             lblDate.Size = new Size(57, 17);
             lblDate.TabIndex = 35;
             lblDate.Text = "📅 Date";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Gray;
-            panel1.Location = new Point(0, 86);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(634, 1);
-            panel1.TabIndex = 36;
             // 
             // DocumentReqTitleLabel
             // 
@@ -175,20 +166,19 @@
             // 
             // updateButton
             // 
-            // updateButton
-            this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.updateButton.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.updateButton.Enabled = false;
-            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateButton.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.updateButton.ForeColor = System.Drawing.Color.White;
-            this.updateButton.Location = new System.Drawing.Point(323, 3);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(155, 40);
-            this.updateButton.TabIndex = 2;
-            this.updateButton.Text = "💾 Save Changes";
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click); // <-- Wired up Click Event
+            updateButton.Anchor = AnchorStyles.Top;
+            updateButton.BackColor = Color.DarkSlateBlue;
+            updateButton.Enabled = false;
+            updateButton.FlatStyle = FlatStyle.Flat;
+            updateButton.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            updateButton.ForeColor = Color.White;
+            updateButton.Location = new Point(323, 3);
+            updateButton.Name = "updateButton";
+            updateButton.Size = new Size(155, 40);
+            updateButton.TabIndex = 2;
+            updateButton.Text = "💾 Save Changes";
+            updateButton.UseVisualStyleBackColor = false;
+            updateButton.Click += updateButton_Click;
             // 
             // BodyGroupBox
             // 
@@ -405,7 +395,6 @@
         private Panel dividerPanel;
         private Panel NavPanel;
         private Label lblDate;
-        private Panel panel1;
         private Label DocumentReqTitleLabel;
 
         // Custom CRUD controls

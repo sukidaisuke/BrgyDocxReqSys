@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BarangayDocumentRequestSysytem
@@ -13,15 +9,54 @@ namespace BarangayDocumentRequestSysytem
         public Setting()
         {
             InitializeComponent();
+
+            this.Load += Setting_Load;
+            this.VisibleChanged += Setting_VisibleChanged;
+            this.SizeChanged += Setting_SizeChanged;
+
             LoadSettingsPage(new BarangayInfo());
+        }
+
+        private void Setting_Load(object sender, EventArgs e)
+        {
+            UpdateHeaderDate();
+        }
+
+        private void Setting_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                UpdateHeaderDate();
+            }
+        }
+
+        private void Setting_SizeChanged(object sender, EventArgs e)
+        {
+            AdjustHeaderDatePosition();
+        }
+
+        private void UpdateHeaderDate()
+        {
+            if (lblDate != null)
+            {
+                lblDate.Text = $"📅 {DateTime.Now:MMMM d, yyyy | dddd}";
+                AdjustHeaderDatePosition();
+            }
+        }
+
+        private void AdjustHeaderDatePosition()
+        {
+            if (lblDate != null && NavPanel != null)
+            {
+                // Align Date right margin (20px from right edge) to match Residents header
+                lblDate.Left = NavPanel.Width - lblDate.Width - 20;
+            }
         }
 
         private void LoadSettingsPage(UserControl page)
         {
             contentPanel.Controls.Clear();
-
             page.Dock = DockStyle.Fill;
-
             contentPanel.Controls.Add(page);
         }
 

@@ -368,5 +368,57 @@ namespace BarangayDocumentRequestSysytem
                 e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
+
+        #region Custom Border Paint Events
+        /// <summary>
+        /// Custom Paint event to draw a subtle 1px grey border on modal card panels,
+        /// replacing default WinForms FixedSingle dark outline.
+        /// </summary>
+        private void CardPanel_Paint(object sender, PaintEventArgs e)
+        {
+            Panel panel = sender as Panel;
+            if (panel != null)
+            {
+                using (Pen pen = new Pen(Color.FromArgb(200, 200, 200), 1))
+                {
+                    e.Graphics.DrawRectangle(pen, 0, 0, panel.Width - 1, panel.Height - 1);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Custom Paint event to replace default system GroupBox dark border
+        /// with a clean, light grey outline.
+        /// </summary>
+        private void BodyGroupBox_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox box = sender as GroupBox;
+            if (box == null) return;
+
+            // Clear default background fill
+            e.Graphics.Clear(box.BackColor);
+
+            // Measure title text size so top border line doesn't strike through it
+            SizeF textSize = e.Graphics.MeasureString(box.Text, box.Font);
+            int textHeight = (int)textSize.Height;
+
+            // Rectangle boundary for custom border
+            Rectangle borderRect = new Rectangle(0, textHeight / 2, box.Width - 1, box.Height - (textHeight / 2) - 1);
+
+            // Draw custom grey border
+            using (Pen pen = new Pen(Color.FromArgb(200, 200, 200), 1))
+            {
+                e.Graphics.DrawRectangle(pen, borderRect);
+            }
+
+            // Redraw group box header text
+            using (SolidBrush textBrush = new SolidBrush(box.ForeColor))
+            using (SolidBrush bgBrush = new SolidBrush(box.BackColor))
+            {
+                e.Graphics.FillRectangle(bgBrush, 10, 0, textSize.Width, textHeight);
+                e.Graphics.DrawString(box.Text, box.Font, textBrush, 10, 0);
+            }
+        }
+        #endregion
     }
 }

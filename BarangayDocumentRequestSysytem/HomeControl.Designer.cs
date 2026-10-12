@@ -770,6 +770,7 @@
             linkLabel2.TabIndex = 18;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "View All >";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
             // 
             // label2
             // 

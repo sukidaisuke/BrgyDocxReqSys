@@ -54,9 +54,6 @@
             lblSubtext = new Label();
             lblWelcome = new Label();
             lblFooterCount = new Label();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
             panelAnnouncementsCard.SuspendLayout();
             panelCard3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -327,7 +324,6 @@
             lblDate.Size = new Size(172, 18);
             lblDate.TabIndex = 18;
             lblDate.Text = "📅 August 8, 2026 | Saturday";
-            lblDate.Click += lblDate_Click;
             // 
             // lblSubtext
             // 
@@ -360,53 +356,10 @@
             lblFooterCount.TabIndex = 21;
             lblFooterCount.Text = "Showing 0 announcement";
             // 
-            // button3
-            // 
-            button3.BackColor = Color.Lavender;
-            button3.BackgroundImageLayout = ImageLayout.None;
-            button3.FlatStyle = FlatStyle.Popup;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.DarkSlateBlue;
-            button3.Location = new Point(498, 410);
-            button3.Name = "button3";
-            button3.Size = new Size(32, 23);
-            button3.TabIndex = 26;
-            button3.Text = "1";
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.DarkSlateBlue;
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.FlatStyle = FlatStyle.Popup;
-            button2.ForeColor = Color.AliceBlue;
-            button2.Location = new Point(536, 410);
-            button2.Name = "button2";
-            button2.Size = new Size(32, 23);
-            button2.TabIndex = 25;
-            button2.Text = "▶";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.DarkSlateBlue;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.ForeColor = Color.AliceBlue;
-            button1.Location = new Point(460, 410);
-            button1.Name = "button1";
-            button1.Size = new Size(32, 23);
-            button1.TabIndex = 24;
-            button1.Text = "◀";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // AnnouncementsControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(lblFooterCount);
             Controls.Add(panelAnnouncementsCard);
             Controls.Add(lblDate);
@@ -458,8 +411,5 @@
         private Label label8;
         private PictureBox pictureBox2;
         private Label lblFooterCount;
-        private Button button3;
-        private Button button2;
-        private Button button1;
     }
 }

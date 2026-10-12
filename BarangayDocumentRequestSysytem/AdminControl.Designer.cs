@@ -17,454 +17,480 @@
 
         private void InitializeComponent()
         {
-            lblHeaderTitle = new Label();
-            lblHeaderDate = new Label();
-            card1 = new Panel();
-            accent1 = new Panel();
-            lblResidentsCount = new Label();
-            lblTitle1 = new Label();
-            card2 = new Panel();
-            accent2 = new Panel();
-            lblPendingCount = new Label();
-            lblTitle2 = new Label();
-            card3 = new Panel();
-            accent3 = new Panel();
-            lblCompletedCount = new Label();
-            lblTitle3 = new Label();
-            card4 = new Panel();
-            accent4 = new Panel();
-            lblAnnounceCount = new Label();
-            lblTitle4 = new Label();
-            pnlRequests = new Panel();
-            lblReqHeader = new Label();
-            row1 = new Panel();
-            lblReq1Title = new Label();
-            lblReq1Sub = new Label();
-            lblReq1Status = new Label();
-            row2 = new Panel();
-            lblReq2Title = new Label();
-            lblReq2Sub = new Label();
-            lblReq2Status = new Label();
-            row3 = new Panel();
-            lblReq3Title = new Label();
-            lblReq3Sub = new Label();
-            lblReq3Status = new Label();
-            pnlInfo = new Panel();
-            lblInfoHeader = new Label();
-            lblInfoBody = new Label();
-            card1.SuspendLayout();
-            card2.SuspendLayout();
-            card3.SuspendLayout();
-            card4.SuspendLayout();
-            pnlRequests.SuspendLayout();
-            row1.SuspendLayout();
-            row2.SuspendLayout();
-            row3.SuspendLayout();
-            pnlInfo.SuspendLayout();
-            SuspendLayout();
+            this.NavPanel = new System.Windows.Forms.Panel();
+            this.lblHeaderTitle = new System.Windows.Forms.Label();
+            this.lblHeaderDate = new System.Windows.Forms.Label();
+            this.dividerPanel = new System.Windows.Forms.Panel();
+
+            this.card1 = new System.Windows.Forms.Panel();
+            this.accent1 = new System.Windows.Forms.Panel();
+            this.lblResidentsCount = new System.Windows.Forms.Label();
+            this.lblTitle1 = new System.Windows.Forms.Label();
+
+            this.card2 = new System.Windows.Forms.Panel();
+            this.accent2 = new System.Windows.Forms.Panel();
+            this.lblPendingCount = new System.Windows.Forms.Label();
+            this.lblTitle2 = new System.Windows.Forms.Label();
+
+            this.card3 = new System.Windows.Forms.Panel();
+            this.accent3 = new System.Windows.Forms.Panel();
+            this.lblCompletedCount = new System.Windows.Forms.Label();
+            this.lblTitle3 = new System.Windows.Forms.Label();
+
+            this.card4 = new System.Windows.Forms.Panel();
+            this.accent4 = new System.Windows.Forms.Panel();
+            this.lblAnnounceCount = new System.Windows.Forms.Label();
+            this.lblTitle4 = new System.Windows.Forms.Label();
+
+            this.pnlRequests = new System.Windows.Forms.Panel();
+            this.lblReqHeader = new System.Windows.Forms.Label();
+            this.row1 = new System.Windows.Forms.Panel();
+            this.lblReq1Title = new System.Windows.Forms.Label();
+            this.lblReq1Sub = new System.Windows.Forms.Label();
+            this.lblReq1Status = new System.Windows.Forms.Label();
+            this.row2 = new System.Windows.Forms.Panel();
+            this.lblReq2Title = new System.Windows.Forms.Label();
+            this.lblReq2Sub = new System.Windows.Forms.Label();
+            this.lblReq2Status = new System.Windows.Forms.Label();
+            this.row3 = new System.Windows.Forms.Panel();
+            this.lblReq3Title = new System.Windows.Forms.Label();
+            this.lblReq3Sub = new System.Windows.Forms.Label();
+            this.lblReq3Status = new System.Windows.Forms.Label();
+
+            this.pnlInfo = new System.Windows.Forms.Panel();
+            this.lblInfoHeader = new System.Windows.Forms.Label();
+            this.lblInfoBody = new System.Windows.Forms.Label();
+
+            this.NavPanel.SuspendLayout();
+            this.card1.SuspendLayout();
+            this.card2.SuspendLayout();
+            this.card3.SuspendLayout();
+            this.card4.SuspendLayout();
+            this.pnlRequests.SuspendLayout();
+            this.row1.SuspendLayout();
+            this.row2.SuspendLayout();
+            this.row3.SuspendLayout();
+            this.pnlInfo.SuspendLayout();
+            this.SuspendLayout();
+
             // 
-            // lblHeaderTitle
+            // NavPanel (Header layout matching Residents)
             // 
-            lblHeaderTitle.AutoSize = true;
-            lblHeaderTitle.Font = new Font("Segoe UI", 13.5F, FontStyle.Bold);
-            lblHeaderTitle.ForeColor = Color.FromArgb(15, 23, 42);
-            lblHeaderTitle.Location = new Point(15, 12);
-            lblHeaderTitle.Name = "lblHeaderTitle";
-            lblHeaderTitle.Size = new Size(154, 25);
-            lblHeaderTitle.TabIndex = 0;
-            lblHeaderTitle.Text = "Admin Overview";
+            this.NavPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NavPanel.Controls.Add(this.lblHeaderTitle);
+            this.NavPanel.Controls.Add(this.lblHeaderDate);
+            this.NavPanel.Location = new System.Drawing.Point(0, 0);
+            this.NavPanel.Name = "NavPanel";
+            this.NavPanel.Size = new System.Drawing.Size(635, 74);
+            this.NavPanel.TabIndex = 0;
+
             // 
-            // lblHeaderDate
+            // lblHeaderTitle (Aligned at X=20, Y=20 to match Residents header)
             // 
-            lblHeaderDate.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
-            lblHeaderDate.ForeColor = Color.FromArgb(100, 116, 139);
-            lblHeaderDate.Location = new Point(370, 15);
-            lblHeaderDate.Name = "lblHeaderDate";
-            lblHeaderDate.Size = new Size(250, 20);
-            lblHeaderDate.TabIndex = 1;
-            lblHeaderDate.Text = "September 26, 2026 | Saturday";
-            lblHeaderDate.TextAlign = ContentAlignment.TopRight;
+            this.lblHeaderTitle.AutoSize = true;
+            this.lblHeaderTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblHeaderTitle.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.lblHeaderTitle.Location = new System.Drawing.Point(20, 20);
+            this.lblHeaderTitle.Name = "lblHeaderTitle";
+            this.lblHeaderTitle.Size = new System.Drawing.Size(202, 32);
+            this.lblHeaderTitle.TabIndex = 0;
+            this.lblHeaderTitle.Text = "Admin Overview";
+
             // 
-            // card1
+            // lblHeaderDate (Right-aligned to right margin like Residents view)
             // 
-            card1.BackColor = Color.White;
-            card1.Controls.Add(accent1);
-            card1.Controls.Add(lblResidentsCount);
-            card1.Controls.Add(lblTitle1);
-            card1.Location = new Point(15, 50);
-            card1.Name = "card1";
-            card1.Size = new Size(140, 80);
-            card1.TabIndex = 2;
+            this.lblHeaderDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHeaderDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular);
+            this.lblHeaderDate.ForeColor = System.Drawing.Color.DimGray;
+            this.lblHeaderDate.Location = new System.Drawing.Point(365, 24);
+            this.lblHeaderDate.Name = "lblHeaderDate";
+            this.lblHeaderDate.Size = new System.Drawing.Size(250, 22);
+            this.lblHeaderDate.TabIndex = 1;
+            this.lblHeaderDate.Text = "📅 Date";
+            this.lblHeaderDate.TextAlign = System.Drawing.ContentAlignment.TopRight;
+
             // 
-            // accent1
+            // dividerPanel
             // 
-            accent1.BackColor = Color.FromArgb(37, 99, 235);
-            accent1.Location = new Point(0, 0);
-            accent1.Name = "accent1";
-            accent1.Size = new Size(4, 80);
-            accent1.TabIndex = 0;
+            this.dividerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dividerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.dividerPanel.Location = new System.Drawing.Point(0, 75);
+            this.dividerPanel.Name = "dividerPanel";
+            this.dividerPanel.Size = new System.Drawing.Size(635, 1);
+            this.dividerPanel.TabIndex = 1;
+
             // 
-            // lblResidentsCount
+            // card1 (Residents)
             // 
-            lblResidentsCount.AutoSize = true;
-            lblResidentsCount.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            lblResidentsCount.ForeColor = Color.FromArgb(37, 99, 235);
-            lblResidentsCount.Location = new Point(10, 8);
-            lblResidentsCount.Name = "lblResidentsCount";
-            lblResidentsCount.Size = new Size(27, 31);
-            lblResidentsCount.TabIndex = 1;
-            lblResidentsCount.Text = "0";
+            this.card1.BackColor = System.Drawing.Color.White;
+            this.card1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.card1.Controls.Add(this.accent1);
+            this.card1.Controls.Add(this.lblResidentsCount);
+            this.card1.Controls.Add(this.lblTitle1);
+            this.card1.Location = new System.Drawing.Point(20, 95);
+            this.card1.Name = "card1";
+            this.card1.Size = new System.Drawing.Size(130, 82);
+            this.card1.TabIndex = 2;
+
+            this.accent1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.accent1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.accent1.Location = new System.Drawing.Point(0, 0);
+            this.accent1.Name = "accent1";
+            this.accent1.Size = new System.Drawing.Size(4, 80);
+            this.accent1.TabIndex = 0;
+
+            this.lblResidentsCount.AutoSize = true;
+            this.lblResidentsCount.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblResidentsCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.lblResidentsCount.Location = new System.Drawing.Point(12, 10);
+            this.lblResidentsCount.Name = "lblResidentsCount";
+            this.lblResidentsCount.Size = new System.Drawing.Size(28, 32);
+            this.lblResidentsCount.TabIndex = 1;
+            this.lblResidentsCount.Text = "0";
+
+            this.lblTitle1.AutoSize = true;
+            this.lblTitle1.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lblTitle1.Location = new System.Drawing.Point(12, 50);
+            this.lblTitle1.Name = "lblTitle1";
+            this.lblTitle1.Size = new System.Drawing.Size(61, 15);
+            this.lblTitle1.TabIndex = 2;
+            this.lblTitle1.Text = "Residents";
+
             // 
-            // lblTitle1
+            // card2 (Pending)
             // 
-            lblTitle1.AutoSize = true;
-            lblTitle1.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
-            lblTitle1.ForeColor = Color.FromArgb(100, 116, 139);
-            lblTitle1.Location = new Point(10, 48);
-            lblTitle1.Name = "lblTitle1";
-            lblTitle1.Size = new Size(61, 15);
-            lblTitle1.TabIndex = 2;
-            lblTitle1.Text = "Residents";
+            this.card2.BackColor = System.Drawing.Color.White;
+            this.card2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.card2.Controls.Add(this.accent2);
+            this.card2.Controls.Add(this.lblPendingCount);
+            this.card2.Controls.Add(this.lblTitle2);
+            this.card2.Location = new System.Drawing.Point(164, 95);
+            this.card2.Name = "card2";
+            this.card2.Size = new System.Drawing.Size(130, 82);
+            this.card2.TabIndex = 3;
+
+            this.accent2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
+            this.accent2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.accent2.Location = new System.Drawing.Point(0, 0);
+            this.accent2.Name = "accent2";
+            this.accent2.Size = new System.Drawing.Size(4, 80);
+            this.accent2.TabIndex = 0;
+
+            this.lblPendingCount.AutoSize = true;
+            this.lblPendingCount.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblPendingCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
+            this.lblPendingCount.Location = new System.Drawing.Point(12, 10);
+            this.lblPendingCount.Name = "lblPendingCount";
+            this.lblPendingCount.Size = new System.Drawing.Size(28, 32);
+            this.lblPendingCount.TabIndex = 1;
+            this.lblPendingCount.Text = "0";
+
+            this.lblTitle2.AutoSize = true;
+            this.lblTitle2.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lblTitle2.Location = new System.Drawing.Point(12, 50);
+            this.lblTitle2.Name = "lblTitle2";
+            this.lblTitle2.Size = new System.Drawing.Size(52, 15);
+            this.lblTitle2.TabIndex = 2;
+            this.lblTitle2.Text = "Pending";
+
             // 
-            // card2
+            // card3 (Issued)
             // 
-            card2.BackColor = Color.White;
-            card2.Controls.Add(accent2);
-            card2.Controls.Add(lblPendingCount);
-            card2.Controls.Add(lblTitle2);
-            card2.Location = new Point(170, 50);
-            card2.Name = "card2";
-            card2.Size = new Size(140, 80);
-            card2.TabIndex = 3;
+            this.card3.BackColor = System.Drawing.Color.White;
+            this.card3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.card3.Controls.Add(this.accent3);
+            this.card3.Controls.Add(this.lblCompletedCount);
+            this.card3.Controls.Add(this.lblTitle3);
+            this.card3.Location = new System.Drawing.Point(308, 95);
+            this.card3.Name = "card3";
+            this.card3.Size = new System.Drawing.Size(130, 82);
+            this.card3.TabIndex = 4;
+
+            this.accent3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(163)))), ((int)(((byte)(74)))));
+            this.accent3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.accent3.Location = new System.Drawing.Point(0, 0);
+            this.accent3.Name = "accent3";
+            this.accent3.Size = new System.Drawing.Size(4, 80);
+            this.accent3.TabIndex = 0;
+
+            this.lblCompletedCount.AutoSize = true;
+            this.lblCompletedCount.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblCompletedCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(163)))), ((int)(((byte)(74)))));
+            this.lblCompletedCount.Location = new System.Drawing.Point(12, 10);
+            this.lblCompletedCount.Name = "lblCompletedCount";
+            this.lblCompletedCount.Size = new System.Drawing.Size(28, 32);
+            this.lblCompletedCount.TabIndex = 1;
+            this.lblCompletedCount.Text = "0";
+
+            this.lblTitle3.AutoSize = true;
+            this.lblTitle3.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lblTitle3.Location = new System.Drawing.Point(12, 50);
+            this.lblTitle3.Name = "lblTitle3";
+            this.lblTitle3.Size = new System.Drawing.Size(42, 15);
+            this.lblTitle3.TabIndex = 2;
+            this.lblTitle3.Text = "Issued";
+
             // 
-            // accent2
+            // card4 (Notices)
             // 
-            accent2.BackColor = Color.FromArgb(217, 119, 6);
-            accent2.Location = new Point(0, 0);
-            accent2.Name = "accent2";
-            accent2.Size = new Size(4, 80);
-            accent2.TabIndex = 0;
-            // 
-            // lblPendingCount
-            // 
-            lblPendingCount.AutoSize = true;
-            lblPendingCount.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            lblPendingCount.ForeColor = Color.FromArgb(217, 119, 6);
-            lblPendingCount.Location = new Point(10, 8);
-            lblPendingCount.Name = "lblPendingCount";
-            lblPendingCount.Size = new Size(27, 31);
-            lblPendingCount.TabIndex = 1;
-            lblPendingCount.Text = "0";
-            // 
-            // lblTitle2
-            // 
-            lblTitle2.AutoSize = true;
-            lblTitle2.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
-            lblTitle2.ForeColor = Color.FromArgb(100, 116, 139);
-            lblTitle2.Location = new Point(10, 48);
-            lblTitle2.Name = "lblTitle2";
-            lblTitle2.Size = new Size(52, 15);
-            lblTitle2.TabIndex = 2;
-            lblTitle2.Text = "Pending";
-            // 
-            // card3
-            // 
-            card3.BackColor = Color.White;
-            card3.Controls.Add(accent3);
-            card3.Controls.Add(lblCompletedCount);
-            card3.Controls.Add(lblTitle3);
-            card3.Location = new Point(325, 50);
-            card3.Name = "card3";
-            card3.Size = new Size(140, 80);
-            card3.TabIndex = 4;
-            // 
-            // accent3
-            // 
-            accent3.BackColor = Color.FromArgb(22, 163, 74);
-            accent3.Location = new Point(0, 0);
-            accent3.Name = "accent3";
-            accent3.Size = new Size(4, 80);
-            accent3.TabIndex = 0;
-            // 
-            // lblCompletedCount
-            // 
-            lblCompletedCount.AutoSize = true;
-            lblCompletedCount.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            lblCompletedCount.ForeColor = Color.FromArgb(22, 163, 74);
-            lblCompletedCount.Location = new Point(10, 8);
-            lblCompletedCount.Name = "lblCompletedCount";
-            lblCompletedCount.Size = new Size(27, 31);
-            lblCompletedCount.TabIndex = 1;
-            lblCompletedCount.Text = "0";
-            // 
-            // lblTitle3
-            // 
-            lblTitle3.AutoSize = true;
-            lblTitle3.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
-            lblTitle3.ForeColor = Color.FromArgb(100, 116, 139);
-            lblTitle3.Location = new Point(10, 48);
-            lblTitle3.Name = "lblTitle3";
-            lblTitle3.Size = new Size(42, 15);
-            lblTitle3.TabIndex = 2;
-            lblTitle3.Text = "Issued";
-            // 
-            // card4
-            // 
-            card4.BackColor = Color.White;
-            card4.Controls.Add(accent4);
-            card4.Controls.Add(lblAnnounceCount);
-            card4.Controls.Add(lblTitle4);
-            card4.Location = new Point(480, 50);
-            card4.Name = "card4";
-            card4.Size = new Size(140, 80);
-            card4.TabIndex = 5;
-            // 
-            // accent4
-            // 
-            accent4.BackColor = Color.FromArgb(147, 51, 234);
-            accent4.Location = new Point(0, 0);
-            accent4.Name = "accent4";
-            accent4.Size = new Size(4, 80);
-            accent4.TabIndex = 0;
-            // 
-            // lblAnnounceCount
-            // 
-            lblAnnounceCount.AutoSize = true;
-            lblAnnounceCount.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            lblAnnounceCount.ForeColor = Color.FromArgb(147, 51, 234);
-            lblAnnounceCount.Location = new Point(10, 8);
-            lblAnnounceCount.Name = "lblAnnounceCount";
-            lblAnnounceCount.Size = new Size(27, 31);
-            lblAnnounceCount.TabIndex = 1;
-            lblAnnounceCount.Text = "0";
-            // 
-            // lblTitle4
-            // 
-            lblTitle4.AutoSize = true;
-            lblTitle4.Font = new Font("Segoe UI", 8.5F, FontStyle.Bold);
-            lblTitle4.ForeColor = Color.FromArgb(100, 116, 139);
-            lblTitle4.Location = new Point(10, 48);
-            lblTitle4.Name = "lblTitle4";
-            lblTitle4.Size = new Size(49, 15);
-            lblTitle4.TabIndex = 2;
-            lblTitle4.Text = "Notices";
+            this.card4.BackColor = System.Drawing.Color.White;
+            this.card4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.card4.Controls.Add(this.accent4);
+            this.card4.Controls.Add(this.lblAnnounceCount);
+            this.card4.Controls.Add(this.lblTitle4);
+            this.card4.Location = new System.Drawing.Point(452, 95);
+            this.card4.Name = "card4";
+            this.card4.Size = new System.Drawing.Size(163, 82);
+            this.card4.TabIndex = 5;
+
+            this.accent4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(51)))), ((int)(((byte)(234)))));
+            this.accent4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.accent4.Location = new System.Drawing.Point(0, 0);
+            this.accent4.Name = "accent4";
+            this.accent4.Size = new System.Drawing.Size(4, 80);
+            this.accent4.TabIndex = 0;
+
+            this.lblAnnounceCount.AutoSize = true;
+            this.lblAnnounceCount.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblAnnounceCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(51)))), ((int)(((byte)(234)))));
+            this.lblAnnounceCount.Location = new System.Drawing.Point(12, 10);
+            this.lblAnnounceCount.Name = "lblAnnounceCount";
+            this.lblAnnounceCount.Size = new System.Drawing.Size(28, 32);
+            this.lblAnnounceCount.TabIndex = 1;
+            this.lblAnnounceCount.Text = "0";
+
+            this.lblTitle4.AutoSize = true;
+            this.lblTitle4.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblTitle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lblTitle4.Location = new System.Drawing.Point(12, 50);
+            this.lblTitle4.Name = "lblTitle4";
+            this.lblTitle4.Size = new System.Drawing.Size(49, 15);
+            this.lblTitle4.TabIndex = 2;
+            this.lblTitle4.Text = "Notices";
+
             // 
             // pnlRequests
             // 
-            pnlRequests.BackColor = Color.White;
-            pnlRequests.Controls.Add(lblReqHeader);
-            pnlRequests.Controls.Add(row1);
-            pnlRequests.Controls.Add(row2);
-            pnlRequests.Controls.Add(row3);
-            pnlRequests.Location = new Point(15, 145);
-            pnlRequests.Name = "pnlRequests";
-            pnlRequests.Size = new Size(375, 350);
-            pnlRequests.TabIndex = 6;
+            this.pnlRequests.BackColor = System.Drawing.Color.White;
+            this.pnlRequests.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRequests.Controls.Add(this.lblReqHeader);
+            this.pnlRequests.Controls.Add(this.row1);
+            this.pnlRequests.Controls.Add(this.row2);
+            this.pnlRequests.Controls.Add(this.row3);
+            this.pnlRequests.Location = new System.Drawing.Point(20, 195);
+            this.pnlRequests.Name = "pnlRequests";
+            this.pnlRequests.Size = new System.Drawing.Size(370, 290);
+            this.pnlRequests.TabIndex = 6;
+
             // 
             // lblReqHeader
             // 
-            lblReqHeader.AutoSize = true;
-            lblReqHeader.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
-            lblReqHeader.ForeColor = Color.FromArgb(30, 41, 59);
-            lblReqHeader.Location = new Point(12, 12);
-            lblReqHeader.Name = "lblReqHeader";
-            lblReqHeader.Size = new Size(189, 19);
-            lblReqHeader.TabIndex = 0;
-            lblReqHeader.Text = "Recent Document Requests";
+            this.lblReqHeader.AutoSize = true;
+            this.lblReqHeader.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblReqHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.lblReqHeader.Location = new System.Drawing.Point(15, 12);
+            this.lblReqHeader.Name = "lblReqHeader";
+            this.lblReqHeader.Size = new System.Drawing.Size(201, 20);
+            this.lblReqHeader.TabIndex = 0;
+            this.lblReqHeader.Text = "Recent Document Requests";
+
             // 
             // row1
             // 
-            row1.BackColor = Color.FromArgb(248, 250, 252);
-            row1.Controls.Add(lblReq1Title);
-            row1.Controls.Add(lblReq1Sub);
-            row1.Controls.Add(lblReq1Status);
-            row1.Location = new Point(15, 45);
-            row1.Name = "row1";
-            row1.Size = new Size(345, 75);
-            row1.TabIndex = 1;
-            // 
-            // lblReq1Title
-            // 
-            lblReq1Title.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblReq1Title.Location = new Point(10, 10);
-            lblReq1Title.Name = "lblReq1Title";
-            lblReq1Title.Size = new Size(220, 20);
-            lblReq1Title.TabIndex = 0;
-            lblReq1Title.Text = "Barangay Clearance";
-            // 
-            // lblReq1Sub
-            // 
-            lblReq1Sub.Font = new Font("Segoe UI", 8F);
-            lblReq1Sub.ForeColor = Color.FromArgb(100, 116, 139);
-            lblReq1Sub.Location = new Point(10, 36);
-            lblReq1Sub.Name = "lblReq1Sub";
-            lblReq1Sub.Size = new Size(220, 20);
-            lblReq1Sub.TabIndex = 1;
-            lblReq1Sub.Text = "Juan Dela Cruz • Sep 26, 2026";
-            // 
-            // lblReq1Status
-            // 
-            lblReq1Status.BackColor = Color.FromArgb(254, 243, 199);
-            lblReq1Status.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            lblReq1Status.ForeColor = Color.FromArgb(217, 119, 6);
-            lblReq1Status.Location = new Point(255, 15);
-            lblReq1Status.Name = "lblReq1Status";
-            lblReq1Status.Size = new Size(80, 24);
-            lblReq1Status.TabIndex = 2;
-            lblReq1Status.Text = "Pending";
-            lblReq1Status.TextAlign = ContentAlignment.MiddleCenter;
+            this.row1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.row1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.row1.Controls.Add(this.lblReq1Title);
+            this.row1.Controls.Add(this.lblReq1Sub);
+            this.row1.Controls.Add(this.lblReq1Status);
+            this.row1.Location = new System.Drawing.Point(15, 42);
+            this.row1.Name = "row1";
+            this.row1.Size = new System.Drawing.Size(338, 70);
+            this.row1.TabIndex = 1;
+
+            this.lblReq1Title.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblReq1Title.Location = new System.Drawing.Point(10, 10);
+            this.lblReq1Title.Name = "lblReq1Title";
+            this.lblReq1Title.Size = new System.Drawing.Size(220, 20);
+            this.lblReq1Title.TabIndex = 0;
+            this.lblReq1Title.Text = "Barangay Clearance";
+
+            this.lblReq1Sub.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblReq1Sub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lblReq1Sub.Location = new System.Drawing.Point(10, 36);
+            this.lblReq1Sub.Name = "lblReq1Sub";
+            this.lblReq1Sub.Size = new System.Drawing.Size(220, 20);
+            this.lblReq1Sub.TabIndex = 1;
+            this.lblReq1Sub.Text = "Resident • Date";
+
+            this.lblReq1Status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(249)))), ((int)(((byte)(195)))));
+            this.lblReq1Status.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblReq1Status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(77)))), ((int)(((byte)(14)))));
+            this.lblReq1Status.Location = new System.Drawing.Point(245, 18);
+            this.lblReq1Status.Name = "lblReq1Status";
+            this.lblReq1Status.Size = new System.Drawing.Size(80, 24);
+            this.lblReq1Status.TabIndex = 2;
+            this.lblReq1Status.Text = "Pending";
+            this.lblReq1Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
             // 
             // row2
             // 
-            row2.BackColor = Color.FromArgb(248, 250, 252);
-            row2.Controls.Add(lblReq2Title);
-            row2.Controls.Add(lblReq2Sub);
-            row2.Controls.Add(lblReq2Status);
-            row2.Location = new Point(15, 130);
-            row2.Name = "row2";
-            row2.Size = new Size(345, 75);
-            row2.TabIndex = 2;
-            // 
-            // lblReq2Title
-            // 
-            lblReq2Title.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblReq2Title.Location = new Point(10, 10);
-            lblReq2Title.Name = "lblReq2Title";
-            lblReq2Title.Size = new Size(220, 20);
-            lblReq2Title.TabIndex = 0;
-            lblReq2Title.Text = "Indigency Certificate";
-            // 
-            // lblReq2Sub
-            // 
-            lblReq2Sub.Font = new Font("Segoe UI", 8F);
-            lblReq2Sub.ForeColor = Color.FromArgb(100, 116, 139);
-            lblReq2Sub.Location = new Point(10, 36);
-            lblReq2Sub.Name = "lblReq2Sub";
-            lblReq2Sub.Size = new Size(220, 20);
-            lblReq2Sub.TabIndex = 1;
-            lblReq2Sub.Text = "Maria Clara • Sep 26, 2026";
-            // 
-            // lblReq2Status
-            // 
-            lblReq2Status.BackColor = Color.FromArgb(254, 243, 199);
-            lblReq2Status.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            lblReq2Status.ForeColor = Color.FromArgb(217, 119, 6);
-            lblReq2Status.Location = new Point(255, 15);
-            lblReq2Status.Name = "lblReq2Status";
-            lblReq2Status.Size = new Size(80, 24);
-            lblReq2Status.TabIndex = 2;
-            lblReq2Status.Text = "Pending";
-            lblReq2Status.TextAlign = ContentAlignment.MiddleCenter;
+            this.row2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.row2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.row2.Controls.Add(this.lblReq2Title);
+            this.row2.Controls.Add(this.lblReq2Sub);
+            this.row2.Controls.Add(this.lblReq2Status);
+            this.row2.Location = new System.Drawing.Point(15, 122);
+            this.row2.Name = "row2";
+            this.row2.Size = new System.Drawing.Size(338, 70);
+            this.row2.TabIndex = 2;
+
+            this.lblReq2Title.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblReq2Title.Location = new System.Drawing.Point(10, 10);
+            this.lblReq2Title.Name = "lblReq2Title";
+            this.lblReq2Title.Size = new System.Drawing.Size(220, 20);
+            this.lblReq2Title.TabIndex = 0;
+            this.lblReq2Title.Text = "Indigency Certificate";
+
+            this.lblReq2Sub.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblReq2Sub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lblReq2Sub.Location = new System.Drawing.Point(10, 36);
+            this.lblReq2Sub.Name = "lblReq2Sub";
+            this.lblReq2Sub.Size = new System.Drawing.Size(220, 20);
+            this.lblReq2Sub.TabIndex = 1;
+            this.lblReq2Sub.Text = "Resident • Date";
+
+            this.lblReq2Status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(249)))), ((int)(((byte)(195)))));
+            this.lblReq2Status.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblReq2Status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(77)))), ((int)(((byte)(14)))));
+            this.lblReq2Status.Location = new System.Drawing.Point(245, 18);
+            this.lblReq2Status.Name = "lblReq2Status";
+            this.lblReq2Status.Size = new System.Drawing.Size(80, 24);
+            this.lblReq2Status.TabIndex = 2;
+            this.lblReq2Status.Text = "Pending";
+            this.lblReq2Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
             // 
             // row3
             // 
-            row3.BackColor = Color.FromArgb(248, 250, 252);
-            row3.Controls.Add(lblReq3Title);
-            row3.Controls.Add(lblReq3Sub);
-            row3.Controls.Add(lblReq3Status);
-            row3.Location = new Point(15, 215);
-            row3.Name = "row3";
-            row3.Size = new Size(345, 75);
-            row3.TabIndex = 3;
+            this.row3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.row3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.row3.Controls.Add(this.lblReq3Title);
+            this.row3.Controls.Add(this.lblReq3Sub);
+            this.row3.Controls.Add(this.lblReq3Status);
+            this.row3.Location = new System.Drawing.Point(15, 202);
+            this.row3.Name = "row3";
+            this.row3.Size = new System.Drawing.Size(338, 70);
+            this.row3.TabIndex = 3;
+
+            this.lblReq3Title.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblReq3Title.Location = new System.Drawing.Point(10, 10);
+            this.lblReq3Title.Name = "lblReq3Title";
+            this.lblReq3Title.Size = new System.Drawing.Size(220, 20);
+            this.lblReq3Title.TabIndex = 0;
+            this.lblReq3Title.Text = "Residency Certificate";
+
+            this.lblReq3Sub.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblReq3Sub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lblReq3Sub.Location = new System.Drawing.Point(10, 36);
+            this.lblReq3Sub.Name = "lblReq3Sub";
+            this.lblReq3Sub.Size = new System.Drawing.Size(220, 20);
+            this.lblReq3Sub.TabIndex = 1;
+            this.lblReq3Sub.Text = "Resident • Date";
+
+            this.lblReq3Status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(252)))), ((int)(((byte)(231)))));
+            this.lblReq3Status.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblReq3Status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(101)))), ((int)(((byte)(52)))));
+            this.lblReq3Status.Location = new System.Drawing.Point(245, 18);
+            this.lblReq3Status.Name = "lblReq3Status";
+            this.lblReq3Status.Size = new System.Drawing.Size(80, 24);
+            this.lblReq3Status.TabIndex = 2;
+            this.lblReq3Status.Text = "Approved";
+            this.lblReq3Status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
             // 
-            // lblReq3Title
+            // pnlInfo (System Status Panel)
             // 
-            lblReq3Title.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblReq3Title.Location = new Point(10, 10);
-            lblReq3Title.Name = "lblReq3Title";
-            lblReq3Title.Size = new Size(220, 20);
-            lblReq3Title.TabIndex = 0;
-            lblReq3Title.Text = "Residency Certificate";
-            // 
-            // lblReq3Sub
-            // 
-            lblReq3Sub.Font = new Font("Segoe UI", 8F);
-            lblReq3Sub.ForeColor = Color.FromArgb(100, 116, 139);
-            lblReq3Sub.Location = new Point(10, 36);
-            lblReq3Sub.Name = "lblReq3Sub";
-            lblReq3Sub.Size = new Size(220, 20);
-            lblReq3Sub.TabIndex = 1;
-            lblReq3Sub.Text = "Jose Rizal • Sep 25, 2026";
-            // 
-            // lblReq3Status
-            // 
-            lblReq3Status.BackColor = Color.FromArgb(220, 252, 231);
-            lblReq3Status.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            lblReq3Status.ForeColor = Color.FromArgb(22, 163, 74);
-            lblReq3Status.Location = new Point(255, 15);
-            lblReq3Status.Name = "lblReq3Status";
-            lblReq3Status.Size = new Size(80, 24);
-            lblReq3Status.TabIndex = 2;
-            lblReq3Status.Text = "Approved";
-            lblReq3Status.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // pnlInfo
-            // 
-            pnlInfo.BackColor = Color.White;
-            pnlInfo.Controls.Add(lblInfoHeader);
-            pnlInfo.Controls.Add(lblInfoBody);
-            pnlInfo.Location = new Point(405, 145);
-            pnlInfo.Name = "pnlInfo";
-            pnlInfo.Size = new Size(215, 350);
-            pnlInfo.TabIndex = 7;
+            this.pnlInfo.BackColor = System.Drawing.Color.White;
+            this.pnlInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInfo.Controls.Add(this.lblInfoHeader);
+            this.pnlInfo.Controls.Add(this.lblInfoBody);
+            this.pnlInfo.Location = new System.Drawing.Point(404, 195);
+            this.pnlInfo.Name = "pnlInfo";
+            this.pnlInfo.Size = new System.Drawing.Size(211, 290);
+            this.pnlInfo.TabIndex = 7;
+
             // 
             // lblInfoHeader
             // 
-            lblInfoHeader.AutoSize = true;
-            lblInfoHeader.Font = new Font("Segoe UI", 10.5F, FontStyle.Bold);
-            lblInfoHeader.ForeColor = Color.FromArgb(30, 41, 59);
-            lblInfoHeader.Location = new Point(12, 12);
-            lblInfoHeader.Name = "lblInfoHeader";
-            lblInfoHeader.Size = new Size(101, 19);
-            lblInfoHeader.TabIndex = 0;
-            lblInfoHeader.Text = "System Status";
+            this.lblInfoHeader.AutoSize = true;
+            this.lblInfoHeader.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblInfoHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.lblInfoHeader.Location = new System.Drawing.Point(12, 12);
+            this.lblInfoHeader.Name = "lblInfoHeader";
+            this.lblInfoHeader.Size = new System.Drawing.Size(107, 20);
+            this.lblInfoHeader.TabIndex = 0;
+            this.lblInfoHeader.Text = "System Status";
+
             // 
             // lblInfoBody
             // 
-            lblInfoBody.Font = new Font("Segoe UI", 8.5F);
-            lblInfoBody.ForeColor = Color.FromArgb(71, 85, 105);
-            lblInfoBody.Location = new Point(12, 45);
-            lblInfoBody.Name = "lblInfoBody";
-            lblInfoBody.Size = new Size(185, 280);
-            lblInfoBody.TabIndex = 1;
-            lblInfoBody.Text = "• Barangay Document System\n\n• Database: ACTIVE\n\n• Auto-Sync: ENABLED\n\n• Live resident registrations and incoming request updates.";
+            this.lblInfoBody.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblInfoBody.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
+            this.lblInfoBody.Location = new System.Drawing.Point(12, 45);
+            this.lblInfoBody.Name = "lblInfoBody";
+            this.lblInfoBody.Size = new System.Drawing.Size(185, 225);
+            this.lblInfoBody.TabIndex = 1;
+            this.lblInfoBody.Text = "• Barangay Document System\r\n\r\n• Database: ACTIVE\r\n\r\n• Auto-Sync: ENABLED\r\n\r\n• Live resident registrations and incoming request updates.";
+
             // 
-            // AdminControl
+            // AdminControl Setup
             // 
-            BackColor = Color.FromArgb(245, 247, 250);
-            Controls.Add(lblHeaderTitle);
-            Controls.Add(lblHeaderDate);
-            Controls.Add(card1);
-            Controls.Add(card2);
-            Controls.Add(card3);
-            Controls.Add(card4);
-            Controls.Add(pnlRequests);
-            Controls.Add(pnlInfo);
-            Name = "AdminControl";
-            Size = new Size(635, 512);
-            card1.ResumeLayout(false);
-            card1.PerformLayout();
-            card2.ResumeLayout(false);
-            card2.PerformLayout();
-            card3.ResumeLayout(false);
-            card3.PerformLayout();
-            card4.ResumeLayout(false);
-            card4.PerformLayout();
-            pnlRequests.ResumeLayout(false);
-            pnlRequests.PerformLayout();
-            row1.ResumeLayout(false);
-            row2.ResumeLayout(false);
-            row3.ResumeLayout(false);
-            pnlInfo.ResumeLayout(false);
-            pnlInfo.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
+            this.Controls.Add(this.NavPanel);
+            this.Controls.Add(this.dividerPanel);
+            this.Controls.Add(this.card1);
+            this.Controls.Add(this.card2);
+            this.Controls.Add(this.card3);
+            this.Controls.Add(this.card4);
+            this.Controls.Add(this.pnlRequests);
+            this.Controls.Add(this.pnlInfo);
+            this.Name = "AdminControl";
+            this.Size = new System.Drawing.Size(635, 512);
+
+            this.NavPanel.ResumeLayout(false);
+            this.NavPanel.PerformLayout();
+            this.card1.ResumeLayout(false);
+            this.card1.PerformLayout();
+            this.card2.ResumeLayout(false);
+            this.card2.PerformLayout();
+            this.card3.ResumeLayout(false);
+            this.card3.PerformLayout();
+            this.card4.ResumeLayout(false);
+            this.card4.PerformLayout();
+            this.pnlRequests.ResumeLayout(false);
+            this.pnlRequests.PerformLayout();
+            this.row1.ResumeLayout(false);
+            this.row2.ResumeLayout(false);
+            this.row3.ResumeLayout(false);
+            this.pnlInfo.ResumeLayout(false);
+            this.pnlInfo.PerformLayout();
+            this.ResumeLayout(false);
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel NavPanel;
         private System.Windows.Forms.Label lblHeaderTitle;
         private System.Windows.Forms.Label lblHeaderDate;
+        private System.Windows.Forms.Panel dividerPanel;
 
         private System.Windows.Forms.Panel card1, card2, card3, card4;
         private System.Windows.Forms.Panel accent1, accent2, accent3, accent4;

@@ -82,8 +82,8 @@ namespace BarangayDocumentRequestSysytem
                                 string fName = reader["first_name"]?.ToString() ?? "";
                                 string mName = reader["middle_name"]?.ToString() ?? "";
                                 string lName = reader["last_name"]?.ToString() ?? "";
-                                string middleInitial = !string.IsNullOrWhiteSpace(mName) ? $" {mName[0]}." : "";
-                                string fullName = $"{fName}{middleInitial} {lName}".Trim();
+                                string middlePart = !string.IsNullOrWhiteSpace(mName) ? $" {mName}" : "";
+                                string fullName = $"{fName}{middlePart} {lName}".Trim();
                                 SetText("txtFullName", fullName);
 
                                 if (reader["birthdate"] != DBNull.Value)
@@ -116,12 +116,11 @@ namespace BarangayDocumentRequestSysytem
             }
         }
 
-        private void CheckUpdateRequestStatus()
+        public void CheckUpdateRequestStatus()
         {
             int currentUserId = UserSession.UserId;
             if (currentUserId <= 0)
             {
-                // Session not yet set or cleared
                 if (button2 != null) button2.Visible = false;
                 button3.Text = "✏️ Request Information Update";
                 button3.Enabled = true;
@@ -130,8 +129,8 @@ namespace BarangayDocumentRequestSysytem
             }
 
             string query = @"SELECT status FROM info_update_requests 
-                     WHERE user_id = @UserId 
-                     ORDER BY request_id DESC LIMIT 1";
+                             WHERE user_id = @UserId 
+                             ORDER BY request_id DESC LIMIT 1";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -153,10 +152,10 @@ namespace BarangayDocumentRequestSysytem
                         }
                         else if (status.Equals("Approved", StringComparison.OrdinalIgnoreCase))
                         {
-                            if (button2 != null) button2.Visible = true; // Show save button ONLY when Approved
+                            if (button2 != null) button2.Visible = true;
                             button3.Text = "💾 Save Updated Information";
                             button3.Enabled = true;
-                            SetProfileFieldsReadOnly(false); // Enable text editing for user
+                            SetProfileFieldsReadOnly(false);
                         }
                         else // 'Completed', 'Rejected', or no record
                         {
@@ -181,7 +180,6 @@ namespace BarangayDocumentRequestSysytem
 
             if (button3.Text.Contains("Request Information Update"))
             {
-                // Double-check if a pending request already exists in DB
                 string checkQuery = "SELECT COUNT(*) FROM info_update_requests WHERE user_id = @UserId AND status = 'Pending'";
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
@@ -198,7 +196,6 @@ namespace BarangayDocumentRequestSysytem
                         }
                     }
 
-                    // Insert new request
                     string insertQuery = "INSERT INTO info_update_requests (user_id, status) VALUES (@UserId, 'Pending')";
                     using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
                     {
@@ -250,64 +247,61 @@ namespace BarangayDocumentRequestSysytem
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
+                MySqlTransaction transaction = null;
                 try
                 {
                     conn.Open();
-                    using (MySqlTransaction transaction = conn.BeginTransaction())
+                    transaction = conn.BeginTransaction();
+
+                    string updateProfileQuery = @"UPDATE users 
+                                                 SET first_name = @FirstName, 
+                                                     last_name = @LastName, 
+                                                     middle_name = @MiddleName,
+                                                     sex = @Sex, 
+                                                     contact_no = @Contact";
+
+                    if (birthdate.HasValue)
                     {
-                        string updateProfileQuery = @"UPDATE users 
-                                                     SET first_name = @FirstName, 
-                                                         last_name = @LastName, 
-                                                         sex = @Sex, 
-                                                         contact_no = @Contact";
+                        updateProfileQuery += ", birthdate = @Birthdate";
+                    }
 
-                        if (!string.IsNullOrEmpty(middleName))
-                        {
-                            updateProfileQuery += ", middle_name = @MiddleName";
-                        }
+                    updateProfileQuery += " WHERE user_id = @UserId";
 
+                    using (MySqlCommand cmd = new MySqlCommand(updateProfileQuery, conn, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@FirstName", firstName);
+                        cmd.Parameters.AddWithValue("@LastName", lastName);
+                        cmd.Parameters.AddWithValue("@MiddleName", middleName);
+                        cmd.Parameters.AddWithValue("@Sex", sex);
+                        cmd.Parameters.AddWithValue("@Contact", contact);
                         if (birthdate.HasValue)
                         {
-                            updateProfileQuery += ", birthdate = @Birthdate";
+                            cmd.Parameters.AddWithValue("@Birthdate", birthdate.Value.ToString("yyyy-MM-dd"));
                         }
-
-                        updateProfileQuery += " WHERE user_id = @UserId";
-
-                        using (MySqlCommand cmd = new MySqlCommand(updateProfileQuery, conn, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@FirstName", firstName);
-                            cmd.Parameters.AddWithValue("@LastName", lastName);
-                            if (!string.IsNullOrEmpty(middleName))
-                            {
-                                cmd.Parameters.AddWithValue("@MiddleName", middleName);
-                            }
-                            cmd.Parameters.AddWithValue("@Sex", sex);
-                            cmd.Parameters.AddWithValue("@Contact", contact);
-                            if (birthdate.HasValue)
-                            {
-                                cmd.Parameters.AddWithValue("@Birthdate", birthdate.Value.ToString("yyyy-MM-dd"));
-                            }
-                            cmd.Parameters.AddWithValue("@UserId", currentUserId);
-                            cmd.ExecuteNonQuery();
-                        }
-
-                        string updateReqQuery = "UPDATE info_update_requests SET status = 'Completed' WHERE user_id = @UserId AND status = 'Approved'";
-                        using (MySqlCommand cmdReq = new MySqlCommand(updateReqQuery, conn, transaction))
-                        {
-                            cmdReq.Parameters.AddWithValue("@UserId", currentUserId);
-                            cmdReq.ExecuteNonQuery();
-                        }
-
-                        transaction.Commit();
-
-                        MessageBox.Show("Your profile has been updated successfully!\n\nTo make further changes in the future, please file a new request.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        LoadUserProfile();
-                        CheckUpdateRequestStatus();
+                        cmd.Parameters.AddWithValue("@UserId", currentUserId);
+                        cmd.ExecuteNonQuery();
                     }
+
+                    string updateReqQuery = "UPDATE info_update_requests SET status = 'Completed' WHERE user_id = @UserId AND status = 'Approved'";
+                    using (MySqlCommand cmdReq = new MySqlCommand(updateReqQuery, conn, transaction))
+                    {
+                        cmdReq.Parameters.AddWithValue("@UserId", currentUserId);
+                        cmdReq.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+
+                    MessageBox.Show("Your profile has been updated successfully!\n\nTo make further changes in the future, please file a new request.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LoadUserProfile();
+                    CheckUpdateRequestStatus();
                 }
                 catch (Exception ex)
                 {
+                    if (transaction != null)
+                    {
+                        try { transaction.Rollback(); } catch { }
+                    }
                     MessageBox.Show($"Failed to save updates: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -319,9 +313,9 @@ namespace BarangayDocumentRequestSysytem
             SetTextBoxReadOnly("txtDateOfBirth", readOnly);
             SetTextBoxReadOnly("txtSex", readOnly);
             SetTextBoxReadOnly("txtContactNumber", readOnly);
-            SetTextBoxReadOnly("txtAddress", readOnly);
 
-            // Keep admin-verified status fields permanently locked
+            // Admin-verified and address composition fields remain permanently locked
+            SetTextBoxReadOnly("txtAddress", true);
             SetTextBoxReadOnly("txtResidency", true);
             SetTextBoxReadOnly("txtVoterStatus", true);
         }

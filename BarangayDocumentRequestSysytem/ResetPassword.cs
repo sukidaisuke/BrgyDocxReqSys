@@ -1,10 +1,6 @@
 ﻿#nullable disable
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BarangayDocumentRequestSysytem
@@ -18,12 +14,42 @@ namespace BarangayDocumentRequestSysytem
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Password reset successfully!");
+            if (string.IsNullOrWhiteSpace(txtCurrentPassword.Text))
+            {
+                MessageBox.Show("Please enter your current password.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCurrentPassword.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNewPassword.Text))
+            {
+                MessageBox.Show("Please enter a new password.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNewPassword.Focus();
+                return;
+            }
+
+            if (txtNewPassword.Text != txtConfirmPassword.Text)
+            {
+                MessageBox.Show("New password and confirm password do not match.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtConfirmPassword.Focus();
+                return;
+            }
+
+            // Logic to update password in database can go here
+
+            MessageBox.Show("Password reset successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             this.Hide();
-            Login Lf = new Login();
-            Lf.ShowDialog();
-            Lf = null;
+            using (Login Lf = new Login())
+            {
+                Lf.ShowDialog();
+            }
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }
-    }
+}

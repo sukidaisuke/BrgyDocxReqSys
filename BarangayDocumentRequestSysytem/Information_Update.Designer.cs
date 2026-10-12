@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new System.Windows.Forms.GroupBox();
+            btnHistory = new System.Windows.Forms.Button();
             btnRefresh = new System.Windows.Forms.Button();
             btnReject = new System.Windows.Forms.Button();
             btnApprove = new System.Windows.Forms.Button();
@@ -39,14 +40,15 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnHistory);
             groupBox1.Controls.Add(btnRefresh);
             groupBox1.Controls.Add(btnReject);
             groupBox1.Controls.Add(btnApprove);
             groupBox1.Controls.Add(dgvRequests);
-            groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             groupBox1.Location = new System.Drawing.Point(5, 5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(420, 410);
+            groupBox1.Size = new System.Drawing.Size(396, 393);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Information Update Requests";
@@ -59,38 +61,52 @@
             dgvRequests.BackgroundColor = System.Drawing.SystemColors.Window;
             dgvRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRequests.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            dgvRequests.Location = new System.Drawing.Point(12, 25);
+            dgvRequests.Location = new System.Drawing.Point(10, 22);
             dgvRequests.MultiSelect = false;
             dgvRequests.Name = "dgvRequests";
             dgvRequests.ReadOnly = true;
             dgvRequests.RowHeadersWidth = 25;
             dgvRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvRequests.Size = new System.Drawing.Size(396, 330);
+            dgvRequests.Size = new System.Drawing.Size(376, 320);
             dgvRequests.TabIndex = 0;
             // 
             // btnRefresh
             // 
             btnRefresh.BackColor = System.Drawing.Color.SteelBlue;
             btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnRefresh.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            btnRefresh.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             btnRefresh.ForeColor = System.Drawing.Color.White;
-            btnRefresh.Location = new System.Drawing.Point(12, 365);
+            btnRefresh.Location = new System.Drawing.Point(10, 350);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new System.Drawing.Size(85, 33);
+            btnRefresh.Size = new System.Drawing.Size(75, 33);
             btnRefresh.TabIndex = 3;
             btnRefresh.Text = "🔄 Refresh";
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
             // 
+            // btnHistory
+            // 
+            btnHistory.BackColor = System.Drawing.Color.DimGray;
+            btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnHistory.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            btnHistory.ForeColor = System.Drawing.Color.White;
+            btnHistory.Location = new System.Drawing.Point(90, 350);
+            btnHistory.Name = "btnHistory";
+            btnHistory.Size = new System.Drawing.Size(75, 33);
+            btnHistory.TabIndex = 4;
+            btnHistory.Text = "📜 History";
+            btnHistory.UseVisualStyleBackColor = false;
+            btnHistory.Click += btnHistory_Click;
+            // 
             // btnApprove
             // 
             btnApprove.BackColor = System.Drawing.Color.ForestGreen;
             btnApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnApprove.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            btnApprove.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             btnApprove.ForeColor = System.Drawing.Color.White;
-            btnApprove.Location = new System.Drawing.Point(210, 365);
+            btnApprove.Location = new System.Drawing.Point(170, 350);
             btnApprove.Name = "btnApprove";
-            btnApprove.Size = new System.Drawing.Size(95, 33);
+            btnApprove.Size = new System.Drawing.Size(100, 33);
             btnApprove.TabIndex = 1;
             btnApprove.Text = "✓ Approve";
             btnApprove.UseVisualStyleBackColor = false;
@@ -100,11 +116,11 @@
             // 
             btnReject.BackColor = System.Drawing.Color.Crimson;
             btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnReject.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            btnReject.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             btnReject.ForeColor = System.Drawing.Color.White;
-            btnReject.Location = new System.Drawing.Point(312, 365);
+            btnReject.Location = new System.Drawing.Point(275, 350);
             btnReject.Name = "btnReject";
-            btnReject.Size = new System.Drawing.Size(96, 33);
+            btnReject.Size = new System.Drawing.Size(111, 33);
             btnReject.TabIndex = 2;
             btnReject.Text = "✗ Reject";
             btnReject.UseVisualStyleBackColor = false;
@@ -116,7 +132,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             Controls.Add(groupBox1);
             Name = "Information_Update";
-            Size = new System.Drawing.Size(430, 420);
+            Size = new System.Drawing.Size(406, 403);
             Load += Information_Update_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvRequests).EndInit();
@@ -130,5 +146,6 @@
         private System.Windows.Forms.Button btnApprove;
         private System.Windows.Forms.Button btnReject;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnHistory;
     }
 }

@@ -160,8 +160,8 @@
             // 
             // dividerPanel
             // 
-            this.dividerPanel.BackColor = System.Drawing.Color.Gray;
-            this.dividerPanel.Location = new System.Drawing.Point(0, 86);
+            this.dividerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.dividerPanel.Location = new System.Drawing.Point(0, 83);
             this.dividerPanel.Name = "dividerPanel";
             this.dividerPanel.Size = new System.Drawing.Size(635, 1);
             this.dividerPanel.TabIndex = 31;

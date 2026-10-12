@@ -89,6 +89,11 @@ namespace BarangayDocumentRequestSysytem
             LoadControl(new DocumentRequest());
         }
 
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            LoadControl(new ReportsControl());
+        }
+
         private void btnSetting_Click_1(object sender, EventArgs e)
         {
             LoadControl(new Setting());
