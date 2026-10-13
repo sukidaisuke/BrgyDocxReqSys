@@ -30,22 +30,14 @@
             this.lblAnnouncementsTitle = new System.Windows.Forms.Label();
             this.lblAnnouncementsDesc = new System.Windows.Forms.Label();
 
-            // Documents Card
-            this.cardDocuments = new System.Windows.Forms.Panel();
-            this.pnlDocAccent = new System.Windows.Forms.Panel();
-            this.lblDocumentsTitle = new System.Windows.Forms.Label();
-            this.lblDocumentsDesc = new System.Windows.Forms.Label();
-
             this.PanelContainer.SuspendLayout();
             this.NavPanel.SuspendLayout();
             this.cardAnnouncements.SuspendLayout();
-            this.cardDocuments.SuspendLayout();
             this.SuspendLayout();
 
             // 
             // PanelContainer
             // 
-            this.PanelContainer.Controls.Add(this.cardDocuments);
             this.PanelContainer.Controls.Add(this.cardAnnouncements);
             this.PanelContainer.Controls.Add(this.dividerPanel);
             this.PanelContainer.Controls.Add(this.NavPanel);
@@ -175,57 +167,6 @@
             this.lblAnnouncementsDesc.Text = "Create, publish, and update barangay notices fetched to all resident accounts.";
 
             // 
-            // cardDocuments
-            // 
-            this.cardDocuments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cardDocuments.BackColor = System.Drawing.Color.White;
-            this.cardDocuments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cardDocuments.Controls.Add(this.pnlDocAccent);
-            this.cardDocuments.Controls.Add(this.lblDocumentsDesc);
-            this.cardDocuments.Controls.Add(this.lblDocumentsTitle);
-            this.cardDocuments.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cardDocuments.Location = new System.Drawing.Point(24, 295);
-            this.cardDocuments.Name = "cardDocuments";
-            this.cardDocuments.Size = new System.Drawing.Size(584, 110);
-            this.cardDocuments.TabIndex = 35;
-
-            // 
-            // pnlDocAccent
-            // 
-            this.pnlDocAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(85)))), ((int)(((byte)(105)))));
-            this.pnlDocAccent.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlDocAccent.Location = new System.Drawing.Point(0, 0);
-            this.pnlDocAccent.Name = "pnlDocAccent";
-            this.pnlDocAccent.Size = new System.Drawing.Size(5, 108);
-            this.pnlDocAccent.TabIndex = 2;
-
-            // 
-            // lblDocumentsTitle
-            // 
-            this.lblDocumentsTitle.AutoSize = true;
-            this.lblDocumentsTitle.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Bold);
-            this.lblDocumentsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.lblDocumentsTitle.Location = new System.Drawing.Point(24, 22);
-            this.lblDocumentsTitle.Name = "lblDocumentsTitle";
-            this.lblDocumentsTitle.Size = new System.Drawing.Size(308, 23);
-            this.lblDocumentsTitle.TabIndex = 0;
-            this.lblDocumentsTitle.Text = "📄   READY-TO-PRINT DOCUMENTS";
-
-            // 
-            // lblDocumentsDesc
-            // 
-            this.lblDocumentsDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDocumentsDesc.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblDocumentsDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
-            this.lblDocumentsDesc.Location = new System.Drawing.Point(26, 54);
-            this.lblDocumentsDesc.Name = "lblDocumentsDesc";
-            this.lblDocumentsDesc.Size = new System.Drawing.Size(534, 38);
-            this.lblDocumentsDesc.TabIndex = 1;
-            this.lblDocumentsDesc.Text = "Generate official document samples pre-filled with the requestee's information.";
-
-            // 
             // ReportsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -239,8 +180,6 @@
             this.NavPanel.PerformLayout();
             this.cardAnnouncements.ResumeLayout(false);
             this.cardAnnouncements.PerformLayout();
-            this.cardDocuments.ResumeLayout(false);
-            this.cardDocuments.PerformLayout();
             this.ResumeLayout(false);
         }
 
@@ -257,10 +196,5 @@
         private System.Windows.Forms.Panel pnlAnnounceAccent;
         private System.Windows.Forms.Label lblAnnouncementsTitle;
         private System.Windows.Forms.Label lblAnnouncementsDesc;
-
-        private System.Windows.Forms.Panel cardDocuments;
-        private System.Windows.Forms.Panel pnlDocAccent;
-        private System.Windows.Forms.Label lblDocumentsTitle;
-        private System.Windows.Forms.Label lblDocumentsDesc;
     }
 }

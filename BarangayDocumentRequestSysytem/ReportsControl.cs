@@ -23,7 +23,6 @@ namespace BarangayDocumentRequestSysytem
 
             // Register hover & click events for all inner elements
             RegisterCardEvents(cardAnnouncements, CardAnnouncements_Click);
-            RegisterCardEvents(cardDocuments, CardDocuments_Click);
         }
 
         private void ReportsControl_Load(object sender, EventArgs e)
@@ -91,14 +90,6 @@ namespace BarangayDocumentRequestSysytem
             using (AnnouncementsForm announcementsForm = new AnnouncementsForm())
             {
                 announcementsForm.ShowDialog(this.FindForm());
-            }
-        }
-
-        private void CardDocuments_Click(object sender, EventArgs e)
-        {
-            using (ReadyToPrintForm docsForm = new ReadyToPrintForm())
-            {
-                docsForm.ShowDialog(this.FindForm());
             }
         }
 
