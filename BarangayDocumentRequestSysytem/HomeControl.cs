@@ -10,11 +10,42 @@ namespace BarangayDocumentRequestSysytem
     {
         private readonly string connectionString = "Server=localhost;Port=3306;Database=barangay_db;Uid=root;Pwd=;";
 
+        // Raised when the resident clicks a "View All >" link; UserPage switches the screen.
+        public event EventHandler ViewAllRequestsClicked;
+        public event EventHandler ViewAllAnnouncementsClicked;
+
+        private Label lblNoRequests;
+
         public HomeControl()
         {
             InitializeComponent();
             // Set live date immediately upon creation
             UpdateHeaderDate();
+
+            // Shown in place of the recent-request rows when the resident has no requests yet
+            lblNoRequests = new Label
+            {
+                Name = "lblNoRequests",
+                Text = "No requests yet.",
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Gill Sans MT", 10.5F, FontStyle.Italic),
+                ForeColor = Color.DimGray,
+                BackColor = Color.Transparent,
+                Location = new Point(10, 111),
+                Size = new Size(255, 64),
+                Visible = false
+            };
+            panel5.Controls.Add(lblNoRequests);
+
+            linkLabel1.LinkClicked += (s, e) => ViewAllRequestsClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void SetRequestRowsVisible(bool row1, bool row2, bool row3)
+        {
+            panel8.Visible = row1;
+            panel11.Visible = row2;
+            panel10.Visible = row3;
         }
 
         private void HomeControl_Load(object sender, EventArgs e)
@@ -44,6 +75,8 @@ namespace BarangayDocumentRequestSysytem
                 SetLabelText("lblCompletedCount", "0");
                 SetLabelText("lblRejectedCount", "0");
                 SetEmptyAnnouncementState();
+                SetRequestRowsVisible(false, false, false);
+                lblNoRequests.Visible = true;
                 return;
             }
 
@@ -77,8 +110,8 @@ namespace BarangayDocumentRequestSysytem
                     string countQuery = @"
                         SELECT 
                             COUNT(*) AS TotalCount,
-                            SUM(CASE WHEN LOWER(status) = 'pending' THEN 1 ELSE 0 END) AS PendingCount,
-                            SUM(CASE WHEN LOWER(status) IN ('completed', 'approved') THEN 1 ELSE 0 END) AS CompletedCount,
+                            SUM(CASE WHEN LOWER(status) IN ('pending', 'in process') THEN 1 ELSE 0 END) AS PendingCount,
+                            SUM(CASE WHEN LOWER(status) IN ('completed', 'approved', 'ready for pickup') THEN 1 ELSE 0 END) AS CompletedCount,
                             SUM(CASE WHEN LOWER(status) IN ('rejected', 'disapproved') THEN 1 ELSE 0 END) AS RejectedCount
                         FROM documentrequests 
                         WHERE user_id = @UserId";
@@ -145,6 +178,12 @@ namespace BarangayDocumentRequestSysytem
                                 SetLabelText($"lblReq{i}Date", "");
                                 UpdateStatusBadge($"lblReq{i}Status", "");
                             }
+
+                            // Only show the rows that actually have a request;
+                            // with none at all, show "No requests yet."
+                            int shown = index - 1;
+                            SetRequestRowsVisible(shown >= 1, shown >= 2, shown >= 3);
+                            lblNoRequests.Visible = shown == 0;
                         }
                     }
 
@@ -285,6 +324,12 @@ namespace BarangayDocumentRequestSysytem
             switch (normalizedStatus)
             {
                 // GREEN: Completed / Approved / Processed
+                case "in process":
+                    backColor = Color.FromArgb(219, 234, 254); // Soft Blue
+                    textColor = Color.FromArgb(30, 64, 175);
+                    break;
+
+                case "ready for pickup":
                 case "completed":
                 case "approved":
                 case "processed":
@@ -328,7 +373,7 @@ namespace BarangayDocumentRequestSysytem
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            ViewAllAnnouncementsClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

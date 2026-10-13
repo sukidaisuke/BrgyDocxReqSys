@@ -259,7 +259,7 @@
             Controls.Add(NavPanel);
             Controls.Add(PanelContainer);
             Name = "DashboardTest";
-            Text = "DashboardTest";
+            Text = "Admin Panel";
             NavPanel.ResumeLayout(false);
             NavPanel.PerformLayout();
             panel1.ResumeLayout(false);

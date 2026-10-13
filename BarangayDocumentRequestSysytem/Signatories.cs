@@ -47,7 +47,7 @@ namespace BarangayDocumentRequestSysytem
                 try
                 {
                     conn.Open();
-                    string query = "SELECT signatory_id AS 'ID', position AS 'Position / Title', official_name AS 'Official Name', status AS 'Status' FROM signatories ORDER BY signatory_id ASC";
+                    string query = "SELECT signatory_id AS 'ID', position AS 'Position / Title', official_name AS 'Official Name' FROM signatories ORDER BY signatory_id ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
                     {
                         DataTable dt = new DataTable();
@@ -80,9 +80,6 @@ namespace BarangayDocumentRequestSysytem
                     cmbPosition.Text = row.Cells["Position / Title"].Value?.ToString() ?? "";
                     txtName.Text = row.Cells["Official Name"].Value?.ToString() ?? "";
 
-                    string status = row.Cells["Status"].Value?.ToString() ?? "Active";
-                    cmbStatus.SelectedItem = cmbStatus.Items.Contains(status) ? status : "Active";
-
                     btnDelete.Enabled = true;
                     btnSave.Text = "💾 Update";
                 }
@@ -93,11 +90,10 @@ namespace BarangayDocumentRequestSysytem
         {
             string position = cmbPosition.Text.Trim();
             string name = txtName.Text.Trim();
-            string status = cmbStatus.SelectedItem?.ToString() ?? "Active";
 
-            if (string.IsNullOrWhiteSpace(position) || string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(position) || string.IsNullOrWhiteSpace(name) || cmbPosition.SelectedIndex < 0)
             {
-                MessageBox.Show("Please select/enter Position and Official Name.", "Input Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please choose a Position (Captain, Secretary or Treasurer) and enter the Official Name.", "Input Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -110,19 +106,18 @@ namespace BarangayDocumentRequestSysytem
 
                     if (selectedSignatoryId == -1)
                     {
-                        string query = "INSERT INTO signatories (position, official_name, status) VALUES (@pos, @name, @status)";
+                        string query = "INSERT INTO signatories (position, official_name, status) VALUES (@pos, @name, 'Active')";
                         cmd = new MySqlCommand(query, conn);
                     }
                     else
                     {
-                        string query = "UPDATE signatories SET position = @pos, official_name = @name, status = @status WHERE signatory_id = @id";
+                        string query = "UPDATE signatories SET position = @pos, official_name = @name WHERE signatory_id = @id";
                         cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@id", selectedSignatoryId);
                     }
 
                     cmd.Parameters.AddWithValue("@pos", position);
                     cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@status", status);
 
                     cmd.ExecuteNonQuery();
 
@@ -181,7 +176,6 @@ namespace BarangayDocumentRequestSysytem
             cmbPosition.SelectedIndex = -1;
             cmbPosition.Text = "";
             txtName.Clear();
-            cmbStatus.SelectedIndex = 0;
             btnDelete.Enabled = false;
             btnSave.Text = "➕ Add New";
             if (dgvSignatories.Rows.Count > 0)

@@ -18,6 +18,15 @@ namespace BarangayDocumentRequestSysytem
         {
             InitializeComponent();
 
+            // Approve now means "open the document, edit, sign and release it"
+            btnApprove.HeaderText = "Prepare";
+            btnApprove.Text = "📝";
+            btnModalApprove.Text = "📝 Prepare Document";
+
+            // Processing / ready / rejected / finished requests now have their own pages in the sidebar
+            btnRequestHistory.Visible = false;
+            pendingReqLBL.Text = "Pending Requests";
+
             this.Load += DocumentRequest_Load;
             this.VisibleChanged += DocumentRequest_VisibleChanged;
         }
@@ -71,7 +80,7 @@ namespace BarangayDocumentRequestSysytem
                             DATE_FORMAT(r.request_at, '%M %d, %Y • %h:%i %p') AS formatted_date
                         FROM documentrequests r 
                         LEFT JOIN users u ON r.user_id = u.user_id 
-                        WHERE LOWER(r.status) = 'pending'
+                        WHERE (r.status IS NULL OR TRIM(r.status) = '' OR LOWER(r.status) = 'pending')
                         ORDER BY r.request_at DESC, r.request_id DESC";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -124,83 +133,27 @@ namespace BarangayDocumentRequestSysytem
             }
             else if (colName == "btnApprove")
             {
-                DialogResult dialogResult = MessageBox.Show(
-                    $"Are you sure you want to APPROVE request #{requestId}?",
-                    "Confirm Approval",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (dialogResult == DialogResult.Yes)
-                {
-                    UpdateRequestStatus(requestId, "Approved");
-                }
+                OpenDocumentEditor(requestId);
             }
         }
 
         // --- 3. Open Request Details Floating Modal ---
         private void ShowRequestDetailsModal(int requestId)
         {
-            currentSelectedRequestId = requestId;
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (RequestDetailsForm details = new RequestDetailsForm(requestId, true))
             {
-                try
+                details.ShowDialog(this.FindForm());
+
+                if (details.Action == RequestDetailsForm.ChosenAction.Prepare)
                 {
-                    conn.Open();
-                    string query = @"
-                        SELECT r.request_id, r.document_type, r.purpose, r.attachment_name, r.attachment_data,
-                               r.status, r.request_at, 
-                               COALESCE(NULLIF(TRIM(CONCAT(u.first_name, ' ', u.last_name)), ''), r.username, 'Resident') AS resident_name
-                        FROM documentrequests r
-                        LEFT JOIN users u ON r.user_id = u.user_id
-                        WHERE r.request_id = @id";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", requestId);
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                lblModalTitle.Text = $"📄 Request Details (#{requestId})";
-                                lblDetailResident.Text = $"Resident: {reader["resident_name"]}";
-                                lblDetailDocType.Text = $"Document: {reader["document_type"]}";
-                                lblDetailDate.Text = $"Requested: {Convert.ToDateTime(reader["request_at"]):MMM dd, yyyy • hh:mm tt}";
-
-                                string purposeText = reader["purpose"]?.ToString();
-                                txtDetailPurpose.Text = string.IsNullOrWhiteSpace(purposeText) ? "No purpose specified." : purposeText;
-
-                                string attachName = reader["attachment_name"]?.ToString();
-                                lblAttachmentName.Text = string.IsNullOrWhiteSpace(attachName) ? "(No attachment provided)" : attachName;
-
-                                if (picAttachment.Image != null)
-                                {
-                                    picAttachment.Image.Dispose();
-                                    picAttachment.Image = null;
-                                }
-
-                                if (reader["attachment_data"] != DBNull.Value)
-                                {
-                                    byte[] imgBytes = (byte[])reader["attachment_data"];
-                                    if (imgBytes.Length > 0)
-                                    {
-                                        using (MemoryStream ms = new MemoryStream(imgBytes))
-                                        {
-                                            picAttachment.Image = Image.FromStream(ms);
-                                        }
-                                    }
-                                }
-
-                                pnlModalOverlay.BringToFront();
-                                pnlModalOverlay.Visible = true;
-                            }
-                        }
-                    }
+                    OpenDocumentEditor(requestId);
                 }
-                catch (Exception ex)
+                else if (details.Action == RequestDetailsForm.ChosenAction.Decline)
                 {
-                    MessageBox.Show($"Error fetching request details: {ex.Message}", "Database Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show(
+                        $"Are you sure you want to DECLINE request #{requestId}?",
+                        "Confirm Rejection", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dr == DialogResult.Yes) UpdateRequestStatus(requestId, "Rejected");
                 }
             }
         }
@@ -221,8 +174,9 @@ namespace BarangayDocumentRequestSysytem
         {
             if (currentSelectedRequestId > 0)
             {
-                UpdateRequestStatus(currentSelectedRequestId, "Approved");
+                int id = currentSelectedRequestId;
                 BtnModalClose_Click(sender, e);
+                OpenDocumentEditor(id);
             }
         }
 
@@ -233,6 +187,17 @@ namespace BarangayDocumentRequestSysytem
                 UpdateRequestStatus(currentSelectedRequestId, "Rejected");
                 BtnModalClose_Click(sender, e);
             }
+        }
+
+        // --- Open the document editor (edit, sign, print, release) ---
+        private void OpenDocumentEditor(int requestId)
+        {
+            using (DocumentEditorForm editor = new DocumentEditorForm(requestId))
+            {
+                editor.ShowDialog(this.FindForm());
+            }
+            LoadPendingRequests();
+            Db.RaiseRequestsChanged();
         }
 
         // --- 5. Update Request Status ---
@@ -255,6 +220,7 @@ namespace BarangayDocumentRequestSysytem
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     LoadPendingRequests();
+                    Db.RaiseRequestsChanged();
                 }
                 catch (Exception ex)
                 {
@@ -303,7 +269,7 @@ namespace BarangayDocumentRequestSysytem
                             DATE_FORMAT(r.request_at, '%b %d, %Y • %h:%i %p') AS formatted_date
                         FROM documentrequests r 
                         LEFT JOIN users u ON r.user_id = u.user_id 
-                        WHERE LOWER(r.status) != 'pending'");
+                        WHERE LOWER(r.status) NOT IN ('pending', 'in process', 'ready for pickup')");
 
                     if (!filter.Equals("All", StringComparison.OrdinalIgnoreCase))
                     {

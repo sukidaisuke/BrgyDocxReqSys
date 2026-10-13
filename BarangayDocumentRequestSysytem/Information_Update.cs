@@ -46,9 +46,9 @@ namespace BarangayDocumentRequestSysytem
                         dgvRequests.DataSource = dt;
 
                         // Hide the request_id column visually, but keep it available in code
-                        if (dgvRequests.Columns["request_id"] != null)
+                        if (dgvRequests.Columns["request_id"] is DataGridViewColumn requestIdCol)
                         {
-                            dgvRequests.Columns["request_id"].Visible = false;
+                            requestIdCol.Visible = false;
                         }
                     }
                     catch (Exception ex)

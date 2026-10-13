@@ -29,6 +29,28 @@ namespace BarangayDocumentRequestSysytem
         private void button2_Click(object sender, EventArgs e)
         {
 
+            // 0. Required fields
+            if (string.IsNullOrWhiteSpace(createUsername.Text) || string.IsNullOrWhiteSpace(firstName.Text) ||
+                string.IsNullOrWhiteSpace(lastName.Text) || string.IsNullOrWhiteSpace(createPassword.Text))
+            {
+                MessageBox.Show("Please fill in your username, name and password.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (securityQuestions.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please choose a security question.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                securityQuestions.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(securityAnswer.Text))
+            {
+                MessageBox.Show("Please answer your security question. You will need it if you forget your password.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                securityAnswer.Focus();
+                return;
+            }
+
             // 1. Check if passwords match before touching the database
             if (createPassword.Text != confirmPassword.Text)
             {
@@ -43,6 +65,7 @@ namespace BarangayDocumentRequestSysytem
             string connectionString = "Server=localhost;Database=barangay_db;Uid=root;Pwd=;";
 
             // 3. Insert data into MySQL
+            bool created = false;
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
@@ -67,16 +90,26 @@ namespace BarangayDocumentRequestSysytem
                         cmd.Parameters.AddWithValue("@purok", purokNumber.Text);
                         cmd.Parameters.AddWithValue("@house", houseNumber.Text);
                         cmd.Parameters.AddWithValue("@secQ", securityQuestions.SelectedItem?.ToString());
-                        cmd.Parameters.AddWithValue("@secA", securityAnswer.Text);
+                        cmd.Parameters.AddWithValue("@secA", securityAnswer.Text.Trim());
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        created = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+
+            // After the success pop-up, send the new resident to the login page
+            if (created)
+            {
+                this.Hide();
+                Login Lf = new Login();
+                Lf.ShowDialog();
+                this.Close();
             }
         }
 

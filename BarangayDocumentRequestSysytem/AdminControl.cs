@@ -69,7 +69,7 @@ namespace BarangayDocumentRequestSysytem
         private void FetchAdminMetrics()
         {
             int totalResidents = GetDatabaseCount("SELECT COUNT(*) FROM users WHERE LOWER(role) = 'user' OR role IS NULL OR role = ''");
-            int pendingRequests = GetDatabaseCount("SELECT COUNT(*) FROM documentrequests WHERE LOWER(status) = 'pending'");
+            int pendingRequests = GetDatabaseCount("SELECT COUNT(*) FROM documentrequests WHERE LOWER(status) IN ('pending', 'in process')");
             int completedRequests = GetDatabaseCount("SELECT COUNT(*) FROM documentrequests WHERE LOWER(status) IN ('approved', 'completed', 'processed', 'ready for pickup')");
             int totalAnnouncements = GetDatabaseCount("SELECT COUNT(*) FROM announcements");
 

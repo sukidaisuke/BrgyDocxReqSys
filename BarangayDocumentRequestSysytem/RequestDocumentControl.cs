@@ -11,11 +11,157 @@ namespace BarangayDocumentRequestSysytem
     public partial class RequestDocumentControl : UserControl
     {
         private string connectionString = "Server=localhost;Database=barangay_db;Uid=root;Pwd=;";
-        private string selectedFilePath = string.Empty;
+
+        // One row per requirement of the selected document (e.g. "Valid ID", "Proof of Residency")
+        private class RequirementRow
+        {
+            public string Name;
+            public string FilePath = "";
+            public Label NameLabel;
+            public Label StatusLabel;
+            public Button AttachButton;
+        }
+
+        private readonly System.Collections.Generic.List<RequirementRow> requirementRows = new System.Collections.Generic.List<RequirementRow>();
+        private Panel pnlRequirementFiles;
 
         public RequestDocumentControl()
         {
             InitializeComponent();
+            SetupRequirementUploader();
+        }
+
+        // The old single "Attach File" button is replaced by one attach row per requirement.
+        private void SetupRequirementUploader()
+        {
+            AutoScroll = true;
+            panel3.Visible = false;     // old single-file controls (kept only so the designer file still compiles)
+
+            pnlRequirementFiles = new Panel
+            {
+                Name = "pnlRequirementFiles",
+                Location = new Point(0, 24),
+                Size = new Size(panel2.Width, 0),
+                BackColor = Color.Transparent
+            };
+            panel2.Controls.Add(pnlRequirementFiles);
+            LayoutForRows();
+        }
+
+        // Splits the requirements text from the database into individual requirement names
+        private static System.Collections.Generic.List<string> ParseRequirements(string text)
+        {
+            var result = new System.Collections.Generic.List<string>();
+            if (string.IsNullOrWhiteSpace(text)) return result;
+
+            string[] parts = text.Split(new[] { '\r', '\n', ',', ';', '|', '\u2022' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string raw in parts)
+            {
+                string item = raw.Trim().TrimStart('-', '*', ' ').Trim();
+                // strip "1." / "2)" numbering
+                int i = 0;
+                while (i < item.Length && char.IsDigit(item[i])) i++;
+                if (i > 0 && i < item.Length && (item[i] == '.' || item[i] == ')')) item = item.Substring(i + 1).Trim();
+
+                if (item.Length == 0) continue;
+                if (item.Equals("none", StringComparison.OrdinalIgnoreCase) || item.Equals("n/a", StringComparison.OrdinalIgnoreCase)) continue;
+                result.Add(item);
+            }
+            return result;
+        }
+
+        private void BuildRequirementRows(System.Collections.Generic.List<string> names)
+        {
+            foreach (RequirementRow r in requirementRows)
+            {
+                r.NameLabel.Dispose();
+                r.StatusLabel.Dispose();
+                r.AttachButton.Dispose();
+            }
+            requirementRows.Clear();
+            pnlRequirementFiles.Controls.Clear();
+
+            int y = 2;
+            foreach (string name in names)
+            {
+                RequirementRow row = new RequirementRow { Name = name };
+
+                row.NameLabel = new Label
+                {
+                    Text = name + ":",
+                    AutoSize = false,
+                    Location = new Point(6, y + 5),
+                    Size = new Size(165, 20),
+                    Font = new Font("Gill Sans MT", 9.5F, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(55, 65, 81),
+                    AutoEllipsis = true
+                };
+                row.StatusLabel = new Label
+                {
+                    Text = "No file attached.",
+                    AutoSize = false,
+                    Location = new Point(175, y + 6),
+                    Size = new Size(215, 18),
+                    ForeColor = SystemColors.ControlDarkDark,
+                    AutoEllipsis = true
+                };
+                row.AttachButton = new Button
+                {
+                    Text = "⬆ Attach File",
+                    Location = new Point(399, y + 2),
+                    Size = new Size(90, 25),
+                    UseVisualStyleBackColor = true
+                };
+                RequirementRow captured = row;
+                row.AttachButton.Click += (s, e) => PickFileForRow(captured);
+
+                pnlRequirementFiles.Controls.Add(row.NameLabel);
+                pnlRequirementFiles.Controls.Add(row.StatusLabel);
+                pnlRequirementFiles.Controls.Add(row.AttachButton);
+                requirementRows.Add(row);
+                y += 32;
+            }
+
+            LayoutForRows();
+        }
+
+        // Grow the requirements box (and the form card below it) to fit the attach rows
+        private void LayoutForRows()
+        {
+            int rowsHeight = Math.Max(requirementRows.Count * 32 + 4, 0);
+            pnlRequirementFiles.Height = rowsHeight;
+            pnlRequirementFiles.Width = panel2.Width;
+
+            panel2.Height = Math.Max(63, 26 + rowsHeight);
+            btnSubmitRequest.Top = panel2.Bottom + 12;
+            panel1.Height = btnSubmitRequest.Bottom + 14;
+            AutoScrollMinSize = new Size(0, panel1.Bottom + 20);
+        }
+
+        private void PickFileForRow(RequirementRow row)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Document Files (*.pdf;*.docx;*.doc;*.jpg;*.jpeg;*.png)|*.pdf;*.docx;*.doc;*.jpg;*.jpeg;*.png|All Files (*.*)|*.*";
+                openFileDialog.Title = "Attach: " + row.Name;
+
+                if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+
+                // Keep attachments under 5 MB so they can be stored in the database
+                long sizeBytes = new FileInfo(openFileDialog.FileName).Length;
+                if (sizeBytes > 5 * 1024 * 1024)
+                {
+                    MessageBox.Show(
+                        $"This file is {sizeBytes / (1024.0 * 1024.0):0.0} MB. Please choose a file smaller than 5 MB.",
+                        "File Too Large", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                row.FilePath = openFileDialog.FileName;
+                row.StatusLabel.Text = Path.GetFileName(row.FilePath);
+                row.StatusLabel.ForeColor = Color.FromArgb(22, 101, 52);
+                row.AttachButton.Text = "↻ Change";
+            }
         }
 
         private void RequestDocumentControl_Load(object sender, EventArgs e)
@@ -116,6 +262,7 @@ namespace BarangayDocumentRequestSysytem
                 lblRequirementsList.Text = "None";
                 lblFeeAmount.Text = "₱0.00";
                 btnAttachFile.Enabled = false;
+                BuildRequirementRows(new System.Collections.Generic.List<string>());
                 txtOtherDocType.Enabled = false;
                 txtOtherDocType.BackColor = Color.FromArgb(243, 244, 246);
                 return;
@@ -131,6 +278,7 @@ namespace BarangayDocumentRequestSysytem
                 lblRequirementsList.Text = "Supporting documents for your request";
                 lblFeeAmount.Text = "₱50.00";
                 btnAttachFile.Enabled = true;
+                BuildRequirementRows(new System.Collections.Generic.List<string> { "Supporting document" });
                 cmbPurpose.Items.Add("Other Purpose");
                 return;
             }
@@ -144,6 +292,16 @@ namespace BarangayDocumentRequestSysytem
                 lblRequirementsList.Text = selectedDoc.Requirements;
                 lblFeeAmount.Text = selectedDoc.Price > 0 ? $"₱{selectedDoc.Price:N2}" : "FREE";
                 btnAttachFile.Enabled = selectedDoc.RequiresAttachment;
+
+                // One attach field per requirement (ID, Proof of Residency, ...)
+                var names = new System.Collections.Generic.List<string>();
+                if (selectedDoc.RequiresAttachment)
+                {
+                    names = ParseRequirements(selectedDoc.Requirements);
+                    if (names.Count == 0) names.Add("Supporting document");
+                }
+                BuildRequirementRows(names);
+
                 LoadPurposesForDocumentType(selectedDoc.Id);
             }
         }
@@ -237,11 +395,15 @@ namespace BarangayDocumentRequestSysytem
             }
 
             // 4. Attachment Check
-            if (btnAttachFile.Enabled && lblFileStatus.Text == "No file attached.")
+            foreach (RequirementRow row in requirementRows)
             {
-                MessageBox.Show("Please attach the required document(s) before submitting.", "Missing Information",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (string.IsNullOrEmpty(row.FilePath) || !File.Exists(row.FilePath))
+                {
+                    MessageBox.Show($"Please attach your \"{row.Name}\" before submitting.", "Missing Requirement",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    row.AttachButton.Focus();
+                    return;
+                }
             }
 
             // Resolve Document Type & Purpose String Values
@@ -252,15 +414,16 @@ namespace BarangayDocumentRequestSysytem
             // Determine final Purpose value to save into MySQL
             string finalPurpose = isOtherPurpose ? txtOtherPurpose.Text.Trim() : selectedPurposeStr;
 
-            // Read Attachment File Bytes
-            byte[] fileBytes = null;
-            string fileName = null;
-
-            if (!string.IsNullOrEmpty(selectedFilePath) && File.Exists(selectedFilePath))
+            // Read every attachment (one per requirement)
+            var attachments = new System.Collections.Generic.List<(string requirement, string fileName, byte[] data)>();
+            foreach (RequirementRow row in requirementRows)
             {
-                fileBytes = File.ReadAllBytes(selectedFilePath);
-                fileName = Path.GetFileName(selectedFilePath);
+                attachments.Add((row.Name, Path.GetFileName(row.FilePath), File.ReadAllBytes(row.FilePath)));
             }
+
+            // The first file is also kept in the old single-attachment columns for backward compatibility
+            byte[] fileBytes = attachments.Count > 0 ? attachments[0].data : null;
+            string fileName = attachments.Count > 0 ? attachments[0].fileName : null;
 
             // Database Operations
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -268,6 +431,7 @@ namespace BarangayDocumentRequestSysytem
                 try
                 {
                     conn.Open();
+                    Db.EnsureSchema(conn);
 
                     string countQuery = "SELECT COALESCE(MAX(user_req_no), 0) + 1 FROM documentrequests WHERE user_id = @UserId";
                     int nextUserReqNo = 1;
@@ -296,16 +460,41 @@ namespace BarangayDocumentRequestSysytem
                         cmd.Parameters.AddWithValue("@FileData", fileBytes == null ? DBNull.Value : (object)fileBytes);
 
                         cmd.ExecuteNonQuery();
+                        long newRequestId = cmd.LastInsertedId;
 
-                        MessageBox.Show($"Your request has been submitted!\nReference Number: {referenceNo}",
+                        // Save every uploaded requirement
+                        foreach (var att in attachments)
+                        {
+                            using (MySqlCommand attCmd = new MySqlCommand(
+                                @"INSERT INTO request_attachments (request_id, requirement_name, file_name, file_data)
+                                  VALUES (@rid, @req, @fname, @fdata)", conn))
+                            {
+                                attCmd.Parameters.AddWithValue("@rid", newRequestId);
+                                attCmd.Parameters.AddWithValue("@req", att.requirement);
+                                attCmd.Parameters.AddWithValue("@fname", att.fileName);
+                                attCmd.Parameters.AddWithValue("@fdata", att.data);
+                                attCmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        // Create the document draft (filled with the resident's info) and store it in the database
+                        try
+                        {
+                            DocumentTemplate.SaveDraft(conn, (int)newRequestId, currentUserId, finalDocumentType, finalPurpose);
+                        }
+                        catch (Exception draftEx)
+                        {
+                            Console.WriteLine("Draft creation failed: " + draftEx.Message);
+                        }
+
+                        MessageBox.Show($"Your request has been submitted!\nReference Number: {referenceNo}\n\nYou can track its status under My Requests.",
                                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Reset Form Controls
                         cmbDocumentType.SelectedIndex = 0;
                         cmbPurpose.SelectedIndex = 0;
                         txtOtherDocType.Clear();
-                        lblFileStatus.Text = "No file attached.";
-                        selectedFilePath = string.Empty;
+                        BuildRequirementRows(new System.Collections.Generic.List<string>());
                     }
                 }
                 catch (Exception ex)
@@ -315,20 +504,9 @@ namespace BarangayDocumentRequestSysytem
             }
         }
 
-        private void btnAttachFile_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Document Files (*.pdf;*.docx;*.doc;*.jpg;*.png)|*.pdf;*.docx;*.doc;*.jpg;*.png|PDF Files (*.pdf)|*.pdf|Word Documents (*.docx;*.doc)|*.docx;*.doc|All Files (*.*)|*.*";
-                openFileDialog.Title = "Select Requirement Attachment";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    selectedFilePath = openFileDialog.FileName;
-                    lblFileStatus.Text = Path.GetFileName(selectedFilePath);
-                }
-            }
-        }
+        // Kept only because the designer file still references this handler; the attach buttons
+        // are now created per requirement (see BuildRequirementRows).
+        private void btnAttachFile_Click(object sender, EventArgs e) { }
 
         public class DocumentTypeItem
         {

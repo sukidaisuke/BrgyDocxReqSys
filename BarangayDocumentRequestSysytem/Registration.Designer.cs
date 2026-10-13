@@ -224,7 +224,8 @@
             // 
             securityQuestions.Font = new Font("Gill Sans MT", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             securityQuestions.FormattingEnabled = true;
-            securityQuestions.Items.AddRange(new object[] { "What is your favourite food?" });
+            securityQuestions.DropDownStyle = ComboBoxStyle.DropDownList;
+            securityQuestions.Items.AddRange(new object[] { "What is your favourite food?", "What was the name of your first pet?", "What is your mother's maiden name?", "What was the name of your elementary school?", "In what town or city were you born?", "What is the name of your best friend from childhood?" });
             securityQuestions.Location = new Point(113, 261);
             securityQuestions.Name = "securityQuestions";
             securityQuestions.Size = new Size(313, 24);

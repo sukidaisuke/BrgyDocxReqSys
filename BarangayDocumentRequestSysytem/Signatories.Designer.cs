@@ -25,8 +25,6 @@
             cmbPosition = new ComboBox();
             lblName = new Label();
             txtName = new TextBox();
-            lblStatus = new Label();
-            cmbStatus = new ComboBox();
             actionsTLP = new TableLayoutPanel();
             btnNew = new Button();
             btnSave = new Button();
@@ -77,7 +75,7 @@
             editorGB.ForeColor = Color.FromArgb(48, 44, 105);
             editorGB.Location = new Point(10, 220);
             editorGB.Name = "editorGB";
-            editorGB.Size = new Size(410, 190);
+            editorGB.Size = new Size(410, 150);
             editorGB.TabIndex = 1;
             editorGB.TabStop = false;
             editorGB.Text = "⚙️ Edit Selected Official";
@@ -91,16 +89,13 @@
             editorTLP.Controls.Add(cmbPosition, 1, 0);
             editorTLP.Controls.Add(lblName, 0, 1);
             editorTLP.Controls.Add(txtName, 1, 1);
-            editorTLP.Controls.Add(lblStatus, 0, 2);
-            editorTLP.Controls.Add(cmbStatus, 1, 2);
             editorTLP.Dock = DockStyle.Top;
             editorTLP.Location = new Point(3, 19);
             editorTLP.Name = "editorTLP";
-            editorTLP.RowCount = 3;
+            editorTLP.RowCount = 2;
             editorTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             editorTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            editorTLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            editorTLP.Size = new Size(404, 115);
+            editorTLP.Size = new Size(404, 77);
             editorTLP.TabIndex = 0;
             // 
             // lblPosition
@@ -120,7 +115,7 @@
             cmbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPosition.Font = new Font("Segoe UI", 9F);
             cmbPosition.FormattingEnabled = true;
-            cmbPosition.Items.AddRange(new object[] { "Barangay Captain", "Barangay Kagawad", "Barangay Secretary", "Barangay Treasurer", "SK Chairman", "Chief Tanod", "Lupon Tagapamayapa Member", "Barangay Health Worker (BHW)", "Barangay Nutrition Scholar (BNS)" });
+            cmbPosition.Items.AddRange(new object[] { "Barangay Captain", "Barangay Secretary", "Barangay Treasurer" });
             cmbPosition.Location = new Point(144, 7);
             cmbPosition.Name = "cmbPosition";
             cmbPosition.Size = new Size(257, 23);
@@ -146,29 +141,6 @@
             txtName.PlaceholderText = "e.g., Juan Dela Cruz";
             txtName.Size = new Size(257, 23);
             txtName.TabIndex = 3;
-            // 
-            // lblStatus
-            // 
-            lblStatus.Anchor = AnchorStyles.Left;
-            lblStatus.AutoSize = true;
-            lblStatus.ForeColor = Color.Black;
-            lblStatus.Location = new Point(3, 88);
-            lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(45, 15);
-            lblStatus.TabIndex = 4;
-            lblStatus.Text = "Status:";
-            // 
-            // cmbStatus
-            // 
-            cmbStatus.Anchor = AnchorStyles.Left;
-            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbStatus.Font = new Font("Segoe UI", 9F);
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "Active", "Inactive" });
-            cmbStatus.Location = new Point(144, 84);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(150, 23);
-            cmbStatus.TabIndex = 5;
             // 
             // actionsTLP
             // 
@@ -256,8 +228,6 @@
         private System.Windows.Forms.ComboBox cmbPosition;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.TableLayoutPanel actionsTLP;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnSave;

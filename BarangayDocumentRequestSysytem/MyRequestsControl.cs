@@ -16,6 +16,8 @@ namespace BarangayDocumentRequestSysytem
         public MyRequestsControl()
         {
             InitializeComponent();
+            cmbFilterStatus.Items.Insert(2, "In Process");
+            cmbFilterStatus.Items.Insert(3, "Ready for Pickup");
             ApplyCustomGridStyling();
 
             // Set live date immediately
@@ -283,6 +285,12 @@ namespace BarangayDocumentRequestSysytem
                         e.CellStyle.ForeColor = Color.FromArgb(180, 120, 20);
                         break;
 
+                    case "In Process":
+                        e.CellStyle.BackColor = Color.FromArgb(219, 234, 254); // Soft blue
+                        e.CellStyle.ForeColor = Color.FromArgb(30, 64, 175);
+                        break;
+
+                    case "Ready for Pickup":
                     case "Approved":
                     case "Completed":
                         e.CellStyle.BackColor = Color.FromArgb(220, 252, 231); // Soft green
