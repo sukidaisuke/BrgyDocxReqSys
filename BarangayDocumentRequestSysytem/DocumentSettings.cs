@@ -18,6 +18,48 @@ namespace BarangayDocumentRequestSysytem
         {
             InitializeComponent();
             ApplyCustomGridStyling();
+            AddManageButton();
+        }
+
+        // Second button beside "Save All": opens the add / rename / delete screen for types and purposes
+        private void AddManageButton()
+        {
+            btnSaveAll.Text = "💾 Save All Prices";
+            btnSaveAll.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+
+            Button btnManage = new Button
+            {
+                Name = "btnManageTypes",
+                Text = "⚙ Manage Types",
+                BackColor = Color.FromArgb(48, 44, 105),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = btnSaveAll.Font,
+                Cursor = Cursors.Hand,
+                Anchor = AnchorStyles.Bottom | AnchorStyles.Left,
+                UseVisualStyleBackColor = false
+            };
+            btnManage.FlatAppearance.BorderSize = 0;
+            btnManage.Click += (s, e) =>
+            {
+                using (ManageDocumentTypesForm form = new ManageDocumentTypesForm())
+                {
+                    form.ShowDialog(this);
+                }
+                LoadDocumentTypes();
+            };
+            bodyGB.Controls.Add(btnManage);
+
+            // Split the bottom row into two equal buttons, and keep them that way when the panel is resized
+            void LayoutButtons()
+            {
+                int usable = bodyGB.ClientSize.Width - 24;
+                int half = Math.Max((usable - 8) / 2, 80);
+                btnSaveAll.SetBounds(12, btnSaveAll.Top, half, btnSaveAll.Height);
+                btnManage.SetBounds(12 + half + 8, btnSaveAll.Top, half, btnSaveAll.Height);
+            }
+            bodyGB.Resize += (s, e) => LayoutButtons();
+            LayoutButtons();
         }
 
         private void DocumentSettings_Load(object sender, EventArgs e)

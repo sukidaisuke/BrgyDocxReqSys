@@ -13,11 +13,45 @@ namespace BarangayDocumentRequestSysytem
         public ProfileControl()
         {
             InitializeComponent();
+            AddAddressButton();
             LockAdminFields();
             if (lblDate != null)
             {
                 lblDate.Text = DateHelper.CurrentHeaderDate;
             }
+        }
+
+        private readonly ToolTip addressTip = new ToolTip();
+
+        // Residents can change their own address and contact number right away (no admin approval needed)
+        private void AddAddressButton()
+        {
+            Button btnAddress = new Button
+            {
+                Name = "btnUpdateAddress",
+                Text = "📍 My Address",
+                BackColor = Color.Azure,
+                ForeColor = Color.DarkSlateBlue,
+                Font = new Font("Gill Sans MT", 9F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Location = new Point(308, 9),
+                Size = new Size(100, 36),
+                UseVisualStyleBackColor = false
+            };
+            btnAddress.Click += (s, e) =>
+            {
+                if (UserSession.UserId <= 0) return;
+                using (AddressContactForm form = new AddressContactForm())
+                {
+                    if (form.ShowDialog(this) == DialogResult.OK)
+                    {
+                        LoadUserProfile();
+                        MessageBox.Show("Your address and contact number were updated.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            };
+            addressTip.SetToolTip(btnAddress, "Update your purok, house number and contact number");
+            panel2.Controls.Add(btnAddress);
+            btnAddress.BringToFront();
         }
 
         private void LockAdminFields()

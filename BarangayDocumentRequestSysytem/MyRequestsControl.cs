@@ -18,6 +18,8 @@ namespace BarangayDocumentRequestSysytem
             InitializeComponent();
             cmbFilterStatus.Items.Insert(2, "In Process");
             cmbFilterStatus.Items.Insert(3, "Ready for Pickup");
+            cmbFilterStatus.Items.Add("Cancelled");
+            AddManageColumns();
             ApplyCustomGridStyling();
 
             // Set live date immediately
@@ -25,6 +27,43 @@ namespace BarangayDocumentRequestSysytem
             {
                 lblDate.Text = DateHelper.CurrentHeaderDate;
             }
+        }
+
+        // Hidden request id + a "Manage" button so a resident can open, edit, cancel or re-request a row
+        private void AddManageColumns()
+        {
+            if (!dgvMyRequests.Columns.Contains("colRequestId"))
+            {
+                dgvMyRequests.Columns.Add(new DataGridViewTextBoxColumn { Name = "colRequestId", HeaderText = "ID", Visible = false });
+            }
+
+            if (!dgvMyRequests.Columns.Contains("colManage"))
+            {
+                DataGridViewButtonColumn manage = new DataGridViewButtonColumn
+                {
+                    Name = "colManage",
+                    HeaderText = "Action",
+                    Text = "Manage",
+                    UseColumnTextForButtonValue = true,
+                    FlatStyle = FlatStyle.Flat,
+                    FillWeight = 70F
+                };
+                dgvMyRequests.Columns.Add(manage);
+            }
+
+            dgvMyRequests.CellDoubleClick += (s, e) => { if (e.RowIndex >= 0) OpenRequest(e.RowIndex); };
+        }
+
+        private void OpenRequest(int rowIndex)
+        {
+            object idValue = dgvMyRequests.Rows[rowIndex].Cells["colRequestId"].Value;
+            if (idValue == null || !int.TryParse(idValue.ToString(), out int requestId)) return;
+
+            using (MyRequestDetailForm form = new MyRequestDetailForm(requestId))
+            {
+                form.ShowDialog(this);
+            }
+            LoadUserRequests();
         }
 
         private void ApplyCustomGridStyling()
@@ -134,7 +173,7 @@ namespace BarangayDocumentRequestSysytem
 
             // Construct SQL Query with dynamic filtering
             StringBuilder queryBuilder = new StringBuilder();
-            queryBuilder.Append(@"SELECT document_type, request_at, status 
+            queryBuilder.Append(@"SELECT request_id, document_type, request_at, status 
                     FROM documentrequests 
                     WHERE user_id = @UserId");
 
@@ -182,7 +221,7 @@ namespace BarangayDocumentRequestSysytem
                         conn.Open();
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            var requestList = new List<(string docType, string dateReq, string status)>();
+                            var requestList = new List<(int id, string docType, string dateReq, string status)>();
 
                             while (reader.Read())
                             {
@@ -196,7 +235,7 @@ namespace BarangayDocumentRequestSysytem
                                     ? reader["status"].ToString()
                                     : "Pending";
 
-                                requestList.Add((docType, dateReq, status));
+                                requestList.Add((Convert.ToInt32(reader["request_id"]), docType, dateReq, status));
                             }
 
                             reader.Close();
@@ -204,7 +243,7 @@ namespace BarangayDocumentRequestSysytem
                             foreach (var item in requestList)
                             {
                                 string feeStr = GetFeeForDocument(item.docType, conn);
-                                dgvMyRequests.Rows.Add(item.docType, item.dateReq, feeStr, item.status);
+                                dgvMyRequests.Rows.Add(item.docType, item.dateReq, feeStr, item.status, item.id);
                             }
                         }
 
@@ -265,7 +304,10 @@ namespace BarangayDocumentRequestSysytem
 
         private void dgvMyRequests_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0 && dgvMyRequests.Columns[e.ColumnIndex].Name == "colManage")
+            {
+                OpenRequest(e.RowIndex);
+            }
         }
 
         private void dgvMyRequests_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -300,6 +342,11 @@ namespace BarangayDocumentRequestSysytem
                     case "Rejected":
                         e.CellStyle.BackColor = Color.FromArgb(254, 226, 226); // Soft red
                         e.CellStyle.ForeColor = Color.FromArgb(185, 28, 28);
+                        break;
+
+                    case "Cancelled":
+                        e.CellStyle.BackColor = Color.FromArgb(229, 231, 235); // Soft gray
+                        e.CellStyle.ForeColor = Color.FromArgb(75, 85, 99);
                         break;
                 }
                 e.CellStyle.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
